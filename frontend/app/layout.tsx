@@ -64,9 +64,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${nohemi.variable} ${satoshi.variable} ${delight.variable} h-full antialiased`}
+      className={`${inter.variable} ${nohemi.variable} ${satoshi.variable} ${delight.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col font-satoshi">
+      <body className="min-h-screen flex flex-col font-satoshi">
         <SmoothScroll>
           {children}
         </SmoothScroll>

@@ -16,6 +16,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
+      autoResize: true,
     });
 
     // 2. Sync Lenis scroll events with GSAP ScrollTrigger
@@ -28,6 +29,24 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(0);
 
+    // 4. Update Lenis scroll limit whenever dynamic components, images or tabs expand the DOM
+    const handleResize = () => {
+      lenis.resize();
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("load", handleResize);
+
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+      ScrollTrigger.refresh();
+    });
+
+    if (document.body) {
+      resizeObserver.observe(document.body);
+    }
+
     if (typeof window !== "undefined") {
       (window as any).__lenis = lenis;
     }
@@ -36,6 +55,9 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       if (typeof window !== "undefined") {
         (window as any).__lenis = null;
       }
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("load", handleResize);
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
     };
