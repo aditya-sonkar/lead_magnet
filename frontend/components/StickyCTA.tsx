@@ -2,8 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import QuoteModal, { QuoteFormData } from "./QuoteModal";
-import CallbackModal, { CallbackFormData } from "./CallbackModal";
+import dynamic from "next/dynamic";
+import type { QuoteFormData } from "./QuoteModal";
+import type { CallbackFormData } from "./CallbackModal";
+
+const QuoteModal = dynamic(() => import("./QuoteModal"), { ssr: false });
+const CallbackModal = dynamic(() => import("./CallbackModal"), { ssr: false });
 
 type CTA = {
     label: string;

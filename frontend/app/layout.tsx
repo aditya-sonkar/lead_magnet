@@ -8,6 +8,7 @@ const inter = localFont({
   variable: "--font-inter",
   weight: "100 900",
   display: "swap",
+  preload: false,
 });
 
 const nohemi = localFont({
@@ -29,6 +30,7 @@ const delight = localFont({
   variable: "--font-delight",
   weight: "100 900",
   display: "swap",
+  preload: false,
 });
 
 export const viewport: Viewport = {

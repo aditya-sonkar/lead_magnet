@@ -95,6 +95,15 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
         }
     }, [isOpen]);
 
+    // Auto-close modal after 2.5s on successful submission
+    useEffect(() => {
+        if (!isSubmitted) return;
+        const timer = setTimeout(() => {
+            onClose();
+        }, 2500);
+        return () => clearTimeout(timer);
+    }, [isSubmitted, onClose]);
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (isSubmitting) return;
@@ -164,18 +173,11 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
 
                         {isSubmitted ? (
                             <div className="p-6 rounded-none bg-[#EBF7F2] text-[#1E7448] text-center font-satoshi text-[clamp(14px,1.1vw,15px)] space-y-2.5 my-4">
-                                <p className="font-medium text-[clamp(15px,1.2vw,16px)]">✓ {successTitle}</p>
-                                <p className="text-[clamp(12.5px,1vw,13.5px)] text-[#2A7550]">
-                                    {successDescription}
-                                </p>
-                                {(data?.closeButtonLabel || (data as any)?.closeLabel) && (
-                                    <button
-                                        type="button"
-                                        onClick={onClose}
-                                        className="text-[clamp(12px,0.95vw,13.5px)] font-semibold underline text-[#1E7448] hover:text-[#145232] cursor-pointer pt-2 inline-block"
-                                    >
-                                        {data?.closeButtonLabel || (data as any)?.closeLabel}
-                                    </button>
+                                <p className="font-medium text-[clamp(15px,1.2vw,16px)]">✓ {successTitle || "We've received your details! We'll call you shortly."}</p>
+                                {successDescription && (
+                                    <p className="text-[clamp(12.5px,1vw,13.5px)] text-[#2A7550]">
+                                        {successDescription}
+                                    </p>
                                 )}
                             </div>
                         ) : (

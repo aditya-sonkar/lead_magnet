@@ -7,6 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Skip continuous RAF ticker and Lenis on mobile/touch screens to preserve 120Hz native touch scroll and eliminate TBT
+    const isTouch = typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+    if (isTouch && window.innerWidth < 1024) {
+      return;
+    }
+
     gsap.registerPlugin(ScrollTrigger);
 
     // 1. Initialize Lenis smooth scroll
