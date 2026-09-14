@@ -28,6 +28,9 @@
       "type": "component",
       "component": "shared.cta",
       "repeatable": false
+    },
+    "mobileHeading": {
+      "type": "string"
     }
   },
   "config": {}

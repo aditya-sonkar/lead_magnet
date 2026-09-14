@@ -15,6 +15,9 @@
       "type": "component",
       "component": "sections.our-work-project",
       "repeatable": true
+    },
+    "mobileDescription": {
+      "type": "text"
     }
   },
   "config": {}

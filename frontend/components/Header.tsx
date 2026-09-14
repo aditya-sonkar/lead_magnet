@@ -115,27 +115,26 @@ export default function Header({
         };
     }, []);
 
-    const navLinks = (footerData?.quickLinks && footerData.quickLinks.length > 0 ? footerData.quickLinks : data?.quickLinks && data.quickLinks.length > 0 ? data.quickLinks : [
-        { id: 1, label: "Work", href: "#work" },
-        { id: 2, label: "Services", href: "#services" },
-        { id: 3, label: "Process", href: "#process" },
-        { id: 4, label: "FAQ", href: "#faq" },
-    ]);
-    const contacts = (footerData?.contacts && footerData.contacts.length > 0 ? footerData.contacts : [
-        {
-            id: 1,
-            location: "United States",
-            phone: "+1 (555) 000-0000",
-            email: "hello@thumbstack.com",
-            Address: "San Francisco, CA",
-        },
-    ]);
-    const socialLinks = (footerData?.socialLinks && footerData.socialLinks.length > 0 ? footerData.socialLinks : [
-        { id: 1, platform: "Instagram", href: "https://instagram.com" },
-        { id: 2, platform: "LinkedIn", href: "https://linkedin.com" },
-        { id: 3, platform: "YouTube", href: "https://youtube.com" },
-        { id: 4, platform: "Facebook", href: "https://facebook.com" },
-    ]);
+    // Nav links: prefer footer quickLinks, fallback to header quickLinks, then empty (no hardcoded data)
+    const navLinks: HeaderLink[] = (
+        footerData?.quickLinks && footerData.quickLinks.length > 0
+            ? footerData.quickLinks
+            : data?.quickLinks && data.quickLinks.length > 0
+            ? data.quickLinks
+            : []
+    );
+    // Contacts: from CMS only — do not show placeholder contact details
+    const contacts: FooterContact[] = (
+        footerData?.contacts && footerData.contacts.length > 0
+            ? footerData.contacts
+            : []
+    );
+    // Social links: from CMS only — do not show placeholder social links
+    const socialLinks: SocialLink[] = (
+        footerData?.socialLinks && footerData.socialLinks.length > 0
+            ? footerData.socialLinks
+            : []
+    );
     const brandName = data?.logoText || "Thumbstack.";
 
     const lineColor = isOpen
@@ -147,12 +146,12 @@ export default function Header({
     return (
         <>
             {/* Header bar */}
-            <header className="fixed top-0 left-0 right-0 z-[110] px-5 sm:px-6 lg:px-[60px] xl:px-[80px] pointer-events-none">
-                <div className="mx-auto max-w-[1720px] w-full flex justify-between items-center h-[72px] sm:h-[88px] pt-2 sm:pt-2.5 lg:pt-0">
+            <header className="fixed top-0 left-0 right-0 z-[110] px-5 sm:px-6 lg:px-[40px] xl:px-[48px] 2xl:px-[80px] pointer-events-none">
+                <div className="max-w-[1720px] mx-auto w-full flex justify-between items-center h-[72px] sm:h-[88px] pt-2 sm:pt-2.5 lg:pt-0">
                     <a
                         href="/"
                         onClick={() => setIsOpen(false)}
-                        className={`font-nohemi font-medium text-[clamp(23px,2vw,25.5px)] lg:text-[26px] tracking-[-0.02em] leading-none pointer-events-auto select-none transition-colors duration-300 flex items-center translate-y-[2px] sm:translate-y-[1px] lg:translate-y-0 ${
+                        className={`font-nohemi font-medium text-[25.5px] sm:text-[26px] lg:text-[28px] tracking-[-0.02em] leading-none pointer-events-auto select-none transition-colors duration-300 flex items-center translate-y-[2px] sm:translate-y-[1px] lg:translate-y-0 ${
                             isOpen
                                 ? "text-white"
                                 : isLight
@@ -225,7 +224,7 @@ export default function Header({
                         className="fixed inset-0 z-[100] bg-[#13230D] text-white overflow-y-auto overscroll-contain pointer-events-auto touch-pan-y"
                         style={{ WebkitOverflowScrolling: "touch" }}
                     >
-                        <div className="min-h-full flex flex-col justify-between pt-[72px] sm:pt-[88px] pb-6 px-6 sm:px-10 lg:px-[60px] xl:px-[80px]">
+                        <div className="min-h-full flex flex-col justify-between pt-[72px] sm:pt-[88px] pb-6 px-5 sm:px-6 lg:px-[40px] xl:px-[48px] 2xl:px-[80px]">
                             <div className="w-full max-w-[1500px] mx-auto flex-1 pt-6 sm:pt-10 lg:pt-12 pb-8 grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-16 items-start">
                                 {/* Navigation links */}
                                 <nav className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-5 lg:gap-7 lg:pl-[138px]">
@@ -255,7 +254,7 @@ export default function Header({
                                 {/* Contact details */}
                                 <div className="lg:col-span-5 flex flex-col justify-start lg:pt-3">
                                     <h3 className="font-satoshi font-bold text-[clamp(16px,1.25vw,18px)] text-white mb-5 sm:mb-6 tracking-wide">
-                                        {footerData?.contactHeading || "Contact"}
+                                        {footerData?.contactHeading}
                                     </h3>
 
                                     <div className="space-y-4 sm:space-y-6">
@@ -286,14 +285,16 @@ export default function Header({
 
                                     {/* CTA */}
                                     <div className="hidden lg:block mt-8 sm:mt-10">
+                                        {((data as any)?.cta?.label || (data as any)?.ctaLabel || (footerData as any)?.cta?.label) && (
                                         <a
                                             href={(data as any)?.cta?.href || (footerData as any)?.cta?.href || "#quote"}
                                             onClick={() => setIsOpen(false)}
                                             className="inline-flex items-center gap-2 rounded-full bg-[#3145DD] hover:bg-[#2537c7] text-white px-7 py-3.5 font-satoshi text-[15px] font-medium transition-all shadow-md active:scale-95 w-fit"
                                         >
-                                            <span>{(data as any)?.cta?.label || (data as any)?.ctaLabel || (footerData as any)?.cta?.label || "Talk to us"}</span>
+                                            <span>{(data as any)?.cta?.label || (data as any)?.ctaLabel || (footerData as any)?.cta?.label}</span>
                                             <span className="text-[17px] leading-none">→</span>
                                         </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>

@@ -53,7 +53,10 @@ export default function WorkShowcase({
 }) {
     if (!data) return null;
     const items = data.items || [];
-    const [selectedItem, setSelectedItem] = useState(items[0]?.id);
+    const sioraiItem = items.find((item) => item.name?.toLowerCase().includes("siorai"));
+    const initialId = sioraiItem?.id ?? items[0]?.id;
+
+    const [selectedItem, setSelectedItem] = useState(initialId);
     const [position, setPosition] = useState(50);
     const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -61,9 +64,9 @@ export default function WorkShowcase({
     const afterScrollRef = useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState(false);
 
-    const activeItem = items.find((item) => item.id === selectedItem) || items[0];
+    const activeItem = items.find((item) => item.id === selectedItem) || sioraiItem || items[0];
     const mobileDesc = data.MobileDescription || data.mobileDescription;
-    const beforeText = data.Before || data.before || "Before";
+    const beforeText = data.Before || data.before || "";
 
     const beforeUrl = getMediaUrl(activeItem?.beforeImage);
     const afterUrl = getMediaUrl(activeItem?.afterImage);
@@ -73,7 +76,8 @@ export default function WorkShowcase({
 
     useEffect(() => {
         if (items.length > 0 && (!selectedItem || !items.some((it) => it.id === selectedItem))) {
-            setSelectedItem(items[0].id);
+            const siorai = items.find((item) => item.name?.toLowerCase().includes("siorai"));
+            setSelectedItem(siorai?.id ?? items[0].id);
         }
     }, [items, selectedItem]);
 
@@ -166,12 +170,12 @@ export default function WorkShowcase({
                             <p className="block sm:hidden max-w-[650px] font-satoshi font-medium text-[clamp(13px,4.2vw,16px)] text-[#000000] whitespace-pre-line text-pretty leading-relaxed">
                                 {mobileDesc}
                             </p>
-                            <p className="hidden sm:block max-w-[960px] font-satoshi font-medium text-[clamp(14px,4.2vw,16px)] text-[#000000] whitespace-pre-line text-pretty leading-relaxed">
+                            <p className="hidden sm:block max-w-[815px] font-satoshi font-medium text-[clamp(14px,4.2vw,16px)] text-[#000000] whitespace-pre-line leading-relaxed">
                                 {data.description}
                             </p>
                         </>
                     ) : (
-                        <p className="max-w-[960px] font-satoshi font-medium text-[clamp(14px,4.2vw,16px)] text-[#000000] whitespace-pre-line text-pretty leading-relaxed">
+                        <p className="max-w-[815px] font-satoshi font-medium text-[clamp(14px,4.2vw,16px)] text-[#000000] whitespace-pre-line leading-relaxed">
                             {data.description}
                         </p>
                     )}
@@ -184,7 +188,7 @@ export default function WorkShowcase({
                                 type="button"
                                 className={`shrink-0 rounded-full border px-4.5 sm:px-7 py-2 sm:py-3 text-[clamp(14px,1.2vw,18.5px)] font-satoshi font-medium transition-colors cursor-pointer ${
                                     (activeItem?.id === item.id || selectedItem === item.id)
-                                        ? "border-[#79BDB4] bg-[#DDF2EF] text-[#0D2108]"
+                                        ? "border-[#307D6D] bg-[#B2ECDE] text-[#18362D] sm:border-[#79BDB4] sm:bg-[#DDF2EF] sm:text-[#0D2108]"
                                         : "border-[#CAC4D0] bg-transparent text-[#2B2B2B] hover:border-gray-400"
                                 }`}
                             >

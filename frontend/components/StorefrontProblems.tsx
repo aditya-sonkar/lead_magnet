@@ -17,6 +17,31 @@ type StorefrontProblemsData = {
     submitHref: string;
 };
 
+function renderFormattedDescription(desc: string) {
+    if (!desc) return null;
+    if ((desc.includes("recognise") || desc.includes("recognize")) && desc.includes("contacted us about")) {
+        const formatted = desc
+            .replace(/(recogni[sz]e)\s+(three)/i, "$1<br-mobile>$2")
+            .replace(/(\bthey)\s+(contacted us about)/i, "$1<br-mobile>$2");
+
+        if (formatted.includes("<br-mobile>")) {
+            const chunks = formatted.split("<br-mobile>");
+            return chunks.map((chunk, idx) => (
+                <span key={idx}>
+                    {chunk}
+                    {idx < chunks.length - 1 && (
+                        <>
+                            <span className="hidden sm:inline"> </span>
+                            <br className="sm:hidden" />
+                        </>
+                    )}
+                </span>
+            ));
+        }
+    }
+    return desc;
+}
+
 export default function StorefrontProblems({
     data,
 }: {
@@ -39,13 +64,13 @@ export default function StorefrontProblems({
                         {data.heading}
                     </h2>
 
-                    <p className="font-satoshi font-medium mt-5 max-w-[430px] whitespace-pre-line text-[clamp(12px,4.2vw,16px)] leading-[1.7] text-[#0F1D07]">
-                        {data.description}
+                    <p className="font-satoshi font-medium mt-4 sm:mt-5 max-w-[365px] sm:max-w-[430px] whitespace-pre-line text-[14px] sm:text-[15.5px] lg:text-[16px] leading-[1.6] sm:leading-[1.7] text-[#0F1D07]">
+                        {renderFormattedDescription(data.description)}
                     </p>
                 </div>
 
                 {/* Interactive problem selection cards */}
-                <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4 lg:gap-[clamp(16px,1.4vw,28px)] xl:gap-[clamp(20px,1.8vw,32px)]">
                     {(data.items || []).map((item) => {
                         const isSelected = selectedIds.includes(item.id);
                         return (
@@ -61,28 +86,28 @@ export default function StorefrontProblems({
                                         toggleSelect(item.id);
                                     }
                                 }}
-                                className={`relative min-h-[165px] rounded-[10px] p-5 pb-11 cursor-pointer select-none transition-colors duration-200 ${isSelected
+                                className={`relative min-h-[130px] sm:min-h-[155px] lg:min-h-[165px] rounded-[12px] px-5 pt-6 pb-6 sm:p-[clamp(16px,1.2vw,22px)] sm:pb-9 lg:pb-11 cursor-pointer select-none transition-colors duration-200 ${isSelected
                                     ? "bg-[#B4BCFE]"
-                                    : "bg-[#EEF0FF] hover:bg-[#B4BCFE]"
+                                    : "bg-[#EFF0FD] sm:bg-[#EEF0FF] hover:bg-[#B4BCFE]"
                                     }`}
                             >
-                                <div className="pr-7">
-                                    <h3 className="font-delight text-[16px] sm:text-[17.5px] lg:text-[18.5px] font-medium leading-[1.3] text-[#0F1D07] text-balance whitespace-pre-line">
+                                <div className="pr-9 sm:pr-7">
+                                    <h3 className="font-delight text-[19.5px] sm:text-[18.5px] lg:text-[19px] font-medium leading-[1.32] sm:leading-[1.25] text-[#0F1D07] text-balance whitespace-pre-line">
                                         {item.title}
                                     </h3>
 
-                                    <p className="font-satoshi mt-2 sm:mt-3 text-[13px] sm:text-[13.5px] lg:text-[14px] leading-[1.55] text-[#0F1D07]">
+                                    <p className="font-satoshi mt-2 sm:mt-2.5 text-[15.5px] sm:text-[14.5px] lg:text-[15px] leading-[1.5] sm:leading-[1.55] text-[#0F1D07]">
                                         {item.description}
                                     </p>
                                 </div>
 
                                 <div
-                                    className={`absolute right-3.5 top-3.5 sm:right-4 sm:top-4 flex h-6 w-6 sm:h-6.5 sm:w-6.5 items-center justify-center rounded-[6px] shrink-0 transition-all duration-200 ${isSelected ? "bg-[#3145DD] text-white" : "bg-white text-[#1A1A1A] shadow-xs"
+                                    className={`absolute right-4 top-4.5 sm:right-4 sm:top-4 flex h-8 w-8 sm:h-6.5 sm:w-6.5 items-center justify-center rounded-[9px] shrink-0 transition-all duration-200 ${isSelected ? "bg-[#3145DD] text-white" : "bg-white text-[#1A1A1A] shadow-xs"
                                         }`}
                                 >
                                     {isSelected ? (
                                         <svg
-                                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white"
+                                            className="w-5 h-5 sm:w-4 sm:h-4 text-white"
                                             viewBox="0 0 16 16"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -97,15 +122,15 @@ export default function StorefrontProblems({
                                         </svg>
                                     ) : (
                                         <svg
-                                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1A1A1A]"
+                                            className="w-5.5 h-5.5 sm:w-4 sm:h-4 text-[#1A1A1A]"
                                             viewBox="0 0 16 16"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
                                         >
                                             <path
-                                                d="M8 3.5V12.5M3.5 8H12.5"
+                                                d="M8 2.5V13.5M2.5 8H13.5"
                                                 stroke="currentColor"
-                                                strokeWidth="1.4"
+                                                strokeWidth="0.95"
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
                                             />
@@ -120,51 +145,54 @@ export default function StorefrontProblems({
                 {/* Bottom summary and action bar */}
                 {(() => {
                     const count = selectedIds.length;
+
+                    // Derive summary text exclusively from CMS data — no hardcoded fallbacks
                     const summaryText = (() => {
                         if (Array.isArray(data.summary)) {
                             if (count === 0) {
                                 const def = (data.summary as any[]).find((s: any) => s?.state === "default");
-                                if (def?.text) return def.text;
+                                return def?.text || null;
                             } else if (count === 1) {
                                 const one = (data.summary as any[]).find((s: any) => s?.state === "one");
-                                if (one?.text) return one.text.replace(/\{count\}/g, "1");
+                                return one?.text ? one.text.replace(/\{count\}/g, "1") : null;
                             } else {
                                 const mult = (data.summary as any[]).find((s: any) => s?.state === "multiple");
-                                if (mult?.text) return mult.text.replace(/\{count\}/g, String(count));
+                                return mult?.text ? mult.text.replace(/\{count\}/g, String(count)) : null;
                             }
                         }
-                        if (count === 0) {
-                            return "Select what applies above to diagnose your storefront.";
+                        // String summary: interpolate {count} if present
+                        if (typeof data.summary === "string" && data.summary.trim()) {
+                            return data.summary.replace(/\{count\}/g, String(count));
                         }
-                        if (count < 3) {
-                            return `${count} identified. Early signs that structure is impacting your conversions.`;
-                        }
-                        const summaryStr = typeof data.summary === "string" ? data.summary : "";
-                        const suffix = summaryStr
-                            ? summaryStr.replace(/^\d+\s*identified\.?\s*/i, "").trim()
-                            : "At that point the structure is the problem, not the styling.";
-                        return `${count} identified. ${suffix || "At that point the structure is the problem, not the styling."}`;
+                        return null;
                     })();
 
-                    return (
-                        <div className="mt-8 flex flex-col items-center justify-between gap-5 rounded-[8px] bg-[#F7F7F7] px-5 py-3 sm:flex-row">
-                            <p className="font-satoshi text-[clamp(13px,1.1vw,16px)] font-bold">
-                                {summaryText}
-                            </p>
+                    // Only render the bar when there is CMS content or a CTA label
+                    if (!summaryText && !data.submitLabel) return null;
 
-                            <a
-                                href={data.submitHref}
-                                onClick={(e) => {
-                                    if (data.submitHref === "#quote" || data.submitHref?.includes("quote")) {
-                                        e.preventDefault();
-                                        window.dispatchEvent(new CustomEvent("open-quote-modal"));
-                                    }
-                                }}
-                                className="flex w-full font-inter items-center justify-center rounded-full bg-[#3447E5] px-10 py-4 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer"
-                            >
-                                {data.submitLabel}
-                                <span className="ml-2">→</span>
-                            </a>
+                    return (
+                        <div className="mt-8 flex flex-col items-start sm:items-center justify-between gap-4 sm:gap-5 rounded-[8px] bg-[#F7F7F7] px-5 py-3.5 sm:py-3 sm:flex-row">
+                            {summaryText && (
+                                <p className="font-satoshi text-[14.5px] sm:text-[15px] lg:text-[16px] font-bold leading-[2.1] sm:leading-[1.5] text-[#0F1D07]">
+                                    {summaryText}
+                                </p>
+                            )}
+
+                            {data.submitLabel && (
+                                <a
+                                    href={data.submitHref}
+                                    onClick={(e) => {
+                                        if (data.submitHref === "#quote" || data.submitHref?.includes("quote")) {
+                                            e.preventDefault();
+                                            window.dispatchEvent(new CustomEvent("open-quote-modal"));
+                                        }
+                                    }}
+                                    className="flex w-full font-inter items-center justify-center rounded-full bg-[#3447E5] px-10 py-2.5 sm:py-3.5 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer"
+                                >
+                                    {data.submitLabel}
+                                    <span className="ml-2">→</span>
+                                </a>
+                            )}
                         </div>
                     );
                 })()}

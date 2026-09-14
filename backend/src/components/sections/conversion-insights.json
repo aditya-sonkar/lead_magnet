@@ -15,6 +15,12 @@
       "type": "component",
       "component": "shared.insight-card",
       "repeatable": true
+    },
+    "mobileHeading": {
+      "type": "string"
+    },
+    "mobileDescription": {
+      "type": "text"
     }
   },
   "config": {}

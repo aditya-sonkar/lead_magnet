@@ -33,7 +33,8 @@ export default function OurWork({ data }: { data: OurWorkData }) {
     const total = projects.length;
     const hasMultipleProjects = total > 1;
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const initialIndex = total > 0 ? Math.floor(total / 2) : 0;
+    const [currentIndex, setCurrentIndex] = useState(initialIndex);
     const [direction, setDirection] = useState(1);
 
     const touchStartX = useRef<number | null>(null);
@@ -82,10 +83,10 @@ export default function OurWork({ data }: { data: OurWorkData }) {
 
     return (
         <section className="w-full pt-10 sm:pt-20 pb-0 overflow-hidden bg-[#F5F5F5]">
-                <div className="mx-auto flex w-full max-w-[1880px] flex-col px-6 lg:px-[60px] xl:px-[80px]">
+            <div className="mx-auto flex w-full max-w-[1880px] flex-col px-6 lg:px-[60px] xl:px-[80px]">
                 <div className="flex w-full justify-between items-end gap-6">
                     <div className="max-w-[960px]">
-                        <h2 className="font-nohemi text-[clamp(28px,4.2vw,65px)] font-normal font-[400] leading-[1.15] tracking-[-0.015em] text-[#000000]">
+                        <h2 className="font-nohemi text-[clamp(28px,4.2vw,65px)] font-medium sm:font-normal leading-[1.15] tracking-[-0.015em] text-[#000000]">
                             {data.heading}
                         </h2>
 
@@ -95,9 +96,8 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                             </p>
                         )}
                         <p
-                            className={`${
-                                data.MobileDescription ? "hidden md:block" : ""
-                            } max-w-[835px] font-satoshi text-[clamp(13.5px,1.1vw,16px)] font-medium text-[#000000] whitespace-pre-line text-pretty leading-relaxed mt-3`}
+                            className={`${data.MobileDescription ? "hidden md:block" : ""
+                                } max-w-[835px] font-satoshi text-[clamp(13.5px,1.1vw,16px)] font-medium text-[#000000] whitespace-pre-line text-pretty leading-relaxed mt-3`}
                         >
                             {data.description}
                         </p>
@@ -110,11 +110,10 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                             type="button"
                             aria-label="Previous project"
                             disabled={!hasMultipleProjects}
-                            className={`flex h-11 w-11 items-center justify-center rounded-md bg-[#092008] transition-all ${
-                                hasMultipleProjects
+                            className={`flex h-11 w-11 items-center justify-center rounded-md bg-[#092008] transition-all ${hasMultipleProjects
                                     ? "hover:opacity-80 cursor-pointer opacity-100 active:scale-90"
                                     : "opacity-40 cursor-not-allowed"
-                            }`}
+                                }`}
                         >
                             <img
                                 src="/images/arrow_left.svg"
@@ -128,11 +127,10 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                             type="button"
                             aria-label="Next project"
                             disabled={!hasMultipleProjects}
-                            className={`flex h-11 w-11 items-center justify-center rounded-md bg-[#092008] transition-all ${
-                                hasMultipleProjects
+                            className={`flex h-11 w-11 items-center justify-center rounded-md bg-[#092008] transition-all ${hasMultipleProjects
                                     ? "hover:opacity-80 cursor-pointer opacity-100 active:scale-90"
                                     : "opacity-40 cursor-not-allowed"
-                            }`}
+                                }`}
                         >
                             <img
                                 src="/images/arrow_right.svg"
@@ -178,11 +176,10 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                         onClick={() => goToProject(dotIdx)}
                                         type="button"
                                         aria-label={`Indicator ${dotIdx + 1}`}
-                                        className={`transition-all duration-300 ease-out rounded-full cursor-pointer ${
-                                            isCurrent
+                                        className={`transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-full cursor-pointer ${isCurrent
                                                 ? "w-7 h-1.5 bg-[#2442EB]"
                                                 : "w-2.5 h-1.5 bg-[#2442EB]/25 hover:bg-[#2442EB]/40"
-                                        }`}
+                                            }`}
                                     />
                                 );
                             })}
@@ -210,7 +207,7 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                         </button>
                     </div>
                 )}
-                </div>
+            </div>
 
             {/* Production full-width showcase banner with instant fast-clicking support */}
             <div
@@ -229,25 +226,21 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                 variants={{
                                     enter: (dir: number) => ({
                                         x: dir > 0 ? "100%" : "-100%",
-                                        opacity: 0.95,
                                     }),
                                     center: {
                                         x: 0,
-                                        opacity: 1,
                                     },
                                     exit: (dir: number) => ({
                                         x: dir > 0 ? "-100%" : "100%",
-                                        opacity: 0.95,
                                     }),
                                 }}
                                 initial="enter"
                                 animate="center"
                                 exit="exit"
                                 transition={{
-                                    x: { type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.28 },
-                                    opacity: { duration: 0.2 },
+                                    x: { type: "tween", ease: [0.25, 1, 0.5, 1], duration: 0.45 },
                                 }}
-                                className="w-full"
+                                className="w-full will-change-transform"
                             >
                                 {(() => {
                                     const proj = projects[currentIndex];

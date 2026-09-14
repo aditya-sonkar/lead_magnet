@@ -49,51 +49,32 @@ export default function Footer({
     const newsletterLabel =
         (typeof d?.Newsletter === "object" && d?.Newsletter?.label) ||
         (typeof d?.newsletter === "object" && d?.newsletter?.label) ||
-        "Sign up to our newsletter";
+        undefined;
 
     const newsletterHref =
         (typeof d?.Newsletter === "object" && d?.Newsletter?.href) ||
         (typeof d?.newsletter === "object" && d?.newsletter?.href) ||
-        "#news";
+        undefined;
 
-    const quickLinks = (d.quickLinks && d.quickLinks.length > 0) ? d.quickLinks : [
-        { id: 1, label: "Work", href: "#work" },
-        { id: 2, label: "Services", href: "#services" },
-        { id: 3, label: "Process", href: "#process" },
-        { id: 4, label: "FAQ", href: "#faq" },
-    ];
+    // All lists come exclusively from CMS — no hardcoded defaults
+    const quickLinks = d.quickLinks && d.quickLinks.length > 0 ? d.quickLinks : [];
+    const socialLinks = d.socialLinks && d.socialLinks.length > 0 ? d.socialLinks : [];
+    const contacts = d.contacts && d.contacts.length > 0 ? d.contacts : [];
 
-    const socialLinks = (d.socialLinks && d.socialLinks.length > 0) ? d.socialLinks : [
-        { id: 1, platform: "Instagram", href: "https://instagram.com" },
-        { id: 2, platform: "LinkedIn", href: "https://linkedin.com" },
-        { id: 3, platform: "YouTube", href: "https://youtube.com" },
-        { id: 4, platform: "Facebook", href: "https://facebook.com" },
-    ];
-
-    const contacts = (d.contacts && d.contacts.length > 0) ? d.contacts : [
-        {
-            id: 1,
-            location: "United States",
-            phone: "+1 (555) 000-0000",
-            email: "hello@thumbstack.com",
-            Address: "San Francisco, CA",
-        },
-    ];
-
-    const privacyLink = d.privacyLink || { id: 1, label: "Privacy Policies", href: "#privacy" };
-    const termsLink = d.termsLink || { id: 2, label: "Terms and Conditions", href: "#terms" };
-    const marqueeText = d.marqueeText || "Let's talk • ";
+    const privacyLink = d.privacyLink || null;
+    const termsLink = d.termsLink || null;
+    const marqueeText = d.marqueeText || null;
 
     return (
         <section id="contact" data-theme="dark" className="w-full pt-16 pb-24 sm:pt-20 sm:pb-28 md:py-24 bg-[#3145DD] overflow-hidden">
             <div className="mx-auto w-full max-w-[1880px] px-6 lg:px-[60px] xl:px-[80px]">
-                <div className="flex flex-col lg:flex-row lg:justify-between gap-24 sm:gap-28 lg:gap-10 xl:gap-16">
+                <div className="flex flex-col lg:flex-row lg:justify-between gap-24 sm:gap-28 lg:gap-[clamp(32px,2.5vw,56px)] xl:gap-[clamp(40px,3.2vw,72px)]">
                     {/* Left Column: Brand info, Heading, Description, Social links */}
-                    <div className="flex flex-col w-full lg:max-w-[480px] xl:max-w-[540px]">
+                    <div className="flex flex-col w-full lg:max-w-[clamp(460px,32vw,560px)]">
                         {/* Top row: Say hi! + Logo */}
                         <div className="flex items-center gap-2.5 sm:gap-3">
                             <h1 className="font-delight text-[clamp(44px,4.2vw,80px)] font-medium leading-none text-white tracking-tight">
-                                {d.sayHi || "Say hi!"}
+                            {d.sayHi}
                             </h1>
 
                             {d.logo && getMediaUrl(d.logo) && (
@@ -148,18 +129,22 @@ export default function Footer({
 
                         {/* Desktop-only Privacy & Terms placement */}
                         <div className="hidden lg:flex items-center gap-8 mt-auto pt-14 text-[clamp(12.5px,0.95vw,13.5px)] font-satoshi text-white/90">
-                            <a
-                                href={privacyLink.href || "#"}
-                                className="hover:underline underline-offset-4 transition-all"
-                            >
-                                {privacyLink.label || "Privacy Policies"}
-                            </a>
-                            <a
-                                href={termsLink.href || "#"}
-                                className="hover:underline underline-offset-4 transition-all"
-                            >
-                                {termsLink.label || "Terms and Conditions"}
-                            </a>
+                            {privacyLink && (
+                                <a
+                                    href={privacyLink.href || "#"}
+                                    className="hover:underline underline-offset-4 transition-all"
+                                >
+                                    {privacyLink.label}
+                                </a>
+                            )}
+                            {termsLink && (
+                                <a
+                                    href={termsLink.href || "#"}
+                                    className="hover:underline underline-offset-4 transition-all"
+                                >
+                                    {termsLink.label}
+                                </a>
+                            )}
                         </div>
                     </div>
 
@@ -169,7 +154,7 @@ export default function Footer({
                             {/* Quick Links (First on mobile, Second on big screen) */}
                             <div className="order-1 lg:order-2 lg:pl-6 xl:pl-10">
                                 <h2 className="font-satoshi text-[clamp(15px,1.2vw,18px)] font-bold text-white tracking-tight mb-4 sm:mb-5 lg:mb-6">
-                                    {d.quickLinksHeading || "Quick Links"}
+                                    {d.quickLinksHeading}
                                 </h2>
 
                                 <div className="flex flex-col space-y-3 sm:space-y-3.5 lg:space-y-4">
@@ -188,7 +173,7 @@ export default function Footer({
                             {/* Contact (Second on mobile, First on big screen) */}
                             <div className="order-2 lg:order-1">
                                 <h2 className="font-satoshi text-[clamp(15px,1.2vw,18px)] font-bold text-white tracking-tight mb-4 sm:mb-5 lg:mb-6">
-                                    {d.contactHeading || "Contact"}
+                                    {d.contactHeading}
                                 </h2>
 
                                 <div className="flex flex-col space-y-4 sm:space-y-5 lg:space-y-6">
@@ -225,7 +210,7 @@ export default function Footer({
                             </div>
                         </div>
 
-                        {/* Newsletter CTA Button (Mobile only) */}
+                        {newsletterLabel && newsletterHref && (
                         <div className="mt-14 sm:mt-12 w-full lg:hidden">
                             <a
                                 href={newsletterHref}
@@ -252,40 +237,44 @@ export default function Footer({
                                 </svg>
                             </a>
                         </div>
+                        )}
 
-                        {/* Mobile-only Privacy & Terms placement (below Newsletter button) */}
                         <div className="flex lg:hidden items-center gap-6 mt-6 text-[12px] font-satoshi text-white/90">
-                            <a
-                                href={privacyLink.href || "#"}
-                                className="hover:underline underline-offset-4 transition-all"
-                            >
-                                {privacyLink.label || "Privacy Policies"}
-                            </a>
-                            <a
-                                href={termsLink.href || "#"}
-                                className="hover:underline underline-offset-4 transition-all"
-                            >
-                                {termsLink.label || "Terms and Conditions"}
-                            </a>
+                            {privacyLink && (
+                                <a
+                                    href={privacyLink.href || "#"}
+                                    className="hover:underline underline-offset-4 transition-all"
+                                >
+                                    {privacyLink.label}
+                                </a>
+                            )}
+                            {termsLink && (
+                                <a
+                                    href={termsLink.href || "#"}
+                                    className="hover:underline underline-offset-4 transition-all"
+                                >
+                                    {termsLink.label}
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Marquee CTA ticker at bottom */}
+            {marqueeText && (
             <div className="mt-14 sm:mt-20 overflow-hidden">
                 <div className="flex w-max animate-marquee">
                     {[1, 2, 3, 4].map((item) => (
                         <div
                             key={item}
-                            className="flex shrink-0 items-center gap-8 sm:gap-12 pr-8 sm:pr-12"
+                            className="flex shrink-0 items-center gap-5 sm:gap-12 pr-5 sm:pr-12"
                         >
                             <span className="font-delight text-[clamp(44px,4.2vw,100px)] font-medium text-white">
                                 {marqueeText}
                             </span>
 
-                            <div className="group relative flex h-[90px] w-[90px] sm:h-[140px] sm:w-[140px] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#7DE7D0]">
-                                <div className="relative h-[36px] w-[36px] sm:h-[54px] sm:w-[54px]">
+                            <div className="group relative flex h-[74px] w-[74px] sm:h-[140px] sm:w-[140px] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#7DE7D0]">
+                                <div className="relative h-[29px] w-[29px] sm:h-[54px] sm:w-[54px]">
                                     {/* Arrow 1: flies out to top-right on hover */}
                                     <svg
                                         viewBox="0 0 54 54"
@@ -317,6 +306,7 @@ export default function Footer({
                     ))}
                 </div>
             </div>
+            )}
         </section>
     );
 }

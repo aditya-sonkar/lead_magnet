@@ -33,25 +33,19 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
     const [isSubmitted, setIsSubmitted] = useState(false);
     const modalContainerRef = useRef<HTMLDivElement>(null);
 
-    // Text configuration with fallback to exact defaults
-    const title = data?.title || "Get a callback";
-    const description =
-        data?.description ||
-        "Let’s make something amazing together.\nBook a call - we’ve got coffee (or tea) ready and are always up for a good conversation.";
-    const emailLabel = data?.emailLabel || "Email";
-    const emailPlaceholder = data?.emailPlaceholder || "Enter Email";
-    const phoneLabel = data?.phoneLabel || "Phone Number";
-    const phonePlaceholder = data?.phonePlaceholder || "Enter Phone Number";
-    const shopifyLinkLabel = data?.shopifyLinkLabel || "Shopify Link (Optional)";
-    const shopifyLinkPlaceholder = data?.shopifyLinkPlaceholder || "Enter Shopify link";
-    const buttonLabel = data?.buttonLabel || "Book My Free Call";
-    const disclaimer =
-        data?.disclaimer ||
-        "We'll reach out within 24 hours — no spam, just expert guidance.";
-    const successTitle = data?.successTitle || "Thank you! We've received your request.";
-    const successDescription =
-        data?.successDescription ||
-        "We'll reach out within 24 hours — no spam, just expert guidance.";
+    // All text comes exclusively from CMS — no hardcoded fallbacks
+    const title = data?.title;
+    const description = data?.description;
+    const emailLabel = data?.emailLabel;
+    const emailPlaceholder = data?.emailPlaceholder;
+    const phoneLabel = data?.phoneLabel;
+    const phonePlaceholder = data?.phonePlaceholder;
+    const shopifyLinkLabel = data?.shopifyLinkLabel;
+    const shopifyLinkPlaceholder = data?.shopifyLinkPlaceholder;
+    const buttonLabel = data?.buttonLabel;
+    const disclaimer = data?.disclaimer;
+    const successTitle = data?.successTitle;
+    const successDescription = data?.successDescription;
 
     // Lock body & document scroll, pause Lenis, and handle ESC key
     useEffect(() => {
@@ -131,7 +125,7 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
                         id="callback-modal"
                         data-modal="callback"
                         data-lenis-prevent="true"
-                        className="relative w-full max-w-[550px] sm:max-w-[570px] max-h-[92vh] sm:max-h-[88vh] bg-[#FAFAFC] rounded-none p-5 sm:p-7 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col justify-between overflow-y-auto overscroll-contain"
+                        className="relative w-full max-w-[550px] sm:max-w-[570px] max-h-[92vh] sm:max-h-[88vh] bg-[#FAFAFC] rounded-none p-4 sm:p-7 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col justify-between overflow-y-auto overscroll-contain"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
@@ -139,7 +133,7 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
                             type="button"
                             onClick={onClose}
                             aria-label="Close callback modal"
-                            className="absolute top-5 right-5 sm:top-6 sm:right-6 w-7 h-7 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer"
+                            className="absolute top-3.5 right-3.5 sm:top-6 sm:right-6 w-7 h-7 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer"
                         >
                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -226,9 +220,11 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
                                     >
                                         {buttonLabel}
                                     </button>
-                                    <p className="text-center font-satoshi text-[clamp(11.5px,0.9vw,12.5px)] text-[#777777] mt-2.5 sm:mt-3">
-                                        {disclaimer}
-                                    </p>
+                                    {disclaimer && (
+                                        <p className="text-center font-satoshi text-[clamp(11.5px,0.9vw,12.5px)] text-[#777777] mt-2.5 sm:mt-3">
+                                            {disclaimer}
+                                        </p>
+                                    )}
                                 </div>
                             </form>
                         )}

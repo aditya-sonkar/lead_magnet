@@ -14,6 +14,8 @@ type FinalCtaLogo = {
 type FinalCtaData = {
     badge: string;
     heading: string;
+    mobileHeading?: string;
+    MobileHeading?: string;
     description: string;
     logos: FinalCtaLogo[];
     primaryCta: {
@@ -47,8 +49,8 @@ export default function FinalCTA({
 
     const currentLogo = validLogos[currentIndex];
 
-    const headingParts = (() => {
-        const text = data?.heading || "";
+    const parseHeading = (text: string) => {
+        if (!text) return null;
         const parts = text.split(/\blike\b/i);
         if (parts.length >= 2) {
             const beforeLike = parts[0].trim();
@@ -64,7 +66,12 @@ export default function FinalCTA({
             };
         }
         return null;
-    })();
+    };
+
+    const desktopHeadingParts = parseHeading(data?.heading || "");
+    const activeMobileHeading = (data?.mobileHeading || data?.MobileHeading || "").trim();
+    const mobileHeadingText = activeMobileHeading || data?.heading || "";
+    const mobileHeadingParts = parseHeading(mobileHeadingText);
 
     const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, label: string) => {
         const h = (href || "").toLowerCase();
@@ -91,13 +98,13 @@ export default function FinalCTA({
                     )}
 
                     <h2 className="font-nohemi font-normal font-[400] text-[clamp(36px,4.2vw,65px)] leading-[1.15] tracking-[-0.025em] text-[#000000]">
-                        {headingParts ? (
+                        {desktopHeadingParts ? (
                             <>
                                 <span>
-                                    {headingParts.line1Before}{" "}
+                                    {desktopHeadingParts.line1Before}{" "}
                                 </span>
                                 <span className="inline-flex items-center whitespace-nowrap">
-                                    <span>{headingParts.likeWord}</span>
+                                    <span>{desktopHeadingParts.likeWord}</span>
                                     <span className="mx-2.5 lg:mx-3.5 inline-flex h-[clamp(36px,4.2vw,65px)] w-[clamp(36px,4.2vw,65px)] align-middle -mt-1 lg:-mt-1.5 rounded-[10px] lg:rounded-[12px] border border-[#00000030] bg-white relative overflow-hidden select-none shrink-0 shadow-xs">
                                         <AnimatePresence mode="wait">
                                             {currentLogo?.logo && (
@@ -114,11 +121,11 @@ export default function FinalCTA({
                                             )}
                                         </AnimatePresence>
                                     </span>
-                                    <span>{headingParts.line1After}</span>
+                                    <span>{desktopHeadingParts.line1After}</span>
                                 </span>
-                                {headingParts.line2 && (
+                                {desktopHeadingParts.line2 && (
                                     <span className="block whitespace-nowrap mt-1 lg:mt-1.5">
-                                        {headingParts.line2}
+                                        {desktopHeadingParts.line2}
                                     </span>
                                 )}
                             </>
@@ -154,15 +161,15 @@ export default function FinalCTA({
 
                 {/* 2. SMALL SCREEN / MOBILE VIEW (Left-aligned, 3 lines stretching close to the right corner) */}
                 <div className="flex sm:hidden flex-col items-start text-left w-full max-w-full">
-                    <h2 className="w-full font-nohemi font-normal font-[400] text-[clamp(25px,7.8vw,42px)] leading-[1.12] tracking-[-0.025em] text-[#000000]">
-                        {headingParts ? (
+                    <h2 className="w-full font-nohemi font-normal font-[400] text-[clamp(36px,10.5vw,56px)] leading-[1.1] tracking-[-0.03em] text-[#000000]">
+                        {mobileHeadingParts ? (
                             <>
                                 <span className="block whitespace-nowrap">
-                                    {headingParts.line1Before}
+                                    {mobileHeadingParts.line1Before}
                                 </span>
                                 <span className="inline-flex items-center whitespace-nowrap mt-1">
-                                    <span>{headingParts.likeWord}</span>
-                                    <span className="mx-2 inline-flex h-[clamp(36px,7.8vw,42px)] w-[clamp(36px,7.8vw,42px)] align-middle -mt-1 rounded-[10px] border border-[#00000025] bg-white relative overflow-hidden select-none shrink-0 shadow-xs">
+                                    <span>{mobileHeadingParts.likeWord}</span>
+                                    <span className="mx-2 inline-flex h-[clamp(48px,12.8vw,62px)] w-[clamp(48px,12.8vw,62px)] align-middle -mt-1.5 rounded-[8px] border-2 border-[#00000025] bg-white relative overflow-hidden select-none shrink-0 shadow-xs">
                                         <AnimatePresence mode="wait">
                                             {currentLogo?.logo && (
                                                 <motion.img
@@ -178,28 +185,28 @@ export default function FinalCTA({
                                             )}
                                         </AnimatePresence>
                                     </span>
-                                    <span>{headingParts.line1After}</span>
+                                    <span>{mobileHeadingParts.line1After}</span>
                                 </span>
-                                {headingParts.line2 && (
+                                {mobileHeadingParts.line2 && (
                                     <span className="block whitespace-nowrap mt-1">
-                                        {headingParts.line2}
+                                        {mobileHeadingParts.line2}
                                     </span>
                                 )}
                             </>
                         ) : (
-                            data.heading
+                            mobileHeadingText || data.heading
                         )}
                     </h2>
 
-                    <p className="font-inter font-medium text-[clamp(14.5px,1.15vw,16px)] text-[#4A4A4A] w-full mt-4 leading-[1.5] text-left">
+                    <p className="font-inter font-normal text-[clamp(13px,3.5vw,14.2px)] text-[#1A1A1A] w-full mt-7 sm:mt-8 leading-[1.52] text-left">
                         {data.description}
                     </p>
 
-                    <div className="w-full mt-6 flex flex-col items-stretch justify-start gap-3">
+                    <div className="w-full mt-3 flex flex-col items-stretch justify-start gap-3">
                         <a
                             href={data.primaryCta.href}
                             onClick={(e) => handleCtaClick(e, data.primaryCta.href, data.primaryCta.label)}
-                            className="w-full inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-4 font-satoshi text-[clamp(15.5px,1.15vw,17px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] bg-black text-white hover:opacity-85"
+                            className="w-full inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-2.5 font-satoshi text-[clamp(15.5px,1.15vw,17px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] bg-black text-white hover:opacity-85"
                         >
                             {data.primaryCta.label}
                             <span className="ml-2 text-[18px]">→</span>
@@ -208,7 +215,7 @@ export default function FinalCTA({
                         <a
                             href={data.secondaryCta.href}
                             onClick={(e) => handleCtaClick(e, data.secondaryCta.href, data.secondaryCta.label)}
-                            className="w-full inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-4 font-satoshi text-[clamp(15.5px,1.15vw,17px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] border border-[#D0D5DD] bg-white text-black hover:bg-black/5"
+                            className="w-full inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-2.5 font-satoshi text-[clamp(15.5px,1.15vw,17px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] border border-[#D0D5DD] bg-white text-black hover:bg-black/5"
                         >
                             {data.secondaryCta.label}
                             <span className="ml-2 text-[18px]">→</span>

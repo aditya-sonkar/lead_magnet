@@ -43,6 +43,8 @@ export interface SectionsConversionInsights extends Struct.ComponentSchema {
     cards: Schema.Attribute.Component<'shared.insight-card', true>;
     description: Schema.Attribute.Text;
     heading: Schema.Attribute.String;
+    mobileDescription: Schema.Attribute.Text;
+    mobileHeading: Schema.Attribute.String;
   };
 }
 
@@ -82,6 +84,7 @@ export interface SectionsFinalCta extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     heading: Schema.Attribute.String;
     logos: Schema.Attribute.Component<'shared.final-cta-logo', true>;
+    mobileHeading: Schema.Attribute.String;
     primaryCta: Schema.Attribute.Component<'shared.cta', false>;
     secondaryCta: Schema.Attribute.Component<'shared.cta', false>;
   };
@@ -162,6 +165,7 @@ export interface SectionsOurWork extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text;
     heading: Schema.Attribute.String;
+    mobileDescription: Schema.Attribute.Text;
     projects: Schema.Attribute.Component<'sections.our-work-project', true>;
   };
 }
@@ -293,6 +297,8 @@ export interface SectionsWorkShowcase extends Struct.ComponentSchema {
     description: Schema.Attribute.Text;
     heading: Schema.Attribute.String;
     items: Schema.Attribute.Component<'shared.showcase-item', true>;
+    mobileDescription: Schema.Attribute.Text;
+    mobileHeading: Schema.Attribute.String;
   };
 }
 

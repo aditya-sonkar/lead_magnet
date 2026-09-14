@@ -18,6 +18,12 @@
     },
     "Before": {
       "type": "string"
+    },
+    "mobileHeading": {
+      "type": "string"
+    },
+    "mobileDescription": {
+      "type": "text"
     }
   },
   "config": {}

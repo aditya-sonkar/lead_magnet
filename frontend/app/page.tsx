@@ -20,8 +20,13 @@ export default async function Home() {
 
   if (!data) {
     return (
-      <main className="min-h-screen bg-[#37386B] text-white flex items-center justify-center font-sans">
-        <p>Loading landing page content...</p>
+      <main className="min-h-screen bg-[#37386B] text-white flex flex-col items-center justify-center gap-4 font-sans px-6">
+        <svg className="w-10 h-10 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+        </svg>
+        <p className="font-satoshi text-white/70 text-[15px] text-center max-w-[320px] leading-relaxed">
+          Unable to load page content. Please check your CMS connection and try again.
+        </p>
       </main>
     );
   }

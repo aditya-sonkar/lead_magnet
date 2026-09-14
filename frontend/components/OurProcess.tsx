@@ -112,7 +112,7 @@ export default function OurProcess({
 
     const displayItems = Array.from({ length: repeatCount }, () => items).flat();
 
-    const rawCtaLabel = data.cta?.label || "Explore Our Services";
+    const rawCtaLabel = data.cta?.label || "";
     const cleanCtaLabel = rawCtaLabel.replace(/[↗→]/g, "").replace(/->/g, "").trim();
 
     // Faster, responsive speed (~85px/s) with a crisp ~1s pause at each corner
@@ -216,15 +216,15 @@ export default function OurProcess({
                     </div>
 
                     {/* Responsive Grid: 2 columns on mobile/tablet, 4 columns on desktop */}
-                    <div className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-4 sm:gap-5 lg:gap-7 xl:gap-8">
+                    <div className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-4 sm:gap-5 lg:gap-[clamp(20px,1.6vw,32px)]">
                         {/* 1. Image Diagram Card */}
                         <div className="col-span-2 order-1 lg:order-none lg:col-start-1 lg:col-span-2 lg:row-start-1 w-full h-full aspect-[2896/1614] overflow-hidden rounded-[10px] bg-white flex items-center justify-center p-2 sm:p-2.5 md:p-3 lg:p-3.5">
                             {getMediaUrl(data.image) && (
-                                <div className="h-full w-full overflow-hidden rounded-[6px] flex items-center justify-center">
+                                <div className="h-full w-full flex items-center justify-center">
                                     <img
                                         src={getMediaUrl(data.image)}
                                         alt={data.heading || "Our Process"}
-                                        className="w-full h-full object-contain rounded-[6px]"
+                                        className="w-full h-full object-contain"
                                     />
                                 </div>
                             )}
@@ -292,10 +292,10 @@ function ProcessCard({
     const [isHovered, setIsHovered] = useState(false);
     const iconUrl = getMediaUrl(card.icon);
 
-    const ctaBase = card.cta?.label || "Explore";
-    const ctaDesktop = ctaBase.toLowerCase().includes(card.title.toLowerCase())
+    const ctaBase = card.cta?.label || "";
+    const ctaDesktop = ctaBase && (ctaBase.toLowerCase().includes(card.title.toLowerCase())
         ? ctaBase
-        : `${ctaBase} ${card.title}`;
+        : `${ctaBase} ${card.title}`);
 
     const services = card.services || [];
     const hasServices = services.length > 0;
