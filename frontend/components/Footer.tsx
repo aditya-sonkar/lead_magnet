@@ -70,7 +70,7 @@ export default function Footer({
             <div className="mx-auto w-full max-w-[1880px] px-6 lg:px-[60px] xl:px-[80px]">
                 <div className="flex flex-col lg:flex-row lg:justify-between gap-24 sm:gap-28 lg:gap-[clamp(32px,2.5vw,56px)] xl:gap-[clamp(40px,3.2vw,72px)]">
                     {/* Left Column: Brand info, Heading, Description, Social links */}
-                    <div className="flex flex-col w-full lg:max-w-[620px] xl:max-w-[680px] 2xl:max-w-[740px]">
+                    <div className="flex flex-col w-full lg:max-w-[620px] xl:max-w-[680px] 2xl:max-w-[740px] lg:-translate-y-6 xl:-translate-y-7">
                         {/* Top row: Say hi! + Logo */}
                         <div className="flex items-center gap-2.5 sm:gap-3">
                             <h1 className="font-delight text-[clamp(44px,4.2vw,80px)] font-medium leading-none text-white tracking-tight">
@@ -87,21 +87,21 @@ export default function Footer({
                         </div>
 
                         {/* Text descriptions */}
-                        <div className="mt-5 sm:mt-6 space-y-1.5 sm:space-y-2 text-white font-satoshi text-[11px] sm:text-[11.5px] lg:text-[11.5px] xl:text-[12px] leading-[1.55] max-w-[550px] lg:max-w-none">
+                        <div className="mt-3.5 sm:mt-4 space-y-0.5 sm:space-y-1 text-white font-satoshi text-[10.5px] sm:text-[11px] lg:text-[10.5px] xl:text-[11px] leading-[1.4] max-w-[550px] lg:max-w-none">
                             {d.heading && (
                                 <p className="font-medium text-white/95">
                                     {d.heading}
                                 </p>
                             )}
                             {d.description && (
-                                <p className="font-normal text-white/90 lg:whitespace-nowrap">
+                                <p className="font-medium text-white/95 lg:whitespace-nowrap">
                                     {d.description}
                                 </p>
                             )}
                         </div>
 
                         {/* Social icons */}
-                        <div className="mt-14 sm:mt-16 flex items-center gap-5 sm:gap-6">
+                        <div className="mt-6 sm:mt-7 lg:mt-7 flex items-center gap-3 sm:gap-3.5">
                             {socialLinks.map((social) => {
                                 const iconSrc = SOCIAL_ICONS[social.platform] || SOCIAL_ICONS[social.platform?.toLowerCase()] || "";
                                 return (
@@ -117,7 +117,7 @@ export default function Footer({
                                             <img
                                                 src={iconSrc}
                                                 alt={social.platform}
-                                                className="h-6 w-6"
+                                                className="h-[17px] w-[17px] sm:h-[17.5px] sm:w-[17.5px]"
                                             />
                                         ) : (
                                             <span className="text-white text-xs">{social.platform}</span>
@@ -128,7 +128,7 @@ export default function Footer({
                         </div>
 
                         {/* Desktop-only Privacy & Terms placement */}
-                        <div className="hidden lg:flex items-center gap-8 mt-auto pt-14 text-[clamp(12.5px,0.95vw,13.5px)] font-satoshi text-white/90">
+                        <div className="hidden lg:flex items-center gap-7 sm:gap-8 mt-auto pt-14 lg:translate-y-2.5 xl:translate-y-3 text-[10.5px] sm:text-[11px] lg:text-[10.5px] xl:text-[11px] font-satoshi text-white/90">
                             {privacyLink && (
                                 <a
                                     href={privacyLink.href || "#"}
@@ -149,20 +149,20 @@ export default function Footer({
                     </div>
 
                     {/* Right Column: Quick links & Contact (2-column layout on mobile & desktop) */}
-                    <div className="flex flex-col w-full lg:max-w-[720px] xl:max-w-[820px] 2xl:max-w-[880px]">
-                        <div className="grid grid-cols-2 gap-x-6 sm:gap-x-10 lg:gap-x-14 xl:gap-x-20 gap-y-8">
+                    <div className="flex flex-col w-full lg:max-w-[760px] xl:max-w-[860px] 2xl:max-w-[920px] lg:-translate-x-6 xl:-translate-x-10 lg:-translate-y-4 xl:-translate-y-5">
+                        <div className="grid grid-cols-2 gap-x-6 sm:gap-x-10 lg:gap-x-16 xl:gap-x-24 gap-y-8">
                             {/* Quick Links (First on mobile, Second on big screen) */}
-                            <div className="order-1 lg:order-2 lg:pl-4 xl:pl-8">
-                                <h2 className="font-satoshi text-[13.5px] sm:text-[14px] lg:text-[13.5px] xl:text-[14px] font-bold text-white tracking-tight mb-3.5 sm:mb-4 lg:mb-4">
+                            <div className="order-1 lg:order-2 lg:pl-0 xl:pl-0 lg:-translate-x-8 xl:-translate-x-12">
+                                <h2 className="font-satoshi text-[13.5px] sm:text-[14px] lg:text-[13.5px] xl:text-[14px] font-bold text-white tracking-tight mb-4 sm:mb-4.5 lg:mb-5">
                                     {d.quickLinksHeading}
                                 </h2>
 
-                                <div className="flex flex-col space-y-2 sm:space-y-2.5 lg:space-y-2.5">
+                                <div className="flex flex-col space-y-4 sm:space-y-4.5 lg:space-y-5">
                                     {quickLinks.map((link) => (
                                         <a
                                             key={link.id}
                                             href={link.href}
-                                            className="font-satoshi text-[11.5px] sm:text-[12px] lg:text-[11.5px] xl:text-[12px] font-medium text-white/90 hover:text-[#95E7D3] transition-colors"
+                                            className="font-satoshi text-[11px] sm:text-[11.5px] lg:text-[11px] xl:text-[11.5px] font-medium text-white/90 hover:text-[#95E7D3] transition-colors"
                                         >
                                             {link.label}
                                         </a>
@@ -171,27 +171,27 @@ export default function Footer({
                             </div>
 
                             {/* Contact (Second on mobile, First on big screen) */}
-                            <div className="order-2 lg:order-1 lg:-translate-x-6 xl:-translate-x-12">
+                            <div className="order-2 lg:order-1 lg:-translate-x-12 xl:-translate-x-20">
                                 <h2 className="font-satoshi text-[13.5px] sm:text-[14px] lg:text-[13.5px] xl:text-[14px] font-bold text-white tracking-tight mb-3.5 sm:mb-4 lg:mb-4">
                                     {d.contactHeading}
                                 </h2>
 
-                                <div className="flex flex-col space-y-3 sm:space-y-3.5 lg:space-y-4">
+                                <div className="flex flex-col space-y-6 sm:space-y-6.5 lg:space-y-7">
                                     {contacts.map((contact) => (
                                         <div key={contact.id}>
-                                            <p className="font-satoshi text-[11.5px] sm:text-[12px] lg:text-[11.5px] xl:text-[12px] font-medium text-white">
+                                            <p className="font-satoshi text-[11px] font-medium text-white">
                                                 {contact.location}
                                             </p>
 
                                             <a
                                                 href={`tel:${contact.phone}`}
-                                                className="block mt-0.5 font-satoshi text-[11.5px] sm:text-[12px] lg:text-[11.5px] xl:text-[12px] font-medium text-[#95E7D3] underline underline-offset-4 hover:opacity-90 transition-opacity"
+                                                className="block mt-0.5 font-satoshi text-[11px] font-medium text-[#95E7D3] underline underline-offset-4 hover:opacity-90 transition-opacity"
                                             >
                                                 {contact.phone}
                                             </a>
 
                                             {contact.Address && (
-                                                <p className="hidden lg:block mt-2 max-w-[280px] font-satoshi text-[10.5px] lg:text-[11px] xl:text-[11.5px] font-[400] leading-[1.4] text-white/85">
+                                                <p className="hidden lg:block mt-3 max-w-[255px] font-satoshi text-[11px] font-normal leading-[1.45] text-white/90 whitespace-pre-line">
                                                     {contact.Address}
                                                 </p>
                                             )}
@@ -199,7 +199,7 @@ export default function Footer({
                                             {contact.email && (
                                                 <a
                                                     href={`mailto:${contact.email}`}
-                                                    className="hidden lg:block mt-1.5 font-satoshi text-[10.5px] lg:text-[11px] xl:text-[11.5px] font-medium text-[#FFFFFF] hover:underline"
+                                                    className="hidden lg:block mt-3 font-satoshi text-[11px] font-normal text-white/90 hover:underline hover:text-white"
                                                 >
                                                     {contact.email}
                                                 </a>
@@ -239,7 +239,7 @@ export default function Footer({
                         </div>
                         )}
 
-                        <div className="flex lg:hidden items-center gap-6 mt-6 text-[12px] font-satoshi text-white/90">
+                        <div className="flex lg:hidden items-center gap-6 mt-6 text-[11.5px] sm:text-[12px] font-satoshi text-white/90">
                             {privacyLink && (
                                 <a
                                     href={privacyLink.href || "#"}
