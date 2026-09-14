@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -31,12 +31,18 @@ const delight = localFont({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#37386B",
+};
+
 export const metadata: Metadata = {
-  title: "Thumbstack - Turn More Traffic Into Customers",
+  title: "Thumbstack - Lead Magnet",
   description: "Design-first tech studio building high-converting Shopify stores, mobile apps, and digital experiences. Book a free strategy call today.",
   metadataBase: new URL("https://leadmagnet-live.vercel.app"),
   openGraph: {
-    title: "Thumbstack - Turn More Traffic Into Customers",
+    title: "Thumbstack - Lead Magnet",
     description: "Design-first tech studio building high-converting Shopify stores, mobile apps, and digital experiences.",
     url: "https://leadmagnet-live.vercel.app",
     siteName: "Thumbstack",
@@ -45,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thumbstack - Turn More Traffic Into Customers",
+    title: "Thumbstack - Lead Magnet",
     description: "Design-first tech studio building high-converting Shopify stores, mobile apps, and digital experiences.",
   },
   robots: {

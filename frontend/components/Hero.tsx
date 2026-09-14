@@ -82,8 +82,8 @@ export default function Hero({ data }: { data: HeroData }) {
             return (
                 <>
                     {lines.map((line, idx) => (
-                        <span key={idx} className={`block ${idx > 0 ? "mt-0.5 sm:mt-1" : ""} xl:whitespace-nowrap`}>
-                            {line}
+                        <span key={idx} className={`inline xl:block ${idx > 0 ? "xl:mt-1" : ""} xl:whitespace-nowrap`}>
+                            {idx > 0 ? ` ${line}` : line}
                         </span>
                     ))}
                 </>
@@ -93,12 +93,12 @@ export default function Hero({ data }: { data: HeroData }) {
         if (match) {
             return (
                 <>
-                    <span className="block xl:whitespace-nowrap">{match[1]}</span>
-                    <span className="block xl:whitespace-nowrap mt-0.5 sm:mt-1">{match[2]}</span>
+                    <span className="inline xl:block xl:whitespace-nowrap">{match[1]} </span>
+                    <span className="inline xl:block xl:whitespace-nowrap xl:mt-1">{match[2]}</span>
                 </>
             );
         }
-        return <span className="block">{text}</span>;
+        return <span className="inline xl:block">{text}</span>;
     };
 
     return (
@@ -162,6 +162,8 @@ export default function Hero({ data }: { data: HeroData }) {
                                                         alt={brand.name || "Brand logo"}
                                                         className={`${getBrandSize(brand)} w-auto object-contain transition-all duration-300 opacity-100`}
                                                         style={{ filter: 'brightness(0) invert(1)' }}
+                                                        loading="lazy"
+                                                        decoding="async"
                                                     />
                                                 </div>
                                             ))}
@@ -174,6 +176,8 @@ export default function Hero({ data }: { data: HeroData }) {
                                                         alt={brand.name || "Brand logo"}
                                                         className={`${getBrandSize(brand)} w-auto object-contain transition-all duration-300 opacity-100`}
                                                         style={{ filter: 'brightness(0) invert(1)' }}
+                                                        loading="lazy"
+                                                        decoding="async"
                                                     />
                                                 </div>
                                             ))}

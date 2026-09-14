@@ -103,7 +103,7 @@ export default function Footer({
                         </div>
 
                         {/* Social icons */}
-                        <div className="mt-10 sm:mt-[clamp(24px,3.5vw,36px)] lg:mt-7 flex items-center gap-3 sm:gap-3.5">
+                        <div className="mt-24 sm:mt-[clamp(24px,3.5vw,36px)] lg:mt-7 flex items-center gap-3 sm:gap-3.5">
                             {socialLinks.map((social) => {
                                 const iconSrc = SOCIAL_ICONS[social.platform] || SOCIAL_ICONS[social.platform?.toLowerCase()] || "";
                                 return (
@@ -153,10 +153,10 @@ export default function Footer({
                     </div>
 
                     {/* Right Column: Quick links & Contact (2-column layout on mobile & desktop) */}
-                    <div className="flex flex-col w-full lg:max-w-[clamp(320px,36vw,760px)] xl:max-w-[860px] 2xl:max-w-[920px] xl:-translate-x-10 lg:-translate-y-4 xl:-translate-y-5">
+                    <div className="flex flex-col w-full lg:max-w-[clamp(320px,36vw,760px)] xl:max-w-[860px] 2xl:max-w-[920px] lg:-translate-x-4 xl:-translate-x-10 lg:-translate-y-4 xl:-translate-y-5">
                         <div className="grid grid-cols-2 gap-x-6 sm:gap-x-10 lg:gap-x-16 xl:gap-x-24 gap-y-8">
                             {/* Quick Links (First on mobile, Second on big screen) */}
-                            <div className="order-1 lg:order-2 lg:pl-0 xl:pl-0 xl:-translate-x-12">
+                            <div className="order-1 lg:order-2 lg:pl-0 xl:pl-0 lg:-translate-x-4 xl:-translate-x-12">
                                 <h2 className="font-satoshi text-[13.5px] sm:text-[14px] lg:text-[13.5px] xl:text-[14px] font-bold text-white tracking-tight mb-4 sm:mb-4.5 lg:mb-5">
                                     {d.quickLinksHeading}
                                 </h2>
@@ -175,7 +175,7 @@ export default function Footer({
                             </div>
 
                             {/* Contact (Second on mobile, First on big screen) */}
-                            <div className="order-2 lg:order-1 xl:-translate-x-20">
+                            <div className="order-2 lg:order-1 lg:-translate-x-10 xl:-translate-x-20">
                                 <h2 className="font-satoshi text-[13.5px] sm:text-[14px] lg:text-[13.5px] xl:text-[14px] font-bold text-white tracking-tight mb-3.5 sm:mb-4 lg:mb-4">
                                     {d.contactHeading}
                                 </h2>

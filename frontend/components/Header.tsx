@@ -103,15 +103,20 @@ export default function Header({
 
         checkTheme();
         window.addEventListener("scroll", checkTheme, { passive: true });
-        window.addEventListener("resize", checkTheme);
+        window.addEventListener("resize", checkTheme, { passive: true });
 
-        // Continuous interval to guarantee sync with Lenis smooth scroll
-        const intervalId = setInterval(checkTheme, 100);
+        // Connect with Lenis smooth scroll if present
+        const lenis = typeof window !== "undefined" ? (window as any).__lenis : null;
+        if (lenis) {
+            lenis.on("scroll", checkTheme);
+        }
 
         return () => {
             window.removeEventListener("scroll", checkTheme);
             window.removeEventListener("resize", checkTheme);
-            clearInterval(intervalId);
+            if (lenis) {
+                lenis.off("scroll", checkTheme);
+            }
         };
     }, []);
 
