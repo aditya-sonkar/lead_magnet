@@ -185,7 +185,7 @@ export default function Hero({ data }: { data: HeroData }) {
                     </div>
 
                     {/* Interactive Shopify Quote Estimator */}
-                    <div id="quote" data-quote-form="true" data-theme="light" className="-mx-5 sm:-mx-6 lg:-mx-[40px] xl:mx-0 w-[calc(100%+40px)] sm:w-[calc(100%+48px)] lg:w-[calc(100%+80px)] xl:w-full bg-[#F6F6F6] text-black px-5 sm:px-6 lg:px-[40px] xl:px-6 2xl:px-8 pt-9 sm:pt-8 lg:pt-8 xl:pt-6 pb-6 sm:pb-6 xl:pb-4 2xl:pb-5 shadow-none xl:shadow-2xl relative mt-6 sm:mt-9 xl:mt-0 rounded-t-[22px] sm:rounded-t-[20px] rounded-b-none xl:rounded-none transition-all duration-300 scroll-mt-24 border-none">
+                    <div id="quote" data-quote-form="true" data-theme="light" className="-mx-5 sm:-mx-6 lg:-mx-[40px] xl:mx-0 w-[calc(100%+40px)] sm:w-[calc(100%+48px)] lg:w-[calc(100%+80px)] xl:w-full bg-[#F6F6F6] text-black px-5 sm:px-6 lg:px-[40px] xl:px-6 2xl:px-8 pt-9 sm:pt-8 lg:pt-8 xl:pt-7 2xl:pt-7.5 pb-6 sm:pb-6 xl:pb-7 2xl:pb-8 shadow-none xl:shadow-2xl relative mt-6 sm:mt-9 xl:mt-0 xl:translate-x-3 2xl:translate-x-4 rounded-t-[22px] sm:rounded-t-[20px] rounded-b-none xl:rounded-none transition-all duration-300 scroll-mt-24 border-none">
                         <QuoteForm form={form} variant="hero" />
                     </div>
                 </div>

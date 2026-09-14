@@ -147,11 +147,11 @@ export default function Header({
         <>
             {/* Header bar */}
             <header className="fixed top-0 left-0 right-0 z-[110] px-5 sm:px-6 lg:px-[40px] xl:px-[48px] 2xl:px-[80px] min-[2000px]:px-[60px] min-[2500px]:px-[80px] pointer-events-none">
-                <div className="max-w-[1720px] min-[2000px]:max-w-none mx-auto w-full flex justify-between items-center h-[72px] sm:h-[88px] pt-2 sm:pt-2.5 lg:pt-0">
+                <div className="max-w-[1720px] min-[2000px]:max-w-none mx-auto w-full flex justify-between items-center h-[72px] sm:h-[88px] pt-2 sm:pt-2.5 lg:pt-0 -translate-y-1 sm:-translate-y-1.5 lg:-translate-y-2">
                     <a
                         href="/"
                         onClick={() => setIsOpen(false)}
-                        className={`font-nohemi font-medium text-[25.5px] sm:text-[26px] lg:text-[28px] tracking-[-0.02em] leading-none pointer-events-auto select-none transition-colors duration-300 flex items-center translate-y-[2px] sm:translate-y-[1px] lg:translate-y-0 ${
+                        className={`font-nohemi font-medium text-[25.5px] sm:text-[25px] lg:text-[26px] tracking-[-0.02em] leading-none pointer-events-auto select-none transition-colors duration-300 flex items-center translate-y-[2px] sm:translate-y-[1px] lg:translate-y-0 ${
                             isOpen
                                 ? "text-white"
                                 : isLight

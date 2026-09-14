@@ -67,7 +67,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                     <h2
                         className={
                             isHero
-                                ? "font-nohemi text-[clamp(24px,6.5vw,28px)] sm:text-[clamp(20px,2.7vw,28px)] font-normal text-[#1A1A1A] mt-2 sm:mt-1.5 mb-1 sm:mb-1 leading-tight whitespace-normal xl:whitespace-nowrap"
+                                ? "font-nohemi text-[clamp(24px,6.5vw,28px)] sm:text-[clamp(20px,2.7vw,28px)] font-normal text-[#1A1A1A] mt-2 sm:mt-1.5 mb-1 sm:mb-1 xl:mb-0.5 leading-tight whitespace-normal xl:whitespace-nowrap"
                                 : "font-nohemi text-[19px] sm:text-[27px] md:text-[29px] font-normal text-[#111827] leading-[1.15] tracking-tight pr-8"
                         }
                     >
@@ -78,7 +78,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                     <p
                         className={
                             isHero
-                                ? "font-satoshi text-[#222222] sm:text-[#444444] text-[14px] sm:text-[12.5px] xl:text-[13px] 2xl:text-[13.5px] tracking-tight leading-[1.42] sm:leading-relaxed mt-1 sm:mt-1.5 mb-3.5 sm:mb-4 whitespace-normal"
+                                ? "font-satoshi text-[#222222] sm:text-[#444444] text-[14px] sm:text-[12.5px] xl:text-[13px] 2xl:text-[13.2px] tracking-tight leading-[1.42] sm:leading-relaxed mt-1 sm:mt-1 xl:mt-0.5 mb-3.5 sm:mb-4 whitespace-normal"
                                 : "font-satoshi text-[#222222] text-[11px] sm:text-[12px] md:text-[12.5px] leading-normal mt-0.5 font-normal"
                         }
                     >
@@ -144,7 +144,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             <label
                                 className={
                                     isHero
-                                        ? "font-nohemi block text-[16px] sm:text-[17.5px] font-normal text-[#333333] sm:text-[#1A1A1A] mb-2"
+                                        ? "font-nohemi block text-[15px] sm:text-[15.5px] font-medium text-[#333333] sm:text-[#1A1A1A] mb-2"
                                         : "font-nohemi block text-[14.5px] sm:text-[16px] font-normal text-[#1A1A1A] mb-1.5"
                                 }
                             >
@@ -220,7 +220,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             <label
                                 className={
                                     isHero
-                                        ? "font-nohemi block text-[17px] font-normal text-[#333333] sm:text-[#1A1A1A] mb-2"
+                                        ? "font-nohemi block text-[15px] sm:text-[15.5px] font-medium text-[#333333] sm:text-[#1A1A1A] mb-2"
                                         : "font-nohemi block text-[14.5px] sm:text-[16px] font-normal text-[#1A1A1A] mb-1 sm:mb-1.5"
                                 }
                             >
@@ -288,7 +288,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                 <label
                                     className={
                                         isHero
-                                            ? "font-nohemi block text-[16px] sm:text-[17px] font-normal text-[#333333] sm:text-[#1A1A1A]"
+                                            ? "font-nohemi block text-[15px] sm:text-[15.5px] font-medium text-[#333333] sm:text-[#1A1A1A]"
                                             : "font-nohemi block text-[14px] sm:text-[19px] font-normal text-[#1A1A1A]"
                                     }
                                 >
@@ -494,7 +494,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             <label
                                 className={
                                     isHero
-                                        ? "font-nohemi block text-[17px] font-normal text-[#333333] sm:text-[#1A1A1A] mb-2"
+                                        ? "font-nohemi block text-[15px] sm:text-[15.5px] font-medium text-[#333333] sm:text-[#1A1A1A] mb-2"
                                         : "font-nohemi block text-[12.5px] sm:text-[14.5px] font-normal text-[#1A1A1A] mb-0.5 sm:mb-1.5"
                                 }
                             >
