@@ -49,15 +49,22 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
 
     const noOptionLabel = form?.noLabel;
 
-    // Automatically reset hero form to step 1 after 3 seconds of successful submission.
-    // In sticky CTA modal (!isHero), do NOT auto-close and do NOT auto-refresh.
+    // Automatically reset hero form to step 1 (after 3s), or auto-close sticky CTA modal (after 2.5s) on successful submission
     React.useEffect(() => {
-        if (!isSubmitted || !isHero) return;
-        const timer = setTimeout(() => {
-            resetForm();
-        }, 3000);
-        return () => clearTimeout(timer);
-    }, [isSubmitted, isHero, resetForm]);
+        if (!isSubmitted) return;
+
+        if (isHero) {
+            const timer = setTimeout(() => {
+                resetForm();
+            }, 3000);
+            return () => clearTimeout(timer);
+        } else if (onClose) {
+            const timer = setTimeout(() => {
+                onClose();
+            }, 2500);
+            return () => clearTimeout(timer);
+        }
+    }, [isSubmitted, isHero, resetForm, onClose]);
 
     return (
         <div className={isHero ? "w-full" : "flex flex-col justify-between flex-1"}>
@@ -752,29 +759,16 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             )}
 
                             {isSubmitted ? (
-                                <div className="space-y-2 mt-1">
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.97 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        className="py-3 px-5 rounded-full bg-[#EBF7F2] border border-[#A7E2C7] text-[#168050] text-center font-satoshi text-[13.5px] sm:text-[14.5px] font-medium flex items-center justify-center gap-2 shadow-2xs"
-                                    >
-                                        <svg className="w-4 h-4 text-[#168050] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                        </svg>
-                                        <span>{form?.successTitle || "We've received your details! We'll call you shortly."}</span>
-                                    </motion.div>
-                                    {!isHero && onClose && (
-                                        <div className="text-center pt-1">
-                                            <button
-                                                type="button"
-                                                onClick={onClose}
-                                                className="text-xs font-semibold underline text-[#111827] hover:opacity-70 cursor-pointer"
-                                            >
-                                                {form?.closeButtonLabel || (form as any)?.closeLabel || "Close"}
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.97 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="py-3 px-5 rounded-full bg-[#EBF7F2] border border-[#A7E2C7] text-[#168050] text-center font-satoshi text-[13.5px] sm:text-[14.5px] font-medium flex items-center justify-center gap-2 shadow-2xs mt-1"
+                                >
+                                    <svg className="w-4 h-4 text-[#168050] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    <span>{form?.successTitle || "We've received your details! We'll call you shortly."}</span>
+                                </motion.div>
                             ) : (
                                 <button
                                     type="button"

@@ -66,15 +66,15 @@ export default function Footer({
     const marqueeText = d.marqueeText || null;
 
     return (
-        <section id="contact" data-theme="dark" className="w-full pt-16 pb-24 sm:pt-20 sm:pb-28 md:py-24 bg-[#3145DD] overflow-hidden">
+        <section id="contact" data-theme="dark" className="w-full pt-16 pb-24 sm:pt-[clamp(48px,5vw,72px)] sm:pb-[clamp(56px,6vw,84px)] md:py-24 bg-[#3145DD] overflow-hidden">
             <div className="mx-auto w-full max-w-[1880px] px-6 lg:px-[60px] xl:px-[80px]">
-                <div className="flex flex-col lg:flex-row lg:justify-between gap-24 sm:gap-28 lg:gap-[clamp(32px,2.5vw,56px)] xl:gap-[clamp(40px,3.2vw,72px)]">
+                <div className="flex flex-col lg:flex-row lg:justify-between gap-24 sm:gap-[clamp(32px,5vw,56px)] lg:gap-[clamp(24px,2.5vw,56px)] xl:gap-[clamp(40px,3.2vw,72px)]">
                     {/* Left Column: Brand info, Heading, Description, Social links */}
-                    <div className="flex flex-col w-full lg:max-w-[620px] xl:max-w-[680px] 2xl:max-w-[740px] lg:-translate-y-6 xl:-translate-y-7">
+                    <div className="flex flex-col w-full lg:max-w-[clamp(580px,50vw,780px)] xl:max-w-[clamp(680px,52vw,860px)] 2xl:max-w-none lg:-translate-y-6 xl:-translate-y-7">
                         {/* Top row: Say hi! + Logo */}
                         <div className="flex items-center gap-2.5 sm:gap-3">
                             <h1 className="font-delight text-[clamp(44px,4.2vw,80px)] font-medium leading-none text-white tracking-tight">
-                            {d.sayHi}
+                                {d.sayHi}
                             </h1>
 
                             {d.logo && getMediaUrl(d.logo) && (
@@ -89,21 +89,21 @@ export default function Footer({
                         </div>
 
                         {/* Text descriptions */}
-                        <div className="mt-3.5 sm:mt-4 space-y-0.5 sm:space-y-1 text-white font-satoshi text-[10.5px] sm:text-[11px] lg:text-[10.5px] xl:text-[11px] leading-[1.4] max-w-[550px] lg:max-w-none">
+                        <div className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3 text-white font-satoshi text-[11px] sm:text-[clamp(11.5px,1.1vw,13px)] lg:text-[11px] xl:text-[11px] leading-[1.5] sm:leading-[1.55] max-w-[290px] sm:max-w-none">
                             {d.heading && (
                                 <p className="font-medium text-white/95">
                                     {d.heading}
                                 </p>
                             )}
                             {d.description && (
-                                <p className="font-medium text-white/95 lg:whitespace-nowrap">
+                                <p className="font-medium text-white/95 sm:whitespace-nowrap">
                                     {d.description}
                                 </p>
                             )}
                         </div>
 
                         {/* Social icons */}
-                        <div className="mt-6 sm:mt-7 lg:mt-7 flex items-center gap-3 sm:gap-3.5">
+                        <div className="mt-10 sm:mt-[clamp(24px,3.5vw,36px)] lg:mt-7 flex items-center gap-3 sm:gap-3.5">
                             {socialLinks.map((social) => {
                                 const iconSrc = SOCIAL_ICONS[social.platform] || SOCIAL_ICONS[social.platform?.toLowerCase()] || "";
                                 return (
@@ -153,10 +153,10 @@ export default function Footer({
                     </div>
 
                     {/* Right Column: Quick links & Contact (2-column layout on mobile & desktop) */}
-                    <div className="flex flex-col w-full lg:max-w-[760px] xl:max-w-[860px] 2xl:max-w-[920px] lg:-translate-x-6 xl:-translate-x-10 lg:-translate-y-4 xl:-translate-y-5">
+                    <div className="flex flex-col w-full lg:max-w-[clamp(320px,36vw,760px)] xl:max-w-[860px] 2xl:max-w-[920px] xl:-translate-x-10 lg:-translate-y-4 xl:-translate-y-5">
                         <div className="grid grid-cols-2 gap-x-6 sm:gap-x-10 lg:gap-x-16 xl:gap-x-24 gap-y-8">
                             {/* Quick Links (First on mobile, Second on big screen) */}
-                            <div className="order-1 lg:order-2 lg:pl-0 xl:pl-0 lg:-translate-x-8 xl:-translate-x-12">
+                            <div className="order-1 lg:order-2 lg:pl-0 xl:pl-0 xl:-translate-x-12">
                                 <h2 className="font-satoshi text-[13.5px] sm:text-[14px] lg:text-[13.5px] xl:text-[14px] font-bold text-white tracking-tight mb-4 sm:mb-4.5 lg:mb-5">
                                     {d.quickLinksHeading}
                                 </h2>
@@ -175,7 +175,7 @@ export default function Footer({
                             </div>
 
                             {/* Contact (Second on mobile, First on big screen) */}
-                            <div className="order-2 lg:order-1 lg:-translate-x-12 xl:-translate-x-20">
+                            <div className="order-2 lg:order-1 xl:-translate-x-20">
                                 <h2 className="font-satoshi text-[13.5px] sm:text-[14px] lg:text-[13.5px] xl:text-[14px] font-bold text-white tracking-tight mb-3.5 sm:mb-4 lg:mb-4">
                                     {d.contactHeading}
                                 </h2>
@@ -215,32 +215,32 @@ export default function Footer({
                         </div>
 
                         {newsletterLabel && newsletterHref && (
-                        <div className="mt-14 sm:mt-12 w-full lg:hidden">
-                            <a
-                                href={newsletterHref}
-                                className="group flex w-full items-center justify-between rounded-full bg-white px-6 sm:px-7 py-3.5 sm:py-4 text-[#1A1A1A] shadow-md transition-all hover:bg-white/95 active:scale-[0.99]"
-                            >
-                                <span className="font-satoshi text-[clamp(13px,1.05vw,14.5px)] font-medium text-[#1A1A1A] tracking-tight">
-                                    {newsletterLabel}
-                                </span>
-                                <svg
-                                    width="15"
-                                    height="15"
-                                    viewBox="0 0 15 15"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3145DD] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            <div className="mt-14 sm:mt-12 w-full lg:hidden">
+                                <a
+                                    href={newsletterHref}
+                                    className="group flex w-full items-center justify-between rounded-full bg-white px-6 sm:px-7 py-3.5 sm:py-4 text-[#1A1A1A] shadow-md transition-all hover:bg-white/95 active:scale-[0.99]"
                                 >
-                                    <path
-                                        d="M2 13L13 2M13 2H4M13 2V11"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
+                                    <span className="font-satoshi text-[clamp(13px,1.05vw,14.5px)] font-medium text-[#1A1A1A] tracking-tight">
+                                        {newsletterLabel}
+                                    </span>
+                                    <svg
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 15 15"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3145DD] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                    >
+                                        <path
+                                            d="M2 13L13 2M13 2H4M13 2V11"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
                         )}
 
                         <div className="flex lg:hidden items-center gap-6 mt-6 text-[11.5px] sm:text-[12px] font-satoshi text-white/90">
@@ -266,50 +266,50 @@ export default function Footer({
             </div>
 
             {marqueeText && (
-            <div className="mt-14 sm:mt-20 overflow-hidden">
-                <div className="flex w-max animate-marquee">
-                    {[1, 2, 3, 4].map((item) => (
-                        <div
-                            key={item}
-                            className="flex shrink-0 items-center gap-5 sm:gap-12 pr-5 sm:pr-12"
-                        >
-                            <span className="font-delight text-[clamp(44px,4.2vw,100px)] font-medium text-white">
-                                {marqueeText}
-                            </span>
+                <div className="mt-14 sm:mt-20 overflow-hidden">
+                    <div className="flex w-max animate-marquee">
+                        {[1, 2, 3, 4].map((item) => (
+                            <div
+                                key={item}
+                                className="flex shrink-0 items-center gap-5 sm:gap-12 pr-5 sm:pr-12"
+                            >
+                                <span className="font-delight text-[clamp(44px,4.2vw,100px)] font-medium text-white">
+                                    {marqueeText}
+                                </span>
 
-                            <div className="group relative flex h-[74px] w-[74px] sm:h-[140px] sm:w-[140px] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#7DE7D0]">
-                                <div className="relative h-[29px] w-[29px] sm:h-[54px] sm:w-[54px]">
-                                    {/* Arrow 1: flies out to top-right on hover */}
-                                    <svg
-                                        viewBox="0 0 54 54"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="arrow-slide-out"
-                                    >
-                                        <path
-                                            d="M1.17157 47.1716C-0.390524 48.7337 -0.390524 51.2663 1.17157 52.8284C2.73367 54.3905 5.26633 54.3905 6.82843 52.8284L4 50L1.17157 47.1716ZM54 4C54 1.79086 52.2091 -1.32315e-06 50 -2.33467e-06L14 8.6849e-07C11.7909 -4.80209e-07 10 1.79086 10 4C10 6.20914 11.7909 8 14 8L46 8L46 40C46 42.2091 47.7909 44 50 44C52.2091 44 54 42.2091 54 40L54 4ZM4 50L6.82843 52.8284L52.8284 6.82843L50 4L47.1716 1.17157L1.17157 47.1716L4 50Z"
-                                            fill="#3145DD"
-                                        />
-                                    </svg>
+                                <div className="group relative flex h-[74px] w-[74px] sm:h-[140px] sm:w-[140px] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#7DE7D0]">
+                                    <div className="relative h-[29px] w-[29px] sm:h-[54px] sm:w-[54px]">
+                                        {/* Arrow 1: flies out to top-right on hover */}
+                                        <svg
+                                            viewBox="0 0 54 54"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="arrow-slide-out"
+                                        >
+                                            <path
+                                                d="M1.17157 47.1716C-0.390524 48.7337 -0.390524 51.2663 1.17157 52.8284C2.73367 54.3905 5.26633 54.3905 6.82843 52.8284L4 50L1.17157 47.1716ZM54 4C54 1.79086 52.2091 -1.32315e-06 50 -2.33467e-06L14 8.6849e-07C11.7909 -4.80209e-07 10 1.79086 10 4C10 6.20914 11.7909 8 14 8L46 8L46 40C46 42.2091 47.7909 44 50 44C52.2091 44 54 42.2091 54 40L54 4ZM4 50L6.82843 52.8284L52.8284 6.82843L50 4L47.1716 1.17157L1.17157 47.1716L4 50Z"
+                                                fill="#3145DD"
+                                            />
+                                        </svg>
 
-                                    {/* Arrow 2: flies in from bottom-left on hover */}
-                                    <svg
-                                        viewBox="0 0 54 54"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="arrow-slide-in"
-                                    >
-                                        <path
-                                            d="M1.17157 47.1716C-0.390524 48.7337 -0.390524 51.2663 1.17157 52.8284C2.73367 54.3905 5.26633 54.3905 6.82843 52.8284L4 50L1.17157 47.1716ZM54 4C54 1.79086 52.2091 -1.32315e-06 50 -2.33467e-06L14 8.6849e-07C11.7909 -4.80209e-07 10 1.79086 10 4C10 6.20914 11.7909 8 14 8L46 8L46 40C46 42.2091 47.7909 44 50 44C52.2091 44 54 42.2091 54 40L54 4ZM4 50L6.82843 52.8284L52.8284 6.82843L50 4L47.1716 1.17157L1.17157 47.1716L4 50Z"
-                                            fill="#3145DD"
-                                        />
-                                    </svg>
+                                        {/* Arrow 2: flies in from bottom-left on hover */}
+                                        <svg
+                                            viewBox="0 0 54 54"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="arrow-slide-in"
+                                        >
+                                            <path
+                                                d="M1.17157 47.1716C-0.390524 48.7337 -0.390524 51.2663 1.17157 52.8284C2.73367 54.3905 5.26633 54.3905 6.82843 52.8284L4 50L1.17157 47.1716ZM54 4C54 1.79086 52.2091 -1.32315e-06 50 -2.33467e-06L14 8.6849e-07C11.7909 -4.80209e-07 10 1.79086 10 4C10 6.20914 11.7909 8 14 8L46 8L46 40C46 42.2091 47.7909 44 50 44C52.2091 44 54 42.2091 54 40L54 4ZM4 50L6.82843 52.8284L52.8284 6.82843L50 4L47.1716 1.17157L1.17157 47.1716L4 50Z"
+                                                fill="#3145DD"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
             )}
         </section>
     );

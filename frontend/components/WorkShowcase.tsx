@@ -55,8 +55,8 @@ export default function WorkShowcase({
 }) {
     if (!data) return null;
     const items = data.items || [];
-    const sioraiItem = items.find((item) => item.name?.toLowerCase().includes("siorai"));
-    const initialId = sioraiItem?.id ?? items[0]?.id;
+    const defaultItem = items.find((item) => item.name?.toLowerCase().includes("pacific")) || items[0];
+    const initialId = defaultItem?.id ?? items[0]?.id;
 
     const [selectedItem, setSelectedItem] = useState(initialId);
     const [position, setPosition] = useState(50);
@@ -66,7 +66,7 @@ export default function WorkShowcase({
     const afterScrollRef = useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState(false);
 
-    const activeItem = items.find((item) => item.id === selectedItem) || sioraiItem || items[0];
+    const activeItem = items.find((item) => item.id === selectedItem) || defaultItem || items[0];
     const mobileHeading = data.MobileHeading || data.mobileHeading;
     const mobileDesc = data.MobileDescription || data.mobileDescription;
     const beforeText = data.Before || data.before || "";
@@ -79,8 +79,8 @@ export default function WorkShowcase({
 
     useEffect(() => {
         if (items.length > 0 && (!selectedItem || !items.some((it) => it.id === selectedItem))) {
-            const siorai = items.find((item) => item.name?.toLowerCase().includes("siorai"));
-            setSelectedItem(siorai?.id ?? items[0].id);
+            const pacific = items.find((item) => item.name?.toLowerCase().includes("pacific")) || items[0];
+            setSelectedItem(pacific?.id ?? items[0].id);
         }
     }, [items, selectedItem]);
 
