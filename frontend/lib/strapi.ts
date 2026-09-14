@@ -98,7 +98,7 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
         // Attempt 1A: by target slug with deep population
         const slugRes = await fetch(
             `${STRAPI_URL}/api/pages?filters[slug][$eq]=${slug}&${sectionsPopulate}`,
-            { cache: "no-store" }
+            { next: { revalidate: 60 } }
         ).catch(() => null);
 
         if (slugRes && slugRes.ok) {
@@ -110,7 +110,7 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
             const altSlug = slug === "shopify-lead-magnet" ? "lead-magnet" : "shopify-lead-magnet";
             const altRes = await fetch(
                 `${STRAPI_URL}/api/pages?filters[slug][$eq]=${altSlug}&${sectionsPopulate}`,
-                { cache: "no-store" }
+                { next: { revalidate: 60 } }
             ).catch(() => null);
 
             if (altRes && altRes.ok) {
@@ -122,7 +122,7 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
         if (!pageJson?.data || (Array.isArray(pageJson.data) && pageJson.data.length === 0)) {
             const allPagesRes = await fetch(
                 `${STRAPI_URL}/api/pages?${sectionsPopulate}`,
-                { cache: "no-store" }
+                { next: { revalidate: 60 } }
             ).catch(() => null);
 
             if (allPagesRes && allPagesRes.ok) {
@@ -134,7 +134,7 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
         if (!pageJson?.data || (Array.isArray(pageJson.data) && pageJson.data.length === 0)) {
             const simpleRes = await fetch(
                 `${STRAPI_URL}/api/pages?populate[sections][populate]=*&populate[stickyCTA][populate]=*`,
-                { cache: "no-store" }
+                { next: { revalidate: 60 } }
             ).catch(() => null);
 
             if (simpleRes && simpleRes.ok) {
@@ -197,7 +197,7 @@ export async function getHeader(): Promise<any> {
 
     for (const url of urls) {
         try {
-            const res = await fetch(url, { cache: "no-store" });
+            const res = await fetch(url, { next: { revalidate: 60 } });
             if (res.ok) {
                 const json = await res.json().catch(() => null);
                 const d = json?.data;
@@ -245,7 +245,7 @@ export async function getFooter(): Promise<any> {
 
     for (const url of urls) {
         try {
-            const res = await fetch(url, { cache: "no-store" });
+            const res = await fetch(url, { next: { revalidate: 60 } });
             if (res.ok) {
                 const json = await res.json().catch(() => null);
                 const d = json?.data;

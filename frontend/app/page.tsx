@@ -1,19 +1,25 @@
 import { getLandingPage } from "@/lib/strapi";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import StorefrontProblems from "@/components/StorefrontProblems";
-import ConversionInsights from "@/components/ConversionInsights";
-import WorkShowcase from "@/components/WorkShowcase";
-import EngagementFit from "@/components/EngagementFit";
-import OurWork from "@/components/OurWork";
-import FinalCTA from "@/components/FinalCTA";
-import OurProcess from "@/components/OurProcess";
-import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
-import StickyCTA from "@/components/StickyCTA";
-import BlockRenderer from "@/components/BlockRenderer";
+import dynamic from "next/dynamic";
 
-export const dynamic = "force-dynamic";
+// Statically import above-the-fold components
+import StorefrontProblems from "@/components/StorefrontProblems";
+
+// Dynamically import below-the-fold heavy components to reduce initial JS
+const ConversionInsights = dynamic(() => import("@/components/ConversionInsights"));
+const WorkShowcase = dynamic(() => import("@/components/WorkShowcase"));
+const EngagementFit = dynamic(() => import("@/components/EngagementFit"));
+const OurWork = dynamic(() => import("@/components/OurWork"));
+const FinalCTA = dynamic(() => import("@/components/FinalCTA"));
+const OurProcess = dynamic(() => import("@/components/OurProcess"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
+const Footer = dynamic(() => import("@/components/Footer"));
+const StickyCTA = dynamic(() => import("@/components/StickyCTA"));
+const BlockRenderer = dynamic(() => import("@/components/BlockRenderer"));
+
+// ISR: revalidate every 60 seconds — allows caching without stale data
+export const revalidate = 60;
 
 export default async function Home() {
   const data = await getLandingPage();

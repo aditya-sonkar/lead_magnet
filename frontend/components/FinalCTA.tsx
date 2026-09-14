@@ -117,6 +117,8 @@ export default function FinalCTA({
                                                     exit={{ opacity: 0 }}
                                                     transition={{ duration: 0.35, ease: "easeInOut" }}
                                                     className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-1.5 lg:p-2"
+                                                    loading="lazy"
+                                                    decoding="async"
                                                 />
                                             )}
                                         </AnimatePresence>
@@ -181,6 +183,8 @@ export default function FinalCTA({
                                                     exit={{ opacity: 0 }}
                                                     transition={{ duration: 0.35, ease: "easeInOut" }}
                                                     className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-1.5"
+                                                    loading="lazy"
+                                                    decoding="async"
                                                 />
                                             )}
                                         </AnimatePresence>

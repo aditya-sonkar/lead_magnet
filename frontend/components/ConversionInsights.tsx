@@ -111,6 +111,8 @@ export default function ConversionInsights({
                                             src={imageUrl}
                                             alt={card.image?.alternativeText || card.title}
                                             className={getImageClass(index)}
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     </div>
                                 )}

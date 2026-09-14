@@ -119,6 +119,8 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                 src="/images/arrow_left.svg"
                                 alt=""
                                 className="h-4 w-4"
+                                loading="lazy"
+                                decoding="async"
                             />
                         </button>
 
@@ -136,6 +138,8 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                 src="/images/arrow_right.svg"
                                 alt=""
                                 className="h-4 w-4"
+                                loading="lazy"
+                                decoding="async"
                             />
                         </button>
                     </div>
@@ -262,6 +266,8 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                                 alt={alt}
                                                 className="h-auto w-full max-h-[85vh] 2xl:max-h-[860px] object-cover object-top block select-none pointer-events-none"
                                                 draggable={false}
+                                                loading="lazy"
+                                                decoding="async"
                                             />
                                         </picture>
                                     );

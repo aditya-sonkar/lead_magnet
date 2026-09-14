@@ -82,6 +82,8 @@ export default function Footer({
                                     src={getMediaUrl(d.logo)}
                                     alt="Logo"
                                     className="h-[48px] w-[48px] sm:h-[64px] sm:w-[64px] animate-spin-pause shrink-0"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             )}
                         </div>
@@ -118,6 +120,8 @@ export default function Footer({
                                                 src={iconSrc}
                                                 alt={social.platform}
                                                 className="h-[17px] w-[17px] sm:h-[17.5px] sm:w-[17.5px]"
+                                                loading="lazy"
+                                                decoding="async"
                                             />
                                         ) : (
                                             <span className="text-white text-xs">{social.platform}</span>

@@ -225,6 +225,8 @@ export default function OurProcess({
                                         src={getMediaUrl(data.image)}
                                         alt={data.heading || "Our Process"}
                                         className="w-full h-full object-contain"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                             )}
