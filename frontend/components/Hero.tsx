@@ -74,6 +74,33 @@ export default function Hero({ data }: { data: HeroData }) {
         );
     };
 
+    const formatDescription = (desc: string) => {
+        if (!desc) return null;
+        const text = desc.trim();
+        if (text.includes("\n")) {
+            const lines = text.split(/\r?\n/).filter(Boolean);
+            return (
+                <>
+                    {lines.map((line, idx) => (
+                        <span key={idx} className={`block ${idx > 0 ? "mt-0.5 sm:mt-1" : ""} xl:whitespace-nowrap`}>
+                            {line}
+                        </span>
+                    ))}
+                </>
+            );
+        }
+        const match = text.match(/^(.+?\.)\s+(.+)$/);
+        if (match) {
+            return (
+                <>
+                    <span className="block xl:whitespace-nowrap">{match[1]}</span>
+                    <span className="block xl:whitespace-nowrap mt-0.5 sm:mt-1">{match[2]}</span>
+                </>
+            );
+        }
+        return <span className="block">{text}</span>;
+    };
+
     return (
         <section data-theme="dark" className="relative min-h-0 xl:min-h-screen bg-[#37386B] text-white flex flex-col font-sans overflow-x-hidden border-none outline-none">
             <div className="flex-grow flex items-start xl:items-center pt-[128px] sm:pt-[136px] xl:pt-[112px] 2xl:pt-[124px] pb-0 xl:pb-14 2xl:pb-16 px-5 sm:px-6 lg:px-[40px] xl:px-[48px] 2xl:px-[80px]">
@@ -86,8 +113,8 @@ export default function Hero({ data }: { data: HeroData }) {
                                 {formatHeading(data.heading)}
                             </h1>
 
-                            <p className="font-satoshi font-light text-white sm:text-white/80 text-[12.2px] min-[390px]:text-[12.5px] sm:text-[14px] lg:text-[16px] mb-4 sm:mb-5 max-w-[625px] leading-[1.75] sm:leading-[1.78] lg:leading-[29px] tracking-normal">
-                                {(data.description || "").replace(/\r?\n+/g, " ")}
+                            <p className="font-satoshi font-light lg:font-normal text-white text-[12.2px] min-[390px]:text-[12.5px] sm:text-[14px] lg:text-[15.5px] xl:text-[16px] mb-4 sm:mb-5 lg:mb-6 max-w-[625px] xl:max-w-none leading-[1.75] sm:leading-[1.78] lg:leading-[1.65] tracking-normal">
+                                {formatDescription(data.description)}
                             </p>
 
                             <a
