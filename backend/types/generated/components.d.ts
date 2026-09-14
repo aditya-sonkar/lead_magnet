@@ -25,6 +25,8 @@ export interface SectionsCallbackForm extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'Shopify Link (Optional)'>;
     shopifyLinkPlaceholder: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Enter Shopify link'>;
+    submittingButtonLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Submitting...'>;
     successDescription: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<"We'll reach out within 24 hours \u2014 no spam, just expert guidance.">;
     successTitle: Schema.Attribute.String &
@@ -238,6 +240,8 @@ export interface SectionsQuoteForm extends Struct.ComponentSchema {
     stepLabel: Schema.Attribute.String;
     storeWarning: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Please select whether you own a Shopify website'>;
+    submittingButtonLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Submitting...'>;
     successDescription: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<'We will review your store setup and get back to you shortly.'>;
     successTitle: Schema.Attribute.String &

@@ -195,9 +195,9 @@ export default function EngagementFit({
     return (
         <section className="px-6 py-14 sm:py-16 lg:py-20 xl:py-28 bg-white lg:px-[60px] xl:px-[80px]">
             <div className="mx-auto w-full max-w-[1720px]">
-                <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-[clamp(32px,2.5vw,72px)] w-full">
+                <div className="flex flex-col min-[1140px]:flex-row items-start justify-between gap-8 min-[1140px]:gap-[clamp(32px,2.5vw,72px)] w-full">
                     {/* Left Column: Heading & Description (anchored to left corner) */}
-                    <div className="flex flex-col w-full lg:w-[clamp(400px,38vw,640px)] shrink-0">
+                    <div className="flex flex-col w-full min-[1140px]:w-[clamp(390px,36vw,600px)] shrink-0">
                         <h2 className="heading-engagement-fit font-delight font-medium tracking-[-0.015em] text-[#0f1d07] mb-4 lg:mb-5 xl:mb-6 max-w-full">
                             {formatHeading(data.heading)}
                         </h2>
@@ -209,9 +209,9 @@ export default function EngagementFit({
                         </p>
                     </div>
 
-                    {/* Right Column: 2 Cards stretching cleanly to the right corner */}
+                    {/* Right Column: 2 Cards */}
                     <div
-                        className="sync-engagement-cards grid grid-cols-1 sm:grid-cols-[1fr_1.08fr] gap-5 sm:gap-x-6 lg:gap-x-[clamp(24px,1.6vw,32px)] gap-y-4 sm:gap-y-[17.5px] xl:gap-y-[18.5px] items-stretch w-full lg:flex-1 -mt-2 sm:-mt-2.5 lg:-mt-3 xl:-mt-3.5 2xl:-mt-4"
+                        className="sync-engagement-cards grid grid-cols-1 sm:grid-cols-[1fr_1.08fr] gap-5 sm:gap-x-6 lg:gap-x-[clamp(24px,1.6vw,32px)] gap-y-4 sm:gap-y-[17.5px] xl:gap-y-[18.5px] items-stretch w-full min-[1140px]:flex-1 min-[2000px]:max-w-[780px] min-[2500px]:max-w-[840px] -mt-2 sm:-mt-2.5 lg:-mt-3 xl:-mt-3.5 2xl:-mt-4"
                         style={{ '--point-rows': totalPointRows } as React.CSSProperties}
                     >
                         {/* Card 1: Suitable */}
@@ -226,7 +226,7 @@ export default function EngagementFit({
                                              className="w-[18px] h-[18px] sm:w-[19px] sm:h-[19px] shrink-0 mt-[11px] sm:mt-[12px] text-black sm:text-[#0F1D07]"
                                          />
                                          <span
-                                             className="block font-satoshi font-normal text-[14.8px] sm:text-[clamp(13.5px,1.0vw,15px)] text-black leading-[1.42] sm:leading-[1.4] max-w-[248px]"
+                                             className="block flex-1 font-satoshi font-normal text-[14.8px] sm:text-[clamp(13.5px,1.0vw,15px)] text-black leading-[1.42] sm:leading-[1.4]"
                                              style={{ fontFamily: "var(--font-satoshi), Satoshi, sans-serif", fontWeight: 400, color: "#000000" }}
                                          >
                                              {formatPointText(point.text)}
@@ -248,7 +248,7 @@ export default function EngagementFit({
                                              className="w-[18px] h-[18px] sm:w-[19px] sm:h-[19px] shrink-0 mt-[11px] sm:mt-[12px] text-black sm:text-[#0F1D07]"
                                          />
                                          <span
-                                             className="block font-satoshi font-normal text-[14.8px] sm:text-[clamp(13.5px,1.0vw,15px)] text-black leading-[1.42] sm:leading-[1.4] max-w-[248px]"
+                                             className="block flex-1 font-satoshi font-normal text-[14.8px] sm:text-[clamp(13.5px,1.0vw,15px)] text-black leading-[1.42] sm:leading-[1.4]"
                                              style={{ fontFamily: "var(--font-satoshi), Satoshi, sans-serif", fontWeight: 400, color: "#000000" }}
                                          >
                                              {formatPointText(point.text)}

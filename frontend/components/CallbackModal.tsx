@@ -14,6 +14,7 @@ export type CallbackFormData = {
     shopifyLinkLabel?: string;
     shopifyLinkPlaceholder?: string;
     buttonLabel?: string;
+    submittingButtonLabel?: string;
     disclaimer?: string;
     successTitle?: string;
     successDescription?: string;
@@ -31,6 +32,7 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
     const [phone, setPhone] = useState("");
     const [shopifyLink, setShopifyLink] = useState("");
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const modalContainerRef = useRef<HTMLDivElement>(null);
 
     // All text comes exclusively from CMS — no hardcoded fallbacks
@@ -86,15 +88,25 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
     useEffect(() => {
         if (isOpen && isSubmitted) {
             setIsSubmitted(false);
+            setIsSubmitting(false);
             setEmail("");
             setPhone("");
             setShopifyLink("");
         }
     }, [isOpen]);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitted(true);
+        if (isSubmitting) return;
+        setIsSubmitting(true);
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 800));
+            setIsSubmitted(true);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -216,9 +228,20 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
                                 <div className="pt-2 sm:pt-2.5">
                                     <button
                                         type="submit"
-                                        className="font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-3 sm:py-3.5 px-6 rounded-full transition-all duration-200 flex justify-center items-center text-[clamp(14px,1.1vw,15px)] cursor-pointer shadow-md active:scale-[0.99]"
+                                        disabled={isSubmitting}
+                                        className={`font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-3 sm:py-3.5 px-6 rounded-full transition-all duration-200 flex justify-center items-center text-[clamp(14px,1.1vw,15px)] cursor-pointer shadow-md active:scale-[0.99] ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`}
                                     >
-                                        {buttonLabel}
+                                        {isSubmitting ? (
+                                            <>
+                                                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                                </svg>
+                                                <span>{data?.submittingButtonLabel || "Submitting..."}</span>
+                                            </>
+                                        ) : (
+                                            buttonLabel
+                                        )}
                                     </button>
                                     {disclaimer && (
                                         <p className="text-center font-satoshi text-[clamp(11.5px,0.9vw,12.5px)] text-[#777777] mt-2.5 sm:mt-3">

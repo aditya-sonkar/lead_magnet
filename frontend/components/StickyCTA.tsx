@@ -196,33 +196,33 @@ export default function StickyCTA({
         <>
             <AnimatePresence>
                 {isVisible && hasStickyContent && (
-                    <div className="fixed bottom-3.5 sm:bottom-4 md:bottom-4.5 lg:bottom-5 left-0 right-0 z-50 flex justify-center pointer-events-none px-3 sm:px-4 md:px-6">
+                    <div className="fixed bottom-3.5 sm:bottom-4 md:bottom-4.5 lg:bottom-5 left-0 right-0 z-50 flex justify-center pointer-events-none px-2 min-[340px]:px-3 sm:px-4 md:px-6">
                         <motion.div
                             initial={{ y: 90, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 90, opacity: 0 }}
                             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                            className="pointer-events-auto w-[calc(100vw-24px)] min-[480px]:w-auto max-w-[95vw] sm:max-w-none"
+                            className="pointer-events-auto w-[calc(100vw-16px)] min-[340px]:w-[calc(100vw-24px)] min-[480px]:w-auto max-w-[calc(100vw-16px)] sm:max-w-[calc(100vw-32px)] md:max-w-none"
                         >
-                            <div className="relative rounded-[18px] sm:rounded-[20px] bg-[#FFFFFF] py-2.5 sm:py-3 px-3.5 min-[380px]:px-4 sm:pl-6 sm:pr-5 md:pl-6.5 md:pr-5.5 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 md:gap-4 shadow-[0_10px_35px_rgba(0,0,0,0.15)] border border-black/10">
+                            <div className="relative rounded-[16px] min-[340px]:rounded-[18px] sm:rounded-[20px] bg-[#FFFFFF] py-2 min-[340px]:py-2.5 md:py-3 px-2.5 min-[340px]:px-3.5 min-[380px]:px-4 md:pl-6 md:pr-5.5 flex flex-col md:flex-row md:items-center gap-1.5 min-[340px]:gap-2 md:gap-4 shadow-[0_10px_35px_rgba(0,0,0,0.15)] border border-black/10">
                                 {displayText && (
-                                    <div className="flex items-center justify-between gap-2 sm:gap-0 shrink-0">
-                                        <p className="font-nohemi text-[clamp(12.5px,3.2vw,14px)] sm:text-[clamp(13.5px,1.08vw,16px)] font-medium text-black leading-tight sm:leading-none sm:whitespace-nowrap tracking-tight">
+                                    <div className="flex items-center justify-between gap-2 md:gap-0 shrink-0">
+                                        <p className="font-nohemi text-[11px] min-[320px]:text-[clamp(12px,3.2vw,14px)] md:text-[clamp(13.5px,1.08vw,16px)] font-medium text-black leading-tight md:leading-none md:whitespace-nowrap tracking-tight">
                                             {displayText}
                                         </p>
                                     </div>
                                 )}
 
                                 {(primaryCta || secondaryCta) && (
-                                    <div className="w-full sm:w-auto flex items-center justify-between sm:justify-start shrink-0 gap-1.5 min-[380px]:gap-2 sm:gap-2.5 md:gap-3">
+                                    <div className="w-full md:w-auto flex items-center justify-between md:justify-start shrink-0 gap-1.5 min-[380px]:gap-2 md:gap-3">
                                         {primaryCta && (
                                             <a
                                                 href={primaryCta.href || "#quote"}
                                                 onClick={(e) => handleCtaClick(e, primaryCta)}
-                                                className="group flex-1 sm:flex-none min-w-0 rounded-full bg-black py-2 sm:py-2.5 px-2.5 min-[380px]:px-3.5 sm:px-5 md:px-5.5 text-white text-[clamp(11.5px,3vw,13.5px)] sm:text-[15px] md:text-[15.5px] xl:text-[16px] font-normal font-satoshi flex items-center justify-center gap-1 sm:gap-1.5 md:gap-2 transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] shadow-sm hover:shadow whitespace-nowrap cursor-pointer"
+                                                className="group flex-[1.18] md:flex-none min-w-0 rounded-full bg-black py-1.5 min-[340px]:py-2 md:py-2.5 px-2 min-[340px]:px-2.5 min-[380px]:px-3.5 md:px-5 text-white text-[10px] min-[320px]:text-[11px] min-[360px]:text-[clamp(11.5px,3vw,13.5px)] md:text-[15px] xl:text-[16px] font-normal font-satoshi flex items-center justify-center gap-1 min-[340px]:gap-1.5 md:gap-2 transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] shadow-sm hover:shadow whitespace-nowrap cursor-pointer"
                                             >
                                                 <span>{primaryCta.label}</span>
-                                                <span className="text-[11px] min-[380px]:text-[12px] sm:text-[15px] md:text-[16px] leading-none transition-transform duration-150 group-hover:translate-x-0.5 shrink-0">
+                                                <span className="text-[10px] min-[320px]:text-[11px] min-[380px]:text-[12px] md:text-[15px] xl:text-[16px] leading-none transition-transform duration-150 group-hover:translate-x-0.5 shrink-0">
                                                     →
                                                 </span>
                                             </a>
@@ -233,10 +233,10 @@ export default function StickyCTA({
                                                 href={secondaryCta.href || "#contact"}
                                                 onClick={(e) => handleCtaClick(e, secondaryCta)}
                                                 style={{ color: "#000000" }}
-                                                className="group flex-1 sm:flex-none min-w-0 rounded-full bg-white border border-black py-2 sm:py-2.5 px-2.5 min-[380px]:px-3.5 sm:px-5 md:px-5.5 text-black text-[clamp(11.5px,3vw,13.5px)] sm:text-[15px] md:text-[15.5px] xl:text-[16px] font-normal font-satoshi flex items-center justify-center gap-1 sm:gap-1.5 md:gap-2 transition-all duration-150 hover:bg-black/5 active:scale-[0.98] whitespace-nowrap cursor-pointer"
+                                                className="group flex-1 md:flex-none min-w-0 rounded-full bg-white border border-black py-1.5 min-[340px]:py-2 md:py-2.5 px-2 min-[340px]:px-2.5 min-[380px]:px-3.5 md:px-5 text-black text-[10px] min-[320px]:text-[11px] min-[360px]:text-[clamp(11.5px,3vw,13.5px)] md:text-[15px] xl:text-[16px] font-normal font-satoshi flex items-center justify-center gap-1 min-[340px]:gap-1.5 md:gap-2 transition-all duration-150 hover:bg-black/5 active:scale-[0.98] whitespace-nowrap cursor-pointer"
                                             >
                                                 <span style={{ color: "#000000" }}>{secondaryCta.label}</span>
-                                                <span className="text-[11px] min-[380px]:text-[12px] sm:text-[15px] md:text-[16px] leading-none transition-transform duration-150 group-hover:translate-x-0.5 shrink-0" style={{ color: "#000000" }}>
+                                                <span className="text-[10px] min-[320px]:text-[11px] min-[380px]:text-[12px] md:text-[15px] xl:text-[16px] leading-none transition-transform duration-150 group-hover:translate-x-0.5 shrink-0" style={{ color: "#000000" }}>
                                                     →
                                                 </span>
                                             </a>

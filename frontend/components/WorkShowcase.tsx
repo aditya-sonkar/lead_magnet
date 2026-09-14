@@ -39,6 +39,8 @@ type ShowcaseItem = {
 type WorkShowcaseData = {
     heading: string;
     description: string;
+    mobileHeading?: string;
+    MobileHeading?: string;
     MobileDescription?: string;
     mobileDescription?: string;
     Before?: string;
@@ -65,6 +67,7 @@ export default function WorkShowcase({
     const [isDragging, setIsDragging] = useState(false);
 
     const activeItem = items.find((item) => item.id === selectedItem) || sioraiItem || items[0];
+    const mobileHeading = data.MobileHeading || data.mobileHeading;
     const mobileDesc = data.MobileDescription || data.mobileDescription;
     const beforeText = data.Before || data.before || "";
 
@@ -162,9 +165,20 @@ export default function WorkShowcase({
         <section className="px-5 sm:px-6 py-14 sm:py-20 bg-[#f5f5f5] lg:px-[60px] xl:px-[80px]">
             <div className="mx-auto max-w-[1720px] w-full">
                 <div className="w-full">
-                    <h2 className="max-w-[1150px] font-delight text-[clamp(26px,7.4vw,42px)] sm:text-[clamp(36px,4.2vw,65px)] font-medium leading-[1.15] tracking-[-0.015em] mb-4 sm:mb-6">
-                        {data.heading}
-                    </h2>
+                    {mobileHeading ? (
+                        <>
+                            <h2 className="block sm:hidden max-w-[1150px] font-delight text-[clamp(26px,7.4vw,42px)] font-medium leading-[1.15] tracking-[-0.015em] mb-4">
+                                {mobileHeading}
+                            </h2>
+                            <h2 className="hidden sm:block max-w-[1150px] font-delight text-[clamp(36px,4.2vw,65px)] font-medium leading-[1.15] tracking-[-0.015em] mb-4 sm:mb-6">
+                                {data.heading}
+                            </h2>
+                        </>
+                    ) : (
+                        <h2 className="max-w-[1150px] font-delight text-[clamp(26px,7.4vw,42px)] sm:text-[clamp(36px,4.2vw,65px)] font-medium leading-[1.15] tracking-[-0.015em] mb-4 sm:mb-6">
+                            {data.heading}
+                        </h2>
+                    )}
                     {mobileDesc ? (
                         <>
                             <p className="block sm:hidden max-w-[650px] font-satoshi font-medium text-[clamp(13px,4.2vw,16px)] text-[#000000] whitespace-pre-line text-pretty leading-relaxed">

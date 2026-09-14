@@ -114,13 +114,13 @@ export default function Hero({ data }: { data: HeroData }) {
                         {/* Client logo marquee */}
                         <div className="mt-16 sm:mt-20 lg:mt-26 xl:mt-auto pt-3 sm:pt-6 translate-y-3.5 sm:translate-y-4 xl:translate-y-0">
                             {data.brandsHeading && (
-                                <p className="font-satoshi font-light text-white sm:text-white/88 text-[clamp(12px,3.3vw,15.5px)] sm:text-[17.5px] lg:text-[19px] mb-3 lg:mb-4 w-full text-center sm:text-left leading-snug tracking-[-0.2px] px-2 sm:px-0">
+                                <p className="font-satoshi font-light text-white sm:text-white/88 text-[clamp(12px,3.3vw,15.5px)] sm:text-[17.5px] lg:text-[19px] mb-3 lg:mb-4 w-full text-center xl:text-left leading-snug tracking-[-0.2px] px-2 sm:px-0">
                                     {data.brandsHeading}
                                 </p>
                             )}
                             {brandItems.length > 0 && (
                                 <div
-                                    className="w-full max-w-[963px] overflow-hidden select-none"
+                                    className="w-full max-w-[963px] mx-auto xl:mx-0 overflow-hidden select-none"
                                     style={{
                                         maskImage: 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
                                         WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)'

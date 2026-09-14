@@ -131,3 +131,10 @@ body {
         grid-row: span calc(var(--point-rows, 5) + 1) !important;
     }
 }
+
+@media (min-width: 2000px) {
+    .insight-card-desc {
+        max-width: none !important;
+        width: 100% !important;
+    }
+}

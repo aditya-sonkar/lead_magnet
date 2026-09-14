@@ -42,6 +42,10 @@
       "type": "string",
       "default": "Book My Free Call"
     },
+    "submittingButtonLabel": {
+      "type": "string",
+      "default": "Submitting..."
+    },
     "disclaimer": {
       "type": "string",
       "default": "We'll reach out within 24 hours — no spam, just expert guidance."

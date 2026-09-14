@@ -97,8 +97,8 @@ export default function ConversionInsights({
                         };
 
                         const descMaxWidth = index === 2
-                            ? "max-w-none lg:max-w-[342px] min-[1750px]:max-w-[370px]"
-                            : "max-w-none lg:max-w-[325px] min-[1750px]:max-w-[355px]";
+                            ? "max-w-none lg:max-w-[342px] min-[1750px]:max-w-[370px] min-[2000px]:max-w-none"
+                            : "max-w-none lg:max-w-[325px] min-[1750px]:max-w-[355px] min-[2000px]:max-w-none";
 
                         return (
                             <article
@@ -116,7 +116,7 @@ export default function ConversionInsights({
                                 )}
 
                                 <div className="flex flex-col justify-start flex-grow p-[14px_20px_20px] min-[460px]:p-[16px_24px_22px] sm:p-[18px_28px_22px] md:p-[18px_32px_24px] lg:px-8 lg:pt-5 lg:pb-9 min-[1750px]:px-10 min-[1750px]:pt-7 min-[1750px]:pb-11">
-                                    <h3 className={`font-nohemi ${titleWeight} whitespace-pre-line ${textColor} text-[clamp(19px,2.4vw,23.5px)] lg:text-[clamp(21px,1.55vw,27.5px)] min-[1750px]:text-[30.5px] leading-[1.18] min-[1750px]:leading-[1.2] tracking-[-0.02em] mb-2 sm:mb-2.5 lg:mb-3.5 min-[1750px]:mb-4 min-h-[auto] lg:min-h-[56px] min-[1750px]:min-h-[64px] w-full max-w-full flex items-start`}>
+                                    <h3 className={`font-nohemi ${titleWeight} whitespace-pre-line ${textColor} text-[clamp(19px,2.4vw,23.5px)] lg:text-[clamp(21px,1.55vw,27.5px)] min-[1750px]:text-[25px] min-[2000px]:text-[25px] leading-[1.2] tracking-[-0.02em] mb-2 sm:mb-2.5 lg:mb-3.5 min-[1750px]:mb-3.5 min-h-[auto] lg:min-h-[56px] min-[1750px]:min-h-[56px] w-full min-[2000px]:max-w-[350px] flex items-start`}>
                                         {card.title}
                                     </h3>
 
@@ -125,12 +125,12 @@ export default function ConversionInsights({
                                             <p className={`block md:hidden font-satoshi text-[clamp(12.5px,1.7vw,14.2px)] leading-[1.55] whitespace-pre-line text-pretty w-full ${descMaxWidth} ${descriptionWeight} ${descriptionColor}`}>
                                                 {cardMobileDesc}
                                             </p>
-                                            <p className={`hidden md:block font-satoshi text-[clamp(12.5px,0.85vw,14.3px)] min-[1750px]:text-[14.8px] leading-[1.55] whitespace-pre-line text-pretty w-full ${descMaxWidth} ${descriptionWeight} ${descriptionColor}`}>
+                                            <p className={`hidden md:block font-satoshi insight-card-desc text-[clamp(12.5px,0.85vw,14.3px)] min-[1750px]:text-[14.8px] leading-[1.55] whitespace-pre-line text-pretty w-full ${descMaxWidth} ${descriptionWeight} ${descriptionColor}`}>
                                                 {card.description}
                                             </p>
                                         </>
                                     ) : (
-                                        <p className={`font-satoshi text-[clamp(12.5px,0.85vw,14.3px)] min-[1750px]:text-[14.8px] leading-[1.55] whitespace-pre-line text-pretty w-full ${descMaxWidth} ${descriptionWeight} ${descriptionColor}`}>
+                                        <p className={`font-satoshi insight-card-desc text-[clamp(12.5px,0.85vw,14.3px)] min-[1750px]:text-[14.8px] leading-[1.55] whitespace-pre-line text-pretty w-full ${descMaxWidth} ${descriptionWeight} ${descriptionColor}`}>
                                             {card.description}
                                         </p>
                                     )}

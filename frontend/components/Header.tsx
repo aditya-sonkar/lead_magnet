@@ -146,8 +146,8 @@ export default function Header({
     return (
         <>
             {/* Header bar */}
-            <header className="fixed top-0 left-0 right-0 z-[110] px-5 sm:px-6 lg:px-[40px] xl:px-[48px] 2xl:px-[80px] pointer-events-none">
-                <div className="max-w-[1720px] mx-auto w-full flex justify-between items-center h-[72px] sm:h-[88px] pt-2 sm:pt-2.5 lg:pt-0">
+            <header className="fixed top-0 left-0 right-0 z-[110] px-5 sm:px-6 lg:px-[40px] xl:px-[48px] 2xl:px-[80px] min-[2000px]:px-[60px] min-[2500px]:px-[80px] pointer-events-none">
+                <div className="max-w-[1720px] min-[2000px]:max-w-none mx-auto w-full flex justify-between items-center h-[72px] sm:h-[88px] pt-2 sm:pt-2.5 lg:pt-0">
                     <a
                         href="/"
                         onClick={() => setIsOpen(false)}

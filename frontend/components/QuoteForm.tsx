@@ -26,6 +26,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
         otherIssues, setOtherIssues,
         phone, email, setEmail,
         isSubmitted,
+        isSubmitting,
         step1Warning, setStep1Warning,
         step2Warning,
         step3Warning,
@@ -41,11 +42,22 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
         handlePhoneChange,
         handleBookCallSubmit,
         formatCurrency,
+        resetForm,
     } = useQuoteForm(form);
 
     const [clickedIssue, setClickedIssue] = React.useState<string | null>(null);
 
     const noOptionLabel = form?.noLabel;
+
+    // Automatically reset hero form to step 1 after 3 seconds of successful submission.
+    // In sticky CTA modal (!isHero), do NOT auto-close and do NOT auto-refresh.
+    React.useEffect(() => {
+        if (!isSubmitted || !isHero) return;
+        const timer = setTimeout(() => {
+            resetForm();
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, [isSubmitted, isHero, resetForm]);
 
     return (
         <div className={isHero ? "w-full" : "flex flex-col justify-between flex-1"}>
@@ -721,31 +733,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                         </div>
                     </div>
 
-                    {isSubmitted ? (
-                        <div
-                            className={
-                                isHero
-                                    ? "p-4 rounded-xl bg-[#EBF7F2] text-[#1E7448] text-center font-satoshi text-[14px] mt-4 space-y-1"
-                                    : "p-3.5 sm:p-4 rounded-none bg-[#EBF7F2] text-[#1E7448] text-center font-satoshi text-[13px] sm:text-[14px] mt-1.5 sm:mt-2 space-y-1 sm:space-y-1.5"
-                            }
-                        >
-                            <p className="font-medium text-[14px] sm:text-[15px]">✓ {form?.successTitle || form?.resultTitle}</p>
-                            {(form?.successDescription || form?.resultDescription) && (
-                                <p className="text-[11px] sm:text-xs text-[#2A7550]">{form.successDescription || form.resultDescription}</p>
-                            )}
-                            {!isHero && (form?.closeButtonLabel || (form as any)?.closeLabel) && (
-                                <button
-                                    type="button"
-                                    onClick={onClose}
-                                    className="text-xs font-semibold underline text-[#1E7448] hover:text-[#145232] cursor-pointer pt-0.5"
-                                >
-                                    {form?.closeButtonLabel || (form as any)?.closeLabel}
-                                </button>
-                            )}
-                        </div>
-                    ) : (
-                        <div>
-                            {step3Warning && (
+                    <div>
+                        {step3Warning && (
                                 <motion.div
                                     initial={{ opacity: 0, y: -4 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -762,19 +751,58 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                 </motion.div>
                             )}
 
-                            <button
-                                type="button"
-                                data-no-callback="true"
-                                onClick={handleBookCallSubmit}
-                                className={
-                                    isHero
-                                        ? "font-satoshi w-full bg-[#3145DD] hover:bg-[#2637b8] text-white font-medium py-2.5 sm:py-3 px-6 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 text-[15.5px] sm:text-[16px] shadow-sm hover:shadow-md cursor-pointer"
-                                        : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[14px] sm:text-[15px] cursor-pointer shadow-md active:scale-[0.99] mt-2 sm:mt-2"
-                                }
-                            >
-                                <span>{form?.bookCallButtonLabel}</span>
-                                <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
-                            </button>
+                            {isSubmitted ? (
+                                <div className="space-y-2 mt-1">
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.97 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="py-3 px-5 rounded-full bg-[#EBF7F2] border border-[#A7E2C7] text-[#168050] text-center font-satoshi text-[13.5px] sm:text-[14.5px] font-medium flex items-center justify-center gap-2 shadow-2xs"
+                                    >
+                                        <svg className="w-4 h-4 text-[#168050] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        <span>{form?.successTitle || "We've received your details! We'll call you shortly."}</span>
+                                    </motion.div>
+                                    {!isHero && onClose && (
+                                        <div className="text-center pt-1">
+                                            <button
+                                                type="button"
+                                                onClick={onClose}
+                                                className="text-xs font-semibold underline text-[#111827] hover:opacity-70 cursor-pointer"
+                                            >
+                                                {form?.closeButtonLabel || (form as any)?.closeLabel || "Close"}
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            ) : (
+                                <button
+                                    type="button"
+                                    data-no-callback="true"
+                                    onClick={handleBookCallSubmit}
+                                    disabled={isSubmitting}
+                                    className={
+                                        isHero
+                                            ? `font-satoshi w-full bg-[#3145DD] hover:bg-[#2637b8] text-white font-medium py-2.5 sm:py-3 px-6 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 text-[15.5px] sm:text-[16px] shadow-sm hover:shadow-md cursor-pointer ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
+                                            : `font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[14px] sm:text-[15px] cursor-pointer shadow-md active:scale-[0.99] mt-2 sm:mt-2 ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
+                                    }
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                            </svg>
+                                            <span>{form?.submittingButtonLabel || "Submitting..."}</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>{form?.bookCallButtonLabel}</span>
+                                            <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
+                                        </>
+                                    )}
+                                </button>
+                            )}
                             {form?.disclaimer && (
                                 <p
                                     className={
@@ -787,7 +815,6 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                 </p>
                             )}
                         </div>
-                    )}
                 </div>
             )}
         </div>

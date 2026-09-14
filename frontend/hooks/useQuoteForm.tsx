@@ -60,6 +60,7 @@ export type QuoteFormData = {
     emailLabel?: string;
     emailPlaceholder?: string;
     bookCallButtonLabel?: string;
+    submittingButtonLabel?: string;
     successTitle?: string;
     successDescription?: string;
     disclaimer?: string;
@@ -92,6 +93,7 @@ export function useQuoteForm(form?: QuoteFormData | null) {
     const [step3Warning, setStep3Warning] = useState("");
     const [phoneTouched, setPhoneTouched] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     // -- Derived lists (CMS-only) ----------------------------------------------
     const issuesList: FormOption[] =
@@ -117,6 +119,7 @@ export function useQuoteForm(form?: QuoteFormData | null) {
         setStep3Warning("");
         setPhoneTouched(false);
         setIsSubmitted(false);
+        setIsSubmitting(false);
     };
 
     // -- Step 2 handlers -------------------------------------------------------
@@ -198,11 +201,13 @@ export function useQuoteForm(form?: QuoteFormData | null) {
         }
     };
 
-    const handleBookCallSubmit = (e?: React.MouseEvent | React.FormEvent) => {
+    const handleBookCallSubmit = async (e?: React.MouseEvent | React.FormEvent) => {
         if (e) {
             e.preventDefault();
             e.stopPropagation();
         }
+        if (isSubmitting) return;
+
         setPhoneTouched(true);
         const cleanDigits = phone.trim().replace(/\D/g, "");
         if (!phone.trim() || cleanDigits.length < 7) {
@@ -210,7 +215,17 @@ export function useQuoteForm(form?: QuoteFormData | null) {
             return;
         }
         setStep3Warning("");
-        setIsSubmitted(true);
+        setIsSubmitting(true);
+
+        try {
+            // Smooth loading delay for UI feedback
+            await new Promise((resolve) => setTimeout(resolve, 800));
+            setIsSubmitted(true);
+        } catch (error) {
+            console.error("Submission failed:", error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // -- Currency formatter ----------------------------------------------------
@@ -254,6 +269,7 @@ export function useQuoteForm(form?: QuoteFormData | null) {
         otherIssues, setOtherIssues,
         phone, email, setEmail,
         isSubmitted, setIsSubmitted,
+        isSubmitting,
         // Warnings
         step1Warning, setStep1Warning,
         step2Warning,

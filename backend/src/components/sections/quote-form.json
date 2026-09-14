@@ -132,6 +132,10 @@
     "bookCallButtonLabel": {
       "type": "string"
     },
+    "submittingButtonLabel": {
+      "type": "string",
+      "default": "Submitting..."
+    },
     "successTitle": {
       "type": "string",
       "default": "Thank you! We've received your request."
