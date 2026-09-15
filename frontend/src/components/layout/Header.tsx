@@ -133,7 +133,7 @@ export default function Header({
         };
     }, []);
 
-    // Nav links: prefer footer quickLinks, fallback to header quickLinks, then empty (no hardcoded data)
+    // Nav links: prefer footer quickLinks, fallback to header quickLinks, then empty
     const navLinks: HeaderLink[] = (
         footerData?.quickLinks && footerData.quickLinks.length > 0
             ? footerData.quickLinks

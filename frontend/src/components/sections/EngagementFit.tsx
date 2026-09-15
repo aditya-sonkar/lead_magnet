@@ -77,7 +77,7 @@ function formatDescription(description: string) {
         );
     }
 
-    // 2. Dynamic typographic line balancing for desktop (zero hardcoded strings)
+    // 2. Dynamic typographic line balancing for desktop
     // Dynamically balances paragraph lines for editorial presentation across viewports
     const words = text.split(/\s+/);
     if (words.length <= 15) {

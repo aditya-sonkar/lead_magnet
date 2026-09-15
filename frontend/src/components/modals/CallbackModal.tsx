@@ -35,7 +35,7 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
     const [isSubmitting, setIsSubmitting] = useState(false);
     const modalContainerRef = useRef<HTMLDivElement>(null);
 
-    // All text comes exclusively from CMS — no hardcoded fallbacks
+    // All text comes exclusively from CMS
     const title = data?.title;
     const description = data?.description;
     const emailLabel = data?.emailLabel;

@@ -57,7 +57,7 @@ export default function Footer({
         (typeof d?.newsletter === "object" && d?.newsletter?.href) ||
         undefined;
 
-    // All lists come exclusively from CMS — no hardcoded defaults
+    // All lists come exclusively from CMS
     const quickLinks = d.quickLinks && d.quickLinks.length > 0 ? d.quickLinks : [];
     const socialLinks = d.socialLinks && d.socialLinks.length > 0 ? d.socialLinks : [];
     const contacts = d.contacts && d.contacts.length > 0 ? d.contacts : [];

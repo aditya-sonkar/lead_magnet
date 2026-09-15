@@ -428,8 +428,8 @@ function ProcessCard({
                                     x: isActive ? 0 : -15,
                                 }}
                                 transition={{
-                                    duration: isActive ? 1.1 : 0.3,
-                                    delay: isActive ? 0.3 + idx * 0.12 : 0,
+                                    duration: isActive ? 0.5 : 0.2,
+                                    delay: isActive ? 0.1 + idx * 0.05 : 0,
                                     ease: [0.22, 1, 0.36, 1],
                                 }}
                                 className={`flex shrink-0 items-start sm:items-center gap-2 sm:gap-3 lg:gap-3 py-2 sm:py-2 lg:py-1.5 xl:py-2 will-change-[transform,opacity] ${

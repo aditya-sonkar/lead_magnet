@@ -151,7 +151,7 @@ export default function StorefrontProblems({
                 {(() => {
                     const count = selectedIds.length;
 
-                    // Derive summary text exclusively from CMS data — no hardcoded fallbacks
+                    // Derive summary text exclusively from CMS data
                     const summaryText = (() => {
                         if (Array.isArray(data.summary)) {
                             if (count === 0) {

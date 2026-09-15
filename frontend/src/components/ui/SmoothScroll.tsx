@@ -10,6 +10,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     let resizeObserverInstance: any = null;
     let handleResizeFn: any = null;
 
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      return; // Do not load Lenis on mobile/tablet to save CPU and battery
+    }
+
     import("lenis").then(({ default: Lenis }) => {
       if (isCancelled) return;
 
