@@ -14,19 +14,13 @@ const inter = localFont({
 
 const nohemi = localFont({
   src: [
-    { path: "../../public/fonts/nohemi/Nohemi-Thin.woff2", weight: "100" },
-    { path: "../../public/fonts/nohemi/Nohemi-ExtraLight.woff2", weight: "200" },
-    { path: "../../public/fonts/nohemi/Nohemi-Light.woff2", weight: "300" },
     { path: "../../public/fonts/nohemi/Nohemi-Regular.woff2", weight: "400" },
     { path: "../../public/fonts/nohemi/Nohemi-Medium.woff2", weight: "500" },
-    { path: "../../public/fonts/nohemi/Nohemi-SemiBold.woff2", weight: "600" },
     { path: "../../public/fonts/nohemi/Nohemi-Bold.woff2", weight: "700" },
-    { path: "../../public/fonts/nohemi/Nohemi-ExtraBold.woff2", weight: "800" },
-    { path: "../../public/fonts/nohemi/Nohemi-Black.woff2", weight: "900" },
   ],
   variable: "--font-nohemi",
   display: "swap",
-  preload: false,
+  preload: true,
 });
 
 const satoshi = localFont({
