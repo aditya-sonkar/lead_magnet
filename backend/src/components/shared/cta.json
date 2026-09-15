@@ -10,6 +10,15 @@
     },
     "href": {
       "type": "string"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "outline"
+      ],
+      "default": "primary"
     }
   },
   "config": {}

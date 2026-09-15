@@ -346,6 +346,8 @@ export interface SharedCta extends Struct.ComponentSchema {
   attributes: {
     href: Schema.Attribute.String;
     label: Schema.Attribute.String;
+    variant: Schema.Attribute.Enumeration<['primary', 'secondary', 'outline']> &
+      Schema.Attribute.DefaultTo<'primary'>;
   };
 }
 
@@ -474,6 +476,21 @@ export interface SharedProcessService extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSeo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_seos';
+  info: {
+    description: 'Search Engine Optimization metadata';
+    displayName: 'SEO';
+  };
+  attributes: {
+    canonicalUrl: Schema.Attribute.String;
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    noIndex: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    ogImage: Schema.Attribute.Media<'images'>;
+  };
+}
+
 export interface SharedServices extends Struct.ComponentSchema {
   collectionName: 'components_shared_services';
   info: {
@@ -552,6 +569,7 @@ declare module '@strapi/strapi' {
       'shared.pain-point': SharedPainPoint;
       'shared.process-card': SharedProcessCard;
       'shared.process-service': SharedProcessService;
+      'shared.seo': SharedSeo;
       'shared.services': SharedServices;
       'shared.showcase-item': SharedShowcaseItem;
       'shared.social-link': SharedSocialLink;

@@ -22,10 +22,12 @@ type FinalCtaData = {
     primaryCta: {
         label: string;
         href: string;
+        variant?: "primary" | "secondary" | "outline";
     };
     secondaryCta: {
         label: string;
         href: string;
+        variant?: "primary" | "secondary" | "outline";
     };
 };
 
@@ -82,12 +84,14 @@ export default function FinalCTA({
     const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, label: string) => {
         const h = (href || "").toLowerCase();
         const l = (label || "").toLowerCase();
-        if (h === "#quote" || h.includes("quote") || l.includes("quote")) {
-            e.preventDefault();
-            window.dispatchEvent(new CustomEvent("open-quote-modal"));
-        } else if (h === "#contact" || h === "#call" || h.includes("call") || l.includes("call") || l.includes("callback")) {
+        
+        // If the label explicitly says "call" or "callback", ALWAYS open callback modal
+        if (l.includes("call") || l.includes("callback") || h === "#contact" || h === "#call") {
             e.preventDefault();
             window.dispatchEvent(new CustomEvent("open-callback-modal"));
+        } else if (h === "#quote" || h.includes("quote") || l.includes("quote")) {
+            e.preventDefault();
+            window.dispatchEvent(new CustomEvent("open-quote-modal"));
         }
     };
 
@@ -170,7 +174,11 @@ export default function FinalCTA({
                         <a
                             href={data.primaryCta.href}
                             onClick={(e) => handleCtaClick(e, data.primaryCta.href, data.primaryCta.label)}
-                            className="w-auto min-w-[210px] lg:min-w-[245px] inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 lg:px-11 py-3 font-satoshi text-[clamp(16px,1.25vw,18px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] bg-black text-white hover:opacity-85"
+                            className={`w-auto min-w-[210px] lg:min-w-[245px] inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 lg:px-11 py-3 font-satoshi text-[clamp(16px,1.25vw,18px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] ${
+                                data.primaryCta.variant === "outline" ? "border border-black/80 bg-transparent text-black hover:bg-black/5 hover:border-black" :
+                                data.primaryCta.variant === "secondary" ? "bg-gray-100 text-black hover:bg-gray-200" :
+                                "bg-black text-white hover:opacity-85"
+                            }`}
                         >
                             {data.primaryCta.label}
                             <span className="ml-2 text-[19px]">→</span>
@@ -179,7 +187,11 @@ export default function FinalCTA({
                         <a
                             href={data.secondaryCta.href}
                             onClick={(e) => handleCtaClick(e, data.secondaryCta.href, data.secondaryCta.label)}
-                            className="w-auto min-w-[210px] lg:min-w-[245px] inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 lg:px-11 py-3 font-satoshi text-[clamp(16px,1.25vw,18px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] border border-black/80 bg-transparent text-black hover:bg-black/5 hover:border-black"
+                            className={`w-auto min-w-[210px] lg:min-w-[245px] inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 lg:px-11 py-3 font-satoshi text-[clamp(16px,1.25vw,18px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] ${
+                                data.secondaryCta.variant === "primary" ? "bg-black text-white hover:opacity-85" :
+                                data.secondaryCta.variant === "secondary" ? "bg-gray-100 text-black hover:bg-gray-200" :
+                                "border border-black/80 bg-transparent text-black hover:bg-black/5 hover:border-black"
+                            }`}
                         >
                             {data.secondaryCta.label}
                             <span className="ml-2 text-[19px]">→</span>
@@ -256,7 +268,11 @@ export default function FinalCTA({
                         <a
                             href={data.primaryCta.href}
                             onClick={(e) => handleCtaClick(e, data.primaryCta.href, data.primaryCta.label)}
-                            className="w-full inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-2.5 font-satoshi text-[clamp(15.5px,1.15vw,17px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] bg-black text-white hover:opacity-85"
+                            className={`w-full inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-2.5 font-satoshi text-[clamp(15.5px,1.15vw,17px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] ${
+                                data.primaryCta.variant === "outline" ? "border border-[#D0D5DD] bg-white text-black hover:bg-black/5" :
+                                data.primaryCta.variant === "secondary" ? "bg-gray-100 text-black hover:bg-gray-200" :
+                                "bg-black text-white hover:opacity-85"
+                            }`}
                         >
                             {data.primaryCta.label}
                             <span className="ml-2 text-[18px]">→</span>
@@ -265,7 +281,11 @@ export default function FinalCTA({
                         <a
                             href={data.secondaryCta.href}
                             onClick={(e) => handleCtaClick(e, data.secondaryCta.href, data.secondaryCta.label)}
-                            className="w-full inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-2.5 font-satoshi text-[clamp(15.5px,1.15vw,17px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] border border-[#D0D5DD] bg-white text-black hover:bg-black/5"
+                            className={`w-full inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-2.5 font-satoshi text-[clamp(15.5px,1.15vw,17px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] ${
+                                data.secondaryCta.variant === "primary" ? "bg-black text-white hover:opacity-85" :
+                                data.secondaryCta.variant === "secondary" ? "bg-gray-100 text-black hover:bg-gray-200" :
+                                "border border-[#D0D5DD] bg-white text-black hover:bg-black/5"
+                            }`}
                         >
                             {data.secondaryCta.label}
                             <span className="ml-2 text-[18px]">→</span>

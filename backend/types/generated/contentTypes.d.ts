@@ -567,9 +567,12 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.faq',
       ]
     >;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'title'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     stickyCTA: Schema.Attribute.Component<'sections.sticky-cta', false>;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

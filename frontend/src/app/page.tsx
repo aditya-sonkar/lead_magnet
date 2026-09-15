@@ -14,8 +14,52 @@ import Footer from "@/components/layout/Footer";
 import StickyCTA from "@/components/ui/StickyCTA";
 import BlockRenderer from "@/components/page/BlockRenderer";
 
+import { Metadata } from "next";
+import { siteConfig } from "@/config/site";
+
 // Cache revalidation (60s) — fast responses without hammering CMS
 export const revalidate = 60;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await getLandingPage("shopify-lead-magnet");
+
+  if (!data) {
+    return {
+      title: siteConfig.title,
+      description: siteConfig.description,
+    };
+  }
+
+  // Use Strapi SEO component if available, fallback to defaults
+  const seo = data.seo || {};
+  const title = seo.metaTitle || data.title || data.hero?.heading || siteConfig.title;
+  const description = seo.metaDescription || data.hero?.description || siteConfig.description;
+  const canonicalUrl = seo.canonicalUrl || siteConfig.url;
+  
+  // Resolve OG image from Strapi media or fallback
+  const ogImageUrl = seo.ogImage?.url 
+    ? (seo.ogImage.url.startsWith("http") ? seo.ogImage.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${seo.ogImage.url}`)
+    : siteConfig.ogImage;
+
+  return {
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: !seo.noIndex,
+      follow: !seo.noIndex,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: siteConfig.name,
+      images: ogImageUrl ? [{ url: ogImageUrl }] : [],
+    },
+  };
+}
 
 export default async function Home() {
   const data = await getLandingPage();

@@ -19,6 +19,7 @@ type HeroData = {
     primaryCta: {
         label: string;
         href: string;
+        variant?: "primary" | "secondary" | "outline";
     };
     brandsHeading?: string;
     brands: Brand[];
@@ -131,7 +132,11 @@ export default function Hero({ data }: { data: HeroData }) {
                                         window.dispatchEvent(new CustomEvent("open-callback-modal"));
                                     }
                                 }}
-                                className="w-full sm:w-auto inline-flex items-center justify-center bg-white text-black px-4 sm:px-6 py-2 sm:py-3.5 rounded-full font-satoshi font-medium text-[14.5px] sm:text-[18.5px] hover:bg-gray-100 transition-all duration-300 ease-out gap-2 sm:gap-2.5 shadow-sm hover:shadow-md cursor-pointer"
+                                className={`w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3.5 rounded-full font-satoshi font-medium text-[14.5px] sm:text-[18.5px] transition-all duration-300 ease-out gap-2 sm:gap-2.5 shadow-sm hover:shadow-md cursor-pointer ${
+                                    data.primaryCta?.variant === "outline" ? "border border-white/80 bg-transparent text-white hover:bg-white/10" :
+                                    data.primaryCta?.variant === "secondary" ? "bg-black text-white hover:bg-black/80" :
+                                    "bg-white text-black hover:bg-gray-100"
+                                }`}
                             >
                                 {data.primaryCta?.label || "Book a Free Call"}
                                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
