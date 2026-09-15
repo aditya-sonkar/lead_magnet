@@ -230,8 +230,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             setStep1Warning("");
                                         }}
                                         className={`font-satoshi px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border text-[14px] sm:text-[16.5px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${hasStore === true
-                                                ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-medium sm:font-normal"
-                                                : "border-[#CAC4D0] text-[#333333] sm:text-[#222222] font-medium sm:font-normal bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
+                                                ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-normal"
+                                                : "border-[#E0DFE7] text-[#333333] font-satoshi font-normal bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                             }`}
                                     >
                                         {form?.yesLabel}
@@ -243,8 +243,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             setStep1Warning("");
                                         }}
                                         className={`font-satoshi px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border text-[14px] sm:text-[16.5px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${hasStore === false
-                                                ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-medium sm:font-normal"
-                                                : "border-[#CAC4D0] text-[#333333] sm:text-[#222222] font-medium sm:font-normal bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
+                                                ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-normal"
+                                                : "border-[#E0DFE7] text-[#333333] font-satoshi font-normal bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                             }`}
                                     >
                                         {form?.noLabel}
@@ -387,7 +387,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                                 }}
                                                 className={`font-satoshi font-normal inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap active:scale-[0.98] ${isSelected
                                                         ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
-                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
+                                                        : "border-[#E0DFE7] text-[#333333] font-satoshi font-normal bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                                     }`}
                                             >
                                                 <AnimatePresence initial={false}>
@@ -512,7 +512,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                                 onClick={() => handleSelectBudget(tierVal)}
                                                 className={`font-satoshi font-normal px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${isSelected
                                                         ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
-                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
+                                                        : "border-[#E0DFE7] text-[#333333] font-satoshi font-normal bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                                     }`}
                                             >
                                                 {tier.label}

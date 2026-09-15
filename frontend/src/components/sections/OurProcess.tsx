@@ -338,7 +338,7 @@ function ProcessCard({
 
     return (
         <div
-            className={`bg-[#1B2F10] rounded-xl p-[clamp(0.95rem,1.8vw,2.25rem)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto max-h-75 sm:max-h-77.5 md:max-h-85 lg:max-h-none min-h-52.5 h-full w-full relative group overflow-hidden transition-all duration-300 cursor-pointer text-white select-none ${
+            className={`bg-[#1B2F10] rounded-xl p-[clamp(0.95rem,1.8vw,2.25rem)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto max-h-75 sm:max-h-77.5 md:max-h-85 lg:max-h-none min-h-52.5 h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${
                 hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
             } ${activeCardId !== null ? "z-20" : ""} ${className}`}
             onMouseEnter={() => setIsHoveredDesktop(true)}
@@ -353,8 +353,9 @@ function ProcessCard({
                     scale: hasServices && isActive ? 0.96 : 1,
                 }}
                 transition={{
-                    duration: isActive ? 0.4 : 0.35,
-                    ease: [0.16, 1, 0.3, 1],
+                    duration: isActive ? 0.45 : 0.5,
+                    delay: isActive ? 0 : 0.06,
+                    ease: isActive ? [0.16, 1, 0.3, 1] : [0.25, 0.1, 0.25, 1],
                 }}
                 className={`flex flex-1 w-full flex-col justify-between ${
                     hasServices && isActive
@@ -416,11 +417,11 @@ function ProcessCard({
                     initial={false}
                     animate={{
                         opacity: isActive ? 1 : 0,
-                        y: isActive ? 0 : 24,
+                        y: isActive ? 0 : 16,
                     }}
                     transition={{
-                        duration: isActive ? 0.55 : 0.25,
-                        ease: [0.16, 1, 0.3, 1],
+                        duration: isActive ? 0.45 : 0.4,
+                        ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                     }}
                     className={`absolute inset-0 p-[clamp(0.95rem,1.8vw,2.25rem)] flex w-full flex-col ${
                         isActive
@@ -435,13 +436,15 @@ function ProcessCard({
                                 initial={false}
                                 animate={{
                                     opacity: isActive ? 1 : 0,
-                                    y: isActive ? 0 : 18,
-                                    x: isActive ? 0 : -6,
+                                    y: isActive ? 0 : 10,
+                                    x: isActive ? 0 : -4,
                                 }}
                                 transition={{
-                                    duration: isActive ? 0.6 : 0.2,
-                                    delay: isActive ? 0.08 + idx * 0.08 : 0,
-                                    ease: [0.16, 1, 0.3, 1],
+                                    duration: isActive ? 0.45 : 0.35,
+                                    delay: isActive
+                                        ? 0.06 + idx * 0.05
+                                        : (services.length - 1 - idx) * 0.025,
+                                    ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                                 }}
                                 className={`flex shrink-0 items-start sm:items-center gap-1.5 sm:gap-3 lg:gap-3 py-[clamp(4px,1.5vw,8px)] sm:py-2 lg:py-1.5 xl:py-2 will-change-[transform,opacity] ${
                                     idx !== services.length - 1 ? "border-b border-[#3E5634]" : ""
@@ -449,13 +452,15 @@ function ProcessCard({
                             >
                                 <motion.svg
                                     animate={{
-                                        x: isActive ? 0 : -6,
+                                        x: isActive ? 0 : -4,
                                         opacity: isActive ? 1 : 0,
                                     }}
                                     transition={{
-                                        duration: isActive ? 0.5 : 0.15,
-                                        delay: isActive ? 0.1 + idx * 0.08 : 0,
-                                        ease: [0.16, 1, 0.3, 1],
+                                        duration: isActive ? 0.4 : 0.3,
+                                        delay: isActive
+                                            ? 0.08 + idx * 0.05
+                                            : (services.length - 1 - idx) * 0.025,
+                                        ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                                     }}
                                     className="w-[5px] sm:w-[9px] lg:w-[10px] h-[10px] sm:h-[15px] lg:h-[17px] shrink-0 text-white mt-[2px] sm:mt-0"
                                     viewBox="0 0 10 18"
