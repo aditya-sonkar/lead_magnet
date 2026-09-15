@@ -18,9 +18,20 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "lead-magnet-7s2k.onrender.com",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+      },
     ],
   },
   async headers() {
+    if (process.env.NODE_ENV !== "production") {
+      return [];
+    }
     return [
       {
         source: "/fonts/(.*)",
@@ -37,15 +48,6 @@ const nextConfig: NextConfig = {
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=3600, stale-while-revalidate=86400",
           },
         ],
       },

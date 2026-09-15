@@ -26,6 +26,9 @@
     },
     "submitHref": {
       "type": "string"
+    },
+    "warningMessage": {
+      "type": "string"
     }
   },
   "config": {}

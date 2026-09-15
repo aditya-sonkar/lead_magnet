@@ -1,4 +1,5 @@
 import { getMediaUrl, SOCIAL_ICONS } from "@/lib/strapi";
+import Image from "next/image";
 
 type FooterContact = {
     id: number;
@@ -78,12 +79,12 @@ export default function Footer({
                             </h1>
 
                             {d.logo && getMediaUrl(d.logo) && (
-                                <img
+                                <Image
                                     src={getMediaUrl(d.logo)}
                                     alt="Logo"
+                                    width={64}
+                                    height={64}
                                     className="h-[48px] w-[48px] sm:h-[64px] sm:w-[64px] animate-spin-pause shrink-0"
-                                    loading="lazy"
-                                    decoding="async"
                                 />
                             )}
                         </div>
@@ -116,12 +117,12 @@ export default function Footer({
                                         aria-label={social.platform}
                                     >
                                         {iconSrc ? (
-                                            <img
+                                            <Image
                                                 src={iconSrc}
                                                 alt={social.platform}
+                                                width={18}
+                                                height={18}
                                                 className="h-[17px] w-[17px] sm:h-[17.5px] sm:w-[17.5px]"
-                                                loading="lazy"
-                                                decoding="async"
                                             />
                                         ) : (
                                             <span className="text-white text-xs">{social.platform}</span>

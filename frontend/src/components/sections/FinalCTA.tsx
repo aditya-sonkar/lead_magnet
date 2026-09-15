@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getMediaUrl } from "@/lib/strapi";
+import { getMediaUrl, getMediaAlt } from "@/lib/strapi";
+import Image from "next/image";
 
 type FinalCtaLogo = {
     id: number;
@@ -36,13 +37,18 @@ export default function FinalCTA({
     if (!data) return null;
     const validLogos = (data.logos || []).filter((l) => Boolean(getMediaUrl(l?.logo)));
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [loaded, setLoaded] = useState<Set<number>>(new Set([0]));
 
     useEffect(() => {
         if (validLogos.length <= 1) return;
 
         const interval = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % validLogos.length);
-        }, 2200);
+            setCurrentIndex((prev) => {
+                const next = (prev + 1) % validLogos.length;
+                setLoaded((s) => new Set([...s, next]));
+                return next;
+            });
+        }, 2800);
 
         return () => clearInterval(interval);
     }, [validLogos.length]);
@@ -106,22 +112,33 @@ export default function FinalCTA({
                                 <span className="inline-flex items-center whitespace-nowrap">
                                     <span>{desktopHeadingParts.likeWord}</span>
                                     <span className="mx-2.5 lg:mx-3.5 inline-flex h-[clamp(36px,4.2vw,65px)] w-[clamp(36px,4.2vw,65px)] align-middle -mt-1 lg:-mt-1.5 rounded-[10px] lg:rounded-[12px] border border-[#00000030] bg-white relative overflow-hidden select-none shrink-0 shadow-xs">
-                                        <AnimatePresence mode="wait">
-                                            {currentLogo?.logo && (
-                                                <motion.img
-                                                    key={currentLogo.id || currentIndex}
+                                    {/* Preload all logos */}
+                                    {validLogos.map((logo, i) => (
+                                        <div key={`preload-${i}`} className="hidden" aria-hidden>
+                                            <Image src={getMediaUrl(logo.logo)} alt="" width={1} height={1} priority />
+                                        </div>
+                                    ))}
+                                    <AnimatePresence mode="sync">
+                                        {currentLogo?.logo && (
+                                            <motion.div
+                                                key={currentLogo.id || currentIndex}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+                                                className={`absolute inset-0 m-auto w-full h-full p-1.5 lg:p-2 ${currentIndex === 0 ? 'bg-[#B34A33]' : 'bg-transparent'}`}
+                                            >
+                                                <Image
                                                     src={getMediaUrl(currentLogo.logo)}
-                                                    alt=""
-                                                    initial={{ opacity: 0 }}
-                                                    animate={{ opacity: 1 }}
-                                                    exit={{ opacity: 0 }}
-                                                    transition={{ duration: 0.35, ease: "easeInOut" }}
-                                                    className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-1.5 lg:p-2"
-                                                    loading="lazy"
-                                                    decoding="async"
+                                                    alt={getMediaAlt(currentLogo.logo) || ""}
+                                                    fill
+                                                    sizes="(max-width: 768px) 65px, 120px"
+                                                    className="object-contain"
+                                                    priority
                                                 />
-                                            )}
-                                        </AnimatePresence>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                     </span>
                                     <span>{desktopHeadingParts.line1After}</span>
                                 </span>
@@ -144,7 +161,7 @@ export default function FinalCTA({
                         <a
                             href={data.primaryCta.href}
                             onClick={(e) => handleCtaClick(e, data.primaryCta.href, data.primaryCta.label)}
-                            className="w-auto min-w-[210px] lg:min-w-[245px] inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 lg:px-11 py-4 font-satoshi text-[clamp(16px,1.25vw,18px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] bg-black text-white hover:opacity-85"
+                            className="w-auto min-w-[210px] lg:min-w-[245px] inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 lg:px-11 py-3 font-satoshi text-[clamp(16px,1.25vw,18px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] bg-black text-white hover:opacity-85"
                         >
                             {data.primaryCta.label}
                             <span className="ml-2 text-[19px]">→</span>
@@ -153,7 +170,7 @@ export default function FinalCTA({
                         <a
                             href={data.secondaryCta.href}
                             onClick={(e) => handleCtaClick(e, data.secondaryCta.href, data.secondaryCta.label)}
-                            className="w-auto min-w-[210px] lg:min-w-[245px] inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 lg:px-11 py-4 font-satoshi text-[clamp(16px,1.25vw,18px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] border border-black/80 bg-transparent text-black hover:bg-black/5 hover:border-black"
+                            className="w-auto min-w-[210px] lg:min-w-[245px] inline-flex items-center justify-center whitespace-nowrap rounded-full px-8 lg:px-11 py-3 font-satoshi text-[clamp(16px,1.25vw,18px)] font-medium transition-all duration-200 cursor-pointer shadow-sm active:scale-[0.99] border border-black/80 bg-transparent text-black hover:bg-black/5 hover:border-black"
                         >
                             {data.secondaryCta.label}
                             <span className="ml-2 text-[19px]">→</span>
@@ -172,22 +189,33 @@ export default function FinalCTA({
                                 <span className="inline-flex items-center whitespace-nowrap mt-1">
                                     <span>{mobileHeadingParts.likeWord}</span>
                                     <span className="mx-2 inline-flex h-[clamp(48px,12.8vw,62px)] w-[clamp(48px,12.8vw,62px)] align-middle -mt-1.5 rounded-[8px] border-2 border-[#00000025] bg-white relative overflow-hidden select-none shrink-0 shadow-xs">
-                                        <AnimatePresence mode="wait">
-                                            {currentLogo?.logo && (
-                                                <motion.img
-                                                    key={currentLogo.id || currentIndex}
+                                    {/* Preload all logos */}
+                                    {validLogos.map((logo, i) => (
+                                        <div key={`preload-mob-${i}`} className="hidden" aria-hidden>
+                                            <Image src={getMediaUrl(logo.logo)} alt="" width={1} height={1} priority />
+                                        </div>
+                                    ))}
+                                    <AnimatePresence mode="sync">
+                                        {currentLogo?.logo && (
+                                            <motion.div
+                                                key={currentLogo.id || currentIndex}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+                                                className={`absolute inset-0 m-auto w-full h-full p-1.5 ${currentIndex === 0 ? 'bg-[#B34A33]' : 'bg-transparent'}`}
+                                            >
+                                                <Image
                                                     src={getMediaUrl(currentLogo.logo)}
-                                                    alt=""
-                                                    initial={{ opacity: 0 }}
-                                                    animate={{ opacity: 1 }}
-                                                    exit={{ opacity: 0 }}
-                                                    transition={{ duration: 0.35, ease: "easeInOut" }}
-                                                    className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-1.5"
-                                                    loading="lazy"
-                                                    decoding="async"
+                                                    alt={getMediaAlt(currentLogo.logo) || ""}
+                                                    fill
+                                                    sizes="65px"
+                                                    className="object-contain"
+                                                    priority
                                                 />
-                                            )}
-                                        </AnimatePresence>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                     </span>
                                     <span>{mobileHeadingParts.line1After}</span>
                                 </span>

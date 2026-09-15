@@ -6,6 +6,9 @@
 const RAW_STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "https://lead-magnet-7s2k.onrender.com";
 export const STRAPI_URL = RAW_STRAPI_URL.replace(/\/+$/, "");
 
+/** Cache revalidation time (60 seconds) */
+export const REVALIDATE_TIME = 60;
+
 /** Centralized SVG icon paths for social media platforms */
 export const SOCIAL_ICONS: Record<string, string> = {
     Instagram: "/images/insta_logo.svg",
@@ -48,10 +51,37 @@ export function getMediaUrl(
     return `${STRAPI_URL}${rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`}`;
 }
 
-/**
- * Fetches page content from Strapi (Collection Type: pages + Single Types: header, footer).
- */
+export function getMediaDimensions(media?: any): { width: number; height: number } | null {
+    if (!media) return null;
+    let obj: any;
+    if (Array.isArray(media)) obj = media[0];
+    else if (typeof media === "object") obj = media;
+
+    const attrs = obj?.attributes || obj?.data?.attributes || obj?.data || obj;
+    if (attrs?.width && attrs?.height) {
+        return { width: attrs.width, height: attrs.height };
+    }
+    return null;
+}
+
+export function getMediaAlt(media?: any, fallback: string = ""): string {
+    if (!media) return fallback;
+    let obj: any;
+    if (Array.isArray(media)) obj = media[0];
+    else if (typeof media === "object") obj = media;
+
+    const attrs = obj?.attributes || obj?.data?.attributes || obj?.data || obj;
+    return attrs?.alternativeText || fallback;
+}
+
+// In-memory cache to prevent multiple concurrent 13-second Strapi fetches in dev
+let landingPageCache: { data: any; timestamp: number } | null = null;
+const CACHE_TTL_MS = 60 * 1000;
+
 export async function getLandingPage(slug: string = "shopify-lead-magnet") {
+    if (landingPageCache && (Date.now() - landingPageCache.timestamp < CACHE_TTL_MS)) {
+        return landingPageCache.data;
+    }
     try {
         // Deep populate query for all section components inside Dynamic Zone and stickyCTA
         const sectionsPopulate = [
@@ -102,7 +132,7 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
         // Attempt 1A: by target slug with deep population
         const slugRes = await fetch(
             `${STRAPI_URL}/api/pages?filters[slug][$eq]=${slug}&${sectionsPopulate}`,
-            { next: { revalidate: 60 } }
+            { next: { revalidate: REVALIDATE_TIME } }
         ).catch(() => null);
 
         if (slugRes && slugRes.ok) {
@@ -114,7 +144,7 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
             const altSlug = slug === "shopify-lead-magnet" ? "lead-magnet" : "shopify-lead-magnet";
             const altRes = await fetch(
                 `${STRAPI_URL}/api/pages?filters[slug][$eq]=${altSlug}&${sectionsPopulate}`,
-                { next: { revalidate: 60 } }
+                { next: { revalidate: REVALIDATE_TIME } }
             ).catch(() => null);
 
             if (altRes && altRes.ok) {
@@ -126,7 +156,7 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
         if (!pageJson?.data || (Array.isArray(pageJson.data) && pageJson.data.length === 0)) {
             const allPagesRes = await fetch(
                 `${STRAPI_URL}/api/pages?${sectionsPopulate}`,
-                { next: { revalidate: 60 } }
+                { next: { revalidate: REVALIDATE_TIME } }
             ).catch(() => null);
 
             if (allPagesRes && allPagesRes.ok) {
@@ -138,7 +168,7 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
         if (!pageJson?.data || (Array.isArray(pageJson.data) && pageJson.data.length === 0)) {
             const simpleRes = await fetch(
                 `${STRAPI_URL}/api/pages?populate[sections][populate]=*&populate[stickyCTA][populate]=*`,
-                { next: { revalidate: 60 } }
+                { next: { revalidate: REVALIDATE_TIME } }
             ).catch(() => null);
 
             if (simpleRes && simpleRes.ok) {
@@ -166,12 +196,14 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
             const rawStickyCTA = pageData.stickyCTA || pageData.sticky_cta || pageData.StickyCTA;
             const unwrappedStickyCTA = rawStickyCTA?.attributes ? { id: rawStickyCTA.id, ...rawStickyCTA.attributes } : rawStickyCTA;
 
-            return {
+            const result = {
                 ...pageData,
                 header: headerData || pageData.header,
                 footer: footerData || pageData.footer,
                 stickyCTA: unwrappedStickyCTA,
             };
+            landingPageCache = { data: result, timestamp: Date.now() };
+            return result;
         }
 
         console.warn("[Strapi Fetch] No published page found in /api/pages");
@@ -201,7 +233,7 @@ export async function getHeader(): Promise<any> {
 
     for (const url of urls) {
         try {
-            const res = await fetch(url, { next: { revalidate: 60 } });
+            const res = await fetch(url, { next: { revalidate: REVALIDATE_TIME } });
             if (res.ok) {
                 const json = await res.json().catch(() => null);
                 const d = json?.data;
@@ -237,19 +269,16 @@ export async function getFooter(): Promise<any> {
     ].join("&");
 
     const urls = [
-        `${STRAPI_URL}/api/footer?${deepNested}`,
         `${STRAPI_URL}/api/footer?populate[footer][populate]=*`,
         `${STRAPI_URL}/api/footer?populate[Footer][populate]=*`,
+        `${STRAPI_URL}/api/footer?${deepNested}`,
         `${STRAPI_URL}/api/footer?populate=*`,
-        `${STRAPI_URL}/api/footer?${deepNested}&status=draft`,
-        `${STRAPI_URL}/api/footer?populate[footer][populate]=*&status=draft`,
-        `${STRAPI_URL}/api/footer?populate=*&status=draft`,
         `${STRAPI_URL}/api/footer`,
     ];
 
     for (const url of urls) {
         try {
-            const res = await fetch(url, { next: { revalidate: 60 } });
+            const res = await fetch(url, { next: { revalidate: REVALIDATE_TIME } });
             if (res.ok) {
                 const json = await res.json().catch(() => null);
                 const d = json?.data;

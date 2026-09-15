@@ -7,6 +7,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export type { QuoteFormData, BudgetRange, FormOption };
 
+const formatHint = (hint?: string) => {
+    if (!hint) return "";
+    const trimmed = hint.trim();
+    if (!trimmed) return "";
+    if (trimmed.startsWith("(") && trimmed.endsWith(")")) return trimmed;
+    return `(${trimmed})`;
+};
+
 interface QuoteFormProps {
     form?: QuoteFormData | QuoteFormData[] | null;
     variant?: "hero" | "modal";
@@ -49,29 +57,68 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
     const [clickedIssue, setClickedIssue] = React.useState<string | null>(null);
 
     const noOptionLabel = form?.noLabel;
+    const shopifyQuestionHint = formatHint(form?.shopifyQuestionHint ?? "(choose one)");
+    const issuesHint = formatHint(form?.issuesHint ?? "(multiple options)");
+    const budgetHint = formatHint(form?.budgetHint ?? "(choose one)");
 
-    // Automatically reset hero form to step 1 (after 3s), or auto-close sticky CTA modal (after 2.5s) on successful submission
+    // Automatically reset hero form to step 1 (after 5s), or auto-close sticky CTA modal (after 3.5s) on successful submission
     React.useEffect(() => {
         if (!isSubmitted) return;
 
         if (isHero) {
             const timer = setTimeout(() => {
                 resetForm();
-            }, 3000);
+            }, 5000);
             return () => clearTimeout(timer);
         } else if (onClose) {
             const timer = setTimeout(() => {
                 onClose();
-            }, 2500);
+            }, 3500);
             return () => clearTimeout(timer);
         }
     }, [isSubmitted, isHero, resetForm, onClose]);
+
+    if (isSubmitted) {
+        return (
+            <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className={`w-full flex flex-col items-center justify-center text-center ${
+                    isHero
+                        ? "py-10 sm:py-14 px-4 min-h-[360px] sm:min-h-[420px]"
+                        : "py-8 sm:py-12 px-4 flex-1 my-auto"
+                }`}
+            >
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#EBF7F2] border border-[#A7E2C7] flex items-center justify-center text-[#168050] mb-4 shadow-sm">
+                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 className="font-nohemi text-[20px] sm:text-[24px] font-normal text-[#111827] mb-2 leading-tight">
+                    {form?.successTitle || "We've received your details! We'll call you shortly."}
+                </h3>
+                <p className="font-satoshi text-[13px] sm:text-[14px] text-[#4B5563] leading-relaxed max-w-[420px]">
+                    {form?.successDescription || "Our team is reviewing your requirements and will reach out to you with your personalized quote."}
+                </p>
+                {!isHero && (
+                    <button
+                        type="button"
+                        onClick={() => onClose?.()}
+                        className="font-satoshi px-7 py-2.5 rounded-full bg-[#242120] text-white hover:bg-black text-[13px] sm:text-[13.5px] font-medium transition-colors cursor-pointer shadow-sm mt-6"
+                    >
+                        {form?.closeButtonLabel || "Done"}
+                    </button>
+                )}
+            </motion.div>
+        );
+    }
 
     return (
         <div className={isHero ? "w-full" : "flex flex-col justify-between flex-1"}>
             {/* Title & Description */}
             <div>
-                <div className={isHero ? "w-full max-w-[620px] xl:max-w-none pt-2 sm:pt-0" : "mb-1.5 sm:mb-3.5"}>
+                <div className={isHero ? "w-full max-w-[620px] xl:max-w-none pt-2 sm:pt-0" : "mb-2 sm:mb-3.5"}>
                     <h2
                         className={
                             isHero
@@ -97,7 +144,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                 </div>
 
                 {/* Step Bar */}
-                <div className={isHero ? "mb-6 sm:mb-8 select-none" : "mb-2 sm:mb-7 select-none"}>
+                <div className={isHero ? "mb-6 sm:mb-8 select-none" : "mb-3 sm:mb-7 select-none"}>
                     <div className={isHero ? "mb-2" : "flex items-center justify-between mb-1 sm:mb-3"}>
                         <span
                             className={
@@ -156,16 +203,22 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
             {/* Step 1: Store status & URL */}
             {step === 1 && (
                 <div className={isHero ? "space-y-4" : "flex flex-col flex-1 justify-between"}>
-                    <div className={isHero ? "space-y-4" : "space-y-3 sm:space-y-5"}>
+                    <div className={isHero ? "space-y-4" : "space-y-4 sm:space-y-5"}>
                         <div>
                             <label
+                                suppressHydrationWarning
                                 className={
                                     isHero
-                                        ? "font-nohemi block text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
-                                        : "font-nohemi block text-[14.5px] sm:text-[16px] font-normal text-[#1A1A1A] mb-1.5"
+                                        ? "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
+                                        : "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[14.5px] sm:text-[16px] font-normal text-[#1A1A1A] mb-1.5"
                                 }
                             >
-                                {form?.shopifyQuestion}
+                                <span>{form?.shopifyQuestion}</span>
+                                {shopifyQuestionHint && (
+                                    <span className={`${isHero ? "inline lg:hidden" : "inline"} text-[12.5px] sm:text-[13.5px] font-normal text-[#71717A] tracking-normal`}>
+                                        {shopifyQuestionHint}
+                                    </span>
+                                )}
                             </label>
 
                             {isHero ? (
@@ -233,7 +286,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             )}
                         </div>
 
-                        <div className={isHero ? "pt-1 mb-4 sm:mb-0" : "mb-3.5 sm:mb-5"}>
+                        <div className={isHero ? "pt-1 mb-4 sm:mb-0" : "mb-4 sm:mb-5"}>
                             <label
                                 className={
                                     isHero
@@ -280,7 +333,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                         className={
                             isHero
                                 ? "font-satoshi w-full bg-[#2B44E7] hover:bg-[#2037CA] text-white font-medium py-2.5 sm:py-3 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 mt-[195px] sm:mt-24 lg:mt-[90px] xl:mt-[90px] 2xl:mt-[120px] mb-6 sm:mb-7 lg:mb-6 xl:mb-8 text-[15px] sm:text-[16px] shadow-none cursor-pointer"
-                                : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2 sm:py-2.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 mt-3.5 sm:mt-auto mb-2 sm:mb-3 text-[13px] sm:text-[14px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
+                                : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2 sm:py-2.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 mt-4 sm:mt-auto mb-2 sm:mb-3 text-[13px] sm:text-[14px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
                         }
                     >
                         <span>{form?.continueLabel}</span>
@@ -298,18 +351,24 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
             {/* Step 2: Issues & budget selection */}
             {step === 2 && (
                 <div className={isHero ? "space-y-4" : "flex flex-col flex-1 justify-between"}>
-                    <div className={isHero ? "space-y-4" : "space-y-2 sm:space-y-4"}>
+                    <div className={isHero ? "space-y-4" : "space-y-2.5 sm:space-y-4"}>
                         {/* Issues */}
                         <div>
-                            <div className={isHero ? "flex items-center justify-between mb-1 sm:mb-2" : "mb-1 sm:mb-1.5"}>
+                            <div className={isHero ? "flex items-center justify-between mb-1 sm:mb-2" : "mb-1.5 sm:mb-2"}>
                                 <label
+                                    suppressHydrationWarning
                                     className={
                                         isHero
-                                            ? "font-nohemi block text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
-                                            : "font-nohemi block text-[14px] sm:text-[19px] font-normal text-[#1A1A1A]"
+                                            ? "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
+                                            : "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[14px] sm:text-[19px] font-normal text-[#1A1A1A]"
                                     }
                                 >
-                                    {form?.issuesLabel}
+                                    <span>{form?.issuesLabel}</span>
+                                    {issuesHint && (
+                                        <span className="text-[12px] sm:text-[13px] font-normal text-[#71717A] tracking-normal">
+                                            {issuesHint}
+                                        </span>
+                                    )}
                                 </label>
                             </div>
 
@@ -423,15 +482,21 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
 
                         {/* Budget */}
                         <div>
-                            <div className={isHero ? "flex items-center justify-between mb-1 sm:mb-2" : "mb-1 sm:mb-1.5"}>
+                            <div className={isHero ? "flex items-center justify-between mb-1 sm:mb-2" : "mb-1.5 sm:mb-2"}>
                                 <label
+                                    suppressHydrationWarning
                                     className={
                                         isHero
-                                            ? "font-nohemi block text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
-                                            : "font-nohemi block text-[14px] sm:text-[19px] font-normal text-[#1A1A1A]"
+                                            ? "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
+                                            : "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[14px] sm:text-[19px] font-normal text-[#1A1A1A]"
                                     }
                                 >
-                                    {form?.budgetLabel}
+                                    <span>{form?.budgetLabel}</span>
+                                    {budgetHint && (
+                                        <span className={`${isHero ? "inline lg:hidden" : "inline"} text-[12px] sm:text-[13px] font-normal text-[#71717A] tracking-normal`}>
+                                            {budgetHint}
+                                        </span>
+                                    )}
                                 </label>
                             </div>
 
@@ -507,12 +572,12 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                         </div>
 
                         {/* Other Issues */}
-                        <div className={isHero ? "" : "pb-0.5"}>
+                        <div className={isHero ? "" : "mb-1 sm:mb-1.5 pb-0.5"}>
                             <label
                                 className={
                                     isHero
                                         ? "font-nohemi block text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
-                                        : "font-nohemi block text-[12.5px] sm:text-[14.5px] font-normal text-[#1A1A1A] mb-0.5 sm:mb-1.5"
+                                        : "font-nohemi block text-[12.5px] sm:text-[14.5px] font-normal text-[#1A1A1A] mb-1 sm:mb-1.5"
                                 }
                             >
                                 {form?.otherIssuesLabel}
@@ -554,7 +619,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                         className={
                             isHero
                                 ? "font-satoshi w-full bg-[#2B44E7] hover:bg-[#2037CA] text-white font-medium py-2.5 sm:py-3 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 mt-[195px] sm:mt-6 mb-6 sm:mb-7 lg:mb-6 xl:mb-8 text-[15px] sm:text-[16px] shadow-none cursor-pointer"
-                                : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 mt-3.5 sm:mt-6 mb-2 sm:mb-4 md:mb-5 text-[13.5px] sm:text-[15.5px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
+                                : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 mt-4 sm:mt-6 mb-2 sm:mb-4 md:mb-5 text-[13.5px] sm:text-[15.5px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
                         }
                     >
                         <span>{form?.estimateButtonLabel}</span>
@@ -586,7 +651,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             className={
                                 isHero
                                     ? "font-satoshi text-[13px] sm:text-[13.5px] text-[#6B6B6B] mt-0.5 sm:mt-1 mb-2 sm:mb-2.5"
-                                    : "font-satoshi text-[11px] sm:text-[12.5px] text-[#6B7280] mt-0.5 mb-2"
+                                    : "font-satoshi text-[11px] sm:text-[12.5px] text-[#6B7280] mt-0.5 mb-2.5 sm:mb-3"
                             }
                         >
                             {form?.basedOnLabel}{" "}
@@ -701,7 +766,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                     className={
                                         isHero
                                             ? "font-nohemi block text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
-                                            : "font-nohemi block text-[12.5px] sm:text-[13.5px] font-normal text-[#111827] mb-0.5 sm:mb-1"
+                                            : "font-nohemi block text-[12.5px] sm:text-[13.5px] font-normal text-[#111827] mb-1 sm:mb-1"
                                     }
                                 >
                                     {form?.phoneLabel}
@@ -730,7 +795,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                     className={
                                         isHero
                                             ? "font-nohemi block text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
-                                            : "font-nohemi block text-[12.5px] sm:text-[13.5px] font-normal text-[#111827] mb-0.5 sm:mb-1"
+                                            : "font-nohemi block text-[12.5px] sm:text-[13.5px] font-normal text-[#111827] mb-1 sm:mb-1"
                                     }
                                 >
                                     {form?.emailLabel}
@@ -788,7 +853,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                     className={
                                         isHero
                                             ? `font-satoshi w-full bg-[#3145DD] hover:bg-[#2637b8] text-white font-medium py-2.5 sm:py-3 px-6 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 text-[15.5px] sm:text-[16px] shadow-sm hover:shadow-md cursor-pointer ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
-                                            : `font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[14px] sm:text-[15px] cursor-pointer shadow-md active:scale-[0.99] mt-2 sm:mt-2 ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
+                                            : `font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[14px] sm:text-[15px] cursor-pointer shadow-md active:scale-[0.99] mt-3 sm:mt-2 ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
                                     }
                                 >
                                     {isSubmitting ? (
@@ -812,7 +877,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                     className={
                                         isHero
                                             ? "text-center font-satoshi text-[12px] sm:text-[12.5px] text-[#777777] mt-3"
-                                            : "text-center font-satoshi text-[10.5px] sm:text-[11.5px] text-[#111827] mt-1 sm:mt-1.5"
+                                            : "text-center font-satoshi text-[10.5px] sm:text-[11.5px] text-[#111827] mt-1.5 sm:mt-1.5"
                                     }
                                 >
                                     {form.disclaimer}

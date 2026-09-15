@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../**/*.tsx";
+@source "../**/*.ts";
 
 :root {
   --background: #ffffff;
@@ -153,4 +155,4 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-stopped {
   overflow: hidden;
-}
+}@source "../**/*.tsx";

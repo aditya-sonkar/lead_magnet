@@ -95,12 +95,12 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
         }
     }, [isOpen]);
 
-    // Auto-close modal after 2.5s on successful submission
+    // Auto-close modal after 3.5s on successful submission
     useEffect(() => {
         if (!isSubmitted) return;
         const timer = setTimeout(() => {
             onClose();
-        }, 2500);
+        }, 3500);
         return () => clearTimeout(timer);
     }, [isSubmitted, onClose]);
 
@@ -161,97 +161,116 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
                             </svg>
                         </button>
 
-                        {/* Title & Description */}
-                        <div className="mb-5 sm:mb-6">
-                            <h2 className="font-nohemi text-[clamp(26px,3.2vw,34px)] font-normal text-[#111827] leading-[1.15] tracking-tight pr-8">
-                                {title}
-                            </h2>
-                            <p className="font-satoshi text-[#555555] text-[clamp(12.5px,1.05vw,13.5px)] leading-relaxed mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line">
-                                {description}
-                            </p>
-                        </div>
-
                         {isSubmitted ? (
-                            <div className="p-6 rounded-none bg-[#EBF7F2] text-[#1E7448] text-center font-satoshi text-[clamp(14px,1.1vw,15px)] space-y-2.5 my-4">
-                                <p className="font-medium text-[clamp(15px,1.2vw,16px)]">✓ {successTitle || "We've received your details! We'll call you shortly."}</p>
-                                {successDescription && (
-                                    <p className="text-[clamp(12.5px,1vw,13.5px)] text-[#2A7550]">
-                                        {successDescription}
-                                    </p>
-                                )}
-                            </div>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.96, y: 8 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                transition={{ duration: 0.35, ease: "easeOut" }}
+                                className="w-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2 my-auto"
+                            >
+                                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#EBF7F2] border border-[#A7E2C7] flex items-center justify-center text-[#168050] mb-4 shadow-sm">
+                                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <h3 className="font-nohemi text-[20px] sm:text-[24px] font-normal text-[#111827] mb-2 leading-tight">
+                                    {successTitle || "We've received your details! We'll call you shortly."}
+                                </h3>
+                                <p className="font-satoshi text-[13px] sm:text-[14px] text-[#4B5563] leading-relaxed max-w-[420px] mb-6">
+                                    {successDescription || "Our team will reach out to you shortly to discuss your project and schedule your free call."}
+                                </p>
+                                <button
+                                    type="button"
+                                    onClick={onClose}
+                                    className="font-satoshi px-7 py-2.5 rounded-full bg-[#242120] text-white hover:bg-black text-[13px] sm:text-[13.5px] font-medium transition-colors cursor-pointer shadow-sm"
+                                >
+                                    {data?.closeButtonLabel || "Done"}
+                                </button>
+                            </motion.div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
-                                {/* Email Field */}
-                                <div>
-                                    <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
-                                        {emailLabel}
-                                    </label>
-                                    <input
-                                        type="email"
-                                        required
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        placeholder={emailPlaceholder}
-                                        className="font-satoshi w-full px-5 py-2.5 sm:py-3 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12.5px,1vw,13.5px)] text-[#111827] bg-[#F1F1F3] placeholder-[#8E8E93] transition-all duration-200"
-                                    />
+                            <>
+                                {/* Title & Description */}
+                                <div className="mb-5 sm:mb-6">
+                                    <h2 className="font-nohemi text-[clamp(26px,3.2vw,34px)] font-normal text-[#111827] leading-[1.15] tracking-tight pr-8">
+                                        {title}
+                                    </h2>
+                                    <p className="font-satoshi text-[#555555] text-[clamp(12.5px,1.05vw,13.5px)] leading-relaxed mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line">
+                                        {description}
+                                    </p>
                                 </div>
 
-                                {/* Phone Number Field */}
-                                <div>
-                                    <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
-                                        {phoneLabel}
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        required
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                        placeholder={phonePlaceholder}
-                                        className="font-satoshi w-full px-5 py-2.5 sm:py-3 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12.5px,1vw,13.5px)] text-[#111827] bg-[#F1F1F3] placeholder-[#8E8E93] transition-all duration-200"
-                                    />
-                                </div>
+                                <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
+                                    {/* Email Field */}
+                                    <div>
+                                        <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                            {emailLabel}
+                                        </label>
+                                        <input
+                                            type="email"
+                                            required
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            placeholder={emailPlaceholder}
+                                            className="font-satoshi w-full px-5 py-2.5 sm:py-3 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12.5px,1vw,13.5px)] text-[#111827] bg-[#F1F1F3] placeholder-[#8E8E93] transition-all duration-200"
+                                        />
+                                    </div>
 
-                                {/* Shopify Link Field */}
-                                <div>
-                                    <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
-                                        {shopifyLinkLabel}
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={shopifyLink}
-                                        onChange={(e) => setShopifyLink(e.target.value)}
-                                        placeholder={shopifyLinkPlaceholder}
-                                        className="font-satoshi w-full px-5 py-2.5 sm:py-3 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12.5px,1vw,13.5px)] text-[#111827] bg-[#F1F1F3] placeholder-[#8E8E93] transition-all duration-200"
-                                    />
-                                </div>
+                                    {/* Phone Number Field */}
+                                    <div>
+                                        <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                            {phoneLabel}
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            required
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
+                                            placeholder={phonePlaceholder}
+                                            className="font-satoshi w-full px-5 py-2.5 sm:py-3 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12.5px,1vw,13.5px)] text-[#111827] bg-[#F1F1F3] placeholder-[#8E8E93] transition-all duration-200"
+                                        />
+                                    </div>
 
-                                {/* Submit Button */}
-                                <div className="pt-2 sm:pt-2.5">
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className={`font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-3 sm:py-3.5 px-6 rounded-full transition-all duration-200 flex justify-center items-center text-[clamp(14px,1.1vw,15px)] cursor-pointer shadow-md active:scale-[0.99] ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`}
-                                    >
-                                        {isSubmitting ? (
-                                            <>
-                                                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                                                </svg>
-                                                <span>{data?.submittingButtonLabel || "Submitting..."}</span>
-                                            </>
-                                        ) : (
-                                            buttonLabel
+                                    {/* Shopify Link Field */}
+                                    <div>
+                                        <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                            {shopifyLinkLabel}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={shopifyLink}
+                                            onChange={(e) => setShopifyLink(e.target.value)}
+                                            placeholder={shopifyLinkPlaceholder}
+                                            className="font-satoshi w-full px-5 py-2.5 sm:py-3 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12.5px,1vw,13.5px)] text-[#111827] bg-[#F1F1F3] placeholder-[#8E8E93] transition-all duration-200"
+                                        />
+                                    </div>
+
+                                    {/* Submit Button */}
+                                    <div className="pt-2 sm:pt-2.5">
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className={`font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-3 sm:py-3.5 px-6 rounded-full transition-all duration-200 flex justify-center items-center text-[clamp(14px,1.1vw,15px)] cursor-pointer shadow-md active:scale-[0.99] ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`}
+                                        >
+                                            {isSubmitting ? (
+                                                <>
+                                                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                                    </svg>
+                                                    <span>{data?.submittingButtonLabel || "Submitting..."}</span>
+                                                </>
+                                            ) : (
+                                                buttonLabel
+                                            )}
+                                        </button>
+                                        {disclaimer && (
+                                            <p className="text-center font-satoshi text-[clamp(11.5px,0.9vw,12.5px)] text-[#777777] mt-2.5 sm:mt-3">
+                                                {disclaimer}
+                                            </p>
                                         )}
-                                    </button>
-                                    {disclaimer && (
-                                        <p className="text-center font-satoshi text-[clamp(11.5px,0.9vw,12.5px)] text-[#777777] mt-2.5 sm:mt-3">
-                                            {disclaimer}
-                                        </p>
-                                    )}
-                                </div>
-                            </form>
+                                    </div>
+                                </form>
+                            </>
                         )}
                     </motion.div>
                 </div>

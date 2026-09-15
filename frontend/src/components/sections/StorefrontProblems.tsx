@@ -15,6 +15,7 @@ type StorefrontProblemsData = {
     summary: string;
     submitLabel: string;
     submitHref: string;
+    warningMessage?: string;
 };
 
 function renderFormattedDescription(desc: string) {
@@ -49,15 +50,19 @@ export default function StorefrontProblems({
 }) {
     if (!data) return null;
     const [selectedIds, setSelectedIds] = useState<number[]>([]);
+    const [showWarning, setShowWarning] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const toggleSelect = (id: number) => {
         setSelectedIds((prev) =>
             prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
         );
+        setShowWarning(false); // Clear warning on selection change
     };
 
     return (
-        <section id="storefront-problems" className="w-full bg-white px-6 pt-15 pb-10 text-[#0D2108] lg:px-[60px] xl:px-[80px] lg:pt-[90px] lg:pb-[30px] border-none outline-none">
+        <section id="storefront-problems" suppressHydrationWarning className="w-full bg-white px-6 pt-15 pb-10 text-[#0D2108] lg:px-[60px] xl:px-[80px] lg:pt-[90px] lg:pb-[30px] border-none outline-none">
             <div className="mx-auto max-w-[1720px] w-full">
                 <div className="w-full">
                     <h2 className="font-delight text-[clamp(32px,4.2vw,65px)] font-medium leading-[1.15] tracking-[-0.015em] xl:whitespace-nowrap text-[#0F1D07]">
@@ -91,7 +96,7 @@ export default function StorefrontProblems({
                                     : "bg-[#EFF0FD] sm:bg-[#EEF0FF] hover:bg-[#B4BCFE]"
                                     }`}
                             >
-                                <div className="pr-9 sm:pr-7">
+                                <div className="pr-9 sm:pr-9">
                                     <h3 className="font-delight text-[19.5px] sm:text-[18.5px] lg:text-[19px] font-medium leading-[1.32] sm:leading-[1.25] text-[#0F1D07] text-balance whitespace-pre-line">
                                         {item.title}
                                     </h3>
@@ -102,12 +107,12 @@ export default function StorefrontProblems({
                                 </div>
 
                                 <div
-                                    className={`absolute right-4 top-4.5 sm:right-4 sm:top-4 flex h-8 w-8 sm:h-6.5 sm:w-6.5 items-center justify-center rounded-[9px] shrink-0 transition-all duration-200 ${isSelected ? "bg-[#3145DD] text-white" : "bg-white text-[#1A1A1A] shadow-xs"
+                                    className={`absolute right-4 top-4.5 sm:right-4 sm:top-4 flex h-8 w-8 sm:h-8 sm:w-8 items-center justify-center rounded-[9px] sm:rounded-[6px] shrink-0 transition-all duration-200 ${isSelected ? "bg-[#3145DD] text-white" : "bg-white text-[#1A1A1A] shadow-xs"
                                         }`}
                                 >
                                     {isSelected ? (
                                         <svg
-                                            className="w-5 h-5 sm:w-4 sm:h-4 text-white"
+                                            className="w-5 h-5 sm:w-4.5 sm:h-4.5 text-white"
                                             viewBox="0 0 16 16"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +127,7 @@ export default function StorefrontProblems({
                                         </svg>
                                     ) : (
                                         <svg
-                                            className="w-5.5 h-5.5 sm:w-4 sm:h-4 text-[#1A1A1A]"
+                                            className="w-5.5 h-5.5 sm:w-4.5 sm:h-4.5 text-[#1A1A1A]"
                                             viewBox="0 0 16 16"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -179,19 +184,71 @@ export default function StorefrontProblems({
                             )}
 
                             {data.submitLabel && (
-                                <a
-                                    href={data.submitHref}
-                                    onClick={(e) => {
-                                        if (data.submitHref === "#quote" || data.submitHref?.includes("quote")) {
+                                <div className="w-full sm:w-auto flex flex-col items-center">
+                                    <a
+                                        href={data.submitHref}
+                                        onClick={(e) => {
                                             e.preventDefault();
-                                            window.dispatchEvent(new CustomEvent("open-quote-modal"));
-                                        }
-                                    }}
-                                    className="flex w-full font-inter items-center justify-center rounded-full bg-[#3447E5] px-10 py-2.5 sm:py-3.5 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer"
-                                >
-                                    {data.submitLabel}
-                                    <span className="ml-2">→</span>
-                                </a>
+                                            if (isSubmitting || isSuccess) return;
+
+                                            if (selectedIds.length === 0) {
+                                                setShowWarning(true);
+                                                return;
+                                            }
+                                            setShowWarning(false);
+                                            setIsSubmitting(true);
+                                            
+                                            setTimeout(() => {
+                                                setIsSubmitting(false);
+                                                setIsSuccess(true);
+                                                
+                                                setTimeout(() => {
+                                                    if (data.submitHref === "#quote" || data.submitHref?.includes("quote")) {
+                                                        window.dispatchEvent(new CustomEvent("open-quote-modal"));
+                                                    } else {
+                                                        window.location.href = data.submitHref;
+                                                    }
+                                                    
+                                                    // Reset after modal opens
+                                                    setTimeout(() => {
+                                                        setIsSuccess(false);
+                                                        setSelectedIds([]);
+                                                    }, 500);
+                                                }, 800);
+                                            }, 800);
+                                        }}
+                                        className={`flex w-full font-inter items-center justify-center rounded-full px-10 py-2.5 sm:py-3.5 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer ${
+                                            isSuccess ? "bg-[#168050]" : "bg-[#3447E5]"
+                                        }`}
+                                    >
+                                        {isSubmitting ? (
+                                            <>
+                                                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                                </svg>
+                                                <span>Diagnosing...</span>
+                                            </>
+                                        ) : isSuccess ? (
+                                            <>
+                                                <svg className="w-4 h-4 mr-1.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>Complete!</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                {data.submitLabel}
+                                                <span className="ml-2">→</span>
+                                            </>
+                                        )}
+                                    </a>
+                                    {showWarning && (
+                                        <p className="font-satoshi mt-2 text-[12.5px] sm:text-[13px] text-[#DC2626] font-medium text-center w-full animate-in fade-in slide-in-from-top-1 duration-200">
+                                            {data.warningMessage || "Please select at least one issue to continue."}
+                                        </p>
+                                    )}
+                                </div>
                             )}
                         </div>
                     );

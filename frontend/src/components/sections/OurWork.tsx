@@ -2,7 +2,8 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getMediaUrl } from "@/lib/strapi";
+import { getMediaUrl, getMediaAlt, getMediaDimensions } from "@/lib/strapi";
+import Image from "next/image";
 
 type OurWorkImage = {
     url: string;
@@ -21,12 +22,6 @@ type OurWorkData = {
     MobileDescription?: string;
     projects: OurWorkProject[];
 };
-
-function getMediaAlt(media?: OurWorkImage | OurWorkImage[] | null, fallback: string = ""): string {
-    if (!media) return fallback;
-    const item = Array.isArray(media) ? media[0] : media;
-    return item?.alternativeText || fallback;
-}
 
 export default function OurWork({ data }: { data: OurWorkData }) {
     const projects = data?.projects || [];
@@ -115,12 +110,12 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                     : "opacity-40 cursor-not-allowed"
                                 }`}
                         >
-                            <img
+                            <Image
                                 src="/images/arrow_left.svg"
                                 alt=""
+                                width={16}
+                                height={16}
                                 className="h-4 w-4"
-                                loading="lazy"
-                                decoding="async"
                             />
                         </button>
 
@@ -134,12 +129,12 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                     : "opacity-40 cursor-not-allowed"
                                 }`}
                         >
-                            <img
+                            <Image
                                 src="/images/arrow_right.svg"
                                 alt=""
+                                width={16}
+                                height={16}
                                 className="h-4 w-4"
-                                loading="lazy"
-                                decoding="async"
                             />
                         </button>
                     </div>
@@ -230,19 +225,23 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                 variants={{
                                     enter: (dir: number) => ({
                                         x: dir > 0 ? "100%" : "-100%",
+                                        opacity: 0.5,
                                     }),
                                     center: {
                                         x: 0,
+                                        opacity: 1,
                                     },
                                     exit: (dir: number) => ({
                                         x: dir > 0 ? "-100%" : "100%",
+                                        opacity: 0.5,
                                     }),
                                 }}
                                 initial="enter"
                                 animate="center"
                                 exit="exit"
                                 transition={{
-                                    x: { type: "tween", ease: [0.25, 1, 0.5, 1], duration: 0.45 },
+                                    x: { type: "spring", stiffness: 180, damping: 22, mass: 0.8 },
+                                    opacity: { duration: 0.4 },
                                 }}
                                 className="w-full will-change-transform"
                             >
@@ -250,26 +249,49 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                                     const proj = projects[currentIndex];
                                     const bUrl = getMediaUrl(proj?.images);
                                     const mUrl = getMediaUrl(proj?.mobileImages);
+                                    const bDims = getMediaDimensions(proj?.images);
+                                    const mDims = getMediaDimensions(proj?.mobileImages);
+                                    const dims = bDims || mDims || { width: 1920, height: 1080 };
                                     const alt =
                                         getMediaAlt(proj?.images) ||
                                         getMediaAlt(proj?.mobileImages) ||
                                         data?.heading ||
                                         "Our Work";
 
-                                    return (
-                                        <picture className="w-full block">
-                                            {mUrl && (
-                                                <source media="(max-width: 767px)" srcSet={mUrl} />
-                                            )}
-                                            <img
-                                                src={bUrl || mUrl || ""}
-                                                alt={alt}
-                                                className="h-auto w-full max-h-[85vh] 2xl:max-h-[860px] object-cover object-top block select-none pointer-events-none"
-                                                draggable={false}
-                                                loading="lazy"
-                                                decoding="async"
-                                            />
-                                        </picture>
+                                    const imageClasses = "h-auto w-full max-h-[85vh] 2xl:max-h-[860px] object-cover object-top block select-none pointer-events-none";
+
+                                    return mUrl ? (
+                                        <>
+                                            <div className="block md:hidden">
+                                                <Image
+                                                    src={mUrl}
+                                                    alt={alt}
+                                                    width={mDims?.width || 1080}
+                                                    height={mDims?.height || 1080}
+                                                    className={imageClasses}
+                                                    priority={currentIndex === 0}
+                                                />
+                                            </div>
+                                            <div className="hidden md:block">
+                                                <Image
+                                                    src={bUrl || mUrl || ""}
+                                                    alt={alt}
+                                                    width={dims.width}
+                                                    height={dims.height}
+                                                    className={imageClasses}
+                                                    priority={currentIndex === 0}
+                                                />
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <Image
+                                            src={bUrl || mUrl || ""}
+                                            alt={alt}
+                                            width={dims.width}
+                                            height={dims.height}
+                                            className={imageClasses}
+                                            priority={currentIndex === 0}
+                                        />
                                     );
                                 })()}
                             </motion.div>

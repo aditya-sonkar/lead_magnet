@@ -193,6 +193,8 @@ export interface SectionsQuoteForm extends Struct.ComponentSchema {
   attributes: {
     basedOnLabel: Schema.Attribute.String;
     bookCallButtonLabel: Schema.Attribute.String;
+    budgetHint: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'(choose one)'>;
     budgetLabel: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Select your budget range'>;
     budgetRanges: Schema.Attribute.Component<'shared.budget-range', true>;
@@ -210,6 +212,8 @@ export interface SectionsQuoteForm extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'Get My Estimate'>;
     estimateLabel: Schema.Attribute.String;
     issueOptions: Schema.Attribute.Component<'shared.form-option', true>;
+    issuesHint: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'(multiple options)'>;
     issuesLabel: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'What needs Improvement ?'>;
     issuesWarning: Schema.Attribute.String &
@@ -230,6 +234,8 @@ export interface SectionsQuoteForm extends Struct.ComponentSchema {
     shopifyLinkLabel: Schema.Attribute.String;
     shopifyLinkPlaceholder: Schema.Attribute.String;
     shopifyQuestion: Schema.Attribute.String;
+    shopifyQuestionHint: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'(choose one)'>;
     step2Description: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<'Select what\u2019s not working and your preferred budget.'>;
     step2Label: Schema.Attribute.String &
@@ -276,6 +282,7 @@ export interface SectionsStorefrontProblems extends Struct.ComponentSchema {
     submitHref: Schema.Attribute.String;
     submitLabel: Schema.Attribute.String;
     summary: Schema.Attribute.Component<'sections.summary', true>;
+    warningMessage: Schema.Attribute.String;
   };
 }
 

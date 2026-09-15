@@ -1,6 +1,7 @@
 "use client";
 
 import QuoteForm from "@/components/quote/QuoteForm";
+import Image from "next/image";
 import type { QuoteFormData } from "@/types/quote";
 import { getMediaUrl } from "@/lib/strapi";
 
@@ -158,15 +159,14 @@ export default function Hero({ data }: { data: HeroData }) {
                                         <div className="flex shrink-0 items-center gap-6 sm:gap-8 lg:gap-12 pr-6 sm:pr-8 lg:pr-12">
                                             {trackBrands.map((brand, idx) => (
                                                 <div key={`brand-track1-${idx}`} className="flex items-center justify-center h-9 sm:h-11 shrink-0">
-                                                    <img
+                                                    <Image
                                                         src={getMediaUrl(brand.logo)}
                                                         alt={brand.name || "Brand logo"}
                                                         width={120}
                                                         height={44}
                                                         className={`${getBrandSize(brand)} w-auto object-contain transition-all duration-300 opacity-100`}
                                                         style={{ filter: 'brightness(0) invert(1)' }}
-                                                        loading="lazy"
-                                                        decoding="async"
+                                                        priority
                                                     />
                                                 </div>
                                             ))}
@@ -174,7 +174,7 @@ export default function Hero({ data }: { data: HeroData }) {
                                         <div className="flex shrink-0 items-center gap-6 sm:gap-8 lg:gap-12 pr-6 sm:pr-8 lg:pr-12" aria-hidden="true">
                                             {trackBrands.map((brand, idx) => (
                                                 <div key={`brand-track2-${idx}`} className="flex items-center justify-center h-9 sm:h-11 shrink-0">
-                                                    <img
+                                                    <Image
                                                         src={getMediaUrl(brand.logo)}
                                                         alt={brand.name || "Brand logo"}
                                                         width={120}
@@ -182,7 +182,6 @@ export default function Hero({ data }: { data: HeroData }) {
                                                         className={`${getBrandSize(brand)} w-auto object-contain transition-all duration-300 opacity-100`}
                                                         style={{ filter: 'brightness(0) invert(1)' }}
                                                         loading="lazy"
-                                                        decoding="async"
                                                     />
                                                 </div>
                                             ))}

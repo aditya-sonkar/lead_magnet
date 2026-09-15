@@ -17,6 +17,10 @@
     "shopifyQuestion": {
       "type": "string"
     },
+    "shopifyQuestionHint": {
+      "type": "string",
+      "default": "(choose one)"
+    },
     "yesLabel": {
       "type": "string"
     },
@@ -52,6 +56,10 @@
       "type": "string",
       "default": "What needs Improvement ?"
     },
+    "issuesHint": {
+      "type": "string",
+      "default": "(multiple options)"
+    },
     "issueOptions": {
       "type": "component",
       "component": "shared.form-option",
@@ -60,6 +68,10 @@
     "budgetLabel": {
       "type": "string",
       "default": "Select your budget range"
+    },
+    "budgetHint": {
+      "type": "string",
+      "default": "(choose one)"
     },
     "budgetRanges": {
       "type": "component",

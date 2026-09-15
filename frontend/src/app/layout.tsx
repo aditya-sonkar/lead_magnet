@@ -9,7 +9,7 @@ const inter = localFont({
   variable: "--font-inter",
   weight: "100 900",
   display: "swap",
-  preload: false,
+  preload: true,
 });
 
 const nohemi = localFont({
@@ -17,6 +17,7 @@ const nohemi = localFont({
   variable: "--font-nohemi",
   weight: "100 900",
   display: "swap",
+  preload: true,
 });
 
 const satoshi = localFont({
@@ -24,6 +25,7 @@ const satoshi = localFont({
   variable: "--font-satoshi",
   weight: "100 900",
   display: "swap",
+  preload: true,
 });
 
 const delight = localFont({
@@ -31,7 +33,7 @@ const delight = localFont({
   variable: "--font-delight",
   weight: "100 900",
   display: "swap",
-  preload: false,
+  preload: true,
 });
 
 

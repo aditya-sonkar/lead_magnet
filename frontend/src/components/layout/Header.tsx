@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { SOCIAL_ICONS } from "@/lib/strapi";
 
@@ -328,9 +330,11 @@ export default function Header({
                                             aria-label={social.platform}
                                         >
                                             {iconSrc ? (
-                                                <img
+                                                <Image
                                                     src={iconSrc}
                                                     alt={social.platform}
+                                                    width={20}
+                                                    height={20}
                                                     className="h-4.5 w-4.5 sm:h-5 sm:w-5 object-contain filter brightness-100"
                                                 />
                                             ) : (

@@ -15,6 +15,7 @@ export type QuoteFormData = {
     description?: string;
     stepLabel?: string;
     shopifyQuestion?: string;
+    shopifyQuestionHint?: string;
     yesLabel?: string;
     noLabel?: string;
     shopifyLinkLabel?: string;
@@ -27,8 +28,10 @@ export type QuoteFormData = {
     step2Description?: string;
     step2Label?: string;
     budgetLabel?: string;
+    budgetHint?: string;
     budgetRanges?: BudgetRange[];
     issuesLabel?: string;
+    issuesHint?: string;
     issueOptions?: FormOption[];
     otherIssuesLabel?: string;
     otherIssuesPlaceholder?: string;

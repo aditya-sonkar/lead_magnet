@@ -144,23 +144,7 @@ function formatDescription(description: string) {
 
 function formatPointText(text: string) {
     if (!text) return null;
-    const clean = text.replace(/\\n/g, "\n").trim();
-
-    // 1. If CMS explicitly provides line breaks, honor them
-    if (clean.includes("\n")) {
-        return (
-            <>
-                {clean.split("\n").map((line, idx) => (
-                    <span key={idx} className="block">
-                        {line}
-                    </span>
-                ))}
-            </>
-        );
-    }
-
-    // 2. Dynamic text wrapping via CSS container bounds
-    return clean;
+    return text.replace(/\\n/g, "\n");
 }
 
 function TickIcon({ className = "" }: { className?: string }) {
@@ -193,11 +177,11 @@ export default function EngagementFit({
     const totalPointRows = Math.max(suitableCount, notSuitableCount, 5);
 
     return (
-        <section className="px-6 py-14 sm:py-16 lg:py-20 xl:py-28 bg-white lg:px-[60px] xl:px-[80px]">
+        <section className="px-6 py-14 sm:py-16 lg:py-[200px] xl:py-[220px] bg-white lg:px-[60px] xl:px-[80px]">
             <div className="mx-auto w-full max-w-[1720px]">
-                <div className="flex flex-col min-[1140px]:flex-row items-start justify-between gap-8 min-[1140px]:gap-[clamp(32px,2.5vw,72px)] w-full">
+                <div className="flex flex-col min-[1140px]:flex-row items-start justify-between gap-8 min-[1140px]:gap-[clamp(50px,5vw,120px)] w-full">
                     {/* Left Column: Heading & Description (anchored to left corner) */}
-                    <div className="flex flex-col w-full min-[1140px]:w-[clamp(390px,36vw,600px)] shrink-0">
+                    <div className="flex flex-col w-full min-[1140px]:w-[clamp(370px,33vw,540px)] shrink-0">
                         <h2 className="heading-engagement-fit font-delight font-medium tracking-[-0.015em] text-[#0f1d07] mb-4 lg:mb-5 xl:mb-6 max-w-full">
                             {formatHeading(data.heading)}
                         </h2>
@@ -211,22 +195,21 @@ export default function EngagementFit({
 
                     {/* Right Column: 2 Cards */}
                     <div
-                        className="sync-engagement-cards grid grid-cols-1 sm:grid-cols-[1fr_1.08fr] gap-5 sm:gap-x-6 lg:gap-x-[clamp(24px,1.6vw,32px)] gap-y-4 sm:gap-y-[17.5px] xl:gap-y-[18.5px] items-stretch w-full min-[1140px]:flex-1 min-[2000px]:max-w-[780px] min-[2500px]:max-w-[840px] -mt-2 sm:-mt-2.5 lg:-mt-3 xl:-mt-3.5 2xl:-mt-4"
+                        className="sync-engagement-cards grid grid-cols-1 sm:grid-cols-[1fr_1.03fr] gap-5 sm:gap-x-6 lg:gap-x-[30px] xl:gap-x-[34px] gap-y-4 sm:gap-y-[17.5px] xl:gap-y-[18.5px] items-stretch w-full min-[1140px]:max-w-[660px] xl:max-w-[690px] 2xl:max-w-[710px] -mt-2 sm:-mt-2.5 lg:-mt-3 xl:-mt-3.5 2xl:-mt-4"
                         style={{ '--point-rows': totalPointRows } as React.CSSProperties}
                     >
                         {/* Card 1: Suitable */}
-                        <div className="sync-engagement-card rounded-[10px] bg-[#EEF1FA] border border-[#C8C8C8] px-4.5 sm:px-5 lg:px-4.5 xl:px-5 2xl:px-5.5 pt-3 sm:pt-3.5 lg:pt-3 xl:pt-3.5 2xl:pt-4 pb-5 sm:pb-4.5 lg:pb-4 xl:pb-4.5 2xl:pb-5 lg:bg-[#EFF0FC] flex flex-col h-full overflow-hidden">
-                            <h3 className="font-delight text-[clamp(19.5px,5.4vw,22.5px)] sm:text-[clamp(15px,1.4vw,23px)] font-medium text-black lg:text-[#1A1A1A] leading-[1.25] mb-4.5 sm:mb-1 tracking-[-0.01em] xl:whitespace-nowrap flex items-start translate-x-0 sm:-translate-x-2">
+                        <div className="sync-engagement-card rounded-[10px] bg-[#EEF1FA] border border-[#C8C8C8] px-3.5 sm:px-4 lg:px-4 xl:px-4.5 pt-3 sm:pt-3.5 lg:pt-3 xl:pt-3.5 2xl:pt-4 pb-5 sm:pb-4.5 lg:pb-4 xl:pb-4.5 2xl:pb-5 lg:bg-[#EFF0FC] flex flex-col h-full overflow-hidden">
+                            <h3 className="font-delight text-[clamp(19.5px,5.4vw,22.5px)] sm:text-[clamp(15px,1.4vw,23px)] font-medium text-black lg:text-[#1A1A1A] leading-[1.25] mb-4.5 sm:mb-1 tracking-[-0.01em] xl:whitespace-nowrap flex items-start translate-x-0 sm:-translate-x-1">
                                 {data.suitableHeading}
                             </h3>
-                            <ul className="space-y-5 sm:space-y-0 sm:contents">
-                                {(data.suitablePoints || []).map((point) => (
+                            <ul className="space-y-5 sm:space-y-0 sm:contents">                                 {(data.suitablePoints || []).map((point) => (
                                      <li key={point.id} className="flex items-start gap-2.5 sm:gap-3">
                                          <TickIcon
-                                             className="w-[18px] h-[18px] sm:w-[19px] sm:h-[19px] shrink-0 mt-[11px] sm:mt-[12px] text-black sm:text-[#0F1D07]"
+                                             className="w-[18px] h-[18px] sm:w-[19px] sm:h-[19px] shrink-0 mt-4 text-black sm:text-[#0F1D07]"
                                          />
                                          <span
-                                             className="block flex-1 font-satoshi font-normal text-[14.8px] sm:text-[clamp(13.5px,1.0vw,15px)] text-black leading-[1.42] sm:leading-[1.4]"
+                                             className="block flex-1 font-satoshi font-normal text-[14.8px] sm:text-[clamp(13.5px,1.0vw,15px)] text-black leading-[1.42] sm:leading-[1.4] whitespace-pre-line sm:max-w-[250px] lg:max-w-[255px] xl:max-w-[262px]"
                                              style={{ fontFamily: "var(--font-satoshi), Satoshi, sans-serif", fontWeight: 400, color: "#000000" }}
                                          >
                                              {formatPointText(point.text)}
@@ -237,18 +220,18 @@ export default function EngagementFit({
                         </div>
 
                         {/* Card 2: Not Suitable */}
-                        <div className="sync-engagement-card rounded-[10px] bg-white border border-[#C8C8C8] px-4.5 sm:px-5 lg:px-4.5 xl:px-5 2xl:px-5.5 pt-3 sm:pt-3.5 lg:pt-3 xl:pt-3.5 2xl:pt-4 pb-5 sm:pb-4.5 lg:pb-4 xl:pb-4.5 2xl:pb-5 flex flex-col h-full shadow-[0_2px_12px_rgba(0,0,0,0.03)] lg:shadow-[0_2px_8px_rgba(0,0,0,0.03)] overflow-hidden">
-                            <h3 className="font-delight text-[clamp(18.5px,5.15vw,21.5px)] sm:text-[clamp(15px,1.4vw,23px)] font-medium text-black lg:text-[#1A1A1A] leading-[1.25] mb-4.5 sm:mb-1 tracking-[-0.01em] xl:whitespace-nowrap flex items-start translate-x-0 sm:-translate-x-2">
+                        <div className="sync-engagement-card rounded-[10px] bg-white border border-[#C8C8C8] px-3.5 sm:px-4 lg:px-4 xl:px-5 pt-3 sm:pt-3.5 lg:pt-3 xl:pt-3.5 2xl:pt-4 pb-5 sm:pb-4.5 lg:pb-4 xl:pb-4.5 2xl:pb-5 flex flex-col h-full shadow-[0_2px_12px_rgba(0,0,0,0.03)] lg:shadow-[0_2px_8px_rgba(0,0,0,0.03)] overflow-hidden">
+                            <h3 className="font-delight text-[clamp(18.5px,5.15vw,21.5px)] sm:text-[clamp(15px,1.4vw,23px)] font-medium text-black lg:text-[#1A1A1A] leading-[1.25] mb-4.5 sm:mb-1 tracking-[-0.01em] xl:whitespace-nowrap flex items-start translate-x-0 sm:-translate-x-1">
                                 {data.notSuitableHeading}
                             </h3>
                             <ul className="space-y-5 sm:space-y-0 sm:contents">
                                 {(data.notSuitablePoints || []).map((point) => (
                                      <li key={point.id} className="flex items-start gap-2.5 sm:gap-3">
                                          <TickIcon
-                                             className="w-[18px] h-[18px] sm:w-[19px] sm:h-[19px] shrink-0 mt-[11px] sm:mt-[12px] text-black sm:text-[#0F1D07]"
+                                             className="w-[18px] h-[18px] sm:w-[19px] sm:h-[19px] shrink-0 mt-4 text-black sm:text-[#0F1D07]"
                                          />
                                          <span
-                                             className="block flex-1 font-satoshi font-normal text-[14.8px] sm:text-[clamp(13.5px,1.0vw,15px)] text-black leading-[1.42] sm:leading-[1.4]"
+                                             className="block flex-1 font-satoshi font-normal text-[14.8px] sm:text-[clamp(13.5px,1.0vw,15px)] text-black leading-[1.42] sm:leading-[1.4] whitespace-pre-line sm:max-w-[240px] lg:max-w-[244px] xl:max-w-[250px]"
                                              style={{ fontFamily: "var(--font-satoshi), Satoshi, sans-serif", fontWeight: 400, color: "#000000" }}
                                          >
                                              {formatPointText(point.text)}

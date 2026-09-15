@@ -40,8 +40,14 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
         api_secret: env('CLOUDINARY_SECRET'),
       },
       actionOptions: {
-        upload: {},
-        uploadStream: {},
+        upload: {
+          resource_type: 'auto',
+          allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'ico', 'mp4', 'mov', 'pdf'],
+        },
+        uploadStream: {
+          resource_type: 'auto',
+          allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'ico', 'mp4', 'mov', 'pdf'],
+        },
         delete: {},
       },
       security: {

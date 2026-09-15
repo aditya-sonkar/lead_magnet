@@ -1,4 +1,7 @@
-import { getMediaUrl } from "@/lib/strapi";
+"use client";
+
+import { getMediaUrl, getMediaDimensions } from "@/lib/strapi";
+import Image from "next/image";
 
 type InsightCard = {
     id: number;
@@ -22,6 +25,21 @@ type ConversionInsightsData = {
     cards: InsightCard[];
 };
 
+function formatCardTitle(title: string) {
+    if (!title) return "";
+    const clean = title.replace(/\s+/g, " ").trim();
+    if (/full[-–—]?price\s+conversion\s+as\s+the\s+objective/i.test(clean)) {
+        return <>Full-price conversion as<br className="hidden sm:inline" /> the objective</>;
+    }
+    if (/the\s+phone\s+as\s+the\s+primary\s+storefront/i.test(clean)) {
+        return <>The phone as the primary<br className="hidden sm:inline" /> storefront</>;
+    }
+    if (/built\s+for\s+a\s+team\s+that\s+trades\s+through\s+peak/i.test(clean)) {
+        return <>Built for a team that trades<br className="hidden sm:inline" /> through peak</>;
+    }
+    return title;
+}
+
 export default function ConversionInsights({
     data,
 }: {
@@ -33,7 +51,7 @@ export default function ConversionInsights({
     const cards = data.cards || [];
 
     return (
-        <section className="w-full bg-white px-5 sm:px-6 pt-10 pb-20 lg:px-[60px] xl:px-[80px] lg:pt-[30px] lg:pb-[90px]">
+        <section className="w-full bg-white px-5 sm:px-6 pt-10 pb-20 lg:px-[60px] xl:px-[80px] lg:pt-[55px] xl:pt-[60px] lg:pb-[100px] xl:pb-[110px]">
             <div className="mx-auto max-w-[1720px] w-full">
                 <div className="w-full max-w-[1200px]">
                     {mobileHeading ? (
@@ -67,16 +85,16 @@ export default function ConversionInsights({
                     )}
                 </div>
 
-                <div className="mt-10 sm:mt-12 md:mt-14 lg:mt-16 grid grid-cols-1 gap-5 sm:gap-6 md:gap-6 lg:grid-cols-3 lg:gap-[clamp(24px,2.2vw,48px)] w-full">
+                <div className="mt-10 sm:mt-12 md:mt-14 lg:mt-[72px] xl:mt-[80px] grid grid-cols-1 gap-5 sm:gap-6 md:gap-6 lg:grid-cols-3 lg:gap-12 xl:gap-[48px] 2xl:gap-[56px] w-full">
                     {cards.map((card, index) => {
                         const imageUrl = getMediaUrl(card.image);
+                        const dims = getMediaDimensions(card.image) || { width: 800, height: 600 };
                         const isDark = index === 0;
                         const bgColors = ["bg-[#014051]", "bg-[#B4BCFE]", "bg-[#D1E6D1]"];
                         const bgColor = bgColors[index % bgColors.length];
                         const textColor = isDark ? "text-white" : "text-[#0F1D07]";
                         const descriptionColor = isDark ? "text-[#FFFFFFC7]" : "text-black";
                         const descriptionWeight = index === 0 ? "font-normal" : "font-medium";
-                        const titleWeight = index === 0 ? "font-[350]" : "font-normal";
                         const cardMobileDesc = card.mobileDescription || card.MobileDescription;
 
                         const getImageClass = (idx: number) => {
@@ -107,19 +125,19 @@ export default function ConversionInsights({
                             >
                                 {imageUrl && (
                                     <div className={`w-full flex justify-start items-start ${getContainerPadding(index)} h-[125px] min-[460px]:h-[138px] sm:h-[148px] lg:h-[196px] min-[1750px]:h-[235px] shrink-0`}>
-                                        <img
+                                        <Image
                                             src={imageUrl}
-                                            alt={card.image?.alternativeText || card.title}
+                                            alt={card.image?.alternativeText || ""}
+                                            width={dims.width}
+                                            height={dims.height}
                                             className={getImageClass(index)}
-                                            loading="lazy"
-                                            decoding="async"
                                         />
                                     </div>
                                 )}
 
                                 <div className="flex flex-col justify-start flex-grow p-[14px_20px_20px] min-[460px]:p-[16px_24px_22px] sm:p-[18px_28px_22px] md:p-[18px_32px_24px] lg:px-8 lg:pt-5 lg:pb-9 min-[1750px]:px-10 min-[1750px]:pt-7 min-[1750px]:pb-11">
-                                    <h3 className={`font-nohemi ${titleWeight} whitespace-pre-line ${textColor} text-[clamp(19px,2.4vw,23.5px)] lg:text-[clamp(21px,1.55vw,27.5px)] min-[1750px]:text-[25px] min-[2000px]:text-[25px] leading-[1.2] tracking-[-0.02em] mb-2 sm:mb-2.5 lg:mb-3.5 min-[1750px]:mb-3.5 min-h-[auto] lg:min-h-[56px] min-[1750px]:min-h-[56px] w-full min-[2000px]:max-w-[350px] flex items-start`}>
-                                        {card.title}
+                                    <h3 className={`font-nohemi font-normal whitespace-pre-line ${textColor} text-[clamp(19px,2.4vw,23.5px)] lg:text-[26.5px] leading-[1.22] tracking-[-0.02em] mb-2 sm:mb-2.5 lg:mb-3.5 min-[1750px]:mb-3.5 min-h-[auto] lg:min-h-[66px] min-[1750px]:min-h-[66px] w-full flex items-start`}>
+                                        {formatCardTitle(card.title)}
                                     </h3>
 
                                     {cardMobileDesc ? (

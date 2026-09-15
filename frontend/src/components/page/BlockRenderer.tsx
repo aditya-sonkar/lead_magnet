@@ -1,16 +1,12 @@
-"use client";
-
-import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
 import StorefrontProblems from "@/components/sections/StorefrontProblems";
-
-const ConversionInsights = dynamic(() => import("@/components/sections/ConversionInsights"));
-const WorkShowcase = dynamic(() => import("@/components/sections/WorkShowcase"));
-const EngagementFit = dynamic(() => import("@/components/sections/EngagementFit"));
-const OurWork = dynamic(() => import("@/components/sections/OurWork"));
-const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"));
-const OurProcess = dynamic(() => import("@/components/sections/OurProcess"));
-const FAQ = dynamic(() => import("@/components/sections/FAQ"));
+import ConversionInsights from "@/components/sections/ConversionInsights";
+import WorkShowcase from "@/components/sections/WorkShowcase";
+import EngagementFit from "@/components/sections/EngagementFit";
+import OurWork from "@/components/sections/OurWork";
+import FinalCTA from "@/components/sections/FinalCTA";
+import OurProcess from "@/components/sections/OurProcess";
+import FAQ from "@/components/sections/FAQ";
 
 const COMPONENT_MAP: Record<string, React.ComponentType<any>> = {
   // Hero

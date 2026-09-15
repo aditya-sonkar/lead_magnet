@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { getMediaUrl } from "@/lib/strapi";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { getMediaUrl, getMediaDimensions } from "@/lib/strapi";
+import Image from "next/image";
 
 type StrapiMediaFormat = {
     url?: string;
@@ -34,6 +35,7 @@ type ShowcaseItem = {
     afterImage?: StrapiMedia | null;
     mobileBeforeImage?: StrapiMedia | null;
     mobileAfterImage?: StrapiMedia | null;
+    beforeText?: string;
 };
 
 type WorkShowcaseData = {
@@ -69,12 +71,23 @@ export default function WorkShowcase({
     const activeItem = items.find((item) => item.id === selectedItem) || defaultItem || items[0];
     const mobileHeading = data.MobileHeading || data.mobileHeading;
     const mobileDesc = data.MobileDescription || data.mobileDescription;
-    const beforeText = data.Before || data.before || "";
+    const beforeText = data.Before || data.before || activeItem?.beforeText || "Before";
 
-    const beforeUrl = getMediaUrl(activeItem?.beforeImage);
     const afterUrl = getMediaUrl(activeItem?.afterImage);
-    const mobileBeforeUrl = getMediaUrl(activeItem?.mobileBeforeImage) || beforeUrl;
-    const mobileAfterUrl = getMediaUrl(activeItem?.mobileAfterImage) || afterUrl;
+    const mobileAfterUrl = getMediaUrl(activeItem?.mobileAfterImage);
+    const beforeUrl = getMediaUrl(activeItem?.beforeImage);
+    const mobileBeforeUrl = getMediaUrl(activeItem?.mobileBeforeImage);
+
+    const afterDims = getMediaDimensions(activeItem?.afterImage);
+    const mobileAfterDims = getMediaDimensions(activeItem?.mobileAfterImage);
+    const beforeDims = getMediaDimensions(activeItem?.beforeImage);
+    const mobileBeforeDims = getMediaDimensions(activeItem?.mobileBeforeImage);
+    
+    const aDims = afterDims || mobileAfterDims || { width: 1920, height: 1080 };
+    const maDims = mobileAfterDims || afterDims || { width: 1080, height: 1080 };
+    const bDims = beforeDims || mobileBeforeDims || { width: 1920, height: 1080 };
+    const mbDims = mobileBeforeDims || beforeDims || { width: 1080, height: 1080 };
+
     const hasImages = Boolean((beforeUrl || mobileBeforeUrl) && (afterUrl || mobileAfterUrl));
 
     useEffect(() => {
@@ -162,20 +175,20 @@ export default function WorkShowcase({
     const itemName = activeItem?.name || "";
 
     return (
-        <section className="px-5 sm:px-6 py-14 sm:py-20 bg-[#f5f5f5] lg:px-[60px] xl:px-[80px]">
+        <section className="px-5 sm:px-6 py-14 sm:py-20 bg-[#f5f5f5] lg:px-[60px] xl:px-[80px] lg:pt-[115px] xl:pt-[125px] lg:pb-[120px] xl:pb-[135px]">
             <div className="mx-auto max-w-[1720px] w-full">
                 <div className="w-full">
                     {mobileHeading ? (
                         <>
-                            <h2 className="block sm:hidden max-w-[1150px] font-delight text-[clamp(26px,7.4vw,42px)] font-medium leading-[1.15] tracking-[-0.015em] mb-4">
+                            <h2 suppressHydrationWarning className="block sm:hidden max-w-[1150px] font-delight text-[clamp(26px,7.4vw,42px)] font-medium leading-[1.15] tracking-[-0.015em] mb-4">
                                 {mobileHeading}
                             </h2>
-                            <h2 className="hidden sm:block max-w-[1150px] font-delight text-[clamp(36px,4.2vw,65px)] font-medium leading-[1.15] tracking-[-0.015em] mb-4 sm:mb-6">
+                            <h2 suppressHydrationWarning className="hidden sm:block max-w-[1150px] font-delight text-[clamp(36px,4.2vw,65px)] font-medium leading-[1.4] tracking-[-0.015em] mb-4 sm:mb-6">
                                 {data.heading}
                             </h2>
                         </>
                     ) : (
-                        <h2 className="max-w-[1150px] font-delight text-[clamp(26px,7.4vw,42px)] sm:text-[clamp(36px,4.2vw,65px)] font-medium leading-[1.15] tracking-[-0.015em] mb-4 sm:mb-6">
+                        <h2 suppressHydrationWarning className="max-w-[1150px] font-delight text-[clamp(26px,7.4vw,42px)] sm:text-[clamp(36px,4.2vw,65px)] font-medium leading-[1.15] sm:leading-[1.4] tracking-[-0.015em] mb-4 sm:mb-6">
                             {data.heading}
                         </h2>
                     )}
@@ -227,7 +240,7 @@ export default function WorkShowcase({
                         onPointerMove={handlePointerMove}
                         onPointerUp={handlePointerUp}
                         onPointerCancel={handlePointerUp}
-                        className="relative mt-6 sm:mt-10 w-full h-[520px] sm:h-[620px] md:h-auto md:aspect-[16/9] overflow-hidden rounded-[16px] md:rounded-lg select-none bg-black/5 shadow-sm border border-black/5"
+                        className="relative mt-7 sm:mt-12 lg:mt-14 xl:mt-16 w-full h-[520px] sm:h-[620px] md:h-auto md:aspect-[16/9] overflow-hidden rounded-[8px] select-none bg-black/5 shadow-sm border border-black/5"
                     >
                         {/* "Before" Badge (Pinned at top-left of the card viewport, disappears when sliding towards After) */}
                         {beforeText && (
@@ -266,17 +279,28 @@ export default function WorkShowcase({
                             } md:overflow-hidden no-scrollbar`}
                         >
                             {(afterUrl || mobileAfterUrl) && (
-                                <picture className="block w-full pointer-events-none">
-                                    {mobileAfterUrl && <source media="(max-width: 767px)" srcSet={mobileAfterUrl} />}
-                                    <img
-                                        src={afterUrl || mobileAfterUrl}
-                                        alt={itemName ? `${itemName} - After` : "After"}
-                                        loading="lazy"
-                                        decoding="async"
-                                        className="w-full h-auto md:h-full md:aspect-[16/9] object-cover object-top pointer-events-none select-none block"
-                                        draggable={false}
-                                    />
-                                </picture>
+                                <>
+                                    {mobileAfterUrl && (
+                                        <div className="block md:hidden">
+                                            <Image
+                                                src={mobileAfterUrl}
+                                                alt={itemName ? `${itemName} - After` : "After"}
+                                                width={maDims.width}
+                                                height={maDims.height}
+                                                className="w-full h-auto md:h-full md:aspect-[16/9] object-cover object-top pointer-events-none select-none block"
+                                            />
+                                        </div>
+                                    )}
+                                    <div className={mobileAfterUrl ? "hidden md:block" : "block"}>
+                                        <Image
+                                            src={afterUrl || mobileAfterUrl || ""}
+                                            alt={itemName ? `${itemName} - After` : "After"}
+                                            width={aDims.width}
+                                            height={aDims.height}
+                                            className="w-full h-auto md:h-full md:aspect-[16/9] object-cover object-top pointer-events-none select-none block"
+                                        />
+                                    </div>
+                                </>
                             )}
                         </div>
 
@@ -298,17 +322,26 @@ export default function WorkShowcase({
                                             : "overflow-hidden touch-none pointer-events-none"
                                     } md:overflow-hidden no-scrollbar bg-[#f5f5f5]`}
                                 >
-                                    <picture className="block w-full pointer-events-none">
-                                        {mobileBeforeUrl && <source media="(max-width: 767px)" srcSet={mobileBeforeUrl} />}
-                                        <img
-                                            src={beforeUrl || mobileBeforeUrl}
+                                    {mobileBeforeUrl && (
+                                        <div className="block md:hidden">
+                                            <Image
+                                                src={mobileBeforeUrl}
+                                                alt={itemName ? `${itemName} - Before` : "Before"}
+                                                width={mbDims.width}
+                                                height={mbDims.height}
+                                                className="w-full h-auto md:h-full md:aspect-[16/9] object-cover object-top pointer-events-none select-none block"
+                                            />
+                                        </div>
+                                    )}
+                                    <div className={mobileBeforeUrl ? "hidden md:block" : "block"}>
+                                        <Image
+                                            src={beforeUrl || mobileBeforeUrl || ""}
                                             alt={itemName ? `${itemName} - Before` : "Before"}
-                                            loading="lazy"
-                                            decoding="async"
+                                            width={bDims.width}
+                                            height={bDims.height}
                                             className="w-full h-auto md:h-full md:aspect-[16/9] object-cover object-top pointer-events-none select-none block"
-                                            draggable={false}
                                         />
-                                    </picture>
+                                    </div>
                                 </div>
                             </div>
                         )}
@@ -367,11 +400,11 @@ export default function WorkShowcase({
 
                 {afterUrl && !beforeUrl && !mobileBeforeUrl && (
                     <div className="mt-8 sm:mt-12 overflow-hidden rounded-[20px] sm:rounded-[24px] md:rounded-lg">
-                        <img
+                        <Image
                             src={afterUrl}
                             alt={itemName ? `${itemName} - Showcase` : "Showcase"}
-                            loading="lazy"
-                            decoding="async"
+                            width={aDims.width}
+                            height={aDims.height}
                             className="h-auto w-full"
                         />
                     </div>
