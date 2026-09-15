@@ -180,7 +180,6 @@ export default function Hero({ data }: { data: HeroData }) {
                                                         width={120}
                                                         height={44}
                                                         className={`${getBrandSize(brand)} w-auto object-contain transition-all duration-300 opacity-100`}
-                                                        style={{ filter: 'brightness(0) invert(1)' }}
                                                         loading="lazy"
                                                     />
                                                 </div>

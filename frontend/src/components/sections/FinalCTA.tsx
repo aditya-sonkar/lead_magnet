@@ -120,23 +120,32 @@ export default function FinalCTA({
                                     ))}
                                     <AnimatePresence mode="sync">
                                         {currentLogo?.logo && (
-                                            <motion.div
-                                                key={currentLogo.id || currentIndex}
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-                                                className={`absolute inset-0 m-auto w-full h-full p-1.5 lg:p-2 ${currentIndex === 0 ? 'bg-[#B34A33]' : 'bg-transparent'}`}
-                                            >
-                                                <Image
-                                                    src={getMediaUrl(currentLogo.logo)}
-                                                    alt={getMediaAlt(currentLogo.logo) || ""}
-                                                    fill
-                                                    sizes="(max-width: 768px) 65px, 120px"
-                                                    className="object-contain"
-                                                    priority
-                                                />
-                                            </motion.div>
+                                                    <motion.div
+                                                        key={currentLogo.id || currentIndex}
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        exit={{ opacity: 0 }}
+                                                        transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+                                                        className={`absolute inset-0 m-auto w-full h-full ${
+                                                            currentIndex === 0 ? 'bg-[#B34A33] rounded-[8px]' : 
+                                                            getMediaUrl(currentLogo.logo).toLowerCase().includes("bft") ? 'bg-black rounded-[8px]' : 
+                                                            'bg-transparent'
+                                                        }`}
+                                                    >
+                                                        <Image
+                                                            src={getMediaUrl(currentLogo.logo)}
+                                                            alt={getMediaAlt(currentLogo.logo) || ""}
+                                                            fill
+                                                            sizes="(max-width: 768px) 65px, 120px"
+                                                            className="object-contain scale-[0.65] lg:scale-[0.7]"
+                                                            style={
+                                                                getMediaUrl(currentLogo.logo).toLowerCase().includes("figo") ? { filter: 'brightness(0) saturate(100%) invert(20%) sepia(85%) saturate(3015%) hue-rotate(343deg) brightness(95%) contrast(100%)' } : 
+                                                                getMediaUrl(currentLogo.logo).toLowerCase().includes("bft") ? { filter: 'brightness(0) invert(1)' } : 
+                                                                undefined
+                                                            }
+                                                            priority
+                                                        />
+                                                    </motion.div>
                                         )}
                                     </AnimatePresence>
                                     </span>
@@ -197,23 +206,32 @@ export default function FinalCTA({
                                     ))}
                                     <AnimatePresence mode="sync">
                                         {currentLogo?.logo && (
-                                            <motion.div
-                                                key={currentLogo.id || currentIndex}
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-                                                className={`absolute inset-0 m-auto w-full h-full p-1.5 ${currentIndex === 0 ? 'bg-[#B34A33]' : 'bg-transparent'}`}
-                                            >
-                                                <Image
-                                                    src={getMediaUrl(currentLogo.logo)}
-                                                    alt={getMediaAlt(currentLogo.logo) || ""}
-                                                    fill
-                                                    sizes="65px"
-                                                    className="object-contain"
-                                                    priority
-                                                />
-                                            </motion.div>
+                                                    <motion.div
+                                                        key={currentLogo.id || currentIndex}
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        exit={{ opacity: 0 }}
+                                                        transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+                                                        className={`absolute inset-0 m-auto w-full h-full ${
+                                                            currentIndex === 0 ? 'bg-[#B34A33] rounded-[8px]' : 
+                                                            getMediaUrl(currentLogo.logo).toLowerCase().includes("bft") ? 'bg-black rounded-[8px]' : 
+                                                            'bg-transparent'
+                                                        }`}
+                                                    >
+                                                        <Image
+                                                            src={getMediaUrl(currentLogo.logo)}
+                                                            alt={getMediaAlt(currentLogo.logo) || ""}
+                                                            fill
+                                                            sizes="65px"
+                                                            className="object-contain scale-[0.65] lg:scale-[0.7]"
+                                                            style={
+                                                                getMediaUrl(currentLogo.logo).toLowerCase().includes("figo") ? { filter: 'brightness(0) saturate(100%) invert(20%) sepia(85%) saturate(3015%) hue-rotate(343deg) brightness(95%) contrast(100%)' } : 
+                                                                getMediaUrl(currentLogo.logo).toLowerCase().includes("bft") ? { filter: 'brightness(0) invert(1)' } : 
+                                                                undefined
+                                                            }
+                                                            priority
+                                                        />
+                                                    </motion.div>
                                         )}
                                     </AnimatePresence>
                                     </span>
