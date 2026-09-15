@@ -217,6 +217,14 @@ export default function OurProcess({
                         )}
                     </div>
 
+                    {/* Mobile overlay: tap outside card to close */}
+                    {activeCardId !== null && (
+                        <div
+                            className="lg:hidden fixed inset-0 z-10"
+                            onClick={() => setActiveCardId(null)}
+                        />
+                    )}
+
                     {/* Responsive Grid: 2 columns on mobile/tablet, 4 columns on desktop */}
                     <div className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-5 sm:gap-6 lg:gap-[clamp(24px,2vw,40px)]">
                         {/* 1. Image Diagram Card */}
@@ -331,7 +339,7 @@ function ProcessCard({
         <div
             className={`group relative flex h-full min-h-[240px] sm:min-h-[250px] lg:min-h-[280px] xl:min-h-[290px] w-full flex-col rounded-[8px] text-white overflow-hidden cursor-pointer transition-all duration-700 ease-in-out select-none ${
                 hasServices && isActive ? "bg-[#2D4620]" : "bg-[#1A2F11]"
-            } ${className}`}
+            } ${activeCardId === card.id ? "relative z-20" : ""} ${className}`}
             onMouseEnter={() => setIsHoveredDesktop(true)}
             onMouseLeave={() => setIsHoveredDesktop(false)}
             onClick={handleClick}

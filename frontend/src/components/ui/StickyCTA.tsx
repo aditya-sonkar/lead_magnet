@@ -103,12 +103,16 @@ export default function StickyCTA({
 
             const href = el.getAttribute("href")?.toLowerCase() || "";
             const modalTarget = el.getAttribute("data-modal-target")?.toLowerCase() || "";
+            const textContent = (el.textContent || "").toLowerCase();
 
+            // Always prioritize explicit "call" text even if href is misconfigured to #quote
             if (
                 href === "#call" ||
                 href === "#callback" ||
                 href === "#callback-modal" ||
-                modalTarget === "callback"
+                modalTarget === "callback" ||
+                textContent.includes("call") ||
+                textContent.includes("callback")
             ) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -119,7 +123,8 @@ export default function StickyCTA({
             if (
                 href === "#quote" ||
                 href === "#quote-modal" ||
-                modalTarget === "quote"
+                modalTarget === "quote" ||
+                textContent.includes("quote")
             ) {
                 e.preventDefault();
                 e.stopPropagation();

@@ -350,7 +350,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
 
             {/* Step 2: Issues & budget selection */}
             {step === 2 && (
-                <div className={isHero ? "space-y-4" : "flex flex-col flex-1 justify-between"}>
+                <div className={isHero ? "space-y-3" : "flex flex-col flex-1 justify-between"}>
                     <div className={isHero ? "space-y-4" : "space-y-2.5 sm:space-y-4"}>
                         {/* Issues */}
                         <div>
@@ -359,13 +359,13 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                     suppressHydrationWarning
                                     className={
                                         isHero
-                                            ? "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
+                                            ? "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[15px] sm:text-[16.5px] lg:text-[20px] font-normal text-[#1A1A1A] sm:text-[#1A1A1A] mb-1"
                                             : "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[14px] sm:text-[19px] font-normal text-[#1A1A1A]"
                                     }
                                 >
                                     <span>{form?.issuesLabel}</span>
                                     {issuesHint && (
-                                        <span className="text-[12px] sm:text-[13px] font-normal text-[#71717A] tracking-normal">
+                                        <span className={`${isHero ? "inline lg:hidden" : "inline"} text-[12px] sm:text-[13px] font-normal text-[#71717A] tracking-normal`}>
                                             {issuesHint}
                                         </span>
                                     )}
@@ -386,8 +386,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                                     toggleIssue(item.label);
                                                 }}
                                                 className={`font-satoshi inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap active:scale-[0.98] ${isSelected
-                                                        ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-medium"
-                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] font-medium bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
+                                                        ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-normal"
+                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] font-normal bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
                                                     }`}
                                             >
                                                 <AnimatePresence initial={false}>
@@ -482,12 +482,12 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
 
                         {/* Budget */}
                         <div>
-                            <div className={isHero ? "flex items-center justify-between mb-1 sm:mb-2" : "mb-1.5 sm:mb-2"}>
+                            <div className={isHero ? "flex items-center justify-between mb-0.5 sm:mb-1" : "mb-1.5 sm:mb-2"}>
                                 <label
                                     suppressHydrationWarning
                                     className={
                                         isHero
-                                            ? "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
+                                            ? "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[15px] sm:text-[16.5px] lg:text-[20px] font-normal text-[#1A1A1A] sm:text-[#1A1A1A] mb-1"
                                             : "font-nohemi flex flex-wrap items-baseline gap-x-1.5 text-[14px] sm:text-[19px] font-normal text-[#1A1A1A]"
                                     }
                                 >
@@ -511,8 +511,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                                 type="button"
                                                 onClick={() => handleSelectBudget(tierVal)}
                                                 className={`font-satoshi px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${isSelected
-                                                        ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-medium"
-                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] font-medium bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
+                                                        ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-normal"
+                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] font-normal bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
                                                     }`}
                                             >
                                                 {tier.label}
@@ -576,7 +576,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             <label
                                 className={
                                     isHero
-                                        ? "font-nohemi block text-[15px] sm:text-[16.5px] font-[450] text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
+                                        ? "font-nohemi block text-[15px] sm:text-[16.5px] lg:text-[16px] font-normal text-[#1A1A1A] sm:text-[#1A1A1A] mb-2"
                                         : "font-nohemi block text-[12.5px] sm:text-[14.5px] font-normal text-[#1A1A1A] mb-1 sm:mb-1.5"
                                 }
                             >

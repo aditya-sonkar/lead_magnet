@@ -13,12 +13,9 @@ const inter = localFont({
 });
 
 const nohemi = localFont({
-  src: [
-    { path: "../../public/fonts/nohemi/Nohemi-Regular.woff2", weight: "400" },
-    { path: "../../public/fonts/nohemi/Nohemi-Medium.woff2", weight: "500" },
-    { path: "../../public/fonts/nohemi/Nohemi-Bold.woff2", weight: "700" },
-  ],
+  src: "../../public/fonts/nohemi/Nohemi-VF.ttf",
   variable: "--font-nohemi",
+  weight: "100 900",
   display: "swap",
   preload: true,
 });
