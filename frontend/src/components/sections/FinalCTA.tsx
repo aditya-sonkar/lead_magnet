@@ -115,7 +115,7 @@ export default function FinalCTA({
                                 </span>
                                 <span className="inline-flex items-center whitespace-nowrap">
                                     <span>{desktopHeadingParts.likeWord}</span>
-                                    <span className={`mx-2.5 lg:mx-3.5 inline-flex h-[clamp(36px,4.2vw,65px)] w-[clamp(36px,4.2vw,65px)] align-middle -mt-1 lg:-mt-1.5 rounded-[10px] lg:rounded-[12px] border relative overflow-hidden select-none shrink-0 shadow-xs transition-colors duration-300 ${
+                                    <span className={`mx-3.5 lg:mx-5 inline-flex h-[clamp(38px,4.4vw,68px)] w-[clamp(38px,4.4vw,68px)] align-middle -mt-1 lg:-mt-1.5 rounded-[6px] lg:rounded-[8px] border relative overflow-hidden select-none shrink-0 shadow-xs transition-colors duration-300 ${
                                         currentIndex === 0 ? "bg-[#B34A33] border-[#B34A33]" :
                                         getMediaUrl(currentLogo?.logo).toLowerCase().includes("bft") ? "bg-black border-black" :
                                         "bg-white border-[#00000030]"
@@ -213,7 +213,7 @@ export default function FinalCTA({
                                 </span>
                                 <span className="inline-flex items-center whitespace-nowrap mt-1">
                                     <span>{mobileHeadingParts.likeWord}</span>
-                                    <span className={`mx-2 inline-flex h-[clamp(48px,12.8vw,62px)] w-[clamp(48px,12.8vw,62px)] align-middle -mt-1.5 rounded-[8px] border-2 relative overflow-hidden select-none shrink-0 shadow-xs transition-colors duration-300 ${
+                                    <span className={`mx-3 inline-flex h-[clamp(46px,12vw,60px)] w-[clamp(46px,12vw,60px)] align-middle -mt-1.5 rounded-[6px] border-2 relative overflow-hidden select-none shrink-0 shadow-xs transition-colors duration-300 ${
                                         currentIndex === 0 ? "bg-[#B34A33] border-[#B34A33]" :
                                         getMediaUrl(currentLogo?.logo).toLowerCase().includes("bft") ? "bg-black border-black" :
                                         "bg-white border-[#00000025]"
