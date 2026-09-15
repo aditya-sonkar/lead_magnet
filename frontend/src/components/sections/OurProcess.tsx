@@ -339,7 +339,7 @@ function ProcessCard({
         <div
             className={`group relative flex h-full min-h-[240px] sm:min-h-[250px] lg:min-h-[280px] xl:min-h-[290px] w-full flex-col rounded-[8px] text-white overflow-hidden cursor-pointer transition-all duration-700 ease-in-out select-none ${
                 hasServices && isActive ? "bg-[#2D4620]" : "bg-[#1A2F11]"
-            } ${activeCardId === card.id ? "relative z-20" : ""} ${className}`}
+            } ${activeCardId !== null ? "relative z-20" : ""} ${className}`}
             onMouseEnter={() => setIsHoveredDesktop(true)}
             onMouseLeave={() => setIsHoveredDesktop(false)}
             onClick={handleClick}
