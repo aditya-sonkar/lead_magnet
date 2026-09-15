@@ -85,6 +85,9 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
     try {
         // Deep populate query for all section components inside Dynamic Zone and stickyCTA
         const sectionsPopulate = [
+            // SEO metadata
+            "populate[seo][populate]=*",
+
             // Hero: primary CTA, client brands with logos, and quote form
             "populate[sections][on][sections.hero][populate][primaryCta][populate]=*",
             "populate[sections][on][sections.hero][populate][brands][populate]=*",

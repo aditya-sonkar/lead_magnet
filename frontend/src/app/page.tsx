@@ -23,17 +23,10 @@ export const revalidate = 60;
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getLandingPage("shopify-lead-magnet");
 
-  if (!data) {
-    return {
-      title: siteConfig.title,
-      description: siteConfig.description,
-    };
-  }
-
   // Use Strapi SEO component if available, fallback to defaults
-  const seo = data.seo || {};
-  const title = seo.metaTitle || data.title || data.hero?.heading || siteConfig.title;
-  const description = seo.metaDescription || data.hero?.description || siteConfig.description;
+  const seo = data?.seo || {};
+  const title = seo.metaTitle || data?.title || siteConfig.title;
+  const description = seo.metaDescription || siteConfig.description;
   const canonicalUrl = seo.canonicalUrl || siteConfig.url;
   
   // Resolve OG image from Strapi media or fallback
@@ -41,9 +34,18 @@ export async function generateMetadata(): Promise<Metadata> {
     ? (seo.ogImage.url.startsWith("http") ? seo.ogImage.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${seo.ogImage.url}`)
     : siteConfig.ogImage;
 
+  const fullTitle = title.includes("Thumbstack") ? title : `${title} | ${siteConfig.name}`;
+
   return {
-    title: `${title} | ${siteConfig.name}`,
+    title: fullTitle,
     description,
+    keywords: seo.keywords || [
+      "Shopify Store Design",
+      "E-commerce Conversion Rate Optimization",
+      "Shopify Agency",
+      "High Converting Web Development",
+      "Thumbstack Studio",
+    ],
     alternates: {
       canonical: canonicalUrl,
     },
@@ -52,11 +54,18 @@ export async function generateMetadata(): Promise<Metadata> {
       follow: !seo.noIndex,
     },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       url: canonicalUrl,
       siteName: siteConfig.name,
-      images: ogImageUrl ? [{ url: ogImageUrl }] : [],
+      images: ogImageUrl ? [{ url: ogImageUrl, width: 1200, height: 630, alt: fullTitle }] : [],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description,
+      images: ogImageUrl ? [ogImageUrl] : [],
     },
   };
 }

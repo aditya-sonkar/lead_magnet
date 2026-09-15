@@ -3,9 +3,9 @@
  */
 export const siteConfig = {
     name: "Thumbstack",
-    title: "Thumbstack - Lead Magnet",
+    title: "TSP Lead Magnet | High-Converting Shopify Stores & Mobile Apps | Thumbstack",
     description:
-        "Design-first tech studio building high-converting Shopify stores, mobile apps, and digital experiences. Book a free strategy call today.",
+        "TSP Lead Magnet by Thumbstack — design-first technology studio building high-converting Shopify stores, mobile apps, and custom digital experiences. Book your free strategy call today.",
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://leadmagnet-live.vercel.app",
     ogImage: "/images/og-image.jpg",
     links: {
