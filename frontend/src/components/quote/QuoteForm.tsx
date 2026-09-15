@@ -303,8 +303,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                 placeholder={form?.shopifyLinkPlaceholder}
                                 className={
                                     isHero
-                                        ? "font-satoshi w-full px-5 py-2 sm:py-2.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#2B44E7] focus:ring-1 focus:ring-[#2B44E7] text-[13px] sm:text-[13.5px] text-black bg-[#F2F2F2] placeholder-black placeholder:text-[11.5px] sm:placeholder:text-[12.5px] transition-all duration-300 ease-out"
-                                        : "font-satoshi w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border border-[#C5C5CA] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[12px] sm:text-[13px] text-[#111827] bg-[#F7F7F7] placeholder-[#4B5563] transition-all duration-200"
+                                        ? "font-satoshi w-full px-5 py-2 sm:py-2.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#2B44E7] focus:ring-1 focus:ring-[#2B44E7] text-[13px] sm:text-[13.5px] text-black bg-[#F2F2F2] placeholder-[#444444] placeholder:text-[11.5px] sm:placeholder:text-[12.5px] transition-all duration-300 ease-out"
+                                        : "font-satoshi w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border border-[#C5C5CA] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[12px] sm:text-[13px] text-[#111827] bg-[#F7F7F7] placeholder-[#444444] transition-all duration-200"
                                 }
                             />
                         </div>
@@ -385,9 +385,9 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                                     setClickedIssue(item.label);
                                                     toggleIssue(item.label);
                                                 }}
-                                                className={`font-satoshi inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap active:scale-[0.98] ${isSelected
-                                                        ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-normal"
-                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] font-normal bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
+                                                className={`font-satoshi font-normal inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap active:scale-[0.98] ${isSelected
+                                                        ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
+                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
                                                     }`}
                                             >
                                                 <AnimatePresence initial={false}>
@@ -510,9 +510,9 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                                 key={tier.id || tier.value || tier.label}
                                                 type="button"
                                                 onClick={() => handleSelectBudget(tierVal)}
-                                                className={`font-satoshi px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${isSelected
-                                                        ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-normal"
-                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] font-normal bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
+                                                className={`font-satoshi font-normal px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${isSelected
+                                                        ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
+                                                        : "border-[#CAC4D0] text-[#333333] sm:text-[#4A4A4A] bg-[#F6F6F6] hover:border-gray-500 sm:hover:border-gray-400 hover:text-black"
                                                     }`}
                                             >
                                                 {tier.label}
@@ -589,8 +589,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                 placeholder={form?.otherIssuesPlaceholder}
                                 className={
                                     isHero
-                                        ? "font-satoshi w-full px-5 py-2 sm:py-2.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#2B44E7] focus:ring-1 focus:ring-[#2B44E7] text-[13px] sm:text-[13.5px] text-black bg-[#F2F2F2] placeholder-black placeholder:text-[11.5px] sm:placeholder:text-[12.5px] transition-all duration-300 ease-out"
-                                        : "font-satoshi w-full px-3.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full border border-[#C5C5CA] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[11.5px] sm:text-[13px] text-[#18181B] bg-[#F7F7F7] placeholder-[#6B7280] transition-all duration-200"
+                                        ? "font-satoshi w-full px-5 py-2 sm:py-2.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#2B44E7] focus:ring-1 focus:ring-[#2B44E7] text-[13px] sm:text-[13.5px] text-black bg-[#F2F2F2] placeholder-[#444444] placeholder:text-[11.5px] sm:placeholder:text-[12.5px] transition-all duration-300 ease-out"
+                                        : "font-satoshi w-full px-3.5 sm:px-4 py-1.5 sm:py-2.5 rounded-full border border-[#C5C5CA] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[11.5px] sm:text-[13px] text-[#18181B] bg-[#F7F7F7] placeholder-[#444444] transition-all duration-200"
                                 }
                             />
                         </div>
@@ -650,7 +650,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                         <p
                             className={
                                 isHero
-                                    ? "font-satoshi text-[13px] sm:text-[13.5px] text-[#6B6B6B] mt-0.5 sm:mt-1 mb-2 sm:mb-2.5"
+                                    ? "font-satoshi text-[13px] sm:text-[13.5px] text-[#6B6B6B] mt-0 sm:-mt-0.5 lg:-mt-1 mb-2 sm:mb-2.5"
                                     : "font-satoshi text-[11px] sm:text-[12.5px] text-[#6B7280] mt-0.5 mb-2.5 sm:mb-3"
                             }
                         >
@@ -779,11 +779,11 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                     placeholder={form?.phonePlaceholder}
                                     className={
                                         isHero
-                                            ? `font-satoshi w-full px-5 py-3 sm:py-3.5 rounded-full border text-[13px] sm:text-[13.5px] text-black bg-[#F2F2F2] placeholder-black placeholder:text-[11.5px] sm:placeholder:text-[12.5px] transition-all duration-300 ease-out focus:outline-none ${phoneTouched && (!phone.trim() || phone.trim().replace(/\D/g, "").length < 7)
+                                            ? `font-satoshi w-full px-5 py-3 sm:py-3.5 rounded-full border text-[13px] sm:text-[13.5px] text-black bg-[#F2F2F2] placeholder-[#444444] placeholder:text-[11.5px] sm:placeholder:text-[12.5px] transition-all duration-300 ease-out focus:outline-none ${phoneTouched && (!phone.trim() || phone.trim().replace(/\D/g, "").length < 7)
                                                 ? "border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
                                                 : "border-[#CAC4D0] focus:border-[#3145DD] focus:ring-1 focus:ring-[#3145DD]"
                                             }`
-                                            : `font-satoshi w-full px-3 sm:px-3.5 py-1.5 sm:py-2.5 rounded-full border text-[12px] sm:text-[13px] text-[#111827] bg-[#F7F7F9] placeholder-[#8E8E93] transition-all duration-200 focus:outline-none ${phoneTouched && (!phone.trim() || phone.trim().replace(/\D/g, "").length < 7)
+                                            : `font-satoshi w-full px-3 sm:px-3.5 py-1.5 sm:py-2.5 rounded-full border text-[12px] sm:text-[13px] text-[#111827] bg-[#F7F7F9] placeholder-[#444444] transition-all duration-200 focus:outline-none ${phoneTouched && (!phone.trim() || phone.trim().replace(/\D/g, "").length < 7)
                                                 ? "border-rose-400 focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
                                                 : "border-[#D1D5DB] focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B]"
                                             }`
@@ -807,8 +807,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                     placeholder={form?.emailPlaceholder}
                                     className={
                                         isHero
-                                            ? "font-satoshi w-full px-5 py-3 sm:py-3.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#3145DD] focus:ring-1 focus:ring-[#3145DD] text-[13px] sm:text-[13.5px] text-black bg-[#F2F2F2] placeholder-black placeholder:text-[11.5px] sm:placeholder:text-[12.5px] transition-all duration-300 ease-out"
-                                            : "font-satoshi w-full px-3 sm:px-3.5 py-1.5 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[12px] sm:text-[13px] text-[#111827] bg-[#F7F7F9] placeholder-[#8E8E93] transition-all duration-200"
+                                            ? "font-satoshi w-full px-5 py-3 sm:py-3.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#3145DD] focus:ring-1 focus:ring-[#3145DD] text-[13px] sm:text-[13.5px] text-black bg-[#F2F2F2] placeholder-[#444444] placeholder:text-[11.5px] sm:placeholder:text-[12.5px] transition-all duration-300 ease-out"
+                                            : "font-satoshi w-full px-3 sm:px-3.5 py-1.5 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[12px] sm:text-[13px] text-[#111827] bg-[#F7F7F9] placeholder-[#444444] transition-all duration-200"
                                     }
                                 />
                             </div>
