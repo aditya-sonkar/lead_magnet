@@ -167,7 +167,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                             type="button"
                             onClick={onClose}
                             aria-label="Close callback modal"
-                            className="absolute top-6 right-4 sm:top-10 sm:right-6 md:top-11 md:right-7 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#333333] hover:text-black transition-colors cursor-pointer z-20"
+                            className="absolute top-5 right-4 sm:top-8 md:top-9 sm:right-6 md:right-7 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#333333] hover:text-black transition-colors cursor-pointer z-20"
                         >
                             <svg className="w-6 h-6 sm:w-6.5 sm:h-6.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -203,11 +203,11 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         ) : (
                             <>
                                 {/* Title & Description */}
-                                <div className="pt-2 sm:pt-3 mb-3.5 sm:mb-4">
+                                <div className="pt-1 sm:pt-1.5 mb-3.5 sm:mb-4">
                                     <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-10 sm:pr-12">
                                         {title}
                                     </h2>
-                                    <p className="font-satoshi text-[#222222] text-[11.5px] sm:text-[12px] md:text-[12.5px] leading-[1.42] mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line font-normal">
+                                    <p className="font-satoshi text-[#111827] text-[11px] sm:text-[11.5px] md:text-[12px] leading-[1.42] mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line font-normal">
                                         {description}
                                     </p>
                                 </div>
@@ -280,7 +280,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                             )}
                                         </button>
                                         {disclaimer && (
-                                            <p className="text-center font-satoshi text-[10.5px] sm:text-[11px] md:text-[11.5px] text-[#222222] mt-1.5 sm:mt-2 font-normal leading-normal">
+                                            <p className="text-center font-satoshi text-[10px] sm:text-[10.5px] md:text-[11px] text-[#111827] mt-1.5 sm:mt-2 font-normal leading-normal">
                                                 {disclaimer}
                                             </p>
                                         )}
