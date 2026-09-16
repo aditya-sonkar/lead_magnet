@@ -265,7 +265,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className={`font-satoshi w-full bg-[#242120] hover:bg-black text-white font-normal py-3 sm:py-3.5 px-6 rounded-full transition-all duration-200 flex justify-center items-center text-[15px] sm:text-[16px] md:text-[16.5px] cursor-pointer shadow-md active:scale-[0.99] ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`}
+                                            className={`font-satoshi w-full bg-[#242120] hover:bg-black text-white font-[450] tracking-[0.015em] py-3 sm:py-3.5 px-6 rounded-full transition-all duration-200 flex justify-center items-center text-[15px] sm:text-[16px] md:text-[16.5px] cursor-pointer shadow-md active:scale-[0.99] ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`}
                                         >
                                             {isSubmitting ? (
                                                 <>
