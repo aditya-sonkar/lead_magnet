@@ -52,7 +52,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
         handleBookCallSubmit,
         formatCurrency,
         resetForm,
-    } = useQuoteForm(form);
+    } = useQuoteForm(form, isHero ? "Hero Quote Form" : "Quote Modal");
 
     const [clickedIssue, setClickedIssue] = React.useState<string | null>(null);
 

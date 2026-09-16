@@ -5,7 +5,7 @@ import type { QuoteFormData, BudgetRange, FormOption } from "@/types";
 
 export type { QuoteFormData, BudgetRange, FormOption };
 
-export function useQuoteForm(form?: QuoteFormData | null) {
+export function useQuoteForm(form?: QuoteFormData | null, defaultSource: string = "Hero Quote Form") {
     // -- Form step ------------------------------------------------------------
     const [step, setStep] = useState<1 | 2 | 3>(1);
 
@@ -178,7 +178,7 @@ export function useQuoteForm(form?: QuoteFormData | null) {
                         selectedProblems: selectedIssues,
                         selectedBudget: resolvedBudget,
                         otherNotes: otherIssues,
-                        source: "Hero Quote Form",
+                        source: defaultSource,
                     }),
                 });
             } finally {
