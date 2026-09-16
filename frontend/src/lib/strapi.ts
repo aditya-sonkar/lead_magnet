@@ -381,7 +381,8 @@ export async function getForms(): Promise<any[]> {
     if (cachedForms) return cachedForms;
 
     try {
-        const res = await fetch(`${STRAPI_URL}/api/forms?populate=*`, { next: { revalidate: REVALIDATE_TIME } });
+        const query = 'populate[formConfig][populate]=*';
+        const res = await fetch(`${STRAPI_URL}/api/forms?${query}`, { next: { revalidate: REVALIDATE_TIME } });
         if (res.ok) {
             const json = await res.json().catch(() => null);
             if (json?.data) {
