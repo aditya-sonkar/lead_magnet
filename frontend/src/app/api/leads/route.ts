@@ -4,13 +4,20 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const strapiUrl = process.env.STRAPI_API_URL || process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+    const rawUrl = process.env.STRAPI_API_URL || process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+    const strapiUrl = rawUrl.replace(/\/$/, "");
+    const token = process.env.STRAPI_API_TOKEN;
+
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+    };
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
 
     const res = await fetch(`${strapiUrl}/api/leads`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify({
         data: {
           phone: body.phone || "",
@@ -28,7 +35,11 @@ export async function POST(req: Request) {
 
     if (!res.ok) {
       const errData = await res.json().catch(() => ({}));
-      console.warn("[API Leads] Strapi response error:", res.status, errData);
+      console.error("[API Leads] Strapi response error:", res.status, errData);
+      return NextResponse.json(
+        { success: false, error: errData?.error?.message || "Failed to save lead in Strapi" },
+        { status: res.status }
+      );
     }
 
     return NextResponse.json({ success: true });
