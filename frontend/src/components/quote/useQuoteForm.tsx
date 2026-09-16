@@ -93,7 +93,7 @@ export function useQuoteForm(form?: QuoteFormData | null) {
     // -- Step navigation -------------------------------------------------------
     const handleStep1Continue = () => {
         if (hasStore === null) {
-            setStep1Warning(form?.storeWarning || "");
+            setStep1Warning(form?.storeWarning || "Please select whether you own a Shopify website");
             return;
         }
         setStep1Warning("");
@@ -107,17 +107,17 @@ export function useQuoteForm(form?: QuoteFormData | null) {
         if (hasNoIssues && hasNoBudget) {
             setIssuesTouched(true);
             setBudgetTouched(true);
-            setStep2Warning(form?.selectionWarning || "");
+            setStep2Warning(form?.selectionWarning || "Please select what needs improvement and your budget range");
             return;
         }
         if (hasNoIssues) {
             setIssuesTouched(true);
-            setStep2Warning(form?.issuesWarning || "");
+            setStep2Warning(form?.issuesWarning || "Please select at least one issue that needs improvement");
             return;
         }
         if (hasNoBudget) {
             setBudgetTouched(true);
-            setStep2Warning(form?.budgetWarning || "");
+            setStep2Warning(form?.budgetWarning || "Please select your preferred budget range");
             return;
         }
 
@@ -147,7 +147,7 @@ export function useQuoteForm(form?: QuoteFormData | null) {
         setPhoneTouched(true);
         const cleanDigits = phone.trim().replace(/\D/g, "");
         if (!phone.trim() || cleanDigits.length < 7) {
-            setStep3Warning(form?.phoneWarning || "");
+            setStep3Warning(form?.phoneWarning || "Please enter a valid phone number");
             return;
         }
         setStep3Warning("");

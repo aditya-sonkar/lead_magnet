@@ -175,7 +175,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                 if (hasStore !== null) {
                                     setStep(2);
                                 } else {
-                                    setStep1Warning(form?.storeWarning || "");
+                                    setStep1Warning(form?.storeWarning || "Please select whether you own a Shopify website");
                                 }
                             }}
                             className={`h-[3px] sm:h-[3.2px] flex-1 min-w-0 rounded-full transition-colors duration-300 cursor-pointer ${step >= 2 ? (isHero ? "bg-[#1A1A1A]" : "bg-[#18181B]") : (isHero ? "bg-[#C8CBC6]" : "bg-[#D8D8DC]")
@@ -188,7 +188,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             onClick={() => {
                                 if (hasStore === null) {
                                     setStep(1);
-                                    setStep1Warning(form?.storeWarning || "");
+                                    setStep1Warning(form?.storeWarning || "Please select whether you own a Shopify website");
                                     return;
                                 }
                                 handleStep2Continue();
@@ -231,7 +231,9 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                         }}
                                         className={`font-satoshi font-normal px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border text-[14px] sm:text-[16.5px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${hasStore === true
                                                 ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
-                                                : "border-[#E0DFE7] text-[#333333] bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
+                                                : (step1Warning && hasStore === null)
+                                                    ? "border-[#F87171] text-[#333333] bg-[#FEF2F2]/30 hover:border-[#EF4444]"
+                                                    : "border-[#E0DFE7] text-[#333333] bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                             }`}
                                     >
                                         {form?.yesLabel}
@@ -244,7 +246,9 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                         }}
                                         className={`font-satoshi font-normal px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border text-[14px] sm:text-[16.5px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${hasStore === false
                                                 ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
-                                                : "border-[#E0DFE7] text-[#333333] bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
+                                                : (step1Warning && hasStore === null)
+                                                    ? "border-[#F87171] text-[#333333] bg-[#FEF2F2]/30 hover:border-[#EF4444]"
+                                                    : "border-[#E0DFE7] text-[#333333] bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                             }`}
                                     >
                                         {form?.noLabel}
@@ -258,8 +262,13 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             setHasStore(true);
                                             setStep1Warning("");
                                         }}
-                                        className={`flex items-center gap-2.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border border-[#C5C5CA] text-[12px] sm:text-[13px] font-nohemi font-normal transition-all duration-200 cursor-pointer bg-[#F2F2F2] text-[#111827] hover:border-[#9CA3AF] ${hasStore === true ? "shadow-xs" : "hover:bg-[#EAEAEA]"
-                                            }`}
+                                        className={`flex items-center gap-2.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border text-[12px] sm:text-[13px] font-nohemi font-normal transition-all duration-200 cursor-pointer text-[#111827] ${
+                                            hasStore === true
+                                                ? "border-[#307D6D] bg-[#DBEFE9] shadow-xs"
+                                                : (step1Warning && hasStore === null)
+                                                    ? "border-[#F87171] bg-[#FEF2F2]/30 hover:border-[#EF4444]"
+                                                    : "border-[#C5C5CA] bg-[#F2F2F2] hover:border-[#9CA3AF] hover:bg-[#EAEAEA]"
+                                        }`}
                                     >
                                         <svg className="w-[15px] h-[15px] sm:w-[16px] sm:h-[16px] shrink-0 text-[#18181B]" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                                             <circle cx="9" cy="9" r="7.75" stroke="currentColor" strokeWidth="1.25" />
@@ -273,8 +282,13 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             setHasStore(false);
                                             setStep1Warning("");
                                         }}
-                                        className={`flex items-center gap-2.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border border-[#C5C5CA] text-[12px] sm:text-[13px] font-nohemi font-normal transition-all duration-200 cursor-pointer bg-[#F2F2F2] text-[#111827] hover:border-[#9CA3AF] ${hasStore === false ? "shadow-xs" : "hover:bg-[#EAEAEA]"
-                                            }`}
+                                        className={`flex items-center gap-2.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border text-[12px] sm:text-[13px] font-nohemi font-normal transition-all duration-200 cursor-pointer text-[#111827] ${
+                                            hasStore === false
+                                                ? "border-[#307D6D] bg-[#DBEFE9] shadow-xs"
+                                                : (step1Warning && hasStore === null)
+                                                    ? "border-[#F87171] bg-[#FEF2F2]/30 hover:border-[#EF4444]"
+                                                    : "border-[#C5C5CA] bg-[#F2F2F2] hover:border-[#9CA3AF] hover:bg-[#EAEAEA]"
+                                        }`}
                                     >
                                         <svg className="w-[15px] h-[15px] sm:w-[16px] sm:h-[16px] shrink-0 text-[#18181B]" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                                             <circle cx="9" cy="9" r="7.75" stroke="currentColor" strokeWidth="1.25" />
@@ -309,15 +323,14 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             />
                         </div>
 
+                    </div>
+
+                    <div className={isHero ? `${step1Warning ? "mt-[165px] sm:mt-18 lg:mt-[65px] xl:mt-[65px] 2xl:mt-[90px]" : "mt-[195px] sm:mt-24 lg:mt-[90px] xl:mt-[90px] 2xl:mt-[120px]"} mb-6 sm:mb-7 lg:mb-6 xl:mb-8` : "mt-4 sm:mt-auto mb-2 sm:mb-3"}>
                         {step1Warning && (
                             <motion.div
                                 initial={{ opacity: 0, y: -4 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className={
-                                    isHero
-                                        ? "flex items-center justify-center gap-2 py-2 px-4 rounded-full bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-[12.5px] sm:text-[13px] font-satoshi font-medium mt-3 shadow-2xs"
-                                        : "flex items-center justify-center gap-2 py-1.5 px-3 rounded-full bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-[11.5px] sm:text-[13px] font-satoshi font-medium mt-2 sm:mt-3 shadow-2xs"
-                                }
+                                className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mb-2.5 sm:mb-3 text-center"
                             >
                                 <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
                                     <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
@@ -325,26 +338,26 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                 <span>{step1Warning}</span>
                             </motion.div>
                         )}
-                    </div>
 
-                    <button
-                        type="button"
-                        onClick={handleStep1Continue}
-                        className={
-                            isHero
-                                ? "font-satoshi w-full bg-[#2B44E7] hover:bg-[#2037CA] text-white font-normal py-2.5 sm:py-3 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 mt-[195px] sm:mt-24 lg:mt-[90px] xl:mt-[90px] 2xl:mt-[120px] mb-6 sm:mb-7 lg:mb-6 xl:mb-8 text-[15px] sm:text-[16px] shadow-none cursor-pointer"
-                                : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2 sm:py-2.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 mt-4 sm:mt-auto mb-2 sm:mb-3 text-[13px] sm:text-[14px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
-                        }
-                    >
-                        <span>{form?.continueLabel}</span>
-                        {isHero ? (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        ) : (
-                            <span className="text-[14px] sm:text-[15px]">→</span>
-                        )}
-                    </button>
+                        <button
+                            type="button"
+                            onClick={handleStep1Continue}
+                            className={
+                                isHero
+                                    ? "font-satoshi w-full bg-[#2B44E7] hover:bg-[#2037CA] text-white font-normal py-2.5 sm:py-3 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 text-[15px] sm:text-[16px] shadow-none cursor-pointer"
+                                    : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2 sm:py-2.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[13px] sm:text-[14px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
+                            }
+                        >
+                            <span>{form?.continueLabel}</span>
+                            {isHero ? (
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            ) : (
+                                <span className="text-[14px] sm:text-[15px]">→</span>
+                            )}
+                        </button>
+                    </div>
                 </div>
             )}
 
@@ -599,11 +612,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             <motion.div
                                 initial={{ opacity: 0, y: -4 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className={
-                                    isHero
-                                        ? "flex items-center justify-center gap-2 py-2 px-4 rounded-full bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-[12.5px] sm:text-[13px] font-satoshi font-medium mt-3.5 shadow-2xs"
-                                        : "flex items-center justify-center gap-2 py-1.5 px-3 rounded-full bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-[11.5px] sm:text-[13px] font-satoshi font-medium mt-2 sm:mt-3 shadow-2xs"
-                                }
+                                className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mt-3.5 mb-1 text-center"
                             >
                                 <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
                                     <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
@@ -808,21 +817,17 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
 
                     <div>
                         {step3Warning && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: -4 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className={
-                                        isHero
-                                            ? "flex items-center justify-center gap-2 py-2 px-4 rounded-full bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-[12.5px] sm:text-[13px] font-satoshi font-medium mb-3 shadow-2xs"
-                                            : "flex items-center justify-center gap-2 py-1.5 px-3 rounded-full bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] text-[11.5px] sm:text-[12.5px] font-satoshi font-medium mb-1.5 shadow-2xs"
-                                    }
-                                >
-                                    <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
-                                        <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
-                                    </svg>
-                                    <span>{step3Warning}</span>
-                                </motion.div>
-                            )}
+                            <motion.div
+                                initial={{ opacity: 0, y: -4 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mb-2.5 sm:mb-3 text-center"
+                            >
+                                <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
+                                    <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
+                                </svg>
+                                <span>{step3Warning}</span>
+                            </motion.div>
+                        )}
 
                             {isSubmitted ? (
                                 <motion.div
