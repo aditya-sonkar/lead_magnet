@@ -159,7 +159,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         id="callback-modal"
                         data-modal="callback"
                         data-lenis-prevent="true"
-                        className="relative w-full max-w-[570px] sm:max-w-[595px] md:max-w-[610px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none p-5 sm:p-8 md:p-9 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain transition-all duration-200"
+                        className="relative w-full max-w-[530px] sm:max-w-[555px] md:max-w-[570px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none p-5 sm:p-8 md:p-9 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain transition-all duration-200"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
@@ -203,7 +203,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         ) : (
                             <>
                                 {/* Title & Description */}
-                                <div className="pt-0.5 sm:pt-1 mb-3.5 sm:mb-4">
+                                <div className="pt-2 sm:pt-3 mb-3.5 sm:mb-4">
                                     <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-8">
                                         {title}
                                     </h2>
@@ -261,7 +261,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     </div>
 
                                     {/* Submit Button */}
-                                    <div className="mt-3.5 sm:mt-4 pb-1">
+                                    <div className="mt-3.5 sm:mt-4 pb-2 sm:pb-3">
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
