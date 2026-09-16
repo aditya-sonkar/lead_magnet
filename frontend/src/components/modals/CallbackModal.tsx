@@ -159,7 +159,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         id="callback-modal"
                         data-modal="callback"
                         data-lenis-prevent="true"
-                        className="relative w-full max-w-[570px] sm:max-w-[595px] md:max-w-[610px] max-h-[94vh] sm:max-h-[90vh] min-h-0 sm:min-h-[535px] md:min-h-[555px] bg-[#FAFAFC] rounded-none p-4.5 sm:p-8 md:p-9 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col justify-between overflow-y-auto overscroll-contain transition-[min-height,padding] duration-200"
+                        className="relative w-full max-w-[570px] sm:max-w-[595px] md:max-w-[610px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none p-5 sm:p-8 md:p-9 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain transition-all duration-200"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
@@ -203,11 +203,11 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         ) : (
                             <>
                                 {/* Title & Description */}
-                                <div className="pt-1.5 sm:pt-2.5 mb-4 sm:mb-5">
+                                <div className="pt-0.5 sm:pt-1 mb-3.5 sm:mb-4">
                                     <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-8">
                                         {title}
                                     </h2>
-                                    <p className="font-satoshi text-[#222222] text-[11.5px] sm:text-[12px] md:text-[12.5px] leading-relaxed mt-2.5 sm:mt-3 max-w-[520px] whitespace-pre-line font-normal">
+                                    <p className="font-satoshi text-[#222222] text-[11.5px] sm:text-[12px] md:text-[12.5px] leading-relaxed mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line font-normal">
                                         {description}
                                     </p>
                                 </div>
@@ -215,7 +215,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                 <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
                                     {/* Email Field */}
                                     <div>
-                                        <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                        <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
                                             {emailLabel}
                                         </label>
                                         <input
@@ -230,7 +230,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
 
                                     {/* Phone Number Field */}
                                     <div>
-                                        <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                        <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
                                             {phoneLabel}
                                         </label>
                                         <input
@@ -245,7 +245,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
 
                                     {/* Shopify Link Field */}
                                     <div>
-                                        <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                        <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
                                             {shopifyLinkLabel}
                                         </label>
                                         <input
@@ -258,7 +258,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     </div>
 
                                     {/* Submit Button */}
-                                    <div className="pt-2 sm:pt-2.5 pb-1.5 sm:pb-2.5">
+                                    <div className="pt-1 sm:pt-1.5 pb-1">
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
