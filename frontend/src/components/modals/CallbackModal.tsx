@@ -159,7 +159,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         id="callback-modal"
                         data-modal="callback"
                         data-lenis-prevent="true"
-                        className="relative w-full max-w-[545px] sm:max-w-[570px] md:max-w-[585px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none px-4 sm:px-6 md:px-7 py-5 sm:py-8 md:py-9 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain transition-all duration-200"
+                        className="relative w-full max-w-[560px] sm:max-w-[585px] md:max-w-[600px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none px-4 sm:px-6 md:px-7 py-6 sm:py-9 md:py-10 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain transition-all duration-200"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
@@ -167,7 +167,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                             type="button"
                             onClick={onClose}
                             aria-label="Close callback modal"
-                            className="absolute top-5 right-4 sm:top-8 md:top-9 sm:right-6 md:right-7 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#333333] hover:text-black transition-colors cursor-pointer z-20"
+                            className="absolute top-4.5 right-4 sm:top-7 md:top-8 sm:right-6 md:right-7 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#333333] hover:text-black transition-colors cursor-pointer z-20"
                         >
                             <svg className="w-6 h-6 sm:w-6.5 sm:h-6.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -203,7 +203,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         ) : (
                             <>
                                 {/* Title & Description */}
-                                <div className="pt-1 sm:pt-1.5 mb-3.5 sm:mb-4">
+                                <div className="pt-0 mb-3.5 sm:mb-4">
                                     <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-10 sm:pr-12">
                                         {title}
                                     </h2>
