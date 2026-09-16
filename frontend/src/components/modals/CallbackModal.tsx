@@ -207,7 +207,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-8">
                                         {title}
                                     </h2>
-                                    <p className="font-satoshi text-[#222222] text-[11.5px] sm:text-[12px] md:text-[12.5px] leading-relaxed mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line font-normal">
+                                    <p className="font-satoshi text-[#222222] text-[10.5px] sm:text-[11px] md:text-[11.5px] leading-relaxed mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line font-normal">
                                         {description}
                                     </p>
                                 </div>
@@ -280,7 +280,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                             )}
                                         </button>
                                         {disclaimer && (
-                                            <p className="text-center font-satoshi text-[11.5px] sm:text-[12px] md:text-[12.5px] text-[#222222] mt-1.5 sm:mt-2 font-normal leading-normal">
+                                            <p className="text-center font-satoshi text-[10.5px] sm:text-[11px] md:text-[11.5px] text-[#222222] mt-1.5 sm:mt-2 font-normal leading-normal">
                                                 {disclaimer}
                                             </p>
                                         )}
