@@ -280,7 +280,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                             )}
                                         </button>
                                         {disclaimer && (
-                                            <p className="text-center font-satoshi text-[clamp(11.5px,0.9vw,12.5px)] text-[#777777] mt-2.5 sm:mt-3">
+                                            <p className="text-center font-satoshi text-[11.5px] sm:text-[12px] md:text-[12.5px] text-[#222222] mt-1.5 sm:mt-2 font-normal leading-normal">
                                                 {disclaimer}
                                             </p>
                                         )}
