@@ -25,15 +25,14 @@
       ],
       "default": "quote"
     },
-    "quoteForm": {
-      "type": "component",
-      "component": "sections.quote-form",
-      "repeatable": false
-    },
-    "callbackForm": {
-      "type": "component",
-      "component": "sections.callback-form",
-      "repeatable": false
+    "formConfig": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.quote-form",
+        "sections.callback-form"
+      ],
+      "min": 1,
+      "max": 1
     }
   }
 }

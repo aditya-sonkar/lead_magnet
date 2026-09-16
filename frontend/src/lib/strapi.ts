@@ -306,32 +306,35 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
                 const globalQuoteEntry = formsData.find((f: any) => f.formType === "quote");
                 const globalCallbackEntry = formsData.find((f: any) => f.formType === "callback");
 
-                if (globalQuoteEntry && globalQuoteEntry.quoteForm) {
+                const globalQuoteForm = globalQuoteEntry?.formConfig?.[0] || globalQuoteEntry?.quoteForm;
+                const globalCallbackForm = globalCallbackEntry?.formConfig?.[0] || globalCallbackEntry?.callbackForm;
+
+                if (globalQuoteForm) {
                     if (pageData.hero) {
-                        pageData.hero.quoteForm = globalQuoteEntry.quoteForm;
+                        pageData.hero.quoteForm = globalQuoteForm;
                     }
                     if (pageData.sections && Array.isArray(pageData.sections)) {
                         const dynamicHero = pageData.sections.find((s: any) => 
                             s?.__component === "sections.hero" || s?.__component === "hero" || s?.__component === "Hero"
                         );
                         if (dynamicHero) {
-                            dynamicHero.quoteForm = globalQuoteEntry.quoteForm;
+                            dynamicHero.quoteForm = globalQuoteForm;
                         }
                     }
                 }
 
-                if (globalCallbackEntry && globalCallbackEntry.callbackForm) {
+                if (globalCallbackForm) {
                     if (unwrappedStickyCTA) {
-                        unwrappedStickyCTA.callbackForm = globalCallbackEntry.callbackForm;
+                        unwrappedStickyCTA.callbackForm = globalCallbackForm;
                     }
-                    pageData.callbackForm = globalCallbackEntry.callbackForm;
+                    pageData.callbackForm = globalCallbackForm;
                     
                     if (pageData.sections && Array.isArray(pageData.sections)) {
                         const dynamicCallback = pageData.sections.find((s: any) => 
                             s?.__component?.toLowerCase().includes("callback")
                         );
                         if (dynamicCallback) {
-                            dynamicCallback.callbackForm = globalCallbackEntry.callbackForm;
+                            dynamicCallback.callbackForm = globalCallbackForm;
                         }
                     }
                 }
