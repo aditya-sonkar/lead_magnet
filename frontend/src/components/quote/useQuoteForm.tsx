@@ -154,6 +154,15 @@ export function useQuoteForm(form?: QuoteFormData | null) {
         setIsSubmitting(true);
 
         try {
+            // Resolve the final budget label — activeStep3Budget or selectedBudget holds tier.value||tier.label
+            // Find the matching tier label for clean display in Strapi
+            const activeBudgetVal = activeStep3Budget || selectedBudget;
+            const resolvedBudget = activeBudgetVal
+                ? (budgetList.find(
+                      (t) => t.value === activeBudgetVal || t.label === activeBudgetVal
+                  )?.label || activeBudgetVal)
+                : undefined;
+
             await fetch("/api/leads", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -162,7 +171,7 @@ export function useQuoteForm(form?: QuoteFormData | null) {
                     email,
                     storeUrl,
                     selectedProblems: selectedIssues,
-                    selectedBudget: activeStep3Budget || selectedBudget,
+                    selectedBudget: resolvedBudget,
                     otherNotes: otherIssues,
                     source: "Hero Quote Form",
                 }),

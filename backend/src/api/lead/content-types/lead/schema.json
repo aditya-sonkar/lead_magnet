@@ -16,7 +16,7 @@
       "type": "string"
     },
     "email": {
-      "type": "email"
+      "type": "string"
     },
     "storeUrl": {
       "type": "string"

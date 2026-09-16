@@ -15,19 +15,21 @@ export async function POST(req: Request) {
       headers["Authorization"] = `Bearer ${token}`;
     }
 
+    const selectedProblems = Array.isArray(body.selectedProblems)
+      ? body.selectedProblems.join(", ")
+      : body.selectedProblems || undefined;
+
     const res = await fetch(`${strapiUrl}/api/leads`, {
       method: "POST",
       headers,
       body: JSON.stringify({
         data: {
-          phone: body.phone || "",
-          email: body.email || "",
-          storeUrl: body.storeUrl || body.shopifyLink || "",
-          selectedProblems: Array.isArray(body.selectedProblems)
-            ? body.selectedProblems.join(", ")
-            : body.selectedProblems || "",
-          selectedBudget: body.selectedBudget || body.budget || "",
-          otherNotes: body.otherNotes || body.otherIssues || "",
+          phone: body.phone || undefined,
+          email: body.email || undefined,
+          storeUrl: body.storeUrl || body.shopifyLink || undefined,
+          selectedProblems: selectedProblems || undefined,
+          selectedBudget: body.selectedBudget || body.budget || undefined,
+          otherNotes: body.otherNotes || body.otherIssues || undefined,
           source: body.source || "Callback Form",
         },
       }),
