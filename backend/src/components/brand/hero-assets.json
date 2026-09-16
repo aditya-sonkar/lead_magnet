@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_brand_hero_assets",
+  "info": {
+    "displayName": "Hero Section",
+    "description": "Logo for Hero Marquee"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

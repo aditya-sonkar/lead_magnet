@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_brand_our_work_assets",
+  "info": {
+    "displayName": "Our Work",
+    "description": "Desktop and Mobile Project Screenshots"
+  },
+  "options": {},
+  "attributes": {
+    "desktopImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "mobileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

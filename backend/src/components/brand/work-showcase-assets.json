@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_brand_work_showcase_assets",
+  "info": {
+    "displayName": "Work Showcase",
+    "description": "Desktop and Mobile Before/After Images"
+  },
+  "options": {},
+  "attributes": {
+    "beforeImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "afterImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "mobileBeforeImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "mobileAfterImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

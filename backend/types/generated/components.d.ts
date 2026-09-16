@@ -1,5 +1,53 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BrandFinalCtaAssets extends Struct.ComponentSchema {
+  collectionName: 'components_brand_final_cta_assets';
+  info: {
+    description: 'Logo for Final CTA rotating animation';
+    displayName: 'Final CTA';
+  };
+  attributes: {
+    logo: Schema.Attribute.Media<'images' | 'files'>;
+  };
+}
+
+export interface BrandHeroAssets extends Struct.ComponentSchema {
+  collectionName: 'components_brand_hero_assets';
+  info: {
+    description: 'Logo for Hero Marquee';
+    displayName: 'Hero Section';
+  };
+  attributes: {
+    logo: Schema.Attribute.Media<'images' | 'files'>;
+  };
+}
+
+export interface BrandOurWorkAssets extends Struct.ComponentSchema {
+  collectionName: 'components_brand_our_work_assets';
+  info: {
+    description: 'Desktop and Mobile Project Screenshots';
+    displayName: 'Our Work';
+  };
+  attributes: {
+    desktopImage: Schema.Attribute.Media<'images' | 'files'>;
+    mobileImage: Schema.Attribute.Media<'images' | 'files'>;
+  };
+}
+
+export interface BrandWorkShowcaseAssets extends Struct.ComponentSchema {
+  collectionName: 'components_brand_work_showcase_assets';
+  info: {
+    description: 'Desktop and Mobile Before/After Images';
+    displayName: 'Work Showcase';
+  };
+  attributes: {
+    afterImage: Schema.Attribute.Media<'images' | 'files'>;
+    beforeImage: Schema.Attribute.Media<'images' | 'files'>;
+    mobileAfterImage: Schema.Attribute.Media<'images' | 'files'>;
+    mobileBeforeImage: Schema.Attribute.Media<'images' | 'files'>;
+  };
+}
+
 export interface SectionsCallbackForm extends Struct.ComponentSchema {
   collectionName: 'components_sections_callback_forms';
   info: {
@@ -537,6 +585,10 @@ export interface SharedSocialLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
+      'brand.final-cta-assets': BrandFinalCtaAssets;
+      'brand.hero-assets': BrandHeroAssets;
+      'brand.our-work-assets': BrandOurWorkAssets;
+      'brand.work-showcase-assets': BrandWorkShowcaseAssets;
       'sections.callback-form': SectionsCallbackForm;
       'sections.conversion-insights': SectionsConversionInsights;
       'sections.engagement-fit': SectionsEngagementFit;
