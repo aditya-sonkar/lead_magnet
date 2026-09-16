@@ -303,35 +303,35 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
 
             // Inject global forms into hero and stickyCTA
             if (formsData && formsData.length > 0) {
-                const globalQuoteForm = formsData.find((f: any) => f.formType === "quote");
-                const globalCallbackForm = formsData.find((f: any) => f.formType === "callback");
+                const globalQuoteEntry = formsData.find((f: any) => f.formType === "quote");
+                const globalCallbackEntry = formsData.find((f: any) => f.formType === "callback");
 
-                if (globalQuoteForm) {
+                if (globalQuoteEntry && globalQuoteEntry.quoteForm) {
                     if (pageData.hero) {
-                        pageData.hero.quoteForm = globalQuoteForm;
+                        pageData.hero.quoteForm = globalQuoteEntry.quoteForm;
                     }
                     if (pageData.sections && Array.isArray(pageData.sections)) {
                         const dynamicHero = pageData.sections.find((s: any) => 
                             s?.__component === "sections.hero" || s?.__component === "hero" || s?.__component === "Hero"
                         );
                         if (dynamicHero) {
-                            dynamicHero.quoteForm = globalQuoteForm;
+                            dynamicHero.quoteForm = globalQuoteEntry.quoteForm;
                         }
                     }
                 }
 
-                if (globalCallbackForm) {
+                if (globalCallbackEntry && globalCallbackEntry.callbackForm) {
                     if (unwrappedStickyCTA) {
-                        unwrappedStickyCTA.callbackForm = globalCallbackForm;
+                        unwrappedStickyCTA.callbackForm = globalCallbackEntry.callbackForm;
                     }
-                    pageData.callbackForm = globalCallbackForm;
+                    pageData.callbackForm = globalCallbackEntry.callbackForm;
                     
                     if (pageData.sections && Array.isArray(pageData.sections)) {
                         const dynamicCallback = pageData.sections.find((s: any) => 
                             s?.__component?.toLowerCase().includes("callback")
                         );
                         if (dynamicCallback) {
-                            dynamicCallback.callbackForm = globalCallbackForm;
+                            dynamicCallback.callbackForm = globalCallbackEntry.callbackForm;
                         }
                     }
                 }
@@ -415,9 +415,13 @@ export async function getFooter(): Promise<any> {
     ].join("&");
 
     const urls = [
-        `${STRAPI_URL}/api/footer?populate=*`,
-        `${STRAPI_URL}/api/footer?populate[footer][populate]=*`,
         `${STRAPI_URL}/api/footer?${deepNested}`,
+        `${STRAPI_URL}/api/footer?populate[footer][populate]=*`,
+        `${STRAPI_URL}/api/footer?populate[Footer][populate]=*`,
+        `${STRAPI_URL}/api/footer?populate=*`,
+        `${STRAPI_URL}/api/footer?${deepNested}&status=draft`,
+        `${STRAPI_URL}/api/footer?populate[footer][populate]=*&status=draft`,
+        `${STRAPI_URL}/api/footer?populate=*&status=draft`,
         `${STRAPI_URL}/api/footer`,
     ];
 
