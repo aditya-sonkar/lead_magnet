@@ -132,6 +132,9 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                 }),
             });
             setIsSubmitted(true);
+            if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent("callback-modal-submitted"));
+            }
         } catch (err) {
             console.error("Callback submission error:", err);
             setIsSubmitted(true);

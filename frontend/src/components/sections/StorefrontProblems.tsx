@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 type PainPoint = {
@@ -56,6 +56,14 @@ export default function StorefrontProblems({
     if (!data) return null;
     const [selectedIds, setSelectedIds] = useState<number[]>([]);
     const [showWarning, setShowWarning] = useState(false);
+
+    useEffect(() => {
+        const handleCallbackSubmitted = () => {
+            setSelectedIds([]);
+        };
+        window.addEventListener("callback-modal-submitted", handleCallbackSubmitted);
+        return () => window.removeEventListener("callback-modal-submitted", handleCallbackSubmitted);
+    }, []);
 
     const toggleSelect = (id: number) => {
         setSelectedIds((prev) =>
