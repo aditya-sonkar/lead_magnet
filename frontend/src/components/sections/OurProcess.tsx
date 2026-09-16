@@ -176,7 +176,7 @@ export default function OurProcess({
             </div>
 
             {/* Main Content Area */}
-            <div className="w-full bg-[#0F1D07] px-6 sm:px-8 lg:px-16 py-14 sm:py-18 lg:py-24 text-white">
+            <div className="w-full bg-[#0F1D07] px-4 min-[360px]:px-6 sm:px-8 lg:px-16 py-14 sm:py-18 lg:py-24 text-white">
                 <div className="mx-auto max-w-[1240px] w-full">
                     {/* Header */}
                     <div className="mb-8 sm:mb-12 lg:mb-16">
@@ -226,7 +226,7 @@ export default function OurProcess({
                     )}
 
                     {/* Responsive Grid: 2 columns on mobile/tablet, 4 columns on desktop */}
-                    <div className="mt-[clamp(28px,5vw,56px)] grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-[clamp(16px,2.5vw,36px)]">
+                    <div className="mt-[clamp(28px,5vw,56px)] grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-3 min-[360px]:gap-4 lg:gap-[clamp(16px,2.5vw,36px)] items-stretch">
                         {/* 1. Image Diagram Card */}
                         <div className="col-span-2 order-1 lg:order-none lg:col-start-1 lg:col-span-2 lg:row-start-1 w-full aspect-[2896/1614] overflow-hidden rounded-[12px] bg-white flex items-center justify-center p-1 sm:p-1.5 md:p-2 lg:p-2.5">
                             {getMediaUrl(data.image) && (
@@ -354,7 +354,7 @@ function ProcessCard({
 
     return (
         <div
-            className={`bg-[#1B2F10] rounded-[12px] p-[clamp(14px,2.2vw,32px)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
+            className={`bg-[#1B2F10] rounded-[12px] p-3.5 min-[360px]:p-4 sm:p-[clamp(14px,2.2vw,32px)] flex flex-col justify-between min-h-[190px] min-[360px]:min-h-[200px] sm:min-h-0 sm:aspect-4/3 lg:aspect-auto h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
                 } ${activeCardId !== null ? "z-20" : ""} ${className}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -380,7 +380,7 @@ function ProcessCard({
                 <div>
                     {/* Icon */}
                     {iconUrl && (
-                        <div className="h-[clamp(20px,2vw,32px)] w-[clamp(20px,2vw,32px)] mb-1.5 sm:mb-3 lg:mb-3 xl:mb-4 flex items-center justify-start relative">
+                        <div className="h-[18px] w-[18px] min-[360px]:h-[20px] min-[360px]:w-[20px] sm:h-[clamp(20px,2vw,32px)] sm:w-[clamp(20px,2vw,32px)] mb-1.5 sm:mb-3 lg:mb-3 xl:mb-4 flex items-center justify-start relative">
                             <Image
                                 src={iconUrl}
                                 alt={getMediaAlt(card.icon) || ""}
@@ -392,12 +392,12 @@ function ProcessCard({
                     )}
 
                     {/* Title */}
-                    <h3 className="font-satoshi text-[clamp(16px,1.8vw,26px)] font-bold leading-tight text-white">
+                    <h3 className="font-satoshi text-[15.5px] min-[360px]:text-[16px] sm:text-[clamp(16px,1.8vw,26px)] font-bold leading-tight text-white">
                         {card.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="mt-1 sm:mt-2 lg:mt-2 font-satoshi text-[clamp(10.5px,1vw,13.5px)] font-medium leading-[1.38] sm:leading-[1.45] text-[#9BA893] max-w-[300px]">
+                    <p className="mt-1 sm:mt-2 lg:mt-2 font-satoshi text-[10px] min-[360px]:text-[10.5px] sm:text-[clamp(10.5px,1vw,13.5px)] font-medium leading-[1.38] sm:leading-[1.45] text-[#9BA893] max-w-[300px]">
                         {card.description}
                     </p>
                 </div>
@@ -405,7 +405,7 @@ function ProcessCard({
                 {/* CTA */}
                 {card.cta && (
                     <div className="mt-auto pt-2 sm:pt-3 lg:pt-3.5 xl:pt-5">
-                        <div className="inline-flex items-center gap-1 sm:gap-2 lg:gap-2.5 font-satoshi text-[clamp(11.5px,1.1vw,15.5px)] font-semibold text-white transition-all duration-300">
+                        <div className="inline-flex items-center gap-1 sm:gap-2 lg:gap-2.5 font-satoshi text-[11px] min-[360px]:text-[11.5px] sm:text-[clamp(11.5px,1.1vw,15.5px)] font-semibold text-white transition-all duration-300">
                             <span>{ctaLabel}</span>
                             <svg
                                 className="h-[clamp(14px,1.2vw,20px)] w-[clamp(14px,1.2vw,20px)] shrink-0 transition-transform duration-300 group-hover:translate-x-1"
@@ -436,7 +436,7 @@ function ProcessCard({
                         duration: isActive ? 0.5 : 0.4,
                         ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                     }}
-                    className={`absolute inset-0 pt-4 lg:pt-5 xl:pt-6 pb-4 lg:pb-5 xl:pb-6 px-4 lg:px-6 xl:px-7 flex w-full flex-col ${isActive
+                    className={`absolute inset-0 p-3 sm:pt-4 sm:pb-4 sm:px-4 lg:pt-5 lg:pb-5 lg:px-6 xl:pt-6 xl:pb-6 xl:px-7 flex w-full flex-col ${isActive
                             ? "pointer-events-auto"
                             : "pointer-events-none"
                         }`}
