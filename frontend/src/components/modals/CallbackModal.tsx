@@ -159,7 +159,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         id="callback-modal"
                         data-modal="callback"
                         data-lenis-prevent="true"
-                        className="relative w-full max-w-[550px] sm:max-w-[570px] max-h-[92vh] sm:max-h-[88vh] bg-[#FAFAFC] rounded-none p-4 sm:p-7 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col justify-between overflow-y-auto overscroll-contain"
+                        className="relative w-full max-w-[570px] sm:max-w-[595px] md:max-w-[610px] max-h-[94vh] sm:max-h-[90vh] min-h-0 sm:min-h-[535px] md:min-h-[555px] bg-[#FAFAFC] rounded-none p-4.5 sm:p-8 md:p-9 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col justify-between overflow-y-auto overscroll-contain transition-[min-height,padding] duration-200"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
@@ -167,7 +167,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                             type="button"
                             onClick={onClose}
                             aria-label="Close callback modal"
-                            className="absolute top-3.5 right-3.5 sm:top-6 sm:right-6 w-7 h-7 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer"
+                            className="absolute top-3.5 right-3.5 sm:top-7 sm:right-7 w-7 h-7 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer z-20"
                         >
                             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
