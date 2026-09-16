@@ -167,9 +167,9 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                             type="button"
                             onClick={onClose}
                             aria-label="Close callback modal"
-                            className="absolute top-6 right-5 sm:top-10 sm:right-8 md:top-11 md:right-9 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer z-20"
+                            className="absolute top-6 right-5 sm:top-10 sm:right-8 md:top-11 md:right-9 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#333333] hover:text-black transition-colors cursor-pointer z-20"
                         >
-                            <svg className="w-6 h-6 sm:w-6.5 sm:h-6.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.85">
+                            <svg className="w-6 h-6 sm:w-6.5 sm:h-6.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
