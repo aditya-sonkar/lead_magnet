@@ -154,11 +154,23 @@ export function useQuoteForm(form?: QuoteFormData | null) {
         setIsSubmitting(true);
 
         try {
-            // Smooth loading delay for UI feedback
-            await new Promise((resolve) => setTimeout(resolve, 800));
+            await fetch("/api/leads", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    phone,
+                    email,
+                    storeUrl,
+                    selectedProblems: selectedIssues,
+                    selectedBudget: activeStep3Budget || selectedBudget,
+                    otherNotes: otherIssues,
+                    source: "Hero Quote Form",
+                }),
+            });
             setIsSubmitted(true);
         } catch (error) {
             console.error("Submission failed:", error);
+            setIsSubmitted(true);
         } finally {
             setIsSubmitting(false);
         }

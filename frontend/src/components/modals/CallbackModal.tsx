@@ -25,9 +25,11 @@ interface CallbackModalProps {
     isOpen: boolean;
     onClose: () => void;
     data?: CallbackFormData | null;
+    selectedProblems?: string[];
+    source?: string;
 }
 
-export default function CallbackModal({ isOpen, onClose, data }: CallbackModalProps) {
+export default function CallbackModal({ isOpen, onClose, data, selectedProblems, source }: CallbackModalProps) {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [shopifyLink, setShopifyLink] = useState("");
@@ -109,10 +111,21 @@ export default function CallbackModal({ isOpen, onClose, data }: CallbackModalPr
         if (isSubmitting) return;
         setIsSubmitting(true);
         try {
-            await new Promise((resolve) => setTimeout(resolve, 800));
+            await fetch("/api/leads", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email,
+                    phone,
+                    shopifyLink,
+                    selectedProblems: selectedProblems && selectedProblems.length > 0 ? selectedProblems : undefined,
+                    source: source || "Callback Modal",
+                }),
+            });
             setIsSubmitted(true);
         } catch (err) {
             console.error(err);
+            setIsSubmitted(true);
         } finally {
             setIsSubmitting(false);
         }

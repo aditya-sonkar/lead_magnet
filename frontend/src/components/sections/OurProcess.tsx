@@ -320,10 +320,7 @@ function ProcessCard({
 
     const isActive = (isHovered && !isClosedByClick) || activeCardId === card.id;
 
-    const ctaBase = card.cta?.label || "";
-    const ctaDesktop = ctaBase && (ctaBase.toLowerCase().includes(card.title.toLowerCase())
-        ? ctaBase
-        : `${ctaBase} ${card.title}`);
+    const ctaLabel = card.cta?.label || "";
 
     const services = card.services || [];
     const hasServices = services.length > 0;
@@ -409,8 +406,7 @@ function ProcessCard({
                 {card.cta && (
                     <div className="mt-auto pt-2 sm:pt-3 lg:pt-3.5 xl:pt-5">
                         <div className="inline-flex items-center gap-1 sm:gap-2 lg:gap-2.5 font-satoshi text-[clamp(11.5px,1.1vw,15.5px)] font-semibold text-white transition-all duration-300">
-                            <span className="lg:hidden">{ctaBase}</span>
-                            <span className="hidden lg:inline">{ctaDesktop}</span>
+                            <span>{ctaLabel}</span>
                             <svg
                                 className="h-[clamp(14px,1.2vw,20px)] w-[clamp(14px,1.2vw,20px)] shrink-0 transition-transform duration-300 group-hover:translate-x-1"
                                 viewBox="0 0 24 24"

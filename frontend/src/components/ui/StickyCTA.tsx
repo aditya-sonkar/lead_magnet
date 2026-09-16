@@ -33,10 +33,25 @@ export default function StickyCTA({
     const [isQuoteOpen, setIsQuoteOpen] = useState(false);
     const [isCallbackOpen, setIsCallbackOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [selectedProblems, setSelectedProblems] = useState<string[]>([]);
+    const [modalSource, setModalSource] = useState<string>("");
 
     useEffect(() => {
         const handleOpenQuote = () => setIsQuoteOpen(true);
-        const handleOpenCallback = () => setIsCallbackOpen(true);
+        const handleOpenCallback = (e: Event) => {
+            const customEv = e as CustomEvent;
+            if (customEv?.detail?.selectedProblems) {
+                setSelectedProblems(customEv.detail.selectedProblems);
+            } else {
+                setSelectedProblems([]);
+            }
+            if (customEv?.detail?.source) {
+                setModalSource(customEv.detail.source);
+            } else {
+                setModalSource("");
+            }
+            setIsCallbackOpen(true);
+        };
         window.addEventListener("open-quote-modal", handleOpenQuote);
         window.addEventListener("open-callback-modal", handleOpenCallback);
 
@@ -268,6 +283,8 @@ export default function StickyCTA({
                 isOpen={isCallbackOpen}
                 onClose={() => setIsCallbackOpen(false)}
                 data={callbackForm || (rawData?.callbackForm as any)?.attributes || rawData?.callbackForm}
+                selectedProblems={selectedProblems}
+                source={modalSource}
             />
         </>
     );

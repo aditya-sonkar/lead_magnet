@@ -108,7 +108,7 @@ export default function StorefrontProblems({
                                         {item.title}
                                     </h3>
 
-                                    <p className="font-satoshi mt-2 sm:mt-2.5 text-[15.5px] sm:text-[14.5px] lg:text-[15px] leading-[1.5] sm:leading-[1.55] text-[#0F1D07]">
+                                    <p className="font-satoshi mt-2 sm:mt-2.5 text-[15.5px] sm:text-[14.5px] lg:text-[15px] leading-[1.5] sm:leading-[1.55] text-[#0F1D07] max-w-none lg:max-w-[275px]">
                                         {item.description}
                                     </p>
                                 </div>
@@ -151,7 +151,7 @@ export default function StorefrontProblems({
                 {(() => {
                     const count = selectedIds.length;
 
-                    // Exact Strapi summary resolver for states: default, one, two, three, multiple
+                    // Live Strapi summary resolver for states: default, one, two, three, multiple
                     const summaryText = (() => {
                         const sData = data.summary;
                         if (!sData) return null;
@@ -163,13 +163,11 @@ export default function StorefrontProblems({
                             return typeof item === "string" ? item : (item.text || item.description || item.content || item.label || item.value || null);
                         };
 
-                        // BEFORE SUBMIT: Always show 'default' state from Strapi
-                        if (!isSubmitted) {
+                        if (count === 0) {
                             const defText = getTextByState("default") || (Array.isArray(sData) && typeof sData[0] === "object" ? sData[0]?.text : null);
                             return defText ? defText.replace(/\{count\}/g, String(count)) : null;
                         }
 
-                        // AFTER SUBMIT: Match count to Strapi state ('one', 'two', 'three', or 'multiple')
                         let targetState = "multiple";
                         if (count === 1) targetState = "one";
                         else if (count === 2) targetState = "two";
@@ -196,69 +194,41 @@ export default function StorefrontProblems({
 
                             {data.submitLabel && (
                                 <div className="w-full sm:w-auto flex flex-col items-center">
-                                    {(() => {
-                                        const submittingText = data.submittingLabel || data.diagnosingLabel || "Diagnosing...";
-                                        const successText = data.successLabel || data.completeLabel || "Complete!";
+                                    <button
+                                        type="button"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            if (selectedIds.length === 0) {
+                                                setShowWarning(true);
+                                                return;
+                                            }
+                                            setShowWarning(false);
+                                            // Open Callback Modal with selected problem titles
+                                            if (typeof window !== "undefined") {
+                                                const selectedTitles = (data.items || [])
+                                                    .filter((item) => selectedIds.includes(item.id))
+                                                    .map((item) => item.title);
 
-                                        return (
-                                            <button
-                                                type="button"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    if (isSubmitting || isSuccess) return;
-
-                                                    if (selectedIds.length === 0) {
-                                                        setShowWarning(true);
-                                                        setIsSubmitted(false);
-                                                        return;
-                                                    }
-                                                    setShowWarning(false);
-                                                    setIsSubmitting(true);
-                                                    
-                                                    setTimeout(() => {
-                                                        setIsSubmitting(false);
-                                                        setIsSubmitted(true);
-                                                        setIsSuccess(true);
-                                                        
-                                                        // Reset success badge after 1.5s
-                                                        setTimeout(() => {
-                                                            setIsSuccess(false);
-                                                        }, 1500);
-                                                    }, 600);
-                                                }}
-                                                className={`flex w-full font-inter items-center justify-center rounded-full px-10 py-2.5 sm:py-3.5 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer ${
-                                                    isSuccess ? "bg-[#168050]" : "bg-[#3447E5]"
-                                                }`}
-                                            >
-                                                {isSubmitting ? (
-                                                    <>
-                                                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                                                        </svg>
-                                                        <span>{submittingText}</span>
-                                                    </>
-                                                ) : isSuccess ? (
-                                                    <>
-                                                        <svg className="w-4 h-4 mr-1.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                                        </svg>
-                                                        <span>{successText}</span>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        {data.submitLabel}
-                                                        <span className="ml-2">→</span>
-                                                    </>
-                                                )}
-                                            </button>
-                                        );
-                                    })()}
-                                     {showWarning && data.warningMessage && (
-                                         <p className="font-satoshi mt-2 text-[12.5px] sm:text-[13px] text-[#DC2626] font-medium text-center w-full animate-in fade-in slide-in-from-top-1 duration-200">
-                                             {data.warningMessage}
-                                         </p>
-                                     )}
+                                                window.dispatchEvent(
+                                                    new CustomEvent("open-callback-modal", {
+                                                        detail: {
+                                                            selectedProblems: selectedTitles,
+                                                            source: "Storefront Problems Diagnosis",
+                                                        },
+                                                    })
+                                                );
+                                            }
+                                        }}
+                                        className="flex w-full font-inter items-center justify-center rounded-full px-10 py-2.5 sm:py-3.5 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer bg-[#3447E5]"
+                                    >
+                                        <span>{data.submitLabel}</span>
+                                        <span className="ml-2">→</span>
+                                    </button>
+                                    {showWarning && data.warningMessage && (
+                                        <p className="font-satoshi mt-2 text-[12.5px] sm:text-[13px] text-[#DC2626] font-medium text-center w-full animate-in fade-in slide-in-from-top-1 duration-200">
+                                            {data.warningMessage}
+                                        </p>
+                                    )}
                                 </div>
                             )}
                         </div>

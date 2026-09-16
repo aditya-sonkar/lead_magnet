@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads",
+  "info": {
+    "singularName": "lead",
+    "pluralName": "leads",
+    "displayName": "Lead",
+    "description": "User lead submissions and callback requests"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "storeUrl": {
+      "type": "string"
+    },
+    "selectedProblems": {
+      "type": "text"
+    },
+    "selectedBudget": {
+      "type": "string"
+    },
+    "otherNotes": {
+      "type": "text"
+    },
+    "source": {
+      "type": "string"
+    }
+  }
+}
