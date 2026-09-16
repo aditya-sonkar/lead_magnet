@@ -255,6 +255,49 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
                         }
                     }
                 }
+
+                // Inject global brands into Work Showcase if items is empty
+                const workShowcaseItems = brandsData.filter(b => b.workShowcase).map((b, idx) => ({
+                    id: b.id || idx,
+                    name: b.name,
+                    beforeImage: b.workShowcase.beforeImage,
+                    afterImage: b.workShowcase.afterImage,
+                    mobileBeforeImage: b.workShowcase.mobileBeforeImage,
+                    mobileAfterImage: b.workShowcase.mobileAfterImage,
+                }));
+                if (workShowcaseItems.length > 0) {
+                    if (pageData.workShowcase && (!pageData.workShowcase.items || pageData.workShowcase.items.length === 0)) {
+                        pageData.workShowcase.items = workShowcaseItems;
+                    }
+                    if (pageData.sections && Array.isArray(pageData.sections)) {
+                        const dynamicWs = pageData.sections.find((s: any) => 
+                            s?.__component === "sections.work-showcase" || s?.__component === "work-showcase" || s?.__component === "WorkShowcase"
+                        );
+                        if (dynamicWs && (!dynamicWs.items || dynamicWs.items.length === 0)) {
+                            dynamicWs.items = workShowcaseItems;
+                        }
+                    }
+                }
+
+                // Inject global brands into Our Work if projects is empty
+                const ourWorkProjects = brandsData.filter(b => b.ourWork).map((b, idx) => ({
+                    id: b.id || idx,
+                    images: b.ourWork.desktopImage,
+                    mobileImages: b.ourWork.mobileImage,
+                }));
+                if (ourWorkProjects.length > 0) {
+                    if (pageData.ourWork && (!pageData.ourWork.projects || pageData.ourWork.projects.length === 0)) {
+                        pageData.ourWork.projects = ourWorkProjects;
+                    }
+                    if (pageData.sections && Array.isArray(pageData.sections)) {
+                        const dynamicOw = pageData.sections.find((s: any) => 
+                            s?.__component === "sections.our-work" || s?.__component === "our-work" || s?.__component === "OurWork"
+                        );
+                        if (dynamicOw && (!dynamicOw.projects || dynamicOw.projects.length === 0)) {
+                            dynamicOw.projects = ourWorkProjects;
+                        }
+                    }
+                }
             }
 
             const result = {
@@ -373,7 +416,13 @@ export async function getBrands(): Promise<any[]> {
     if (cachedBrands) return cachedBrands;
 
     try {
-        const res = await fetch(`${STRAPI_URL}/api/brands?populate[hero][populate]=logo&populate[finalCta][populate]=logo`, { next: { revalidate: REVALIDATE_TIME } });
+        const populateQuery = [
+            'populate[hero][populate]=logo',
+            'populate[finalCta][populate]=logo',
+            'populate[workShowcase][populate]=*',
+            'populate[ourWork][populate]=*'
+        ].join('&');
+        const res = await fetch(`${STRAPI_URL}/api/brands?${populateQuery}`, { next: { revalidate: REVALIDATE_TIME } });
         if (res.ok) {
             const json = await res.json().catch(() => null);
             if (json?.data) {
@@ -384,6 +433,8 @@ export async function getBrands(): Promise<any[]> {
                         name: attrs?.name,
                         logo: attrs?.hero?.logo,
                         finalCtaLogo: attrs?.finalCta?.logo,
+                        workShowcase: attrs?.workShowcase,
+                        ourWork: attrs?.ourWork,
                     };
                 });
                 cachedBrands = brands;
