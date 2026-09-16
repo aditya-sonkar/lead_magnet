@@ -555,10 +555,19 @@ export interface ApiFormForm extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    callbackForm: Schema.Attribute.Component<'sections.callback-form', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    formConfig: Schema.Attribute.DynamicZone<
+      ['sections.quote-form', 'sections.callback-form']
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 1;
+          min: 1;
+        },
+        number
+      >;
     formName: Schema.Attribute.String & Schema.Attribute.Required;
     formType: Schema.Attribute.Enumeration<['quote', 'callback', 'contact']> &
       Schema.Attribute.DefaultTo<'quote'>;
@@ -566,7 +575,6 @@ export interface ApiFormForm extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::form.form'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    quoteForm: Schema.Attribute.Component<'sections.quote-form', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
