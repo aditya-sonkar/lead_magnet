@@ -4,7 +4,9 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const rawUrl = process.env.STRAPI_API_URL || process.env.NEXT_PUBLIC_STRAPI_URL || "https://lead-magnet-7s2k.onrender.com";
+    let rawUrl = process.env.STRAPI_API_URL || process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
+    // Normalize localhost to 127.0.0.1 to prevent Node.js IPv6 DNS hang
+    rawUrl = rawUrl.replace("localhost", "127.0.0.1");
     const strapiUrl = rawUrl.replace(/\/+$/, "");
     const token = process.env.STRAPI_API_TOKEN;
 
@@ -46,7 +48,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    console.error("[API Leads] Error saving lead:", error);
-    return NextResponse.json({ success: false, error: error?.message || "Failed to save lead" }, { status: 500 });
+    console.error("[API Leads] Error saving lead:", error, error?.cause);
+    return NextResponse.json({ success: false, error: error?.message || "Failed to save lead", cause: error?.cause ? String(error.cause) : undefined }, { status: 500 });
   }
 }

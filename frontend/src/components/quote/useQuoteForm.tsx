@@ -163,22 +163,30 @@ export function useQuoteForm(form?: QuoteFormData | null) {
                   )?.label || activeBudgetVal)
                 : undefined;
 
-            await fetch("/api/leads", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    phone,
-                    email,
-                    storeUrl,
-                    selectedProblems: selectedIssues,
-                    selectedBudget: resolvedBudget,
-                    otherNotes: otherIssues,
-                    source: "Hero Quote Form",
-                }),
-            });
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+            try {
+                await fetch("/api/leads", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    signal: controller.signal,
+                    body: JSON.stringify({
+                        phone,
+                        email,
+                        storeUrl,
+                        selectedProblems: selectedIssues,
+                        selectedBudget: resolvedBudget,
+                        otherNotes: otherIssues,
+                        source: "Hero Quote Form",
+                    }),
+                });
+            } finally {
+                clearTimeout(timeoutId);
+            }
             setIsSubmitted(true);
         } catch (error) {
-            console.error("Submission failed:", error);
+            console.error("Submission error:", error);
             setIsSubmitted(true);
         } finally {
             setIsSubmitting(false);

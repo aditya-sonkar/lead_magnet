@@ -115,10 +115,14 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
         e.preventDefault();
         if (isSubmitting) return;
         setIsSubmitting(true);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 6000);
+
         try {
             await fetch("/api/leads", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                signal: controller.signal,
                 body: JSON.stringify({
                     email,
                     phone,
@@ -129,9 +133,10 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
             });
             setIsSubmitted(true);
         } catch (err) {
-            console.error(err);
+            console.error("Callback submission error:", err);
             setIsSubmitted(true);
         } finally {
+            clearTimeout(timeoutId);
             setIsSubmitting(false);
         }
     };
