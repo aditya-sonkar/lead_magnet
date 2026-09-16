@@ -208,17 +208,48 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
             }
         }
 
-        // 2. Fetch Header, Footer, and Brands in parallel
-        const [headerData, footerData, brandsData] = await Promise.all([
+        // 2. Fetch Header, Footer, Brands, and Forms in parallel
+        const [headerData, footerData, brandsData, formsData] = await Promise.all([
             getHeader(),
             getFooter(),
             getBrands(),
+            getForms(),
         ]);
 
         // If Collection Type (/api/pages) has data, return it
         if (pageData) {
             const rawStickyCTA = pageData.stickyCTA || pageData.sticky_cta || pageData.StickyCTA;
             const unwrappedStickyCTA = rawStickyCTA?.attributes ? { id: rawStickyCTA.id, ...rawStickyCTA.attributes } : rawStickyCTA;
+
+            // Inject global forms if missing
+            if (formsData && formsData.length > 0) {
+                const quoteForm = formsData.find((f: any) => f.formType === 'quote' || (f.formName && f.formName.toLowerCase().includes('quote')));
+                const callbackForm = formsData.find((f: any) => f.formType === 'callback' || (f.formName && f.formName.toLowerCase().includes('callback')));
+
+                if (quoteForm) {
+                    if (pageData.hero && (!pageData.hero.quoteForm || Object.keys(pageData.hero.quoteForm).length === 0)) {
+                        pageData.hero.quoteForm = quoteForm;
+                    }
+                    if (pageData.sections && Array.isArray(pageData.sections)) {
+                        const dynamicHero = pageData.sections.find((s: any) => 
+                            s?.__component === "sections.hero" || s?.__component === "hero" || s?.__component === "Hero"
+                        );
+                        if (dynamicHero && (!dynamicHero.quoteForm || Object.keys(dynamicHero.quoteForm).length === 0)) {
+                            dynamicHero.quoteForm = quoteForm;
+                        }
+                    }
+                }
+
+                if (callbackForm) {
+                    if (unwrappedStickyCTA) {
+                        if (!unwrappedStickyCTA.callbackForm || Object.keys(unwrappedStickyCTA.callbackForm).length === 0) {
+                            unwrappedStickyCTA.callbackForm = callbackForm;
+                        }
+                    } else {
+                        pageData.callbackForm = callbackForm;
+                    }
+                }
+            }
 
             // Inject global brands into hero if hero.brands is empty
             if (brandsData && brandsData.length > 0) {
@@ -439,6 +470,32 @@ export async function getBrands(): Promise<any[]> {
                 });
                 cachedBrands = brands;
                 return brands;
+            }
+        }
+    } catch {
+        // try next
+    }
+    return [];
+}
+
+let cachedForms: any[] | null = null;
+
+/**
+ * Fetches Forms Collection Type from Strapi (/api/forms) to populate Quote and Callback forms
+ */
+export async function getForms(): Promise<any[]> {
+    if (cachedForms) return cachedForms;
+
+    try {
+        const res = await fetch(`${STRAPI_URL}/api/forms?populate=*`, { next: { revalidate: REVALIDATE_TIME } });
+        if (res.ok) {
+            const json = await res.json().catch(() => null);
+            if (json?.data) {
+                const forms = json.data.map((item: any) => {
+                    return { id: item.id, ...(item.attributes || item) };
+                });
+                cachedForms = forms;
+                return forms;
             }
         }
     } catch {
