@@ -4,7 +4,7 @@
 
 /** Base URL for Strapi CMS API */
 const RAW_STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "https://lead-magnet-7s2k.onrender.com";
-export const STRAPI_URL = RAW_STRAPI_URL.replace(/\/+$/, "");
+export const STRAPI_URL = RAW_STRAPI_URL.replace(/\/+$/, "").replace("localhost", "127.0.0.1");
 
 /** Cache revalidation time (60 seconds) */
 export const REVALIDATE_TIME = 60;
@@ -74,14 +74,34 @@ export function getMediaAlt(media?: any, fallback: string = ""): string {
     return attrs?.alternativeText || fallback;
 }
 
-// In-memory cache to prevent multiple concurrent 13-second Strapi fetches in dev
+// In-memory cache & in-flight promise deduplication
 let landingPageCache: { data: any; timestamp: number } | null = null;
-const CACHE_TTL_MS = 60 * 1000;
+let inFlightLandingPagePromise: Promise<any> | null = null;
+const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
 export async function getLandingPage(slug: string = "shopify-lead-magnet") {
     if (landingPageCache && (Date.now() - landingPageCache.timestamp < CACHE_TTL_MS)) {
         return landingPageCache.data;
     }
+    if (inFlightLandingPagePromise) {
+        return inFlightLandingPagePromise;
+    }
+    inFlightLandingPagePromise = fetchLandingPageInternal(slug)
+        .then((res) => {
+            if (res) {
+                landingPageCache = { data: res, timestamp: Date.now() };
+            }
+            inFlightLandingPagePromise = null;
+            return res;
+        })
+        .catch((err) => {
+            inFlightLandingPagePromise = null;
+            throw err;
+        });
+    return inFlightLandingPagePromise;
+}
+
+async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
     try {
         // Deep populate query for all section components inside Dynamic Zone and stickyCTA
         const sectionsPopulate = [
@@ -220,17 +240,19 @@ export async function getLandingPage(slug: string = "shopify-lead-magnet") {
     }
 }
 
+let cachedHeader: any = null;
+let cachedFooter: any = null;
+
 /**
  * Fetches Header Single Type from Strapi (/api/header)
  */
 export async function getHeader(): Promise<any> {
+    if (cachedHeader) return cachedHeader;
+
     const urls = [
+        `${STRAPI_URL}/api/header?populate=*`,
         `${STRAPI_URL}/api/header?populate[Header][populate][quickLinks][populate]=*`,
         `${STRAPI_URL}/api/header?populate[Header][populate]=*`,
-        `${STRAPI_URL}/api/header?populate[header][populate]=*`,
-        `${STRAPI_URL}/api/header?populate=*`,
-        `${STRAPI_URL}/api/header?populate[Header][populate]=*&status=draft`,
-        `${STRAPI_URL}/api/header?populate=*&status=draft`,
         `${STRAPI_URL}/api/header`,
     ];
 
@@ -246,6 +268,7 @@ export async function getHeader(): Promise<any> {
                 const unwrapped = raw?.attributes ? { id: raw.id, ...raw.attributes } : raw;
                 const headerObj = unwrapped?.Header?.attributes || unwrapped?.Header || unwrapped?.header || unwrapped;
                 if (headerObj && typeof headerObj === "object") {
+                    cachedHeader = headerObj;
                     return headerObj;
                 }
             }
@@ -260,6 +283,8 @@ export async function getHeader(): Promise<any> {
  * Fetches Footer Single Type from Strapi (/api/footer) with full nested population
  */
 export async function getFooter(): Promise<any> {
+    if (cachedFooter) return cachedFooter;
+
     const deepNested = [
         "populate[footer][populate][logo][populate]=*",
         "populate[footer][populate][quickLinks][populate]=*",
@@ -272,10 +297,9 @@ export async function getFooter(): Promise<any> {
     ].join("&");
 
     const urls = [
-        `${STRAPI_URL}/api/footer?populate[footer][populate]=*`,
-        `${STRAPI_URL}/api/footer?populate[Footer][populate]=*`,
-        `${STRAPI_URL}/api/footer?${deepNested}`,
         `${STRAPI_URL}/api/footer?populate=*`,
+        `${STRAPI_URL}/api/footer?populate[footer][populate]=*`,
+        `${STRAPI_URL}/api/footer?${deepNested}`,
         `${STRAPI_URL}/api/footer`,
     ];
 
@@ -291,6 +315,7 @@ export async function getFooter(): Promise<any> {
                 const unwrapped = raw?.attributes ? { id: raw.id, ...raw.attributes } : raw;
                 const footerObj = unwrapped?.footer?.attributes || unwrapped?.footer || unwrapped?.Footer || unwrapped;
                 if (footerObj && typeof footerObj === "object") {
+                    cachedFooter = footerObj;
                     return footerObj;
                 }
             }
