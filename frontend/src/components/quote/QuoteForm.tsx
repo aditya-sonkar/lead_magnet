@@ -839,8 +839,8 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                         disabled={isSubmitting}
                                         className={
                                             isHero
-                                                ? `font-satoshi w-full bg-[#3145DD] hover:bg-[#2637b8] text-white font-medium py-2.5 sm:py-3 px-6 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 text-[15.5px] sm:text-[16px] shadow-sm hover:shadow-md cursor-pointer ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
-                                                : `font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[14px] sm:text-[15px] cursor-pointer shadow-md active:scale-[0.99] mt-3 sm:mt-2 ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
+                                                ? `group font-satoshi w-full bg-[#3145DD] hover:bg-[#2637b8] text-white font-medium py-2.5 sm:py-3 px-6 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 text-[15.5px] sm:text-[16px] shadow-sm hover:shadow-md cursor-pointer ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
+                                                : `group font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[14px] sm:text-[15px] cursor-pointer shadow-md active:scale-[0.99] mt-3 sm:mt-2 ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
                                         }
                                     >
                                         {isSubmitting ? (
@@ -853,8 +853,19 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             </>
                                         ) : (
                                             <>
-                                                <span>{form?.bookCallButtonLabel}</span>
-                                                <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
+                                                <span className="relative block overflow-hidden">
+                                                    <span className="inline-flex items-center justify-center gap-2 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                                                        <span>{form?.bookCallButtonLabel}</span>
+                                                        <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
+                                                    </span>
+                                                    <span
+                                                        aria-hidden="true"
+                                                        className="absolute inset-0 inline-flex items-center justify-center gap-2 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0 select-none"
+                                                    >
+                                                        <span>{form?.bookCallButtonLabel}</span>
+                                                        <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
+                                                    </span>
+                                                </span>
                                             </>
                                         )}
                                     </button>
