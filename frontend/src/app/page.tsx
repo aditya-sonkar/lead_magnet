@@ -17,8 +17,9 @@ import BlockRenderer from "@/components/page/BlockRenderer";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
-// Cache revalidation (60s) — fast responses without hammering CMS
-export const revalidate = 60;
+// Disable Next.js route cache completely to ensure fresh data from Strapi on every request
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getLandingPage("shopify-lead-magnet");

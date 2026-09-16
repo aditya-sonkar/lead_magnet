@@ -6,8 +6,8 @@
 const RAW_STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "https://lead-magnet-7s2k.onrender.com";
 export const STRAPI_URL = RAW_STRAPI_URL.replace(/\/+$/, "").replace("localhost", "127.0.0.1");
 
-/** Cache revalidation time (60 seconds) */
-export const REVALIDATE_TIME = 60;
+/** Cache revalidation time (0 seconds to disable Next.js cache completely and force fresh data) */
+export const REVALIDATE_TIME = 0;
 
 /** Centralized SVG icon paths for social media platforms */
 export const SOCIAL_ICONS: Record<string, string> = {
