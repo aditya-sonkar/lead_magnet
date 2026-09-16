@@ -12,11 +12,15 @@ export default {
         .findOne({ where: { type: "public" } });
 
       if (publicRole) {
-        const apis = ["page", "header", "footer"];
-        const actions = ["find", "findOne"];
+        const apis = ["page", "header", "footer", "brand", "form", "lead"];
+        const actions = ["find", "findOne", "create"];
 
         for (const api of apis) {
           for (const action of actions) {
+            // For lead, only 'create' action is public; for others, 'find' and 'findOne'
+            if (api === "lead" && action !== "create") continue;
+            if (api !== "lead" && action === "create") continue;
+
             const actionId = `api::${api}.${api}.${action}`;
             const existing = await strapi
               .query("plugin::users-permissions.permission")
@@ -39,7 +43,7 @@ export default {
             }
           }
         }
-        console.log("[Bootstrap] Verified public permissions for page, header, footer");
+        console.log("[Bootstrap] Verified public permissions for page, header, footer, brand, form, lead");
       }
     } catch (err) {
       console.warn("[Bootstrap] Could not auto-set permissions:", err);
