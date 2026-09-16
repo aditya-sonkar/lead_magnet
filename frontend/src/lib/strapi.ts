@@ -208,16 +208,32 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
             }
         }
 
-        // 2. Fetch Header and Footer Single Types in parallel using robust loaders
-        const [headerData, footerData] = await Promise.all([
+        // 2. Fetch Header, Footer, and Brands in parallel
+        const [headerData, footerData, brandsData] = await Promise.all([
             getHeader(),
             getFooter(),
+            getBrands(),
         ]);
 
         // If Collection Type (/api/pages) has data, return it
         if (pageData) {
             const rawStickyCTA = pageData.stickyCTA || pageData.sticky_cta || pageData.StickyCTA;
             const unwrappedStickyCTA = rawStickyCTA?.attributes ? { id: rawStickyCTA.id, ...rawStickyCTA.attributes } : rawStickyCTA;
+
+            // Inject global brands into hero if hero.brands is empty
+            if (brandsData && brandsData.length > 0) {
+                if (pageData.hero && (!pageData.hero.brands || pageData.hero.brands.length === 0)) {
+                    pageData.hero.brands = brandsData;
+                }
+                if (pageData.sections && Array.isArray(pageData.sections)) {
+                    const dynamicHero = pageData.sections.find((s: any) => 
+                        s?.__component === "sections.hero" || s?.__component === "hero" || s?.__component === "Hero"
+                    );
+                    if (dynamicHero && (!dynamicHero.brands || dynamicHero.brands.length === 0)) {
+                        dynamicHero.brands = brandsData;
+                    }
+                }
+            }
 
             const result = {
                 ...pageData,
@@ -324,4 +340,35 @@ export async function getFooter(): Promise<any> {
         }
     }
     return null;
+}
+
+let cachedBrands: any[] | null = null;
+
+/**
+ * Fetches Brands Collection Type from Strapi (/api/brands) to populate Hero marquee
+ */
+export async function getBrands(): Promise<any[]> {
+    if (cachedBrands) return cachedBrands;
+
+    try {
+        const res = await fetch(`${STRAPI_URL}/api/brands?populate[hero][populate]=logo`, { next: { revalidate: REVALIDATE_TIME } });
+        if (res.ok) {
+            const json = await res.json().catch(() => null);
+            if (json?.data) {
+                const brands = json.data.map((item: any) => {
+                    const attrs = item.attributes || item;
+                    return {
+                        id: item.id,
+                        name: attrs?.name,
+                        logo: attrs?.hero?.logo,
+                    };
+                }).filter((b: any) => b.logo);
+                cachedBrands = brands;
+                return brands;
+            }
+        }
+    } catch {
+        // try next
+    }
+    return [];
 }
