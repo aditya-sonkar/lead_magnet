@@ -5,7 +5,7 @@
     "singularName": "brand",
     "pluralName": "brands",
     "displayName": "Brand",
-    "description": "Brand logos and brand items"
+    "description": "Brand logos, images, mobile media, and CTA brand items"
   },
   "options": {
     "draftAndPublish": true
@@ -16,7 +16,50 @@
       "type": "string",
       "required": true
     },
+    "brandType": {
+      "type": "enumeration",
+      "enum": [
+        "hero",
+        "final_cta",
+        "showcase",
+        "general"
+      ],
+      "default": "general"
+    },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mobileLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mobileImage": {
       "type": "media",
       "multiple": false,
       "required": false,
