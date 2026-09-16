@@ -222,15 +222,37 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
 
             // Inject global brands into hero if hero.brands is empty
             if (brandsData && brandsData.length > 0) {
-                if (pageData.hero && (!pageData.hero.brands || pageData.hero.brands.length === 0)) {
-                    pageData.hero.brands = brandsData;
+                const heroBrands = brandsData.filter(b => b.logo);
+                if (heroBrands.length > 0) {
+                    if (pageData.hero && (!pageData.hero.brands || pageData.hero.brands.length === 0)) {
+                        pageData.hero.brands = heroBrands;
+                    }
+                    if (pageData.sections && Array.isArray(pageData.sections)) {
+                        const dynamicHero = pageData.sections.find((s: any) => 
+                            s?.__component === "sections.hero" || s?.__component === "hero" || s?.__component === "Hero"
+                        );
+                        if (dynamicHero && (!dynamicHero.brands || dynamicHero.brands.length === 0)) {
+                            dynamicHero.brands = heroBrands;
+                        }
+                    }
                 }
-                if (pageData.sections && Array.isArray(pageData.sections)) {
-                    const dynamicHero = pageData.sections.find((s: any) => 
-                        s?.__component === "sections.hero" || s?.__component === "hero" || s?.__component === "Hero"
-                    );
-                    if (dynamicHero && (!dynamicHero.brands || dynamicHero.brands.length === 0)) {
-                        dynamicHero.brands = brandsData;
+
+                // Inject global brands into Final CTA if logos is empty
+                const finalCtaBrands = brandsData.filter(b => b.finalCtaLogo).map(b => ({
+                    id: b.id,
+                    logo: b.finalCtaLogo
+                }));
+                if (finalCtaBrands.length > 0) {
+                    if (pageData.finalCTA && (!pageData.finalCTA.logos || pageData.finalCTA.logos.length === 0)) {
+                        pageData.finalCTA.logos = finalCtaBrands;
+                    }
+                    if (pageData.sections && Array.isArray(pageData.sections)) {
+                        const dynamicCta = pageData.sections.find((s: any) => 
+                            s?.__component === "sections.final-cta" || s?.__component === "final-cta" || s?.__component === "FinalCTA"
+                        );
+                        if (dynamicCta && (!dynamicCta.logos || dynamicCta.logos.length === 0)) {
+                            dynamicCta.logos = finalCtaBrands;
+                        }
                     }
                 }
             }
@@ -351,7 +373,7 @@ export async function getBrands(): Promise<any[]> {
     if (cachedBrands) return cachedBrands;
 
     try {
-        const res = await fetch(`${STRAPI_URL}/api/brands?populate[hero][populate]=logo`, { next: { revalidate: REVALIDATE_TIME } });
+        const res = await fetch(`${STRAPI_URL}/api/brands?populate[hero][populate]=logo&populate[finalCta][populate]=logo`, { next: { revalidate: REVALIDATE_TIME } });
         if (res.ok) {
             const json = await res.json().catch(() => null);
             if (json?.data) {
@@ -361,8 +383,9 @@ export async function getBrands(): Promise<any[]> {
                         id: item.id,
                         name: attrs?.name,
                         logo: attrs?.hero?.logo,
+                        finalCtaLogo: attrs?.finalCta?.logo,
                     };
-                }).filter((b: any) => b.logo);
+                });
                 cachedBrands = brands;
                 return brands;
             }
