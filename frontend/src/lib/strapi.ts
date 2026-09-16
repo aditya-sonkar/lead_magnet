@@ -221,36 +221,6 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
             const rawStickyCTA = pageData.stickyCTA || pageData.sticky_cta || pageData.StickyCTA;
             const unwrappedStickyCTA = rawStickyCTA?.attributes ? { id: rawStickyCTA.id, ...rawStickyCTA.attributes } : rawStickyCTA;
 
-            // Inject global forms if missing
-            if (formsData && formsData.length > 0) {
-                const quoteForm = formsData.find((f: any) => f.formType === 'quote' || (f.formName && f.formName.toLowerCase().includes('quote')));
-                const callbackForm = formsData.find((f: any) => f.formType === 'callback' || (f.formName && f.formName.toLowerCase().includes('callback')));
-
-                if (quoteForm) {
-                    if (pageData.hero && (!pageData.hero.quoteForm || Object.keys(pageData.hero.quoteForm).length === 0)) {
-                        pageData.hero.quoteForm = quoteForm;
-                    }
-                    if (pageData.sections && Array.isArray(pageData.sections)) {
-                        const dynamicHero = pageData.sections.find((s: any) => 
-                            s?.__component === "sections.hero" || s?.__component === "hero" || s?.__component === "Hero"
-                        );
-                        if (dynamicHero && (!dynamicHero.quoteForm || Object.keys(dynamicHero.quoteForm).length === 0)) {
-                            dynamicHero.quoteForm = quoteForm;
-                        }
-                    }
-                }
-
-                if (callbackForm) {
-                    if (unwrappedStickyCTA) {
-                        if (!unwrappedStickyCTA.callbackForm || Object.keys(unwrappedStickyCTA.callbackForm).length === 0) {
-                            unwrappedStickyCTA.callbackForm = callbackForm;
-                        }
-                    } else {
-                        pageData.callbackForm = callbackForm;
-                    }
-                }
-            }
-
             // Inject global brands into hero if hero.brands is empty
             if (brandsData && brandsData.length > 0) {
                 const heroBrands = brandsData.filter(b => b.logo);
@@ -326,6 +296,42 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
                         );
                         if (dynamicOw && (!dynamicOw.projects || dynamicOw.projects.length === 0)) {
                             dynamicOw.projects = ourWorkProjects;
+                        }
+                    }
+                }
+            }
+
+            // Inject global forms into hero and stickyCTA
+            if (formsData && formsData.length > 0) {
+                const globalQuoteForm = formsData.find((f: any) => f.formType === "quote");
+                const globalCallbackForm = formsData.find((f: any) => f.formType === "callback");
+
+                if (globalQuoteForm) {
+                    if (pageData.hero) {
+                        pageData.hero.quoteForm = globalQuoteForm;
+                    }
+                    if (pageData.sections && Array.isArray(pageData.sections)) {
+                        const dynamicHero = pageData.sections.find((s: any) => 
+                            s?.__component === "sections.hero" || s?.__component === "hero" || s?.__component === "Hero"
+                        );
+                        if (dynamicHero) {
+                            dynamicHero.quoteForm = globalQuoteForm;
+                        }
+                    }
+                }
+
+                if (globalCallbackForm) {
+                    if (unwrappedStickyCTA) {
+                        unwrappedStickyCTA.callbackForm = globalCallbackForm;
+                    }
+                    pageData.callbackForm = globalCallbackForm;
+                    
+                    if (pageData.sections && Array.isArray(pageData.sections)) {
+                        const dynamicCallback = pageData.sections.find((s: any) => 
+                            s?.__component?.toLowerCase().includes("callback")
+                        );
+                        if (dynamicCallback) {
+                            dynamicCallback.callbackForm = globalCallbackForm;
                         }
                     }
                 }
@@ -492,14 +498,15 @@ export async function getForms(): Promise<any[]> {
             const json = await res.json().catch(() => null);
             if (json?.data) {
                 const forms = json.data.map((item: any) => {
-                    return { id: item.id, ...(item.attributes || item) };
+                    const attrs = item.attributes || item;
+                    return { id: item.id, ...attrs };
                 });
                 cachedForms = forms;
                 return forms;
             }
         }
     } catch {
-        // try next
+        // ignore
     }
     return [];
 }
