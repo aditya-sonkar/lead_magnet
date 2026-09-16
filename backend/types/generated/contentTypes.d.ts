@@ -508,6 +508,47 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFormForm extends Struct.CollectionTypeSchema {
+  collectionName: 'forms';
+  info: {
+    description: 'Forms and Lead Magnet configurations';
+    displayName: 'Form';
+    pluralName: 'forms';
+    singularName: 'form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bookCallButtonLabel: Schema.Attribute.String;
+    continueLabel: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    disclaimer: Schema.Attribute.Text;
+    estimateButtonLabel: Schema.Attribute.String;
+    formType: Schema.Attribute.Enumeration<['quote', 'callback', 'contact']> &
+      Schema.Attribute.DefaultTo<'quote'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::form.form'> &
+      Schema.Attribute.Private;
+    noLabel: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    shopifyLinkLabel: Schema.Attribute.String;
+    shopifyLinkPlaceholder: Schema.Attribute.String;
+    shopifyQuestion: Schema.Attribute.String;
+    stepLabel: Schema.Attribute.String;
+    successDescription: Schema.Attribute.Text;
+    successTitle: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    yesLabel: Schema.Attribute.String;
+  };
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
@@ -1153,6 +1194,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::brand.brand': ApiBrandBrand;
       'api::footer.footer': ApiFooterFooter;
+      'api::form.form': ApiFormForm;
       'api::header.header': ApiHeaderHeader;
       'api::lead.lead': ApiLeadLead;
       'api::page.page': ApiPagePage;
