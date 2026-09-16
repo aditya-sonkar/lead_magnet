@@ -207,7 +207,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     <h2 className="font-nohemi text-[clamp(26px,3.2vw,34px)] font-normal text-[#111827] leading-[1.15] tracking-tight pr-8">
                                         {title}
                                     </h2>
-                                    <p className="font-satoshi text-[#555555] text-[clamp(12.5px,1.05vw,13.5px)] leading-relaxed mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line">
+                                    <p className="font-satoshi text-[#222222] text-[11.5px] sm:text-[12px] md:text-[12.5px] leading-relaxed mt-1 sm:mt-1.5 max-w-[520px] whitespace-pre-line font-normal">
                                         {description}
                                     </p>
                                 </div>
