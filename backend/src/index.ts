@@ -94,20 +94,32 @@ export default {
       console.warn("[Bootstrap] Could not populate quote form warnings:", dbErr);
     }
     try {
+      const approvedBrandNames = [
+        "PALOMA", "figo", "SIORAI", "WESTSIDE", "STIFF COLLAR", "EatSure",
+        "BFT", "JVice", "Juicebro", "Trainers Locker", "Sica", "Stackables"
+      ];
       const existingBrands = await strapi.documents("api::brand.brand").findMany({});
-      if (!existingBrands || existingBrands.length === 0) {
-        const defaultBrands = [
-          { name: "Gymshark", publishedAt: new Date() },
-          { name: "Kith", publishedAt: new Date() },
-          { name: "Skims", publishedAt: new Date() },
-          { name: "Allo", publishedAt: new Date() },
-          { name: "Glossier", publishedAt: new Date() },
-          { name: "Monos", publishedAt: new Date() },
-        ];
+      
+      // Remove any random / unapproved brands
+      if (existingBrands && existingBrands.length > 0) {
+        for (const b of existingBrands) {
+          if (!approvedBrandNames.map(n => n.toLowerCase()).includes(b.name.toLowerCase())) {
+            await strapi.documents("api::brand.brand").delete({ documentId: b.documentId });
+            console.log(`[Bootstrap] Removed unwanted brand: ${b.name}`);
+          }
+        }
+      }
+
+      const currentBrands = await strapi.documents("api::brand.brand").findMany({});
+      if (!currentBrands || currentBrands.length === 0) {
+        const defaultBrands = approvedBrandNames.map(name => ({
+          name,
+          publishedAt: new Date(),
+        }));
         for (const brandData of defaultBrands) {
           await strapi.documents("api::brand.brand").create({ data: brandData });
         }
-        console.log("[Bootstrap] Auto-seeded default Brand records");
+        console.log("[Bootstrap] Auto-seeded user-approved Brand records");
       }
     } catch (brandSeedErr) {
       console.warn("[Bootstrap] Could not seed Brand records:", brandSeedErr);
