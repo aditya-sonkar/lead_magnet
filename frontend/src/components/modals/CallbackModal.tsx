@@ -217,7 +217,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     <div className="space-y-6 sm:space-y-6.5">
                                         {/* Email Field */}
                                         <div>
-                                            <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
+                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
                                                 {emailLabel}
                                             </label>
                                             <input
@@ -232,7 +232,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
 
                                         {/* Phone Number Field */}
                                         <div>
-                                            <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
+                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
                                                 {phoneLabel}
                                             </label>
                                             <input
@@ -247,7 +247,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
 
                                         {/* Shopify Link Field */}
                                         <div>
-                                            <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
+                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
                                                 {shopifyLinkLabel}
                                             </label>
                                             <input
