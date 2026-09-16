@@ -82,9 +82,9 @@ export default function QuoteModal({ isOpen, onClose, form: rawForm }: QuoteModa
                             type="button"
                             onClick={onClose}
                             aria-label="Close quote modal"
-                            className="absolute top-3 right-3 sm:top-7 sm:right-7 w-7 h-7 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer z-20"
+                            className="absolute top-3.5 right-3.5 sm:top-7 sm:right-7 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer z-20"
                         >
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                            <svg className="w-6 h-6 sm:w-6.5 sm:h-6.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.85">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>

@@ -159,7 +159,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         id="callback-modal"
                         data-modal="callback"
                         data-lenis-prevent="true"
-                        className="relative w-full max-w-[530px] sm:max-w-[555px] md:max-w-[570px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none p-5 sm:p-8 md:p-9 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain transition-all duration-200"
+                        className="relative w-full max-w-[545px] sm:max-w-[570px] md:max-w-[585px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none p-5 sm:p-8 md:p-9 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain transition-all duration-200"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
@@ -167,9 +167,9 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                             type="button"
                             onClick={onClose}
                             aria-label="Close callback modal"
-                            className="absolute top-3.5 right-3.5 sm:top-7 sm:right-7 w-7 h-7 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer z-20"
+                            className="absolute top-6 right-5 sm:top-10 sm:right-8 md:top-11 md:right-9 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#111827] hover:opacity-60 transition-opacity cursor-pointer z-20"
                         >
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                            <svg className="w-6 h-6 sm:w-6.5 sm:h-6.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.85">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
@@ -204,7 +204,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                             <>
                                 {/* Title & Description */}
                                 <div className="pt-2 sm:pt-3 mb-3.5 sm:mb-4">
-                                    <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-8">
+                                    <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-10 sm:pr-12">
                                         {title}
                                     </h2>
                                     <p className="font-satoshi text-[#222222] text-[10.5px] sm:text-[11px] md:text-[11.5px] leading-relaxed mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line font-normal">
