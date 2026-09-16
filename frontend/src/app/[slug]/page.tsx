@@ -43,9 +43,9 @@ export async function generateMetadata({
   const title = seo.metaTitle || data.title || data.hero?.heading || siteConfig.title;
   const description = seo.metaDescription || data.hero?.description || siteConfig.description;
   const canonicalUrl = seo.canonicalUrl || `${siteConfig.url}/${slug}`;
-  
+
   // Resolve OG image from Strapi media or fallback
-  const ogImageUrl = seo.ogImage?.url 
+  const ogImageUrl = seo.ogImage?.url
     ? (seo.ogImage.url.startsWith("http") ? seo.ogImage.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${seo.ogImage.url}`)
     : siteConfig.ogImage;
 

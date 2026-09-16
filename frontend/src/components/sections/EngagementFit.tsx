@@ -30,7 +30,7 @@ function formatHeading(heading: string) {
         );
     }
 
-    // 2. Dynamic clause splitting without hardcoding any specific words
+    // 2. Split compound heading at natural clause boundary for balanced typography
     const commaIndex = text.indexOf(",");
     if (commaIndex !== -1) {
         const firstClause = text.slice(0, commaIndex + 1).trim();

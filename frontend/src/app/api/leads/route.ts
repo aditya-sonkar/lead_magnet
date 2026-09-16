@@ -4,8 +4,8 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const rawUrl = process.env.STRAPI_API_URL || process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
-    const strapiUrl = rawUrl.replace(/\/$/, "");
+    const rawUrl = process.env.STRAPI_API_URL || process.env.NEXT_PUBLIC_STRAPI_URL || "https://lead-magnet-7s2k.onrender.com";
+    const strapiUrl = rawUrl.replace(/\/+$/, "");
     const token = process.env.STRAPI_API_TOKEN;
 
     const headers: Record<string, string> = {

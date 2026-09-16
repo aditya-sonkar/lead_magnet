@@ -13,7 +13,7 @@ type StorefrontProblemsData = {
     heading: string;
     description: string;
     items: PainPoint[];
-    summary: string;
+    summary: string | any[];
     submitLabel: string;
     submitHref: string;
     warningMessage?: string;
@@ -56,16 +56,12 @@ export default function StorefrontProblems({
     if (!data) return null;
     const [selectedIds, setSelectedIds] = useState<number[]>([]);
     const [showWarning, setShowWarning] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
 
     const toggleSelect = (id: number) => {
         setSelectedIds((prev) =>
             prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
         );
-        setShowWarning(false); // Clear warning on selection change
-        setIsSubmitted(false); // Reset to default instruction on selection change
+        setShowWarning(false);
     };
 
     return (
@@ -155,6 +151,9 @@ export default function StorefrontProblems({
                     const summaryText = (() => {
                         const sData = data.summary;
                         if (!sData) return null;
+                        if (typeof sData === "string") {
+                            return sData.replace(/\{count\}/g, String(count));
+                        }
 
                         const getTextByState = (targetState: string) => {
                             if (!Array.isArray(sData)) return null;

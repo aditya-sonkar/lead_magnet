@@ -20,7 +20,7 @@ export type StorefrontProblemsData = {
     heading: string;
     description: string;
     items: PainPoint[];
-    summary: string;
+    summary: string | any[];
     submitLabel: string;
     submitHref: string;
 };
