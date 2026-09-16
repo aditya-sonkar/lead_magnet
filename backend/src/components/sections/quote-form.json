@@ -86,14 +86,6 @@
       "type": "string",
       "default": "Any other issues your shopify store is facing"
     },
-    "budgetTypeLabel": {
-      "type": "string"
-    },
-    "budgetTypeOptions": {
-      "type": "component",
-      "component": "shared.form-option",
-      "repeatable": true
-    },
     "issuesWarning": {
       "type": "string",
       "default": "Please select at least one issue that needs improvement"

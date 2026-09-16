@@ -19,7 +19,6 @@ type OurWorkProject = {
 type OurWorkData = {
     heading: string;
     description: string;
-    MobileDescription?: string;
     projects: OurWorkProject[];
 };
 
@@ -85,15 +84,7 @@ export default function OurWork({ data }: { data: OurWorkData }) {
                             {data.heading}
                         </h2>
 
-                        {data.MobileDescription && (
-                            <p className="block md:hidden max-w-[580px] font-satoshi font-medium text-[clamp(13.5px,1.1vw,16px)] text-[#262626] whitespace-pre-line text-pretty leading-relaxed mt-4">
-                                {data.MobileDescription}
-                            </p>
-                        )}
-                        <p
-                            className={`${data.MobileDescription ? "hidden md:block" : ""
-                                } max-w-[835px] font-satoshi text-[clamp(13.5px,1.1vw,16px)] font-medium text-[#000000] whitespace-pre-line text-pretty leading-relaxed mt-3`}
-                        >
+                        <p className="max-w-[835px] font-satoshi text-[clamp(13.5px,1.1vw,16px)] font-medium text-[#000000] whitespace-pre-line text-pretty leading-relaxed mt-3">
                             {data.description}
                         </p>
                     </div>

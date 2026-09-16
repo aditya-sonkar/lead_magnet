@@ -35,8 +35,6 @@ export type QuoteFormData = {
     issueOptions?: FormOption[];
     otherIssuesLabel?: string;
     otherIssuesPlaceholder?: string;
-    budgetTypeLabel?: string;
-    budgetTypeOptions?: FormOption[];
     issuesWarning?: string;
     budgetWarning?: string;
     selectionWarning?: string;
