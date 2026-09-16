@@ -17,6 +17,10 @@ type StorefrontProblemsData = {
     submitLabel: string;
     submitHref: string;
     warningMessage?: string;
+    submittingLabel?: string;
+    diagnosingLabel?: string;
+    successLabel?: string;
+    completeLabel?: string;
 };
 
 function renderFormattedDescription(desc: string) {
@@ -192,57 +196,64 @@ export default function StorefrontProblems({
 
                             {data.submitLabel && (
                                 <div className="w-full sm:w-auto flex flex-col items-center">
-                                    <button
-                                        type="button"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            if (isSubmitting || isSuccess) return;
+                                    {(() => {
+                                        const submittingText = data.submittingLabel || data.diagnosingLabel || "Diagnosing...";
+                                        const successText = data.successLabel || data.completeLabel || "Complete!";
 
-                                            if (selectedIds.length === 0) {
-                                                setShowWarning(true);
-                                                setIsSubmitted(false);
-                                                return;
-                                            }
-                                            setShowWarning(false);
-                                            setIsSubmitting(true);
-                                            
-                                            setTimeout(() => {
-                                                setIsSubmitting(false);
-                                                setIsSubmitted(true);
-                                                setIsSuccess(true);
-                                                
-                                                // Reset success badge after 1.5s
-                                                setTimeout(() => {
-                                                    setIsSuccess(false);
-                                                }, 1500);
-                                            }, 600);
-                                        }}
-                                        className={`flex w-full font-inter items-center justify-center rounded-full px-10 py-2.5 sm:py-3.5 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer ${
-                                            isSuccess ? "bg-[#168050]" : "bg-[#3447E5]"
-                                        }`}
-                                    >
-                                        {isSubmitting ? (
-                                            <>
-                                                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                                                </svg>
-                                                <span>Diagnosing...</span>
-                                            </>
-                                        ) : isSuccess ? (
-                                            <>
-                                                <svg className="w-4 h-4 mr-1.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                <span>Complete!</span>
-                                            </>
-                                        ) : (
-                                            <>
-                                                {data.submitLabel}
-                                                <span className="ml-2">→</span>
-                                            </>
-                                        )}
-                                    </button>
+                                        return (
+                                            <button
+                                                type="button"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    if (isSubmitting || isSuccess) return;
+
+                                                    if (selectedIds.length === 0) {
+                                                        setShowWarning(true);
+                                                        setIsSubmitted(false);
+                                                        return;
+                                                    }
+                                                    setShowWarning(false);
+                                                    setIsSubmitting(true);
+                                                    
+                                                    setTimeout(() => {
+                                                        setIsSubmitting(false);
+                                                        setIsSubmitted(true);
+                                                        setIsSuccess(true);
+                                                        
+                                                        // Reset success badge after 1.5s
+                                                        setTimeout(() => {
+                                                            setIsSuccess(false);
+                                                        }, 1500);
+                                                    }, 600);
+                                                }}
+                                                className={`flex w-full font-inter items-center justify-center rounded-full px-10 py-2.5 sm:py-3.5 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer ${
+                                                    isSuccess ? "bg-[#168050]" : "bg-[#3447E5]"
+                                                }`}
+                                            >
+                                                {isSubmitting ? (
+                                                    <>
+                                                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                                        </svg>
+                                                        <span>{submittingText}</span>
+                                                    </>
+                                                ) : isSuccess ? (
+                                                    <>
+                                                        <svg className="w-4 h-4 mr-1.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                        <span>{successText}</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        {data.submitLabel}
+                                                        <span className="ml-2">→</span>
+                                                    </>
+                                                )}
+                                            </button>
+                                        );
+                                    })()}
                                      {showWarning && data.warningMessage && (
                                          <p className="font-satoshi mt-2 text-[12.5px] sm:text-[13px] text-[#DC2626] font-medium text-center w-full animate-in fade-in slide-in-from-top-1 duration-200">
                                              {data.warningMessage}

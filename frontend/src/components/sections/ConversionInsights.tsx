@@ -42,6 +42,42 @@ function formatCardTitle(title: string) {
 
 function formatCardDescription(desc: string) {
     if (!desc) return null;
+    const matchSprint = desc.match(/wait\s+for\s+a\s+sprint/i);
+    const matchWithout = desc.match(/without\s+a\b/i);
+
+    if (matchSprint && matchWithout) {
+        const idxWithout = desc.indexOf(matchWithout[0]) + matchWithout[0].length;
+        const idxSprint = desc.indexOf(matchSprint[0]);
+
+        const line1And2 = desc.slice(0, idxWithout);
+        const line3 = desc.slice(idxWithout, idxSprint);
+        const line4 = desc.slice(idxSprint);
+
+        return (
+            <>
+                {line1And2}
+                <br className="hidden md:block" />
+                {line3.trim()}
+                <br className="hidden md:block" />
+                {line4.trim()}
+            </>
+        );
+    }
+
+    if (matchSprint) {
+        const target = matchSprint[0];
+        const index = desc.indexOf(target);
+        const before = desc.slice(0, index);
+        const after = desc.slice(index + target.length);
+        return (
+            <>
+                {before}
+                <br className="hidden md:block" />
+                {target}
+                {after}
+            </>
+        );
+    }
     return desc;
 }
 
