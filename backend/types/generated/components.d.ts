@@ -186,7 +186,6 @@ export interface SectionsHero extends Struct.ComponentSchema {
     description: Schema.Attribute.Text;
     heading: Schema.Attribute.Text;
     primaryCta: Schema.Attribute.Component<'shared.cta', false>;
-    quoteForm: Schema.Attribute.Component<'sections.quote-form', true>;
   };
 }
 
