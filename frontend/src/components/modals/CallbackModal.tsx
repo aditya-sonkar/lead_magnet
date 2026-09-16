@@ -203,8 +203,8 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         ) : (
                             <>
                                 {/* Title & Description */}
-                                <div className="mb-5 sm:mb-6">
-                                    <h2 className="font-nohemi text-[clamp(26px,3.2vw,34px)] font-normal text-[#111827] leading-[1.15] tracking-tight pr-8">
+                                <div className="mb-4 sm:mb-5">
+                                    <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-tight pr-8">
                                         {title}
                                     </h2>
                                     <p className="font-satoshi text-[#222222] text-[11.5px] sm:text-[12px] md:text-[12.5px] leading-relaxed mt-1 sm:mt-1.5 max-w-[520px] whitespace-pre-line font-normal">
