@@ -224,7 +224,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             placeholder={emailPlaceholder}
-                                            className="font-satoshi w-full px-4 sm:px-4.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
+                                            className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
                                         />
                                     </div>
 
@@ -239,7 +239,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                             value={phone}
                                             onChange={(e) => setPhone(e.target.value)}
                                             placeholder={phonePlaceholder}
-                                            className="font-satoshi w-full px-4 sm:px-4.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
+                                            className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
                                         />
                                     </div>
 
@@ -253,7 +253,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                             value={shopifyLink}
                                             onChange={(e) => setShopifyLink(e.target.value)}
                                             placeholder={shopifyLinkPlaceholder}
-                                            className="font-satoshi w-full px-4 sm:px-4.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
+                                            className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
                                         />
                                     </div>
 
