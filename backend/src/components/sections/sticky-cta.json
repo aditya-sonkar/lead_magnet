@@ -17,11 +17,6 @@
       "type": "component",
       "component": "shared.cta",
       "repeatable": false
-    },
-    "callbackForm": {
-      "type": "component",
-      "component": "sections.callback-form",
-      "repeatable": false
     }
   },
   "config": {}

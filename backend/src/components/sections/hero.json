@@ -23,11 +23,6 @@
       "type": "component",
       "component": "shared.brand",
       "repeatable": true
-    },
-    "quoteForm": {
-      "type": "component",
-      "component": "sections.quote-form",
-      "repeatable": true
     }
   },
   "config": {}
