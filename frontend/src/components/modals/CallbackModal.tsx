@@ -36,6 +36,11 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const modalContainerRef = useRef<HTMLDivElement>(null);
+    const onCloseRef = useRef(onClose);
+
+    useEffect(() => {
+        onCloseRef.current = onClose;
+    });
 
     // All text comes exclusively from CMS
     const title = data?.title;
@@ -70,7 +75,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
         }
 
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") onClose();
+            if (e.key === "Escape") onCloseRef.current?.();
         };
         window.addEventListener("keydown", handleKeyDown);
 
@@ -84,11 +89,11 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
             }
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [isOpen, onClose]);
+    }, [isOpen]);
 
-    // Reset state on modal open
+    // Reset state when modal opens
     useEffect(() => {
-        if (isOpen && isSubmitted) {
+        if (isOpen) {
             setIsSubmitted(false);
             setIsSubmitting(false);
             setEmail("");
@@ -97,14 +102,14 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
         }
     }, [isOpen]);
 
-    // Auto-close modal after 3.5s on successful submission
+    // Auto-close modal after 3s on successful submission
     useEffect(() => {
         if (!isSubmitted) return;
         const timer = setTimeout(() => {
-            onClose();
-        }, 3500);
+            onCloseRef.current?.();
+        }, 3000);
         return () => clearTimeout(timer);
-    }, [isSubmitted, onClose]);
+    }, [isSubmitted]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -159,7 +164,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         id="callback-modal"
                         data-modal="callback"
                         data-lenis-prevent="true"
-                        className="relative w-full max-w-[560px] sm:max-w-[585px] md:max-w-[600px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none px-4 sm:px-6 md:px-7 py-6 sm:py-9 md:py-10 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain transition-all duration-200"
+                        className="relative w-full max-w-[560px] sm:max-w-[585px] md:max-w-[600px] max-h-[94vh] sm:max-h-[90vh] bg-[#FAFAFC] rounded-none px-5 sm:px-7 md:px-8 py-7.5 sm:py-10 md:py-10.5 shadow-[0_20px_60px_rgba(0,0,0,0.3)] my-auto text-[#111827] z-10 flex flex-col overflow-y-auto overscroll-contain"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
@@ -167,7 +172,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                             type="button"
                             onClick={onClose}
                             aria-label="Close callback modal"
-                            className="absolute top-4.5 right-4 sm:top-7 md:top-8 sm:right-6 md:right-7 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#333333] hover:text-black transition-colors cursor-pointer z-20"
+                            className="absolute top-5 right-4 sm:top-7.5 md:top-8.5 sm:right-6 md:right-7 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#333333] hover:text-black transition-colors cursor-pointer z-20"
                         >
                             <svg className="w-6 h-6 sm:w-6.5 sm:h-6.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -203,21 +208,21 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                         ) : (
                             <>
                                 {/* Title & Description */}
-                                <div className="pt-0 mb-3.5 sm:mb-4">
-                                    <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-10 sm:pr-12">
+                                <div className="pt-0 mb-5.5 sm:mb-[26px]">
+                                    <h2 className="font-nohemi text-[clamp(21px,2.4vw,28px)] sm:text-[26px] md:text-[28px] font-normal text-[#111827] leading-[1.15] tracking-[-0.01em] pr-10 sm:pr-12 mb-1.5 sm:mb-2">
                                         {title}
                                     </h2>
-                                    <p className="font-satoshi text-[#111827] text-[11px] sm:text-[11.5px] md:text-[12px] leading-[1.42] mt-1.5 sm:mt-2 max-w-[520px] whitespace-pre-line font-normal">
+                                    <p className="font-satoshi text-[#111827] text-[11px] sm:text-[11.5px] md:text-[12px] leading-[1.42] mt-2.5 sm:mt-3 max-w-[520px] whitespace-pre-line font-normal">
                                         {description}
                                     </p>
                                 </div>
 
                                 <form onSubmit={handleSubmit}>
                                     {/* Input Fields */}
-                                    <div className="space-y-6 sm:space-y-6.5">
+                                    <div className="space-y-5 sm:space-y-6">
                                         {/* Email Field */}
                                         <div>
-                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.25">
                                                 {emailLabel}
                                             </label>
                                             <input
@@ -226,13 +231,13 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 placeholder={emailPlaceholder}
-                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F2F2F2] placeholder-[#444444] transition-all duration-200"
+                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F2F2F2] placeholder-[#444444] transition-all duration-200"
                                             />
                                         </div>
 
                                         {/* Phone Number Field */}
                                         <div>
-                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.25">
                                                 {phoneLabel}
                                             </label>
                                             <input
@@ -241,13 +246,13 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                                 value={phone}
                                                 onChange={(e) => setPhone(e.target.value)}
                                                 placeholder={phonePlaceholder}
-                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F2F2F2] placeholder-[#444444] transition-all duration-200"
+                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F2F2F2] placeholder-[#444444] transition-all duration-200"
                                             />
                                         </div>
 
                                         {/* Shopify Link Field */}
                                         <div>
-                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.5">
+                                            <label className="font-nohemi block text-[clamp(14px,1.15vw,15.5px)] font-normal text-[#111827] mb-1.25">
                                                 {shopifyLinkLabel}
                                             </label>
                                             <input
@@ -255,17 +260,17 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                                 value={shopifyLink}
                                                 onChange={(e) => setShopifyLink(e.target.value)}
                                                 placeholder={shopifyLinkPlaceholder}
-                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F2F2F2] placeholder-[#444444] transition-all duration-200"
+                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#CAC4D0] focus:outline-none focus:border-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F2F2F2] placeholder-[#444444] transition-all duration-200"
                                             />
                                         </div>
                                     </div>
 
                                     {/* Submit Button */}
-                                    <div className="mt-3.5 sm:mt-4 pb-2 sm:pb-3">
+                                    <div className="mt-5 sm:mt-5.5 pb-1">
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className={`font-satoshi w-full bg-[#242120] hover:bg-black text-white font-[450] tracking-[0.015em] py-3 sm:py-3.5 px-6 rounded-full transition-all duration-200 flex justify-center items-center text-[15px] sm:text-[16px] md:text-[16.5px] cursor-pointer shadow-md active:scale-[0.99] ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`}
+                                            className={`font-satoshi w-full bg-[#242120] hover:bg-black text-white font-[450] tracking-[0.015em] py-3 sm:py-3.25 px-6 rounded-full transition-all duration-200 flex justify-center items-center text-[15px] sm:text-[16px] md:text-[16.5px] cursor-pointer shadow-md active:scale-[0.99] ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`}
                                         >
                                             {isSubmitting ? (
                                                 <>

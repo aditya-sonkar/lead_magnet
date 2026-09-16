@@ -61,7 +61,12 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
     const issuesHint = formatHint(form?.issuesHint ?? "(multiple options)");
     const budgetHint = formatHint(form?.budgetHint ?? "(choose one)");
 
-    // Automatically reset hero form to step 1 (after 5s), or auto-close sticky CTA modal (after 3.5s) on successful submission
+    const onCloseRef = React.useRef(onClose);
+    React.useEffect(() => {
+        onCloseRef.current = onClose;
+    });
+
+    // Automatically reset hero form to step 1 (after 5s), or auto-close sticky CTA modal (after 3s) on successful submission
     React.useEffect(() => {
         if (!isSubmitted) return;
 
@@ -70,13 +75,13 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                 resetForm();
             }, 5000);
             return () => clearTimeout(timer);
-        } else if (onClose) {
+        } else {
             const timer = setTimeout(() => {
-                onClose();
-            }, 3500);
+                onCloseRef.current?.();
+            }, 3000);
             return () => clearTimeout(timer);
         }
-    }, [isSubmitted, isHero, resetForm, onClose]);
+    }, [isSubmitted, isHero, resetForm]);
 
     if (isSubmitted) {
         return (
