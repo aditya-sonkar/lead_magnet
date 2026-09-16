@@ -85,7 +85,7 @@ export default function ConversionInsights({
                     )}
                 </div>
 
-                <div className="mt-10 sm:mt-12 md:mt-14 lg:mt-[72px] xl:mt-[80px] grid grid-cols-1 gap-5 sm:gap-6 md:gap-6 lg:grid-cols-3 lg:gap-12 xl:gap-[48px] 2xl:gap-[56px] w-full">
+                <div className="mt-10 sm:mt-12 md:mt-14 lg:mt-[72px] xl:mt-[80px] grid grid-cols-1 gap-5 sm:gap-6 md:gap-6 lg:grid-cols-3 lg:gap-10 xl:gap-11 2xl:gap-12 w-full">
                     {cards.map((card, index) => {
                         const imageUrl = getMediaUrl(card.image);
                         const dims = getMediaDimensions(card.image) || { width: 800, height: 600 };
@@ -115,8 +115,8 @@ export default function ConversionInsights({
                         };
 
                         const descMaxWidth = index === 2
-                            ? "max-w-none lg:max-w-[342px] min-[1750px]:max-w-[370px] min-[2000px]:max-w-none"
-                            : "max-w-none lg:max-w-[325px] min-[1750px]:max-w-[355px] min-[2000px]:max-w-none";
+                            ? "max-w-none lg:max-w-[345px] min-[1750px]:max-w-[375px] min-[2000px]:max-w-none"
+                            : "max-w-none lg:max-w-[330px] min-[1750px]:max-w-[360px] min-[2000px]:max-w-none";
 
                         return (
                             <article

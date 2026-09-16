@@ -74,7 +74,7 @@ body {
 }
 
 .animate-marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 26s linear infinite;
 }
 
 /* Arrow hover slide transition - travels completely outside the 140px circle */

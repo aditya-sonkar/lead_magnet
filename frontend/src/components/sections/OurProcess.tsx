@@ -338,9 +338,8 @@ function ProcessCard({
 
     return (
         <div
-            className={`bg-[#1B2F10] rounded-xl p-[clamp(0.95rem,1.8vw,2.25rem)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto max-h-75 sm:max-h-77.5 md:max-h-85 lg:max-h-none min-h-52.5 h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${
-                hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
-            } ${activeCardId !== null ? "z-20" : ""} ${className}`}
+            className={`bg-[#1B2F10] rounded-xl p-[clamp(1rem,1.8vw,2.25rem)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
+                } ${activeCardId !== null ? "z-20" : ""} ${className}`}
             onMouseEnter={() => setIsHoveredDesktop(true)}
             onMouseLeave={() => setIsHoveredDesktop(false)}
             onClick={handleClick}
@@ -357,11 +356,10 @@ function ProcessCard({
                     delay: isActive ? 0 : 0.06,
                     ease: isActive ? [0.16, 1, 0.3, 1] : [0.25, 0.1, 0.25, 1],
                 }}
-                className={`flex flex-1 w-full flex-col justify-between ${
-                    hasServices && isActive
+                className={`flex flex-1 w-full flex-col justify-between ${hasServices && isActive
                         ? "pointer-events-none"
                         : "pointer-events-auto"
-                }`}
+                    }`}
             >
                 <div>
                     {/* Icon */}
@@ -391,11 +389,11 @@ function ProcessCard({
                 {/* CTA */}
                 {card.cta && (
                     <div className="mt-auto pt-2.5 sm:pt-3 lg:pt-3.5 xl:pt-5">
-                        <div className="inline-flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 font-satoshi text-[clamp(12px,1.2vw,15.5px)] font-semibold text-white transition-all duration-200">
+                        <div className="inline-flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 font-satoshi text-[clamp(12px,1.2vw,15.5px)] font-semibold text-white transition-all duration-300">
                             <span className="lg:hidden">{ctaBase}</span>
                             <span className="hidden lg:inline">{ctaDesktop}</span>
                             <svg
-                                className="h-4 w-4 sm:h-4.5 sm:w-4.5 lg:h-5 lg:w-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1"
+                                className="h-4 w-4 sm:h-4.5 sm:w-4.5 lg:h-5 lg:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -417,52 +415,50 @@ function ProcessCard({
                     initial={false}
                     animate={{
                         opacity: isActive ? 1 : 0,
-                        y: isActive ? 0 : 16,
+                        y: isActive ? 0 : 12,
                     }}
                     transition={{
-                        duration: isActive ? 0.45 : 0.4,
+                        duration: isActive ? 0.5 : 0.4,
                         ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                     }}
-                    className={`absolute inset-0 p-[clamp(0.95rem,1.8vw,2.25rem)] flex w-full flex-col ${
-                        isActive
+                    className={`absolute inset-0 p-[clamp(1rem,1.8vw,2.25rem)] flex w-full flex-col ${isActive
                             ? "pointer-events-auto"
                             : "pointer-events-none"
-                    }`}
+                        }`}
                 >
-                    <div className="flex-1 min-h-0 w-full flex flex-col justify-start overflow-y-auto no-scrollbar pb-2">
+                    <div className="flex-1 min-h-0 w-full flex flex-col justify-start overflow-y-auto no-scrollbar">
                         {services.map((service, idx) => (
                             <motion.div
                                 key={service.id || idx}
                                 initial={false}
                                 animate={{
                                     opacity: isActive ? 1 : 0,
-                                    y: isActive ? 0 : 10,
-                                    x: isActive ? 0 : -4,
+                                    y: isActive ? 0 : 12,
+                                    x: isActive ? 0 : -6,
                                 }}
                                 transition={{
-                                    duration: isActive ? 0.45 : 0.35,
+                                    duration: isActive ? 0.5 : 0.35,
                                     delay: isActive
-                                        ? 0.06 + idx * 0.05
+                                        ? 0.15 + idx * 0.08
                                         : (services.length - 1 - idx) * 0.025,
                                     ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                                 }}
-                                className={`flex shrink-0 items-start sm:items-center gap-1.5 sm:gap-3 lg:gap-3 py-[clamp(4px,1.5vw,8px)] sm:py-2 lg:py-1.5 xl:py-2 will-change-[transform,opacity] ${
-                                    idx !== services.length - 1 ? "border-b border-[#3E5634]" : ""
-                                }`}
+                                className={`flex shrink-0 items-center gap-2 sm:gap-3 py-1.5 sm:py-2 lg:py-1.5 xl:py-2 will-change-[transform,opacity] ${idx !== services.length - 1 ? "border-b border-[#3E5634]" : ""
+                                    }`}
                             >
                                 <motion.svg
                                     animate={{
-                                        x: isActive ? 0 : -4,
+                                        x: isActive ? 0 : -6,
                                         opacity: isActive ? 1 : 0,
                                     }}
                                     transition={{
-                                        duration: isActive ? 0.4 : 0.3,
+                                        duration: isActive ? 0.45 : 0.3,
                                         delay: isActive
-                                            ? 0.08 + idx * 0.05
+                                            ? 0.17 + idx * 0.08
                                             : (services.length - 1 - idx) * 0.025,
                                         ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                                     }}
-                                    className="w-[5px] sm:w-[9px] lg:w-[10px] h-[10px] sm:h-[15px] lg:h-[17px] shrink-0 text-white mt-[2px] sm:mt-0"
+                                    className="w-[7px] sm:w-[9px] lg:w-[10px] h-[12px] sm:h-[15px] lg:h-[17px] shrink-0 text-white"
                                     viewBox="0 0 10 18"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -475,7 +471,7 @@ function ProcessCard({
                                         strokeLinejoin="round"
                                     />
                                 </motion.svg>
-                                <span className="font-satoshi text-[8.5px] sm:text-[13px] lg:text-[12.5px] xl:text-[13.5px] font-normal leading-[1.3] lg:leading-[1.2] text-white">
+                                <span className="font-satoshi text-[clamp(11.5px,1.1vw,13.5px)] font-normal leading-[1.35] lg:leading-[1.2] text-white">
                                     {service.text}
                                 </span>
                             </motion.div>

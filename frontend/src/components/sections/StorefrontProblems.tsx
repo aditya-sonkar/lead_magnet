@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 type PainPoint = {
     id: number;
@@ -52,6 +53,7 @@ export default function StorefrontProblems({
     const [selectedIds, setSelectedIds] = useState<number[]>([]);
     const [showWarning, setShowWarning] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
     const toggleSelect = (id: number) => {
@@ -59,10 +61,11 @@ export default function StorefrontProblems({
             prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
         );
         setShowWarning(false); // Clear warning on selection change
+        setIsSubmitted(false); // Reset to default instruction on selection change
     };
 
     return (
-        <section id="storefront-problems" suppressHydrationWarning className="w-full bg-white px-6 pt-15 pb-10 text-[#0D2108] lg:px-[60px] xl:px-[80px] lg:pt-[90px] lg:pb-[30px] border-none outline-none">
+        <section id="storefront-problems" suppressHydrationWarning className="w-full bg-white px-6 pt-15 pb-10 text-[#0D2108] lg:px-[60px] xl:px-[80px] lg:pt-[105px] xl:pt-[110px] lg:pb-[30px] border-none outline-none">
             <div className="mx-auto max-w-[1720px] w-full">
                 <div className="w-full">
                     <h2 className="font-delight text-[clamp(32px,4.2vw,65px)] font-medium leading-[1.15] tracking-[-0.015em] xl:whitespace-nowrap text-[#0F1D07]">
@@ -75,7 +78,7 @@ export default function StorefrontProblems({
                 </div>
 
                 {/* Interactive problem selection cards */}
-                <div className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4 lg:gap-[clamp(16px,1.4vw,28px)] xl:gap-[clamp(20px,1.8vw,32px)]">
+                <div className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4 lg:gap-x-[clamp(16px,1.4vw,28px)] lg:gap-y-[clamp(24px,2.2vw,40px)] xl:gap-x-[clamp(20px,1.8vw,32px)] xl:gap-y-[clamp(28px,2.5vw,46px)]">
                     {(data.items || []).map((item) => {
                         const isSelected = selectedIds.includes(item.id);
                         return (
@@ -91,9 +94,9 @@ export default function StorefrontProblems({
                                         toggleSelect(item.id);
                                     }
                                 }}
-                                className={`relative min-h-[130px] sm:min-h-[155px] lg:min-h-[165px] rounded-[12px] px-5 pt-6 pb-6 sm:p-[clamp(16px,1.2vw,22px)] sm:pb-9 lg:pb-11 cursor-pointer select-none transition-colors duration-200 ${isSelected
+                                className={`relative min-h-[130px] sm:min-h-[155px] lg:min-h-[165px] rounded-[10px] px-5 pt-6 pb-6 sm:p-[clamp(16px,1.2vw,22px)] sm:pb-9 lg:pb-11 cursor-pointer select-none transition-colors duration-200 ${isSelected
                                     ? "bg-[#B4BCFE]"
-                                    : "bg-[#EFF0FD] sm:bg-[#EEF0FF] hover:bg-[#B4BCFE]"
+                                    : "bg-[#3145DD14] hover:bg-[#B4BCFE]"
                                     }`}
                             >
                                 <div className="pr-9 sm:pr-9">
@@ -107,12 +110,12 @@ export default function StorefrontProblems({
                                 </div>
 
                                 <div
-                                    className={`absolute right-4 top-4.5 sm:right-4 sm:top-4 flex h-8 w-8 sm:h-8 sm:w-8 items-center justify-center rounded-[9px] sm:rounded-[6px] shrink-0 transition-all duration-200 ${isSelected ? "bg-[#3145DD] text-white" : "bg-white text-[#1A1A1A] shadow-xs"
+                                    className={`absolute right-3 top-3 sm:right-3.5 sm:top-3.5 flex h-7 w-7 sm:h-7 sm:w-7 items-center justify-center rounded-[8px] shrink-0 transition-all duration-200 ${isSelected ? "bg-[#3145DD] text-white" : "bg-white text-[#1A1A1A] shadow-xs"
                                         }`}
                                 >
                                     {isSelected ? (
                                         <svg
-                                            className="w-5 h-5 sm:w-4.5 sm:h-4.5 text-white"
+                                            className="w-3.5 h-3.5 sm:w-3.5 sm:h-3.5 lg:w-3.5 lg:h-3.5 text-white"
                                             viewBox="0 0 16 16"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -126,21 +129,14 @@ export default function StorefrontProblems({
                                             />
                                         </svg>
                                     ) : (
-                                        <svg
-                                            className="w-5.5 h-5.5 sm:w-4.5 sm:h-4.5 text-[#1A1A1A]"
-                                            viewBox="0 0 16 16"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M8 2.5V13.5M2.5 8H13.5"
-                                                stroke="currentColor"
-                                                strokeWidth="0.95"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            />
-                                        </svg>
-                                    )}
+                                         <Image
+                                             src="/icons/plus.svg"
+                                             alt="Add"
+                                             width={14}
+                                             height={14}
+                                             className="w-3.5 h-3.5 sm:w-3.5 sm:h-3.5 lg:w-3.5 lg:h-3.5 object-contain"
+                                         />
+                                     )}
                                 </div>
                             </div>
                         );
@@ -151,24 +147,35 @@ export default function StorefrontProblems({
                 {(() => {
                     const count = selectedIds.length;
 
-                    // Derive summary text exclusively from CMS data
+                    // Exact Strapi summary resolver for states: default, one, two, three, multiple
                     const summaryText = (() => {
-                        if (Array.isArray(data.summary)) {
-                            if (count === 0) {
-                                const def = (data.summary as any[]).find((s: any) => s?.state === "default");
-                                return def?.text || null;
-                            } else if (count === 1) {
-                                const one = (data.summary as any[]).find((s: any) => s?.state === "one");
-                                return one?.text ? one.text.replace(/\{count\}/g, "1") : null;
-                            } else {
-                                const mult = (data.summary as any[]).find((s: any) => s?.state === "multiple");
-                                return mult?.text ? mult.text.replace(/\{count\}/g, String(count)) : null;
-                            }
+                        const sData = data.summary;
+                        if (!sData) return null;
+
+                        const getTextByState = (targetState: string) => {
+                            if (!Array.isArray(sData)) return null;
+                            const item = sData.find((s: any) => String(s?.state || s?.type || s?.name || "").toLowerCase().trim() === targetState);
+                            if (!item) return null;
+                            return typeof item === "string" ? item : (item.text || item.description || item.content || item.label || item.value || null);
+                        };
+
+                        // BEFORE SUBMIT: Always show 'default' state from Strapi
+                        if (!isSubmitted) {
+                            const defText = getTextByState("default") || (Array.isArray(sData) && typeof sData[0] === "object" ? sData[0]?.text : null);
+                            return defText ? defText.replace(/\{count\}/g, String(count)) : null;
                         }
-                        // String summary: interpolate {count} if present
-                        if (typeof data.summary === "string" && data.summary.trim()) {
-                            return data.summary.replace(/\{count\}/g, String(count));
+
+                        // AFTER SUBMIT: Match count to Strapi state ('one', 'two', 'three', or 'multiple')
+                        let targetState = "multiple";
+                        if (count === 1) targetState = "one";
+                        else if (count === 2) targetState = "two";
+                        else if (count === 3) targetState = "three";
+
+                        const matchedText = getTextByState(targetState) || getTextByState("multiple");
+                        if (matchedText) {
+                            return matchedText.replace(/\{count\}/g, String(count));
                         }
+
                         return null;
                     })();
 
@@ -176,7 +183,7 @@ export default function StorefrontProblems({
                     if (!summaryText && !data.submitLabel) return null;
 
                     return (
-                        <div className="mt-8 flex flex-col items-start sm:items-center justify-between gap-4 sm:gap-5 rounded-[8px] bg-[#F7F7F7] px-5 py-3.5 sm:py-3 sm:flex-row">
+                        <div className="mt-8 sm:mt-10 lg:mt-12 xl:mt-14 2xl:mt-16 flex flex-col items-start sm:items-center justify-between gap-4 sm:gap-5 rounded-[10px] bg-[#F7F7F7] px-5 py-3.5 sm:py-3 sm:flex-row">
                             {summaryText && (
                                 <p className="font-satoshi text-[14.5px] sm:text-[15px] lg:text-[16px] font-bold leading-[2.1] sm:leading-[1.5] text-[#0F1D07]">
                                     {summaryText}
@@ -185,14 +192,15 @@ export default function StorefrontProblems({
 
                             {data.submitLabel && (
                                 <div className="w-full sm:w-auto flex flex-col items-center">
-                                    <a
-                                        href={data.submitHref}
+                                    <button
+                                        type="button"
                                         onClick={(e) => {
                                             e.preventDefault();
                                             if (isSubmitting || isSuccess) return;
 
                                             if (selectedIds.length === 0) {
                                                 setShowWarning(true);
+                                                setIsSubmitted(false);
                                                 return;
                                             }
                                             setShowWarning(false);
@@ -200,22 +208,14 @@ export default function StorefrontProblems({
                                             
                                             setTimeout(() => {
                                                 setIsSubmitting(false);
+                                                setIsSubmitted(true);
                                                 setIsSuccess(true);
                                                 
+                                                // Reset success badge after 1.5s
                                                 setTimeout(() => {
-                                                    if (data.submitHref === "#quote" || data.submitHref?.includes("quote")) {
-                                                        window.dispatchEvent(new CustomEvent("open-quote-modal"));
-                                                    } else {
-                                                        window.location.href = data.submitHref;
-                                                    }
-                                                    
-                                                    // Reset after modal opens
-                                                    setTimeout(() => {
-                                                        setIsSuccess(false);
-                                                        setSelectedIds([]);
-                                                    }, 500);
-                                                }, 800);
-                                            }, 800);
+                                                    setIsSuccess(false);
+                                                }, 1500);
+                                            }, 600);
                                         }}
                                         className={`flex w-full font-inter items-center justify-center rounded-full px-10 py-2.5 sm:py-3.5 text-[clamp(13px,1.05vw,14.5px)] font-medium text-white transition hover:opacity-90 sm:w-[260px] cursor-pointer ${
                                             isSuccess ? "bg-[#168050]" : "bg-[#3447E5]"
@@ -242,12 +242,12 @@ export default function StorefrontProblems({
                                                 <span className="ml-2">→</span>
                                             </>
                                         )}
-                                    </a>
-                                    {showWarning && (
-                                        <p className="font-satoshi mt-2 text-[12.5px] sm:text-[13px] text-[#DC2626] font-medium text-center w-full animate-in fade-in slide-in-from-top-1 duration-200">
-                                            {data.warningMessage || "Please select at least one issue to continue."}
-                                        </p>
-                                    )}
+                                    </button>
+                                     {showWarning && data.warningMessage && (
+                                         <p className="font-satoshi mt-2 text-[12.5px] sm:text-[13px] text-[#DC2626] font-medium text-center w-full animate-in fade-in slide-in-from-top-1 duration-200">
+                                             {data.warningMessage}
+                                         </p>
+                                     )}
                                 </div>
                             )}
                         </div>

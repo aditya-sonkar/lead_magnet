@@ -292,7 +292,9 @@ export interface SectionsSummary extends Struct.ComponentSchema {
     displayName: 'Summary';
   };
   attributes: {
-    state: Schema.Attribute.Enumeration<['default', 'one', 'multiple']> &
+    state: Schema.Attribute.Enumeration<
+      ['default', 'one', 'two', 'three', 'multiple']
+    > &
       Schema.Attribute.Required;
     text: Schema.Attribute.Text & Schema.Attribute.Required;
   };

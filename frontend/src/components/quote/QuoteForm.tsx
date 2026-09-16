@@ -229,9 +229,9 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             setHasStore(true);
                                             setStep1Warning("");
                                         }}
-                                        className={`font-satoshi px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border text-[14px] sm:text-[16.5px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${hasStore === true
-                                                ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-normal"
-                                                : "border-[#E0DFE7] text-[#333333] font-satoshi font-normal bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
+                                        className={`font-satoshi font-normal px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border text-[14px] sm:text-[16.5px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${hasStore === true
+                                                ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
+                                                : "border-[#E0DFE7] text-[#333333] bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                             }`}
                                     >
                                         {form?.yesLabel}
@@ -242,9 +242,9 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             setHasStore(false);
                                             setStep1Warning("");
                                         }}
-                                        className={`font-satoshi px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border text-[14px] sm:text-[16.5px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${hasStore === false
-                                                ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D] font-normal"
-                                                : "border-[#E0DFE7] text-[#333333] font-satoshi font-normal bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
+                                        className={`font-satoshi font-normal px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border text-[14px] sm:text-[16.5px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${hasStore === false
+                                                ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
+                                                : "border-[#E0DFE7] text-[#333333] bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                             }`}
                                     >
                                         {form?.noLabel}
@@ -332,7 +332,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                         onClick={handleStep1Continue}
                         className={
                             isHero
-                                ? "font-satoshi w-full bg-[#2B44E7] hover:bg-[#2037CA] text-white font-medium py-2.5 sm:py-3 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 mt-[195px] sm:mt-24 lg:mt-[90px] xl:mt-[90px] 2xl:mt-[120px] mb-6 sm:mb-7 lg:mb-6 xl:mb-8 text-[15px] sm:text-[16px] shadow-none cursor-pointer"
+                                ? "font-satoshi w-full bg-[#2B44E7] hover:bg-[#2037CA] text-white font-normal py-2.5 sm:py-3 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 mt-[195px] sm:mt-24 lg:mt-[90px] xl:mt-[90px] 2xl:mt-[120px] mb-6 sm:mb-7 lg:mb-6 xl:mb-8 text-[15px] sm:text-[16px] shadow-none cursor-pointer"
                                 : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2 sm:py-2.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 mt-4 sm:mt-auto mb-2 sm:mb-3 text-[13px] sm:text-[14px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
                         }
                     >
@@ -385,9 +385,9 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                                     setClickedIssue(item.label);
                                                     toggleIssue(item.label);
                                                 }}
-                                                className={`font-satoshi font-normal inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap active:scale-[0.98] ${isSelected
+                                                className={`font-satoshi font-medium inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap active:scale-[0.98] ${isSelected
                                                         ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
-                                                        : "border-[#E0DFE7] text-[#333333] font-satoshi font-normal bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
+                                                        : "border-[#E0DFE7] text-[#333333] bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                                     }`}
                                             >
                                                 <AnimatePresence initial={false}>
@@ -510,9 +510,9 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                                 key={tier.id || tier.value || tier.label}
                                                 type="button"
                                                 onClick={() => handleSelectBudget(tierVal)}
-                                                className={`font-satoshi font-normal px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${isSelected
+                                                className={`font-satoshi font-medium px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full border text-[13.8px] sm:text-[16px] transition-all duration-300 ease-out cursor-pointer shrink-0 whitespace-nowrap ${isSelected
                                                         ? "border-[#307D6D] bg-[#B2ECDE] sm:bg-[#DBEFE9] text-[#18362D] sm:text-[#24332D]"
-                                                        : "border-[#E0DFE7] text-[#333333] font-satoshi font-normal bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
+                                                        : "border-[#E0DFE7] text-[#333333] bg-[#F8F8FA] hover:border-[#9CA3AF] hover:text-black"
                                                     }`}
                                             >
                                                 {tier.label}

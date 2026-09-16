@@ -11,6 +11,8 @@
       "enum": [
         "default",
         "one",
+        "two",
+        "three",
         "multiple"
       ]
     },
