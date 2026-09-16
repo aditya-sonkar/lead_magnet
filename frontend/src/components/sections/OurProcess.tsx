@@ -228,7 +228,7 @@ export default function OurProcess({
                     {/* Responsive Grid: 2 columns on mobile/tablet, 4 columns on desktop */}
                     <div className="mt-[clamp(28px,5vw,56px)] grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-[clamp(16px,2.5vw,36px)]">
                         {/* 1. Image Diagram Card */}
-                        <div className="col-span-2 order-1 lg:order-none lg:col-start-1 lg:col-span-2 lg:row-start-1 w-full aspect-[2896/1614] overflow-hidden rounded-[clamp(10px,1.2vw,16px)] bg-white flex items-center justify-center p-1 sm:p-1.5 md:p-2 lg:p-2.5">
+                        <div className="col-span-2 order-1 lg:order-none lg:col-start-1 lg:col-span-2 lg:row-start-1 w-full aspect-[2896/1614] overflow-hidden rounded-[12px] bg-white flex items-center justify-center p-1 sm:p-1.5 md:p-2 lg:p-2.5">
                             {getMediaUrl(data.image) && (
                                 <div className="h-full w-full relative flex items-center justify-center">
                                     <Image
@@ -236,7 +236,7 @@ export default function OurProcess({
                                         alt={getMediaAlt(data.image) || ""}
                                         fill
                                         sizes="(max-width: 1024px) 100vw, 50vw"
-                                        className="object-contain rounded-[8px]"
+                                        className="object-contain rounded-[12px]"
                                     />
                                 </div>
                             )}
@@ -263,7 +263,7 @@ export default function OurProcess({
                         )}
 
                         {/* 4. Video Showcase Card */}
-                        <div className="order-4 col-span-2 lg:order-none lg:col-start-2 lg:col-span-2 lg:row-start-2 w-full aspect-[755/421] bg-[#1B2F10] rounded-[clamp(10px,1.2vw,16px)] overflow-hidden relative flex items-center justify-center">
+                        <div className="order-4 col-span-2 lg:order-none lg:col-start-2 lg:col-span-2 lg:row-start-2 w-full aspect-[755/421] bg-[#1B2F10] rounded-[12px] overflow-hidden relative flex items-center justify-center">
                             <video
                                 src={getMediaUrl(data.video) || "https://res.cloudinary.com/iskrxj9c/video/upload/v1788914472/tsp_lead_magnet/Screen_Recording_2026_06_30_at_11_51_00_AM_2_b03619cc47.mp4"}
                                 poster="https://res.cloudinary.com/iskrxj9c/video/upload/v1788914472/tsp_lead_magnet/Screen_Recording_2026_06_30_at_11_51_00_AM_2_b03619cc47.jpg"
@@ -273,7 +273,7 @@ export default function OurProcess({
                                 loop
                                 playsInline
                                 aria-label="Process video"
-                                className="w-full h-full object-cover rounded-[clamp(10px,1.2vw,16px)]"
+                                className="w-full h-full object-cover rounded-[12px]"
                             />
                         </div>
 
@@ -357,7 +357,7 @@ function ProcessCard({
 
     return (
         <div
-            className={`bg-[#1B2F10] rounded-[clamp(10px,1.2vw,16px)] p-[clamp(14px,2.2vw,32px)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
+            className={`bg-[#1B2F10] rounded-[12px] p-[clamp(14px,2.2vw,32px)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
                 } ${activeCardId !== null ? "z-20" : ""} ${className}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
