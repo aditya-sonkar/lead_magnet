@@ -508,47 +508,6 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiFormForm extends Struct.CollectionTypeSchema {
-  collectionName: 'forms';
-  info: {
-    description: 'Forms and Lead Magnet configurations';
-    displayName: 'Form';
-    pluralName: 'forms';
-    singularName: 'form';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    bookCallButtonLabel: Schema.Attribute.String;
-    continueLabel: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    disclaimer: Schema.Attribute.Text;
-    estimateButtonLabel: Schema.Attribute.String;
-    formType: Schema.Attribute.Enumeration<['quote', 'callback', 'contact']> &
-      Schema.Attribute.DefaultTo<'quote'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::form.form'> &
-      Schema.Attribute.Private;
-    noLabel: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    shopifyLinkLabel: Schema.Attribute.String;
-    shopifyLinkPlaceholder: Schema.Attribute.String;
-    shopifyQuestion: Schema.Attribute.String;
-    stepLabel: Schema.Attribute.String;
-    successDescription: Schema.Attribute.Text;
-    successTitle: Schema.Attribute.String;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    yesLabel: Schema.Attribute.String;
-  };
-}
-
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
@@ -574,6 +533,95 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFormForm extends Struct.CollectionTypeSchema {
+  collectionName: 'forms';
+  info: {
+    description: 'Forms and Lead Magnet configurations';
+    displayName: 'Form';
+    pluralName: 'forms';
+    singularName: 'form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    basedOnLabel: Schema.Attribute.String;
+    bookCallButtonLabel: Schema.Attribute.String;
+    budgetHint: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'(choose one)'>;
+    budgetLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Select your budget range'>;
+    budgetRanges: Schema.Attribute.Component<'shared.budget-range', true>;
+    budgetWarning: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Please select your preferred budget range'>;
+    closeButtonLabel: Schema.Attribute.String;
+    continueLabel: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    disclaimer: Schema.Attribute.Text;
+    emailLabel: Schema.Attribute.String;
+    emailPlaceholder: Schema.Attribute.String;
+    estimateButtonLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Get My Estimate'>;
+    estimateLabel: Schema.Attribute.String;
+    formName: Schema.Attribute.String & Schema.Attribute.Required;
+    formType: Schema.Attribute.Enumeration<['quote', 'callback', 'contact']> &
+      Schema.Attribute.DefaultTo<'quote'>;
+    issueOptions: Schema.Attribute.Component<'shared.form-option', true>;
+    issuesHint: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'(multiple options)'>;
+    issuesLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'What needs Improvement ?'>;
+    issuesWarning: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Please select at least one issue that needs improvement'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::form.form'> &
+      Schema.Attribute.Private;
+    noLabel: Schema.Attribute.String;
+    otherIssuesLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Other issues (optional)'>;
+    otherIssuesPlaceholder: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Any other issues your shopify store is facing'>;
+    phoneLabel: Schema.Attribute.String;
+    phonePlaceholder: Schema.Attribute.String;
+    phoneWarning: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Please enter a valid phone number'>;
+    publishedAt: Schema.Attribute.DateTime;
+    resultDescription: Schema.Attribute.Text;
+    resultTitle: Schema.Attribute.String;
+    selectionWarning: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Please select what needs improvement and your budget range'>;
+    shopifyLinkLabel: Schema.Attribute.String;
+    shopifyLinkPlaceholder: Schema.Attribute.String;
+    shopifyQuestion: Schema.Attribute.String;
+    shopifyQuestionHint: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'(choose one)'>;
+    step2Description: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Select what\u2019s not working and your preferred budget.'>;
+    step2Label: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Budget range'>;
+    step2Title: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Choose your budget range'>;
+    step3Label: Schema.Attribute.String;
+    stepLabel: Schema.Attribute.String;
+    storeWarning: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Please select whether you own a Shopify website'>;
+    submittingButtonLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Submitting...'>;
+    successDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'We will review your store setup and get back to you shortly.'>;
+    successTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<"Thank you! We've received your request.">;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    yesLabel: Schema.Attribute.String;
   };
 }
 

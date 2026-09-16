@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "formName": {
       "type": "string",
       "required": true
     },
@@ -25,6 +25,9 @@
       ],
       "default": "quote"
     },
+    "title": {
+      "type": "string"
+    },
     "description": {
       "type": "text"
     },
@@ -33,6 +36,10 @@
     },
     "shopifyQuestion": {
       "type": "string"
+    },
+    "shopifyQuestionHint": {
+      "type": "string",
+      "default": "(choose one)"
     },
     "yesLabel": {
       "type": "string"
@@ -49,20 +56,123 @@
     "continueLabel": {
       "type": "string"
     },
+    "storeWarning": {
+      "type": "string",
+      "default": "Please select whether you own a Shopify website"
+    },
+    "step2Title": {
+      "type": "string",
+      "default": "Choose your budget range"
+    },
+    "step2Description": {
+      "type": "text",
+      "default": "Select what’s not working and your preferred budget."
+    },
+    "step2Label": {
+      "type": "string",
+      "default": "Budget range"
+    },
+    "issuesLabel": {
+      "type": "string",
+      "default": "What needs Improvement ?"
+    },
+    "issuesHint": {
+      "type": "string",
+      "default": "(multiple options)"
+    },
+    "issueOptions": {
+      "type": "component",
+      "component": "shared.form-option",
+      "repeatable": true
+    },
+    "budgetLabel": {
+      "type": "string",
+      "default": "Select your budget range"
+    },
+    "budgetHint": {
+      "type": "string",
+      "default": "(choose one)"
+    },
+    "budgetRanges": {
+      "type": "component",
+      "component": "shared.budget-range",
+      "repeatable": true
+    },
+    "otherIssuesLabel": {
+      "type": "string",
+      "default": "Other issues (optional)"
+    },
+    "otherIssuesPlaceholder": {
+      "type": "string",
+      "default": "Any other issues your shopify store is facing"
+    },
+    "issuesWarning": {
+      "type": "string",
+      "default": "Please select at least one issue that needs improvement"
+    },
+    "budgetWarning": {
+      "type": "string",
+      "default": "Please select your preferred budget range"
+    },
+    "selectionWarning": {
+      "type": "string",
+      "default": "Please select what needs improvement and your budget range"
+    },
     "estimateButtonLabel": {
+      "type": "string",
+      "default": "Get My Estimate"
+    },
+    "resultTitle": {
+      "type": "string"
+    },
+    "resultDescription": {
+      "type": "text"
+    },
+    "step3Label": {
+      "type": "string"
+    },
+    "estimateLabel": {
+      "type": "string"
+    },
+    "basedOnLabel": {
+      "type": "string"
+    },
+    "phoneLabel": {
+      "type": "string"
+    },
+    "phonePlaceholder": {
+      "type": "string"
+    },
+    "phoneWarning": {
+      "type": "string",
+      "default": "Please enter a valid phone number"
+    },
+    "emailLabel": {
+      "type": "string"
+    },
+    "emailPlaceholder": {
       "type": "string"
     },
     "bookCallButtonLabel": {
       "type": "string"
     },
+    "submittingButtonLabel": {
+      "type": "string",
+      "default": "Submitting..."
+    },
     "successTitle": {
-      "type": "string"
+      "type": "string",
+      "default": "Thank you! We've received your request."
     },
     "successDescription": {
-      "type": "text"
+      "type": "text",
+      "default": "We will review your store setup and get back to you shortly."
     },
     "disclaimer": {
       "type": "text"
+    },
+    "closeButtonLabel": {
+      "type": "string"
     }
   }
 }
