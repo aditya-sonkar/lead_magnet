@@ -31,17 +31,15 @@ export default function Hero({ data }: { data: HeroData }) {
     const form = Array.isArray(data.quoteForm) ? data.quoteForm[0] : data.quoteForm;
 
     const brandItems = data?.brands && data.brands.length > 0 ? data.brands : [];
-    const trackBrands = brandItems.length > 0 && brandItems.length < 10
-        ? [...brandItems, ...brandItems]
-        : brandItems;
+    let trackBrands = brandItems;
+    if (trackBrands.length > 0) {
+        while (trackBrands.length < 14) {
+            trackBrands = [...trackBrands, ...brandItems];
+        }
+    }
 
-    const getBrandSize = (brand: Brand) => {
-        const name = ((brand.name || "") + (brand.logo?.url || "")).toLowerCase();
-        if (name.includes("figo")) return "h-[24px] sm:h-8 lg:h-9";
-        if (name.includes("westside")) return "h-[21px] sm:h-[30px] lg:h-[34px]";
-        if (name.includes("stiff")) return "h-[21px] sm:h-[30px] lg:h-[34px]";
-        if (name.includes("paloma")) return "h-[19px] sm:h-7 lg:h-7.5";
-        return "h-[20px] sm:h-7 lg:h-7.5";
+    const getBrandSize = (_brand?: Brand) => {
+        return "h-6 sm:h-7.5 lg:h-8 max-h-[32px] w-auto object-contain transition-all duration-300 opacity-100";
     };
 
     const formatHeading = (text: string) => {
@@ -156,19 +154,20 @@ export default function Hero({ data }: { data: HeroData }) {
                                 <div
                                     className="w-full max-w-[963px] mx-auto xl:mx-0 overflow-hidden select-none"
                                     style={{
-                                        maskImage: 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
-                                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)'
+                                        maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+                                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)'
                                     }}
                                 >
                                     <div className="flex w-max items-center animate-marquee hover:[animation-play-state:paused]">
                                         <div className="flex shrink-0 items-center gap-6 sm:gap-8 lg:gap-12 pr-6 sm:pr-8 lg:pr-12">
                                             {trackBrands.map((brand, idx) => (
-                                                <div key={`brand-track1-${idx}`} className="flex items-center justify-center h-9 sm:h-11 shrink-0">
+                                                <div key={`brand-track1-${brand.id || idx}-${idx}`} className="flex items-center justify-center h-9 sm:h-11 shrink-0">
                                                     <Image
                                                         src={getMediaUrl(brand.logo)}
                                                         alt={brand.name || "Brand logo"}
                                                         width={120}
                                                         height={44}
+                                                        unoptimized
                                                         className={`${getBrandSize(brand)} w-auto object-contain transition-all duration-300 opacity-100`}
                                                         style={{ filter: 'brightness(0) invert(1)' }}
                                                     />
@@ -177,12 +176,13 @@ export default function Hero({ data }: { data: HeroData }) {
                                         </div>
                                         <div className="flex shrink-0 items-center gap-6 sm:gap-8 lg:gap-12 pr-6 sm:pr-8 lg:pr-12" aria-hidden="true">
                                             {trackBrands.map((brand, idx) => (
-                                                <div key={`brand-track2-${idx}`} className="flex items-center justify-center h-9 sm:h-11 shrink-0">
+                                                <div key={`brand-track2-${brand.id || idx}-${idx}`} className="flex items-center justify-center h-9 sm:h-11 shrink-0">
                                                     <Image
                                                         src={getMediaUrl(brand.logo)}
                                                         alt={brand.name || "Brand logo"}
                                                         width={120}
                                                         height={44}
+                                                        unoptimized
                                                         className={`${getBrandSize(brand)} w-auto object-contain transition-all duration-300 opacity-100`}
                                                         style={{ filter: 'brightness(0) invert(1)' }}
                                                     />

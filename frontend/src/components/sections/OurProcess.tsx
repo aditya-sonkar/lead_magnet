@@ -176,16 +176,16 @@ export default function OurProcess({
             </div>
 
             {/* Main Content Area */}
-            <div className="w-full bg-[#0F1D07] px-6 py-12 sm:px-8 lg:px-16 lg:py-24 text-white">
+            <div className="w-full bg-[#0F1D07] px-6 sm:px-8 lg:px-16 py-14 sm:py-18 lg:py-24 text-white">
                 <div className="mx-auto max-w-[1240px] w-full">
                     {/* Header */}
-                    <div className="mb-8 sm:mb-10 lg:mb-14">
+                    <div className="mb-8 sm:mb-12 lg:mb-16">
                         <span className="font-satoshi text-[clamp(13px,1vw,15px)] text-white/70 block">
                             {data.eyebrow}
                         </span>
 
                         {/* Heading & Desktop CTA */}
-                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-2.5 sm:mt-3 md:mt-5">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-3 sm:mt-4 md:mt-6">
                             <h2 className="font-delight text-[clamp(26px,4.2vw,38px)] font-medium md:max-w-[500px] leading-[1.15] text-white">
                                 {data.heading}
                             </h2>
@@ -200,13 +200,13 @@ export default function OurProcess({
                             )}
                         </div>
 
-                        <p className="font-satoshi text-white/90 text-[clamp(13.5px,1.05vw,15px)] max-w-[750px] mt-3 sm:mt-4 leading-relaxed">
+                        <p className="font-satoshi text-white/90 text-[clamp(13.5px,1.05vw,15px)] max-w-[750px] mt-4 sm:mt-5 leading-relaxed">
                             {data.description}
                         </p>
 
                         {/* Mobile CTA: shown below description on small screens */}
                         {data.cta && (
-                            <div className="mt-5 sm:mt-6 md:hidden">
+                            <div className="mt-6 sm:mt-8 md:hidden">
                                 <a
                                     href={data.cta.href || "#"}
                                     className="inline-flex rounded-[14px] font-medium bg-white px-5 sm:px-6 py-2.5 sm:py-3 font-satoshi text-[clamp(13.5px,1vw,14.5px)] text-[#0F1D07] shadow-sm hover:bg-white/90 transition items-center justify-center"
@@ -226,9 +226,9 @@ export default function OurProcess({
                     )}
 
                     {/* Responsive Grid: 2 columns on mobile/tablet, 4 columns on desktop */}
-                    <div className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-5 sm:gap-6 lg:gap-[clamp(24px,2vw,40px)]">
+                    <div className="mt-[clamp(28px,5vw,56px)] grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-[clamp(16px,2.5vw,36px)]">
                         {/* 1. Image Diagram Card */}
-                        <div className="col-span-2 order-1 lg:order-none lg:col-start-1 lg:col-span-2 lg:row-start-1 w-full aspect-[2896/1614] overflow-hidden rounded-[12px] lg:rounded-[14px] bg-white flex items-center justify-center p-1 sm:p-1.5 md:p-2 lg:p-2.5">
+                        <div className="col-span-2 order-1 lg:order-none lg:col-start-1 lg:col-span-2 lg:row-start-1 w-full aspect-[2896/1614] overflow-hidden rounded-[clamp(10px,1.2vw,16px)] bg-white flex items-center justify-center p-1 sm:p-1.5 md:p-2 lg:p-2.5">
                             {getMediaUrl(data.image) && (
                                 <div className="h-full w-full relative flex items-center justify-center">
                                     <Image
@@ -263,7 +263,7 @@ export default function OurProcess({
                         )}
 
                         {/* 4. Video Showcase Card */}
-                        <div className="order-4 col-span-2 lg:order-none lg:col-start-2 lg:col-span-2 lg:row-start-2 w-full aspect-[755/421] bg-[#1B2F10] rounded-xl overflow-hidden relative flex items-center justify-center">
+                        <div className="order-4 col-span-2 lg:order-none lg:col-start-2 lg:col-span-2 lg:row-start-2 w-full aspect-[755/421] bg-[#1B2F10] rounded-[clamp(10px,1.2vw,16px)] overflow-hidden relative flex items-center justify-center">
                             <video
                                 src={getMediaUrl(data.video) || "https://res.cloudinary.com/iskrxj9c/video/upload/v1788914472/tsp_lead_magnet/Screen_Recording_2026_06_30_at_11_51_00_AM_2_b03619cc47.mp4"}
                                 poster="https://res.cloudinary.com/iskrxj9c/video/upload/v1788914472/tsp_lead_magnet/Screen_Recording_2026_06_30_at_11_51_00_AM_2_b03619cc47.jpg"
@@ -273,7 +273,7 @@ export default function OurProcess({
                                 loop
                                 playsInline
                                 aria-label="Process video"
-                                className="w-full h-full object-cover rounded-xl"
+                                className="w-full h-full object-cover rounded-[clamp(10px,1.2vw,16px)]"
                             />
                         </div>
 
@@ -314,12 +314,11 @@ function ProcessCard({
     activeCardId?: number | null;
     setActiveCardId?: (id: number | null) => void;
 }) {
-    const [isHoveredDesktop, setIsHoveredDesktop] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const [isClosedByClick, setIsClosedByClick] = useState(false);
     const iconUrl = getMediaUrl(card.icon);
 
-    // On desktop: use local hover state
-    // On mobile/tablet: use shared activeCardId
-    const isActive = isHoveredDesktop || activeCardId === card.id;
+    const isActive = (isHovered && !isClosedByClick) || activeCardId === card.id;
 
     const ctaBase = card.cta?.label || "";
     const ctaDesktop = ctaBase && (ctaBase.toLowerCase().includes(card.title.toLowerCase())
@@ -329,19 +328,39 @@ function ProcessCard({
     const services = card.services || [];
     const hasServices = services.length > 0;
 
-    const handleClick = () => {
-        if (setActiveCardId) {
-            // Mobile/tablet: toggle accordion (close if same card, else open this one)
-            setActiveCardId(activeCardId === card.id ? null : card.id);
+    const handleClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (isActive) {
+            // If card is currently active/open, clicking closes/bands it
+            setIsClosedByClick(true);
+            setIsHovered(false);
+            if (setActiveCardId) setActiveCardId(null);
+        } else {
+            // If card is closed, clicking opens it
+            setIsClosedByClick(false);
+            setIsHovered(true);
+            if (setActiveCardId) setActiveCardId(card.id);
+        }
+    };
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+        setIsClosedByClick(false);
+        if (activeCardId === card.id && setActiveCardId) {
+            setActiveCardId(null);
         }
     };
 
     return (
         <div
-            className={`bg-[#1B2F10] rounded-xl p-[clamp(1rem,1.8vw,2.25rem)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
+            className={`bg-[#1B2F10] rounded-[clamp(10px,1.2vw,16px)] p-[clamp(14px,2.2vw,32px)] flex flex-col justify-between aspect-331/421 sm:aspect-4/3 lg:aspect-auto h-full w-full relative group overflow-hidden transition-all duration-500 ease-out cursor-pointer text-white select-none ${hasServices && isActive ? "!bg-[#28411C] shadow-lg shadow-[#1B2F10]/50" : ""
                 } ${activeCardId !== null ? "z-20" : ""} ${className}`}
-            onMouseEnter={() => setIsHoveredDesktop(true)}
-            onMouseLeave={() => setIsHoveredDesktop(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             onClick={handleClick}
         >
             {/* Front View (Normal State) */}
@@ -364,7 +383,7 @@ function ProcessCard({
                 <div>
                     {/* Icon */}
                     {iconUrl && (
-                        <div className="h-6 w-6 sm:h-7 sm:w-7 lg:h-7 lg:w-7 xl:h-8 xl:w-8 mb-2 sm:mb-3 lg:mb-3 xl:mb-4 flex items-center justify-start relative">
+                        <div className="h-[clamp(20px,2vw,32px)] w-[clamp(20px,2vw,32px)] mb-1.5 sm:mb-3 lg:mb-3 xl:mb-4 flex items-center justify-start relative">
                             <Image
                                 src={iconUrl}
                                 alt={getMediaAlt(card.icon) || ""}
@@ -376,24 +395,24 @@ function ProcessCard({
                     )}
 
                     {/* Title */}
-                    <h3 className="font-satoshi text-[clamp(18px,1.8vw,26px)] font-bold leading-tight text-white">
+                    <h3 className="font-satoshi text-[clamp(16px,1.8vw,26px)] font-bold leading-tight text-white">
                         {card.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="mt-1.5 sm:mt-2 lg:mt-2 font-satoshi text-[clamp(10.5px,1vw,13px)] font-medium leading-[1.45] text-[#9BA893] max-w-[300px]">
+                    <p className="mt-1 sm:mt-2 lg:mt-2 font-satoshi text-[clamp(10.5px,1vw,13.5px)] font-medium leading-[1.38] sm:leading-[1.45] text-[#9BA893] max-w-[300px]">
                         {card.description}
                     </p>
                 </div>
 
                 {/* CTA */}
                 {card.cta && (
-                    <div className="mt-auto pt-2.5 sm:pt-3 lg:pt-3.5 xl:pt-5">
-                        <div className="inline-flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 font-satoshi text-[clamp(12px,1.2vw,15.5px)] font-semibold text-white transition-all duration-300">
+                    <div className="mt-auto pt-2 sm:pt-3 lg:pt-3.5 xl:pt-5">
+                        <div className="inline-flex items-center gap-1 sm:gap-2 lg:gap-2.5 font-satoshi text-[clamp(11.5px,1.1vw,15.5px)] font-semibold text-white transition-all duration-300">
                             <span className="lg:hidden">{ctaBase}</span>
                             <span className="hidden lg:inline">{ctaDesktop}</span>
                             <svg
-                                className="h-4 w-4 sm:h-4.5 sm:w-4.5 lg:h-5 lg:w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                                className="h-[clamp(14px,1.2vw,20px)] w-[clamp(14px,1.2vw,20px)] shrink-0 transition-transform duration-300 group-hover:translate-x-1"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -421,7 +440,7 @@ function ProcessCard({
                         duration: isActive ? 0.5 : 0.4,
                         ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                     }}
-                    className={`absolute inset-0 p-[clamp(1rem,1.8vw,2.25rem)] flex w-full flex-col ${isActive
+                    className={`absolute inset-0 pt-4 lg:pt-5 xl:pt-6 pb-4 lg:pb-5 xl:pb-6 px-4 lg:px-6 xl:px-7 flex w-full flex-col ${isActive
                             ? "pointer-events-auto"
                             : "pointer-events-none"
                         }`}
@@ -443,7 +462,7 @@ function ProcessCard({
                                         : (services.length - 1 - idx) * 0.025,
                                     ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                                 }}
-                                className={`flex shrink-0 items-center gap-2 sm:gap-3 py-1.5 sm:py-2 lg:py-1.5 xl:py-2 will-change-[transform,opacity] ${idx !== services.length - 1 ? "border-b border-[#3E5634]" : ""
+                                className={`flex shrink-0 items-center gap-2 sm:gap-2.5 py-1.5 sm:py-2 lg:py-1.5 xl:py-2 will-change-[transform,opacity] ${idx !== services.length - 1 ? "border-b border-[#3E5634]" : ""
                                     }`}
                             >
                                 <motion.svg
@@ -458,7 +477,7 @@ function ProcessCard({
                                             : (services.length - 1 - idx) * 0.025,
                                         ease: isActive ? [0.16, 1, 0.3, 1] : [0.4, 0, 0.2, 1],
                                     }}
-                                    className="w-[7px] sm:w-[9px] lg:w-[10px] h-[12px] sm:h-[15px] lg:h-[17px] shrink-0 text-white"
+                                    className="w-[7px] sm:w-[8px] lg:w-[8.5px] h-[11px] sm:h-[13px] lg:h-[14px] shrink-0 text-white"
                                     viewBox="0 0 10 18"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -471,7 +490,7 @@ function ProcessCard({
                                         strokeLinejoin="round"
                                     />
                                 </motion.svg>
-                                <span className="font-satoshi text-[clamp(11.5px,1.1vw,13.5px)] font-normal leading-[1.35] lg:leading-[1.2] text-white">
+                                <span className="font-satoshi text-[12.5px] sm:text-[13px] lg:text-[13px] xl:text-[13.5px] font-normal leading-[1.35] text-white">
                                     {service.text}
                                 </span>
                             </motion.div>

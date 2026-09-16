@@ -95,8 +95,8 @@ export default function StorefrontProblems({
                                     }
                                 }}
                                 className={`relative min-h-[130px] sm:min-h-[155px] lg:min-h-[165px] rounded-[10px] px-5 pt-6 pb-6 sm:p-[clamp(16px,1.2vw,22px)] sm:pb-9 lg:pb-11 cursor-pointer select-none transition-colors duration-200 ${isSelected
-                                    ? "bg-[#B4BCFE]"
-                                    : "bg-[#3145DD14] hover:bg-[#B4BCFE]"
+                                    ? "bg-[#bec2eb]"
+                                    : "bg-[#3145DD14] hover:bg-[#bec2eb]"
                                     }`}
                             >
                                 <div className="pr-9 sm:pr-9">

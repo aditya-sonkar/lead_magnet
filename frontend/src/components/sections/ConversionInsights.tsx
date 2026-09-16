@@ -40,6 +40,11 @@ function formatCardTitle(title: string) {
     return title;
 }
 
+function formatCardDescription(desc: string) {
+    if (!desc) return null;
+    return desc;
+}
+
 export default function ConversionInsights({
     data,
 }: {
@@ -146,12 +151,12 @@ export default function ConversionInsights({
                                                 {cardMobileDesc}
                                             </p>
                                             <p className={`hidden md:block font-satoshi insight-card-desc text-[clamp(12.5px,0.85vw,14.3px)] min-[1750px]:text-[14.8px] leading-[1.55] whitespace-pre-line text-pretty w-full ${descMaxWidth} ${descriptionWeight} ${descriptionColor}`}>
-                                                {card.description}
+                                                {formatCardDescription(card.description)}
                                             </p>
                                         </>
                                     ) : (
                                         <p className={`font-satoshi insight-card-desc text-[clamp(12.5px,0.85vw,14.3px)] min-[1750px]:text-[14.8px] leading-[1.55] whitespace-pre-line text-pretty w-full ${descMaxWidth} ${descriptionWeight} ${descriptionColor}`}>
-                                            {card.description}
+                                            {formatCardDescription(card.description)}
                                         </p>
                                     )}
                                 </div>
