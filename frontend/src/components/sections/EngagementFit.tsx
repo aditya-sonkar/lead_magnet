@@ -178,16 +178,16 @@ export default function EngagementFit({
     const totalPointRows = Math.max(suitableCount, notSuitableCount, 5);
 
     return (
-        <section className="px-6 sm:px-8 md:px-10 lg:px-[60px] xl:px-[80px] py-14 sm:py-16 md:py-20 lg:py-[200px] xl:py-[220px] bg-white">
+        <section className="px-6 py-14 sm:py-16 lg:py-[200px] xl:py-[220px] bg-white lg:px-[60px] xl:px-[80px]">
             <div className="mx-auto w-full max-w-[1720px]">
-                <div className="flex flex-col min-[1140px]:flex-row items-start justify-between gap-8 min-[1140px]:gap-[clamp(28px,3vw,120px)] xl:gap-[clamp(50px,5vw,120px)] w-full">
+                <div className="flex flex-col min-[1140px]:flex-row items-start justify-between gap-8 min-[1140px]:gap-[clamp(50px,5vw,120px)] w-full">
                     {/* Left Column: Heading & Description (anchored to left corner) */}
-                    <div className="flex flex-col w-full min-[1140px]:w-[clamp(425px,33vw,540px)] shrink-0">
+                    <div className="flex flex-col w-full min-[1140px]:w-[clamp(370px,33vw,540px)] shrink-0">
                         <h2 className="heading-engagement-fit font-delight font-medium tracking-[-0.015em] text-[#0f1d07] mb-4 lg:mb-5 xl:mb-6 max-w-full">
                             {formatHeading(data.heading)}
                         </h2>
                         <p
-                            className="font-satoshi font-medium text-black text-[clamp(14.5px,1.4vw,16.2px)] leading-[1.62] sm:leading-[1.66] xl:leading-[1.68] w-full"
+                            className="font-satoshi font-medium text-black text-[clamp(13.5px,1.06vw,16.2px)] leading-[1.62] xl:leading-[1.68] w-full"
                             style={{ fontFamily: "var(--font-satoshi), Satoshi, sans-serif", fontWeight: 500, color: "#000000" }}
                         >
                             {formatDescription(data.description)}
@@ -196,7 +196,7 @@ export default function EngagementFit({
 
                     {/* Right Column: 2 Cards */}
                     <div
-                        className="sync-engagement-cards grid grid-cols-1 sm:grid-cols-2 min-[1140px]:grid-cols-[1fr_1.03fr] gap-5 sm:gap-x-6 lg:gap-x-[30px] xl:gap-x-[34px] gap-y-4 sm:gap-y-[17.5px] xl:gap-y-[18.5px] items-stretch w-full min-[1140px]:mx-0 min-[1140px]:max-w-[660px] xl:max-w-[690px] 2xl:max-w-[710px] -mt-2 sm:-mt-2.5 lg:-mt-3 xl:-mt-3.5 2xl:-mt-4"
+                        className="sync-engagement-cards grid grid-cols-1 sm:grid-cols-[1fr_1.03fr] gap-5 sm:gap-x-6 lg:gap-x-[30px] xl:gap-x-[34px] gap-y-4 sm:gap-y-[17.5px] xl:gap-y-[18.5px] items-stretch w-full min-[1140px]:max-w-[660px] xl:max-w-[690px] 2xl:max-w-[710px] -mt-2 sm:-mt-2.5 lg:-mt-3 xl:-mt-3.5 2xl:-mt-4"
                         style={{ '--point-rows': totalPointRows } as React.CSSProperties}
                     >
                         {/* Card 1: Suitable */}
