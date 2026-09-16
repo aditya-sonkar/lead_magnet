@@ -283,7 +283,6 @@ export async function getHeader(): Promise<any> {
                 const unwrapped = raw?.attributes ? { id: raw.id, ...raw.attributes } : raw;
                 const headerObj = unwrapped?.Header?.attributes || unwrapped?.Header || unwrapped?.header || unwrapped;
                 if (headerObj && typeof headerObj === "object") {
-                    cachedHeader = headerObj;
                     return headerObj;
                 }
             }
