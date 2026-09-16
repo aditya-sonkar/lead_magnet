@@ -325,20 +325,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
 
                     </div>
 
-                    <div className={isHero ? `${step1Warning ? "mt-[165px] sm:mt-18 lg:mt-[65px] xl:mt-[65px] 2xl:mt-[90px]" : "mt-[195px] sm:mt-24 lg:mt-[90px] xl:mt-[90px] 2xl:mt-[120px]"} mb-6 sm:mb-7 lg:mb-6 xl:mb-8` : "mt-4 sm:mt-auto mb-2 sm:mb-3"}>
-                        {step1Warning && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -4 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mb-2.5 sm:mb-3 text-center"
-                            >
-                                <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
-                                    <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
-                                </svg>
-                                <span>{step1Warning}</span>
-                            </motion.div>
-                        )}
-
+                    <div className={isHero ? "mt-[195px] sm:mt-24 lg:mt-[90px] xl:mt-[90px] 2xl:mt-[120px] mb-4 sm:mb-5 lg:mb-4 xl:mb-6" : "mt-4 sm:mt-auto mb-2 sm:mb-3"}>
                         <button
                             type="button"
                             onClick={handleStep1Continue}
@@ -357,6 +344,19 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                 <span className="text-[14px] sm:text-[15px]">→</span>
                             )}
                         </button>
+
+                        {step1Warning && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -4 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mt-2.5 sm:mt-3 text-center"
+                            >
+                                <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
+                                    <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
+                                </svg>
+                                <span>{step1Warning}</span>
+                            </motion.div>
+                        )}
                     </div>
                 </div>
             )}
@@ -608,11 +608,33 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             />
                         </div>
 
+                    </div>
+
+                    <div>
+                        <button
+                            type="button"
+                            onClick={handleStep2Continue}
+                            className={
+                                isHero
+                                    ? "font-satoshi w-full bg-[#2B44E7] hover:bg-[#2037CA] text-white font-medium py-2.5 sm:py-3 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 mt-[195px] sm:mt-6 text-[15px] sm:text-[16px] shadow-none cursor-pointer"
+                                    : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 mt-4 sm:mt-6 text-[13.5px] sm:text-[15.5px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
+                            }
+                        >
+                            <span>{form?.estimateButtonLabel}</span>
+                            {isHero ? (
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            ) : (
+                                <span className="text-[16px] sm:text-[17px]">→</span>
+                            )}
+                        </button>
+
                         {step2Warning && (
                             <motion.div
                                 initial={{ opacity: 0, y: -4 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mt-3.5 mb-1 text-center"
+                                className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mt-2.5 sm:mt-3 text-center"
                             >
                                 <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
                                     <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
@@ -621,25 +643,6 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                             </motion.div>
                         )}
                     </div>
-
-                    <button
-                        type="button"
-                        onClick={handleStep2Continue}
-                        className={
-                            isHero
-                                ? "font-satoshi w-full bg-[#2B44E7] hover:bg-[#2037CA] text-white font-medium py-2.5 sm:py-3 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 mt-[195px] sm:mt-6 mb-6 sm:mb-7 lg:mb-6 xl:mb-8 text-[15px] sm:text-[16px] shadow-none cursor-pointer"
-                                : "font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 mt-4 sm:mt-6 mb-2 sm:mb-4 md:mb-5 text-[13.5px] sm:text-[15.5px] cursor-pointer shadow-md active:scale-[0.99] shrink-0"
-                        }
-                    >
-                        <span>{form?.estimateButtonLabel}</span>
-                        {isHero ? (
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        ) : (
-                            <span className="text-[16px] sm:text-[17px]">→</span>
-                        )}
-                    </button>
                 </div>
             )}
 
@@ -816,19 +819,6 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                     </div>
 
                     <div>
-                        {step3Warning && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -4 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mb-2.5 sm:mb-3 text-center"
-                            >
-                                <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
-                                    <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
-                                </svg>
-                                <span>{step3Warning}</span>
-                            </motion.div>
-                        )}
-
                             {isSubmitted ? (
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.97 }}
@@ -841,32 +831,47 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                     <span>{form?.successTitle || "We've received your details! We'll call you shortly."}</span>
                                 </motion.div>
                             ) : (
-                                <button
-                                    type="button"
-                                    data-no-callback="true"
-                                    onClick={handleBookCallSubmit}
-                                    disabled={isSubmitting}
-                                    className={
-                                        isHero
-                                            ? `font-satoshi w-full bg-[#3145DD] hover:bg-[#2637b8] text-white font-medium py-2.5 sm:py-3 px-6 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 text-[15.5px] sm:text-[16px] shadow-sm hover:shadow-md cursor-pointer ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
-                                            : `font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[14px] sm:text-[15px] cursor-pointer shadow-md active:scale-[0.99] mt-3 sm:mt-2 ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
-                                    }
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                <>
+                                    <button
+                                        type="button"
+                                        data-no-callback="true"
+                                        onClick={handleBookCallSubmit}
+                                        disabled={isSubmitting}
+                                        className={
+                                            isHero
+                                                ? `font-satoshi w-full bg-[#3145DD] hover:bg-[#2637b8] text-white font-medium py-2.5 sm:py-3 px-6 rounded-full transition-all duration-300 ease-out flex justify-center items-center gap-2 text-[15.5px] sm:text-[16px] shadow-sm hover:shadow-md cursor-pointer ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
+                                                : `font-satoshi w-full bg-[#242120] hover:bg-black text-white font-medium py-2.5 sm:py-3.5 px-5 sm:px-6 rounded-full transition-all duration-200 flex justify-center items-center gap-2 text-[14px] sm:text-[15px] cursor-pointer shadow-md active:scale-[0.99] mt-3 sm:mt-2 ${isSubmitting ? "opacity-80 cursor-not-allowed" : ""}`
+                                        }
+                                    >
+                                        {isSubmitting ? (
+                                            <>
+                                                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                                </svg>
+                                                <span>{form?.submittingButtonLabel || "Submitting..."}</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>{form?.bookCallButtonLabel}</span>
+                                                <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
+                                            </>
+                                        )}
+                                    </button>
+
+                                    {step3Warning && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -4 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="flex items-center justify-center gap-1.5 text-[#DC2626] text-[12.5px] sm:text-[13px] font-satoshi font-medium mt-2.5 sm:mt-3 text-center"
+                                        >
+                                            <svg className="w-3.5 h-3.5 text-[#DC2626] shrink-0" viewBox="0 0 16 16" fill="currentColor">
+                                                <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm8-3.25a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V5.5A.75.75 0 018 4.75zm0 6.5a.875.875 0 100-1.75.875.875 0 000 1.75z" clipRule="evenodd" />
                                             </svg>
-                                            <span>{form?.submittingButtonLabel || "Submitting..."}</span>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <span>{form?.bookCallButtonLabel}</span>
-                                            <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
-                                        </>
+                                            <span>{step3Warning}</span>
+                                        </motion.div>
                                     )}
-                                </button>
+                                </>
                             )}
                             {form?.disclaimer && (
                                 <p
