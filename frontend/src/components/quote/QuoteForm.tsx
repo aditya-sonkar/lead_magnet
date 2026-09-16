@@ -264,7 +264,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                         }}
                                         className={`flex items-center gap-2.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border text-[12px] sm:text-[13px] font-nohemi font-normal transition-all duration-200 cursor-pointer text-[#111827] ${
                                             hasStore === true
-                                                ? "border-[#307D6D] bg-[#DBEFE9] shadow-xs"
+                                                ? "border-[#18181B] bg-[#EAEAEA] shadow-2xs font-medium"
                                                 : (step1Warning && hasStore === null)
                                                     ? "border-[#F87171] bg-[#FEF2F2]/30 hover:border-[#EF4444]"
                                                     : "border-[#C5C5CA] bg-[#F2F2F2] hover:border-[#9CA3AF] hover:bg-[#EAEAEA]"
@@ -274,7 +274,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             <circle cx="9" cy="9" r="7.75" stroke="currentColor" strokeWidth="1.25" />
                                             {hasStore === true && <circle cx="9" cy="9" r="3.75" fill="currentColor" />}
                                         </svg>
-                                        <span className="font-nohemi font-normal text-[#111827] text-[12px] sm:text-[13px]">{form?.yesLabel}</span>
+                                        <span className="font-nohemi text-[#111827] text-[12px] sm:text-[13px]">{form?.yesLabel}</span>
                                     </button>
                                     <button
                                         type="button"
@@ -284,7 +284,7 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                         }}
                                         className={`flex items-center gap-2.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border text-[12px] sm:text-[13px] font-nohemi font-normal transition-all duration-200 cursor-pointer text-[#111827] ${
                                             hasStore === false
-                                                ? "border-[#307D6D] bg-[#DBEFE9] shadow-xs"
+                                                ? "border-[#18181B] bg-[#EAEAEA] shadow-2xs font-medium"
                                                 : (step1Warning && hasStore === null)
                                                     ? "border-[#F87171] bg-[#FEF2F2]/30 hover:border-[#EF4444]"
                                                     : "border-[#C5C5CA] bg-[#F2F2F2] hover:border-[#9CA3AF] hover:bg-[#EAEAEA]"
