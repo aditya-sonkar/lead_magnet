@@ -258,7 +258,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     </div>
 
                                     {/* Submit Button */}
-                                    <div className="pt-2 sm:pt-2.5">
+                                    <div className="pt-2 sm:pt-2.5 pb-1.5 sm:pb-2.5">
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
