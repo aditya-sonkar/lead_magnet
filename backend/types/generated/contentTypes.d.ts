@@ -552,7 +552,7 @@ export interface ApiFormForm extends Struct.CollectionTypeSchema {
     singularName: 'form';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     basedOnLabel: Schema.Attribute.String;

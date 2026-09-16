@@ -8,7 +8,7 @@
     "description": "Forms and Lead Magnet configurations"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
