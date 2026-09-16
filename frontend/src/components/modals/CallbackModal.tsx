@@ -212,53 +212,56 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     </p>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-6.5">
-                                    {/* Email Field */}
-                                    <div>
-                                        <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
-                                            {emailLabel}
-                                        </label>
-                                        <input
-                                            type="email"
-                                            required
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            placeholder={emailPlaceholder}
-                                            className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
-                                        />
-                                    </div>
+                                <form onSubmit={handleSubmit}>
+                                    {/* Input Fields */}
+                                    <div className="space-y-6 sm:space-y-6.5">
+                                        {/* Email Field */}
+                                        <div>
+                                            <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
+                                                {emailLabel}
+                                            </label>
+                                            <input
+                                                type="email"
+                                                required
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                placeholder={emailPlaceholder}
+                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
+                                            />
+                                        </div>
 
-                                    {/* Phone Number Field */}
-                                    <div>
-                                        <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
-                                            {phoneLabel}
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            required
-                                            value={phone}
-                                            onChange={(e) => setPhone(e.target.value)}
-                                            placeholder={phonePlaceholder}
-                                            className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
-                                        />
-                                    </div>
+                                        {/* Phone Number Field */}
+                                        <div>
+                                            <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
+                                                {phoneLabel}
+                                            </label>
+                                            <input
+                                                type="tel"
+                                                required
+                                                value={phone}
+                                                onChange={(e) => setPhone(e.target.value)}
+                                                placeholder={phonePlaceholder}
+                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
+                                            />
+                                        </div>
 
-                                    {/* Shopify Link Field */}
-                                    <div>
-                                        <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
-                                            {shopifyLinkLabel}
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={shopifyLink}
-                                            onChange={(e) => setShopifyLink(e.target.value)}
-                                            placeholder={shopifyLinkPlaceholder}
-                                            className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
-                                        />
+                                        {/* Shopify Link Field */}
+                                        <div>
+                                            <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
+                                                {shopifyLinkLabel}
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={shopifyLink}
+                                                onChange={(e) => setShopifyLink(e.target.value)}
+                                                placeholder={shopifyLinkPlaceholder}
+                                                className="font-satoshi w-full px-5 sm:px-5.5 py-2 sm:py-2.5 rounded-full border border-[#D1D5DB] focus:outline-none focus:border-[#18181B] focus:ring-1 focus:ring-[#18181B] text-[clamp(12px,0.95vw,13px)] text-[#111827] bg-[#F1F1F3] placeholder-[#444444] transition-all duration-200"
+                                            />
+                                        </div>
                                     </div>
 
                                     {/* Submit Button */}
-                                    <div className="pt-3 sm:pt-4 pb-1">
+                                    <div className="mt-3.5 sm:mt-4 pb-1">
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
