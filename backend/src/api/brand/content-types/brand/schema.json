@@ -16,48 +16,76 @@
       "type": "string",
       "required": true
     },
-    "logo": {
+    "heroLogo": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ]
     },
-    "mobileLogo": {
+    "finalCtaLogo": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ]
     },
-    "image": {
+    "showcaseBeforeImage": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ]
     },
-    "mobileImage": {
+    "showcaseAfterImage": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
+      ]
+    },
+    "showcaseMobileBeforeImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "showcaseMobileAfterImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "ourWorkImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "ourWorkMobileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
       ]
     },
     "websiteUrl": {
