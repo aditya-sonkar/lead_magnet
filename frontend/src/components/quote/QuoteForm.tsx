@@ -858,19 +858,26 @@ export default function QuoteForm({ form: rawForm, variant = "hero", onClose }: 
                                             </>
                                         ) : (
                                             <>
-                                                <span className="relative block overflow-hidden">
-                                                    <span className="inline-flex items-center justify-center gap-2 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                                                {isHero ? (
+                                                    <span className="inline-flex items-center justify-center gap-2">
                                                         <span>{form?.bookCallButtonLabel}</span>
-                                                        <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
+                                                        <span className="text-[17px]">→</span>
                                                     </span>
-                                                    <span
-                                                        aria-hidden="true"
-                                                        className="absolute inset-0 inline-flex items-center justify-center gap-2 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0 select-none"
-                                                    >
-                                                        <span>{form?.bookCallButtonLabel}</span>
-                                                        <span className={isHero ? "text-[17px]" : "text-[16px] sm:text-[17px]"}>→</span>
+                                                ) : (
+                                                    <span className="relative block overflow-hidden">
+                                                        <span className="inline-flex items-center justify-center gap-2 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                                                            <span>{form?.bookCallButtonLabel}</span>
+                                                            <span className="text-[16px] sm:text-[17px]">→</span>
+                                                        </span>
+                                                        <span
+                                                            aria-hidden="true"
+                                                            className="absolute inset-0 inline-flex items-center justify-center gap-2 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0 select-none"
+                                                        >
+                                                            <span>{form?.bookCallButtonLabel}</span>
+                                                            <span className="text-[16px] sm:text-[17px]">→</span>
+                                                        </span>
                                                     </span>
-                                                </span>
+                                                )}
                                             </>
                                         )}
                                     </button>
