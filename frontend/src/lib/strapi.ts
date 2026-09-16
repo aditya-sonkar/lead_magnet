@@ -87,10 +87,9 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
             // SEO metadata
             "populate[seo][populate]=*",
 
-            // Hero: primary CTA, client brands with logos, and quote form
+            // Hero: primary CTA, client brands with logos
             "populate[sections][on][sections.hero][populate][primaryCta][populate]=*",
             "populate[sections][on][sections.hero][populate][brands][populate]=*",
-            "populate[sections][on][sections.hero][populate][quoteForm][populate]=*",
 
             // Storefront Problems: pain point items and multi-state summary
             "populate[sections][on][sections.storefront-problems][populate][items][populate]=*",
@@ -119,7 +118,9 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
             "populate[sections][on][sections.our-process][populate][cta][populate]=*",
             "populate[sections][on][sections.our-process][populate][image][populate]=*",
             "populate[sections][on][sections.our-process][populate][video][populate]=*",
-            "populate[sections][on][sections.our-process][populate][cards][populate]=*",
+            "populate[sections][on][sections.our-process][populate][cards][populate][services][populate]=*",
+            "populate[sections][on][sections.our-process][populate][cards][populate][icon][populate]=*",
+            "populate[sections][on][sections.our-process][populate][cards][populate][cta][populate]=*",
 
             // FAQ: question and answer items
             "populate[sections][on][sections.faq][populate][items][populate]=*",
