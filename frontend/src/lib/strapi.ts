@@ -74,31 +74,10 @@ export function getMediaAlt(media?: any, fallback: string = ""): string {
     return attrs?.alternativeText || fallback;
 }
 
-// In-memory cache & in-flight promise deduplication
-let landingPageCache: { data: any; timestamp: number } | null = null;
-let inFlightLandingPagePromise: Promise<any> | null = null;
-const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
-
 export async function getLandingPage(slug: string = "shopify-lead-magnet") {
-    if (landingPageCache && (Date.now() - landingPageCache.timestamp < CACHE_TTL_MS)) {
-        return landingPageCache.data;
-    }
-    if (inFlightLandingPagePromise) {
-        return inFlightLandingPagePromise;
-    }
-    inFlightLandingPagePromise = fetchLandingPageInternal(slug)
-        .then((res) => {
-            if (res) {
-                landingPageCache = { data: res, timestamp: Date.now() };
-            }
-            inFlightLandingPagePromise = null;
-            return res;
-        })
-        .catch((err) => {
-            inFlightLandingPagePromise = null;
-            throw err;
-        });
-    return inFlightLandingPagePromise;
+    // Next.js fetch with `next: { revalidate: 60 }` handles caching and deduplication natively.
+    // In-memory cache in a long-running/serverless environment causes stale data issues.
+    return fetchLandingPageInternal(slug);
 }
 
 async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
@@ -266,7 +245,6 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
                 footer: footerData || pageData.footer,
                 stickyCTA: unwrappedStickyCTA,
             };
-            landingPageCache = { data: result, timestamp: Date.now() };
             return result;
         }
 
@@ -281,14 +259,10 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
     }
 }
 
-let cachedHeader: any = null;
-let cachedFooter: any = null;
-
 /**
  * Fetches Header Single Type from Strapi (/api/header)
  */
 export async function getHeader(): Promise<any> {
-    if (cachedHeader) return cachedHeader;
 
     const urls = [
         `${STRAPI_URL}/api/header?populate=*`,
@@ -324,7 +298,6 @@ export async function getHeader(): Promise<any> {
  * Fetches Footer Single Type from Strapi (/api/footer) with full nested population
  */
 export async function getFooter(): Promise<any> {
-    if (cachedFooter) return cachedFooter;
 
     const deepNested = [
         "populate[footer][populate][logo][populate]=*",
@@ -360,7 +333,6 @@ export async function getFooter(): Promise<any> {
                 const unwrapped = raw?.attributes ? { id: raw.id, ...raw.attributes } : raw;
                 const footerObj = unwrapped?.footer?.attributes || unwrapped?.footer || unwrapped?.Footer || unwrapped;
                 if (footerObj && typeof footerObj === "object") {
-                    cachedFooter = footerObj;
                     return footerObj;
                 }
             }
@@ -372,13 +344,10 @@ export async function getFooter(): Promise<any> {
 }
 
 
-let cachedForms: any[] | null = null;
-
 /**
  * Fetches Forms Collection Type from Strapi (/api/forms) to populate Quote and Callback forms
  */
 export async function getForms(): Promise<any[]> {
-    if (cachedForms) return cachedForms;
 
     try {
         const query = 'populate[formConfig][populate]=*';
@@ -390,7 +359,6 @@ export async function getForms(): Promise<any[]> {
                     const attrs = item.attributes || item;
                     return { id: item.id, ...attrs };
                 });
-                cachedForms = forms;
                 return forms;
             }
         }
