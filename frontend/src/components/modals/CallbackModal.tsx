@@ -212,7 +212,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     </p>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-6.5">
                                     {/* Email Field */}
                                     <div>
                                         <label className="font-nohemi block text-[clamp(13px,1.05vw,14.5px)] font-normal text-[#111827] mb-1.5">
@@ -258,7 +258,7 @@ export default function CallbackModal({ isOpen, onClose, data, selectedProblems,
                                     </div>
 
                                     {/* Submit Button */}
-                                    <div className="pt-1 sm:pt-1.5 pb-1">
+                                    <div className="pt-3 sm:pt-4 pb-1">
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
