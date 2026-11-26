@@ -1,3 +1,6 @@
+import { cache } from "react";
+import fallbackLandingPage from "./fallbackLandingPage.json";
+
 /**
  * Strapi client, API fetching & fallback handling
  */
@@ -6,8 +9,8 @@
 const RAW_STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "https://lead-magnet-7s2k.onrender.com";
 export const STRAPI_URL = RAW_STRAPI_URL.replace(/\/+$/, "").replace("localhost", "127.0.0.1");
 
-/** Cache revalidation time (0 seconds to disable Next.js cache completely and force fresh data) */
-export const REVALIDATE_TIME = 0;
+/** Cache revalidation time (300 seconds / 5 minutes for Next.js ISR) */
+export const REVALIDATE_TIME = 300;
 
 /** Centralized SVG icon paths for social media platforms */
 export const SOCIAL_ICONS: Record<string, string> = {
@@ -74,11 +77,11 @@ export function getMediaAlt(media?: any, fallback: string = ""): string {
     return attrs?.alternativeText || fallback;
 }
 
-export async function getLandingPage(slug: string = "shopify-lead-magnet") {
-    // Next.js fetch with `next: { revalidate: 60 }` handles caching and deduplication natively.
-    // In-memory cache in a long-running/serverless environment causes stale data issues.
+export const getLandingPage = cache(async (slug: string = "shopify-lead-magnet") => {
+    // Next.js fetch with `next: { revalidate: REVALIDATE_TIME }` handles caching and deduplication natively.
+    // React cache() deduplicates calls between generateMetadata and Page render.
     return fetchLandingPageInternal(slug);
-}
+});
 
 async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
     try {
@@ -135,7 +138,7 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
         // Attempt 1A: by target slug with deep population
         const slugRes = await fetch(
             `${STRAPI_URL}/api/pages?filters[slug][$eq]=${slug}&${sectionsPopulate}`,
-            { next: { revalidate: REVALIDATE_TIME } }
+            { next: { revalidate: REVALIDATE_TIME }, signal: AbortSignal.timeout(5000) }
         ).catch(() => null);
 
         if (slugRes && slugRes.ok) {
@@ -147,7 +150,7 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
             const altSlug = slug === "shopify-lead-magnet" ? "lead-magnet" : "shopify-lead-magnet";
             const altRes = await fetch(
                 `${STRAPI_URL}/api/pages?filters[slug][$eq]=${altSlug}&${sectionsPopulate}`,
-                { next: { revalidate: REVALIDATE_TIME } }
+                { next: { revalidate: REVALIDATE_TIME }, signal: AbortSignal.timeout(5000) }
             ).catch(() => null);
 
             if (altRes && altRes.ok) {
@@ -249,21 +252,21 @@ async function fetchLandingPageInternal(slug: string = "shopify-lead-magnet") {
             return result;
         }
 
-        console.warn("[Strapi Fetch] No published page found in /api/pages");
-        return null;
+        console.warn("[Strapi Fetch] No published page found in /api/pages, using fallback snapshot");
+        return fallbackLandingPage as any;
     } catch (err: unknown) {
         if (err && typeof err === "object" && "digest" in err && (err as { digest: string }).digest === "DYNAMIC_SERVER_USAGE") {
             throw err;
         }
-        console.error("Error fetching landing page:", err);
-        return null;
+        console.error("Error fetching landing page, using fallback snapshot:", err);
+        return fallbackLandingPage as any;
     }
 }
 
 /**
  * Fetches Header Single Type from Strapi (/api/header)
  */
-export async function getHeader(): Promise<any> {
+export const getHeader = cache(async (): Promise<any> => {
 
     const urls = [
         `${STRAPI_URL}/api/header?populate=*`,
@@ -292,12 +295,12 @@ export async function getHeader(): Promise<any> {
         }
     }
     return null;
-}
+});
 
 /**
  * Fetches Footer Single Type from Strapi (/api/footer) with full nested population
  */
-export async function getFooter(): Promise<any> {
+export const getFooter = cache(async (): Promise<any> => {
 
     const deepNested = [
         "populate[footer][populate][logo][populate]=*",
@@ -341,13 +344,13 @@ export async function getFooter(): Promise<any> {
         }
     }
     return null;
-}
+});
 
 
 /**
  * Fetches Forms Collection Type from Strapi (/api/forms) to populate Quote and Callback forms
  */
-export async function getForms(): Promise<any[]> {
+export const getForms = cache(async (): Promise<any[]> => {
 
     try {
         const query = 'populate[formConfig][populate]=*';
@@ -366,4 +369,4 @@ export async function getForms(): Promise<any[]> {
         // ignore
     }
     return [];
-}
+});

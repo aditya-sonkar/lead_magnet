@@ -1,0 +1,3789 @@
+{
+  "id": 32,
+  "documentId": "ei3soribkevzg0ancbdsyzv5",
+  "title": "Shopify Lead Magnet",
+  "slug": "shopify-lead-magnet",
+  "createdAt": "2026-09-10T00:07:30.521Z",
+  "updatedAt": "2026-09-16T11:57:43.355Z",
+  "publishedAt": "2026-09-16T11:58:13.032Z",
+  "seo": {
+    "id": 11,
+    "metaTitle": "TSP Lead Magnet | Thumbstack",
+    "metaDescription": "TSP Lead Magnet by Thumbstack — design-first technology studio building high-converting Shopify stores, mobile apps, and custom digital experiences. Book your free strategy call today.",
+    "canonicalUrl": "https://leadmagnet-live.vercel.app",
+    "noIndex": false,
+    "ogImage": null
+  },
+  "stickyCTA": {
+    "id": 30,
+    "text": "Not ready yet? Get your Free Store Audit.",
+    "primaryCta": {
+      "id": 425,
+      "label": "Get My Instant Quote",
+      "href": "#quote",
+      "variant": "primary"
+    },
+    "secondaryCta": {
+      "id": 426,
+      "label": "Book a Free Call",
+      "href": "#contact",
+      "variant": "secondary"
+    }
+  },
+  "sections": [
+    {
+      "id": 43,
+      "heading": "Turn More of Your Traffic Into Customers.",
+      "description": "Your products have already done the hard work of getting people through the door.\nWe make sure your Shopify store gives them every reason to stay, trust and buy.",
+      "brandsHeading": "Designed Shopify experiences for India’s most loved brands.",
+      "primaryCta": {
+        "id": 417,
+        "label": "Book a Free Call",
+        "href": "#contact",
+        "variant": null
+      },
+      "brands": [
+        {
+          "id": 244,
+          "name": "PALOMA",
+          "logo": {
+            "id": 572,
+            "documentId": "sx8eusz7y0bc9hpiy2eesewp",
+            "name": "paloma_hero_logo.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 174,
+            "height": 30,
+            "formats": null,
+            "hash": "paloma_hero_logo_13d84443ca",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 2.41,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367554/paloma_hero_logo_13d84443ca.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "paloma_hero_logo_13d84443ca",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T12:02:34.603Z",
+            "updatedAt": "2026-09-14T12:02:34.603Z",
+            "publishedAt": "2026-09-14T12:02:34.603Z"
+          }
+        },
+        {
+          "id": 245,
+          "name": "figo",
+          "logo": {
+            "id": 573,
+            "documentId": "o1rr0z19eha3t5thm1k2qwwn",
+            "name": "figo_hero_logo.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 59,
+            "height": 40,
+            "formats": null,
+            "hash": "figo_hero_logo_b8e6e8472c",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 4.91,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367583/figo_hero_logo_b8e6e8472c.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "figo_hero_logo_b8e6e8472c",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T12:03:04.310Z",
+            "updatedAt": "2026-09-14T12:09:55.723Z",
+            "publishedAt": "2026-09-14T12:03:04.310Z"
+          }
+        },
+        {
+          "id": 246,
+          "name": "SIORAI",
+          "logo": {
+            "id": 563,
+            "documentId": "y1gp4bktdc4ur2bhaoox9o7t",
+            "name": "siorai_hero_logo.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 163,
+            "height": 36,
+            "formats": null,
+            "hash": "siorai_hero_logo_8c3d15a48f",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 2.14,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367291/lead_magnet/caewp2pgrsrtjsdirjpz.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/caewp2pgrsrtjsdirjpz",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-10T12:19:35.910Z",
+            "updatedAt": "2026-09-10T12:19:35.910Z",
+            "publishedAt": "2026-09-10T12:19:35.910Z"
+          }
+        },
+        {
+          "id": 247,
+          "name": "WESTSIDE",
+          "logo": {
+            "id": 564,
+            "documentId": "naom1mn0nki4nfgqn3u3r8au",
+            "name": "westside_hero_logo.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 158,
+            "height": 42,
+            "formats": null,
+            "hash": "westside_hero_logo_2b427976d8",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 6.92,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367292/lead_magnet/emey5dpjczdstdnz0ww2.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/emey5dpjczdstdnz0ww2",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-10T12:19:48.350Z",
+            "updatedAt": "2026-09-10T12:19:48.350Z",
+            "publishedAt": "2026-09-10T12:19:48.350Z"
+          }
+        },
+        {
+          "id": 248,
+          "name": "STIFF",
+          "logo": {
+            "id": 574,
+            "documentId": "gu16il3sk8shy18jyvxbpze0",
+            "name": "stiff_collar.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 460,
+            "height": 102,
+            "formats": null,
+            "hash": "stiff_collar_d38b17539d",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 3.7,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367659/stiff_collar_d38b17539d.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "stiff_collar_d38b17539d",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T12:04:20.130Z",
+            "updatedAt": "2026-09-14T12:04:20.130Z",
+            "publishedAt": "2026-09-14T12:04:20.130Z"
+          }
+        },
+        {
+          "id": 249,
+          "name": "EatSure",
+          "logo": {
+            "id": 575,
+            "documentId": "qbcyvkv5p6o6absogqr8nenh",
+            "name": "download.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 340,
+            "height": 171,
+            "formats": null,
+            "hash": "download_d51c1462ab",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 7.89,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367688/download_d51c1462ab.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "download_d51c1462ab",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T12:04:49.003Z",
+            "updatedAt": "2026-09-14T12:04:49.003Z",
+            "publishedAt": "2026-09-14T12:04:49.003Z"
+          }
+        }
+      ],
+      "__component": "sections.hero"
+    },
+    {
+      "id": 44,
+      "heading": "Where is the storefront costing you margin?",
+      "description": "Select what applies. Most brands recognise three or four — and rarely the one they contacted us about.",
+      "submitLabel": "Submit",
+      "submitHref": "#callback",
+      "warningMessage": "Please select at least one issue to continue.",
+      "items": [
+        {
+          "id": 345,
+          "title": "Revenue arrives in promotional windows",
+          "description": "The weeks between sales are noticeably quiet."
+        },
+        {
+          "id": 346,
+          "title": "Mobile carries the traffic, desktop carries the revenue",
+          "description": "A conversion gap that size is a design problem."
+        },
+        {
+          "id": 347,
+          "title": "Acquisition costs rise faster than conversion",
+          "description": "Efficiency gained on media is spent again on media."
+        },
+        {
+          "id": 348,
+          "title": "Product pages describe rather than persuade",
+          "description": "Specification occupies the space the argument needs."
+        },
+        {
+          "id": 349,
+          "title": "Delivery terms appear only at checkout",
+          "description": "Cost and timing settled the decision two pages earlier."
+        },
+        {
+          "id": 350,
+          "title": "Campaign merchandising requires a release",
+          "description": "During peak, that is the difference between two weeks and two hours."
+        },
+        {
+          "id": 351,
+          "title": "The theme has absorbed years of patches",
+          "description": "Apps and custom code holding one experience together."
+        },
+        {
+          "id": 352,
+          "title": "The brand outperforms its storefront",
+          "description": "Wholesale and retail see one standard; online sees another."
+        }
+      ],
+      "summary": [
+        {
+          "id": 111,
+          "state": "default",
+          "text": "Select what applies above to diagnose your storefront."
+        },
+        {
+          "id": 112,
+          "state": "one",
+          "text": "{count} identified. Early signs that structure is impacting your conversions."
+        },
+        {
+          "id": 113,
+          "state": "two",
+          "text": "{count} identified. These issues may be limiting your storefront’s conversion potential."
+        },
+        {
+          "id": 114,
+          "state": "three",
+          "text": "{count} identified. Multiple friction points are impacting the customer journey."
+        },
+        {
+          "id": 115,
+          "state": "multiple",
+          "text": "{count} identified. At that point the structure is the problem, not the styling."
+        }
+      ],
+      "__component": "sections.storefront-problems"
+    },
+    {
+      "id": 46,
+      "heading": "Discounting is not a conversion strategy.",
+      "description": "The trading calendar has taught shoppers here to wait. When a storefront doesn't make the case for a product at full price, the promotion has to — and margin pays for it. We redesign Shopify stores so the buying argument sits on the page, not in the discount code.",
+      "mobileHeading": "Why Choose us?",
+      "mobileDescription": "From design to performance, we shape your Shopify store into a growth engine that brings in buyers and keeps them coming back.",
+      "cards": [
+        {
+          "id": 130,
+          "title": "Full-price conversion as the objective",
+          "description": "Every design decision is judged on whether it helps a considered buyer commit without a code. Promotions then become a growth lever rather than the only working one.",
+          "image": {
+            "id": 554,
+            "documentId": "hcox1nji4r9tms84bq8ik88u",
+            "name": "Frame 2087327632.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 139,
+            "height": 177,
+            "formats": null,
+            "hash": "Frame_2087327632_8cd14ebfc0",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 1.98,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367271/lead_magnet/zeugkbb7xzpz2hpslmfx.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/zeugkbb7xzpz2hpslmfx",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-10T10:52:38.622Z",
+            "updatedAt": "2026-09-10T10:52:38.622Z",
+            "publishedAt": "2026-09-10T10:52:38.623Z"
+          }
+        },
+        {
+          "id": 131,
+          "title": "The phone as the primary storefront",
+          "description": "Product hierarchy, delivery information and checkout are resolved at 390px first, then expanded. Most themes do the reverse, which is where the conversion gap originates.",
+          "image": {
+            "id": 555,
+            "documentId": "z1a5vw1efbroid8plfeb0hpz",
+            "name": "Frame 2087327628.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 104,
+            "height": 186,
+            "formats": null,
+            "hash": "Frame_2087327628_167a91f508",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 5.36,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367272/lead_magnet/mxl9pqtw7xgxkadngvyf.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/mxl9pqtw7xgxkadngvyf",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-10T10:57:08.590Z",
+            "updatedAt": "2026-09-10T10:57:08.590Z",
+            "publishedAt": "2026-09-10T10:57:08.590Z"
+          }
+        },
+        {
+          "id": 132,
+          "title": "Built for a team that trades through peak",
+          "description": "Modular sections, documented naming and a theme your marketing team can re-merchandise without a deployment — because the trading calendar does not wait for a sprint.",
+          "image": {
+            "id": 556,
+            "documentId": "mhrtoqzdshyl3e89dm9ao3aj",
+            "name": "Frame 2087327637.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 128,
+            "height": 197,
+            "formats": null,
+            "hash": "Frame_2087327637_8487bc414c",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 1.84,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367273/lead_magnet/x8yoheamqsza3gnodo4j.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/x8yoheamqsza3gnodo4j",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-10T10:58:36.151Z",
+            "updatedAt": "2026-09-10T10:58:36.151Z",
+            "publishedAt": "2026-09-10T10:58:36.151Z"
+          }
+        }
+      ],
+      "__component": "sections.conversion-insights"
+    },
+    {
+      "id": 44,
+      "heading": "A catalogue that read as a database, rebuilt to sell.",
+      "description": "You focus on growing your brand. We'll handle your entire Shopify presence—from a stunning UI/UX redesign to full technical management.",
+      "Before": "Before",
+      "mobileDescription": "See how we turn ordinary Shopify stores into polished, high-performing experiences built for real business growth.",
+      "items": [
+        {
+          "id": 248,
+          "name": "Pacific Health",
+          "beforeImage": {
+            "id": 576,
+            "documentId": "oz6db9x0q6u46fxikdh3903m",
+            "name": "pacific_before.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 2982,
+            "height": 1476,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368489/large_pacific_before_d22260fba3.png",
+                "hash": "large_pacific_before_d22260fba3",
+                "mime": "image/png",
+                "name": "large_pacific_before.png",
+                "path": null,
+                "size": 132.28,
+                "width": 1000,
+                "height": 495,
+                "sizeInBytes": 132276,
+                "provider_metadata": {
+                  "public_id": "large_pacific_before_d22260fba3",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368489/small_pacific_before_d22260fba3.png",
+                "hash": "small_pacific_before_d22260fba3",
+                "mime": "image/png",
+                "name": "small_pacific_before.png",
+                "path": null,
+                "size": 47.23,
+                "width": 500,
+                "height": 247,
+                "sizeInBytes": 47228,
+                "provider_metadata": {
+                  "public_id": "small_pacific_before_d22260fba3",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368489/medium_pacific_before_d22260fba3.png",
+                "hash": "medium_pacific_before_d22260fba3",
+                "mime": "image/png",
+                "name": "medium_pacific_before.png",
+                "path": null,
+                "size": 88.91,
+                "width": 750,
+                "height": 371,
+                "sizeInBytes": 88909,
+                "provider_metadata": {
+                  "public_id": "medium_pacific_before_d22260fba3",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368488/thumbnail_pacific_before_d22260fba3.png",
+                "hash": "thumbnail_pacific_before_d22260fba3",
+                "mime": "image/png",
+                "name": "thumbnail_pacific_before.png",
+                "path": null,
+                "size": 17.29,
+                "width": 245,
+                "height": 121,
+                "sizeInBytes": 17289,
+                "provider_metadata": {
+                  "public_id": "thumbnail_pacific_before_d22260fba3",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "pacific_before_d22260fba3",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 121.9,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368488/pacific_before_d22260fba3.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "pacific_before_d22260fba3",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T06:48:09.832Z",
+            "updatedAt": "2026-09-14T06:48:09.832Z",
+            "publishedAt": "2026-09-14T06:48:09.832Z"
+          },
+          "afterImage": {
+            "id": 461,
+            "documentId": "tnf6enbc7sadgzt1ndnu3i44",
+            "name": "pacific_health_after.png",
+            "alternativeText": "Pacific Health website homepage displaying 'Your total natural health supplier' headline and registration options.",
+            "caption": "Pacific Health's homepage displays 'Your total natural health supplier,' inviting health professionals to log in or register for specialized services.",
+            "focalPoint": null,
+            "width": 1720,
+            "height": 968,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789366820/lead_magnet/q5aypra0y6ehvw8ouxdz.png",
+                "hash": "large_pacific_health_after_ba90bf9e2e",
+                "mime": "image/png",
+                "name": "large_pacific_health_after.png",
+                "path": null,
+                "size": 120.58,
+                "width": 1000,
+                "height": 563,
+                "sizeInBytes": 120581,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/q5aypra0y6ehvw8ouxdz",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789366821/lead_magnet/nfflg5abszkfarlee9vf.png",
+                "hash": "small_pacific_health_after_ba90bf9e2e",
+                "mime": "image/png",
+                "name": "small_pacific_health_after.png",
+                "path": null,
+                "size": 45.62,
+                "width": 500,
+                "height": 281,
+                "sizeInBytes": 45615,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/nfflg5abszkfarlee9vf",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789366822/lead_magnet/gd8dgouwjsewdzxppmdl.png",
+                "hash": "medium_pacific_health_after_ba90bf9e2e",
+                "mime": "image/png",
+                "name": "medium_pacific_health_after.png",
+                "path": null,
+                "size": 80.48,
+                "width": 750,
+                "height": 422,
+                "sizeInBytes": 80476,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/gd8dgouwjsewdzxppmdl",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789366822/lead_magnet/h42i2hcxxnwm7uepsqgk.png",
+                "hash": "thumbnail_pacific_health_after_ba90bf9e2e",
+                "mime": "image/png",
+                "name": "thumbnail_pacific_health_after.png",
+                "path": null,
+                "size": 17,
+                "width": 245,
+                "height": 138,
+                "sizeInBytes": 16996,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/h42i2hcxxnwm7uepsqgk",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "pacific_health_after_ba90bf9e2e",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 67.77,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789366819/lead_magnet/tanxklq4qvnfr6dwoodl.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/tanxklq4qvnfr6dwoodl",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-02T14:19:15.519Z",
+            "updatedAt": "2026-09-02T14:19:23.437Z",
+            "publishedAt": "2026-09-02T14:19:15.520Z"
+          },
+          "mobileBeforeImage": {
+            "id": 542,
+            "documentId": "zby4wqmkphg4mvvcq5sqrzip",
+            "name": "pacific_mobile_before.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 417,
+            "height": 1484,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367122/lead_magnet/xvwm5mstovnwffuwnf0v.png",
+                "hash": "large_pacific_mobile_before_3ff70b0e58",
+                "mime": "image/png",
+                "name": "large_pacific_mobile_before.png",
+                "path": null,
+                "size": 185.86,
+                "width": 281,
+                "height": 1000,
+                "sizeInBytes": 185855,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/xvwm5mstovnwffuwnf0v",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367123/lead_magnet/vcwitqqsgzqffsvpdpjj.png",
+                "hash": "small_pacific_mobile_before_3ff70b0e58",
+                "mime": "image/png",
+                "name": "small_pacific_mobile_before.png",
+                "path": null,
+                "size": 63.76,
+                "width": 140,
+                "height": 500,
+                "sizeInBytes": 63757,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/vcwitqqsgzqffsvpdpjj",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367124/lead_magnet/fjuais8myx3etor02pyc.png",
+                "hash": "medium_pacific_mobile_before_3ff70b0e58",
+                "mime": "image/png",
+                "name": "medium_pacific_mobile_before.png",
+                "path": null,
+                "size": 121.2,
+                "width": 211,
+                "height": 750,
+                "sizeInBytes": 121200,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/fjuais8myx3etor02pyc",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367125/lead_magnet/ptyl0rqwui90lseuqjcp.png",
+                "hash": "thumbnail_pacific_mobile_before_3ff70b0e58",
+                "mime": "image/png",
+                "name": "thumbnail_pacific_mobile_before.png",
+                "path": null,
+                "size": 9.73,
+                "width": 44,
+                "height": 156,
+                "sizeInBytes": 9728,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/ptyl0rqwui90lseuqjcp",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "pacific_mobile_before_3ff70b0e58",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 59.43,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367122/lead_magnet/u6hg7iie1isn4ykp5iks.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/u6hg7iie1isn4ykp5iks",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-08T12:28:34.166Z",
+            "updatedAt": "2026-09-08T12:28:34.166Z",
+            "publishedAt": "2026-09-08T12:28:34.166Z"
+          },
+          "mobileAfterImage": {
+            "id": 543,
+            "documentId": "li3157opywne48ozgj6n9map",
+            "name": "pacific_mobile_after.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 375,
+            "height": 1955,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367129/lead_magnet/jti70d3nzl9qdzo7p5ld.png",
+                "hash": "large_pacific_mobile_after_c77ab60e7d",
+                "mime": "image/png",
+                "name": "large_pacific_mobile_after.png",
+                "path": null,
+                "size": 109.61,
+                "width": 192,
+                "height": 1000,
+                "sizeInBytes": 109614,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/jti70d3nzl9qdzo7p5ld",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367130/lead_magnet/w8qr17xkispbbvhawtp0.png",
+                "hash": "small_pacific_mobile_after_c77ab60e7d",
+                "mime": "image/png",
+                "name": "small_pacific_mobile_after.png",
+                "path": null,
+                "size": 36.75,
+                "width": 96,
+                "height": 500,
+                "sizeInBytes": 36746,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/w8qr17xkispbbvhawtp0",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367131/lead_magnet/lywbkihrjqgjfce6b0ep.png",
+                "hash": "medium_pacific_mobile_after_c77ab60e7d",
+                "mime": "image/png",
+                "name": "medium_pacific_mobile_after.png",
+                "path": null,
+                "size": 69.28,
+                "width": 144,
+                "height": 750,
+                "sizeInBytes": 69278,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/lywbkihrjqgjfce6b0ep",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367131/lead_magnet/newck3oomjmoxu65iolo.png",
+                "hash": "thumbnail_pacific_mobile_after_c77ab60e7d",
+                "mime": "image/png",
+                "name": "thumbnail_pacific_mobile_after.png",
+                "path": null,
+                "size": 6.26,
+                "width": 30,
+                "height": 156,
+                "sizeInBytes": 6262,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/newck3oomjmoxu65iolo",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "pacific_mobile_after_c77ab60e7d",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 57.73,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367128/lead_magnet/npsu011maqnkmy6qretd.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/npsu011maqnkmy6qretd",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-08T12:28:56.854Z",
+            "updatedAt": "2026-09-08T12:28:56.854Z",
+            "publishedAt": "2026-09-08T12:28:56.854Z"
+          }
+        },
+        {
+          "id": 249,
+          "name": "Siorai",
+          "beforeImage": {
+            "id": 577,
+            "documentId": "dds4nckz22j0q6ij47spdtum",
+            "name": "siorai_before.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 2994,
+            "height": 1664,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368604/large_siorai_before_328a0f90b6.png",
+                "hash": "large_siorai_before_328a0f90b6",
+                "mime": "image/png",
+                "name": "large_siorai_before.png",
+                "path": null,
+                "size": 1293.52,
+                "width": 1000,
+                "height": 556,
+                "sizeInBytes": 1293518,
+                "provider_metadata": {
+                  "public_id": "large_siorai_before_328a0f90b6",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368604/small_siorai_before_328a0f90b6.png",
+                "hash": "small_siorai_before_328a0f90b6",
+                "mime": "image/png",
+                "name": "small_siorai_before.png",
+                "path": null,
+                "size": 332.18,
+                "width": 500,
+                "height": 278,
+                "sizeInBytes": 332181,
+                "provider_metadata": {
+                  "public_id": "small_siorai_before_328a0f90b6",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368604/medium_siorai_before_328a0f90b6.png",
+                "hash": "medium_siorai_before_328a0f90b6",
+                "mime": "image/png",
+                "name": "medium_siorai_before.png",
+                "path": null,
+                "size": 727.72,
+                "width": 750,
+                "height": 417,
+                "sizeInBytes": 727723,
+                "provider_metadata": {
+                  "public_id": "medium_siorai_before_328a0f90b6",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368602/thumbnail_siorai_before_328a0f90b6.png",
+                "hash": "thumbnail_siorai_before_328a0f90b6",
+                "mime": "image/png",
+                "name": "thumbnail_siorai_before.png",
+                "path": null,
+                "size": 86.11,
+                "width": 245,
+                "height": 136,
+                "sizeInBytes": 86108,
+                "provider_metadata": {
+                  "public_id": "thumbnail_siorai_before_328a0f90b6",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "siorai_before_328a0f90b6",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 2749.1,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368603/siorai_before_328a0f90b6.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "siorai_before_328a0f90b6",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T06:50:05.417Z",
+            "updatedAt": "2026-09-14T06:50:05.417Z",
+            "publishedAt": "2026-09-14T06:50:05.417Z"
+          },
+          "afterImage": {
+            "id": 578,
+            "documentId": "m9udowr6kx9ifi9ykw61hdaa",
+            "name": "siorai_after.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 1081,
+            "height": 4096,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368649/large_siorai_after_353b5f70fb.png",
+                "hash": "large_siorai_after_353b5f70fb",
+                "mime": "image/png",
+                "name": "large_siorai_after.png",
+                "path": null,
+                "size": 446.91,
+                "width": 264,
+                "height": 1000,
+                "sizeInBytes": 446908,
+                "provider_metadata": {
+                  "public_id": "large_siorai_after_353b5f70fb",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368650/small_siorai_after_353b5f70fb.png",
+                "hash": "small_siorai_after_353b5f70fb",
+                "mime": "image/png",
+                "name": "small_siorai_after.png",
+                "path": null,
+                "size": 126.54,
+                "width": 132,
+                "height": 500,
+                "sizeInBytes": 126535,
+                "provider_metadata": {
+                  "public_id": "small_siorai_after_353b5f70fb",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368649/medium_siorai_after_353b5f70fb.png",
+                "hash": "medium_siorai_after_353b5f70fb",
+                "mime": "image/png",
+                "name": "medium_siorai_after.png",
+                "path": null,
+                "size": 262.68,
+                "width": 198,
+                "height": 750,
+                "sizeInBytes": 262682,
+                "provider_metadata": {
+                  "public_id": "medium_siorai_after_353b5f70fb",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368648/thumbnail_siorai_after_353b5f70fb.png",
+                "hash": "thumbnail_siorai_after_353b5f70fb",
+                "mime": "image/png",
+                "name": "thumbnail_siorai_after.png",
+                "path": null,
+                "size": 15.94,
+                "width": 41,
+                "height": 156,
+                "sizeInBytes": 15937,
+                "provider_metadata": {
+                  "public_id": "thumbnail_siorai_after_353b5f70fb",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "siorai_after_353b5f70fb",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 1451.8,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368649/siorai_after_353b5f70fb.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "siorai_after_353b5f70fb",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T06:50:50.465Z",
+            "updatedAt": "2026-09-14T06:50:50.465Z",
+            "publishedAt": "2026-09-14T06:50:50.465Z"
+          },
+          "mobileBeforeImage": null,
+          "mobileAfterImage": null
+        },
+        {
+          "id": 250,
+          "name": "Sica",
+          "beforeImage": {
+            "id": 579,
+            "documentId": "pvuapb1ruffh4hk39i476etj",
+            "name": "sica_before.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 3016,
+            "height": 1550,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368688/large_sica_before_f86041306c.png",
+                "hash": "large_sica_before_f86041306c",
+                "mime": "image/png",
+                "name": "large_sica_before.png",
+                "path": null,
+                "size": 154.92,
+                "width": 1000,
+                "height": 514,
+                "sizeInBytes": 154918,
+                "provider_metadata": {
+                  "public_id": "large_sica_before_f86041306c",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368688/small_sica_before_f86041306c.png",
+                "hash": "small_sica_before_f86041306c",
+                "mime": "image/png",
+                "name": "small_sica_before.png",
+                "path": null,
+                "size": 49.82,
+                "width": 500,
+                "height": 257,
+                "sizeInBytes": 49819,
+                "provider_metadata": {
+                  "public_id": "small_sica_before_f86041306c",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368688/medium_sica_before_f86041306c.png",
+                "hash": "medium_sica_before_f86041306c",
+                "mime": "image/png",
+                "name": "medium_sica_before.png",
+                "path": null,
+                "size": 95.2,
+                "width": 750,
+                "height": 385,
+                "sizeInBytes": 95195,
+                "provider_metadata": {
+                  "public_id": "medium_sica_before_f86041306c",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368688/thumbnail_sica_before_f86041306c.png",
+                "hash": "thumbnail_sica_before_f86041306c",
+                "mime": "image/png",
+                "name": "thumbnail_sica_before.png",
+                "path": null,
+                "size": 16.12,
+                "width": 245,
+                "height": 126,
+                "sizeInBytes": 16122,
+                "provider_metadata": {
+                  "public_id": "thumbnail_sica_before_f86041306c",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "sica_before_f86041306c",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 295.43,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368687/sica_before_f86041306c.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "sica_before_f86041306c",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T06:51:29.147Z",
+            "updatedAt": "2026-09-14T06:51:29.147Z",
+            "publishedAt": "2026-09-14T06:51:29.147Z"
+          },
+          "afterImage": {
+            "id": 580,
+            "documentId": "p9rme31np6v8ghe2cpklcwdv",
+            "name": "sica_after.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 1992,
+            "height": 4096,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368739/large_sica_after_181d093f90.png",
+                "hash": "large_sica_after_181d093f90",
+                "mime": "image/png",
+                "name": "large_sica_after.png",
+                "path": null,
+                "size": 443.06,
+                "width": 486,
+                "height": 1000,
+                "sizeInBytes": 443058,
+                "provider_metadata": {
+                  "public_id": "large_sica_after_181d093f90",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368739/small_sica_after_181d093f90.png",
+                "hash": "small_sica_after_181d093f90",
+                "mime": "image/png",
+                "name": "small_sica_after.png",
+                "path": null,
+                "size": 132.19,
+                "width": 243,
+                "height": 500,
+                "sizeInBytes": 132187,
+                "provider_metadata": {
+                  "public_id": "small_sica_after_181d093f90",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368739/medium_sica_after_181d093f90.png",
+                "hash": "medium_sica_after_181d093f90",
+                "mime": "image/png",
+                "name": "medium_sica_after.png",
+                "path": null,
+                "size": 266.67,
+                "width": 365,
+                "height": 750,
+                "sizeInBytes": 266670,
+                "provider_metadata": {
+                  "public_id": "medium_sica_after_181d093f90",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368737/thumbnail_sica_after_181d093f90.png",
+                "hash": "thumbnail_sica_after_181d093f90",
+                "mime": "image/png",
+                "name": "thumbnail_sica_after.png",
+                "path": null,
+                "size": 19.15,
+                "width": 76,
+                "height": 156,
+                "sizeInBytes": 19154,
+                "provider_metadata": {
+                  "public_id": "thumbnail_sica_after_181d093f90",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "sica_after_181d093f90",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 1503.55,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368737/sica_after_181d093f90.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "sica_after_181d093f90",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T06:52:20.098Z",
+            "updatedAt": "2026-09-14T06:52:20.098Z",
+            "publishedAt": "2026-09-14T06:52:20.099Z"
+          },
+          "mobileBeforeImage": null,
+          "mobileAfterImage": null
+        },
+        {
+          "id": 251,
+          "name": "JVice",
+          "beforeImage": null,
+          "afterImage": null,
+          "mobileBeforeImage": null,
+          "mobileAfterImage": null
+        },
+        {
+          "id": 252,
+          "name": "The Trainer Locker",
+          "beforeImage": {
+            "id": 581,
+            "documentId": "prmm4grde4o0pqticspd0q2b",
+            "name": "ttl_before.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 761,
+            "height": 4096,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368789/large_ttl_before_46350afa01.png",
+                "hash": "large_ttl_before_46350afa01",
+                "mime": "image/png",
+                "name": "large_ttl_before.png",
+                "path": null,
+                "size": 202.83,
+                "width": 186,
+                "height": 1000,
+                "sizeInBytes": 202833,
+                "provider_metadata": {
+                  "public_id": "large_ttl_before_46350afa01",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368789/small_ttl_before_46350afa01.png",
+                "hash": "small_ttl_before_46350afa01",
+                "mime": "image/png",
+                "name": "small_ttl_before.png",
+                "path": null,
+                "size": 64.38,
+                "width": 93,
+                "height": 500,
+                "sizeInBytes": 64382,
+                "provider_metadata": {
+                  "public_id": "small_ttl_before_46350afa01",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368789/medium_ttl_before_46350afa01.png",
+                "hash": "medium_ttl_before_46350afa01",
+                "mime": "image/png",
+                "name": "medium_ttl_before.png",
+                "path": null,
+                "size": 126.4,
+                "width": 139,
+                "height": 750,
+                "sizeInBytes": 126395,
+                "provider_metadata": {
+                  "public_id": "medium_ttl_before_46350afa01",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368788/thumbnail_ttl_before_46350afa01.png",
+                "hash": "thumbnail_ttl_before_46350afa01",
+                "mime": "image/png",
+                "name": "thumbnail_ttl_before.png",
+                "path": null,
+                "size": 10.28,
+                "width": 29,
+                "height": 156,
+                "sizeInBytes": 10283,
+                "provider_metadata": {
+                  "public_id": "thumbnail_ttl_before_46350afa01",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "ttl_before_46350afa01",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 488.79,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368788/ttl_before_46350afa01.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "ttl_before_46350afa01",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T06:53:09.613Z",
+            "updatedAt": "2026-09-14T06:53:09.613Z",
+            "publishedAt": "2026-09-14T06:53:09.613Z"
+          },
+          "afterImage": {
+            "id": 583,
+            "documentId": "konnzrz3dxdb3v1x4lqchdwn",
+            "name": "ttl_after.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 2081,
+            "height": 4096,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368909/large_ttl_after_23455921bd.png",
+                "hash": "large_ttl_after_23455921bd",
+                "mime": "image/png",
+                "name": "large_ttl_after.png",
+                "path": null,
+                "size": 651.46,
+                "width": 508,
+                "height": 1000,
+                "sizeInBytes": 651459,
+                "provider_metadata": {
+                  "public_id": "large_ttl_after_23455921bd",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368909/small_ttl_after_23455921bd.png",
+                "hash": "small_ttl_after_23455921bd",
+                "mime": "image/png",
+                "name": "small_ttl_after.png",
+                "path": null,
+                "size": 179.81,
+                "width": 254,
+                "height": 500,
+                "sizeInBytes": 179811,
+                "provider_metadata": {
+                  "public_id": "small_ttl_after_23455921bd",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368909/medium_ttl_after_23455921bd.png",
+                "hash": "medium_ttl_after_23455921bd",
+                "mime": "image/png",
+                "name": "medium_ttl_after.png",
+                "path": null,
+                "size": 383.26,
+                "width": 381,
+                "height": 750,
+                "sizeInBytes": 383257,
+                "provider_metadata": {
+                  "public_id": "medium_ttl_after_23455921bd",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368908/thumbnail_ttl_after_23455921bd.png",
+                "hash": "thumbnail_ttl_after_23455921bd",
+                "mime": "image/png",
+                "name": "thumbnail_ttl_after.png",
+                "path": null,
+                "size": 22.3,
+                "width": 79,
+                "height": 156,
+                "sizeInBytes": 22297,
+                "provider_metadata": {
+                  "public_id": "thumbnail_ttl_after_23455921bd",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "ttl_after_23455921bd",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 1268.53,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789368908/ttl_after_23455921bd.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "ttl_after_23455921bd",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T06:55:11.087Z",
+            "updatedAt": "2026-09-14T06:55:11.087Z",
+            "publishedAt": "2026-09-14T06:55:11.087Z"
+          },
+          "mobileBeforeImage": null,
+          "mobileAfterImage": null
+        },
+        {
+          "id": 253,
+          "name": "Stackables",
+          "beforeImage": {
+            "id": 586,
+            "documentId": "mfrj4p1xwu6u4aoyeoe2qirb",
+            "name": "img.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 2994,
+            "height": 1664,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372271/large_img_bb19eb2bb8.png",
+                "hash": "large_img_bb19eb2bb8",
+                "mime": "image/png",
+                "name": "large_img.png",
+                "path": null,
+                "size": 557.66,
+                "width": 1000,
+                "height": 556,
+                "sizeInBytes": 557663,
+                "provider_metadata": {
+                  "public_id": "large_img_bb19eb2bb8",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372271/small_img_bb19eb2bb8.png",
+                "hash": "small_img_bb19eb2bb8",
+                "mime": "image/png",
+                "name": "small_img.png",
+                "path": null,
+                "size": 169.79,
+                "width": 500,
+                "height": 278,
+                "sizeInBytes": 169785,
+                "provider_metadata": {
+                  "public_id": "small_img_bb19eb2bb8",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372271/medium_img_bb19eb2bb8.png",
+                "hash": "medium_img_bb19eb2bb8",
+                "mime": "image/png",
+                "name": "medium_img.png",
+                "path": null,
+                "size": 335.19,
+                "width": 750,
+                "height": 417,
+                "sizeInBytes": 335187,
+                "provider_metadata": {
+                  "public_id": "medium_img_bb19eb2bb8",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372270/thumbnail_img_bb19eb2bb8.png",
+                "hash": "thumbnail_img_bb19eb2bb8",
+                "mime": "image/png",
+                "name": "thumbnail_img.png",
+                "path": null,
+                "size": 52.66,
+                "width": 245,
+                "height": 136,
+                "sizeInBytes": 52664,
+                "provider_metadata": {
+                  "public_id": "thumbnail_img_bb19eb2bb8",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "img_bb19eb2bb8",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 823.03,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372270/img_bb19eb2bb8.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "img_bb19eb2bb8",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T07:51:12.119Z",
+            "updatedAt": "2026-09-14T07:51:12.119Z",
+            "publishedAt": "2026-09-14T07:51:12.120Z"
+          },
+          "afterImage": {
+            "id": 588,
+            "documentId": "xpvhbsnt3yf25f2q0tvp54dx",
+            "name": "Stackables after.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 1810,
+            "height": 4096,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372362/large_Stackables_after_71937b88ff.png",
+                "hash": "large_Stackables_after_71937b88ff",
+                "mime": "image/png",
+                "name": "large_Stackables after.png",
+                "path": null,
+                "size": 296.65,
+                "width": 442,
+                "height": 1000,
+                "sizeInBytes": 296649,
+                "provider_metadata": {
+                  "public_id": "large_Stackables_after_71937b88ff",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372362/small_Stackables_after_71937b88ff.png",
+                "hash": "small_Stackables_after_71937b88ff",
+                "mime": "image/png",
+                "name": "small_Stackables after.png",
+                "path": null,
+                "size": 82.86,
+                "width": 221,
+                "height": 500,
+                "sizeInBytes": 82859,
+                "provider_metadata": {
+                  "public_id": "small_Stackables_after_71937b88ff",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372362/medium_Stackables_after_71937b88ff.png",
+                "hash": "medium_Stackables_after_71937b88ff",
+                "mime": "image/png",
+                "name": "medium_Stackables after.png",
+                "path": null,
+                "size": 171.69,
+                "width": 331,
+                "height": 750,
+                "sizeInBytes": 171690,
+                "provider_metadata": {
+                  "public_id": "medium_Stackables_after_71937b88ff",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372361/thumbnail_Stackables_after_71937b88ff.png",
+                "hash": "thumbnail_Stackables_after_71937b88ff",
+                "mime": "image/png",
+                "name": "thumbnail_Stackables after.png",
+                "path": null,
+                "size": 11.18,
+                "width": 69,
+                "height": 156,
+                "sizeInBytes": 11176,
+                "provider_metadata": {
+                  "public_id": "thumbnail_Stackables_after_71937b88ff",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "Stackables_after_71937b88ff",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 1076.02,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789372361/Stackables_after_71937b88ff.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "Stackables_after_71937b88ff",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T07:52:42.943Z",
+            "updatedAt": "2026-09-14T07:52:42.943Z",
+            "publishedAt": "2026-09-14T07:52:42.943Z"
+          },
+          "mobileBeforeImage": null,
+          "mobileAfterImage": null
+        }
+      ],
+      "__component": "sections.work-showcase"
+    },
+    {
+      "id": 44,
+      "heading": "Where this engagement works, and where it does not.",
+      "description": "The trading calendar has taught shoppers here to wait. When a storefront doesn't make the case for a product at full price, the promotion has to — and margin pays for it. We redesign Shopify stores so the buying argument sits on the page, not in the discount code.",
+      "suitableHeading": "Suited to brands that…",
+      "notSuitableHeading": "Not the right fit for brands that…",
+      "suitablePoints": [
+        {
+          "id": 431,
+          "text": "Hold Established Revenue And Want More From Existing Demand"
+        },
+        {
+          "id": 432,
+          "text": "Invest Materially In Acquisition And Measure It"
+        },
+        {
+          "id": 433,
+          "text": "Have Outgrown A Theme Selected Several Years Ago"
+        },
+        {
+          "id": 434,
+          "text": "Want Strategic UX Rather Than A Visual Refresh"
+        },
+        {
+          "id": 435,
+          "text": "Can Nominate One Decision-Maker For The Engagement"
+        }
+      ],
+      "notSuitablePoints": [
+        {
+          "id": 436,
+          "text": "Require A Theme Installed At The Lowest Available Cost"
+        },
+        {
+          "id": 437,
+          "text": "Are Pre-Launch, With No Trading History To Work From"
+        },
+        {
+          "id": 438,
+          "text": "Need A Full Storefront Live Within A Fortnight"
+        },
+        {
+          "id": 439,
+          "text": "Resolve Design Decisions By Committee"
+        },
+        {
+          "id": 440,
+          "text": "Are Not Prepared To Change How The Store Operates"
+        }
+      ],
+      "__component": "sections.engagement-fit"
+    },
+    {
+      "id": 44,
+      "heading": "Our Work",
+      "description": "A curated selection of Shopify stores we’ve transformed through thoughtful design, sharper UX, and a focus on performance.",
+      "projects": [
+        {
+          "id": 345,
+          "images": {
+            "id": 517,
+            "documentId": "ymx7c1a9g0j8nm4lenjnv7r1",
+            "name": "Siorai (1).png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 1920,
+            "height": 680,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367037/lead_magnet/bmlkvtyggsd52kej8eng.png",
+                "hash": "large_Siorai_1_412cc4631b",
+                "mime": "image/png",
+                "name": "large_Siorai (1).png",
+                "path": null,
+                "size": 547.35,
+                "width": 1000,
+                "height": 354,
+                "sizeInBytes": 547348,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/bmlkvtyggsd52kej8eng",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367038/lead_magnet/tnfwaztp5urpnm8lpano.png",
+                "hash": "small_Siorai_1_412cc4631b",
+                "mime": "image/png",
+                "name": "small_Siorai (1).png",
+                "path": null,
+                "size": 153.82,
+                "width": 500,
+                "height": 177,
+                "sizeInBytes": 153825,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/tnfwaztp5urpnm8lpano",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367038/lead_magnet/zj8m2axc5lyoqffcqqtc.png",
+                "hash": "medium_Siorai_1_412cc4631b",
+                "mime": "image/png",
+                "name": "medium_Siorai (1).png",
+                "path": null,
+                "size": 323.8,
+                "width": 750,
+                "height": 266,
+                "sizeInBytes": 323796,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/zj8m2axc5lyoqffcqqtc",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367039/lead_magnet/f5zho6z1wufzhafrowkb.png",
+                "hash": "thumbnail_Siorai_1_412cc4631b",
+                "mime": "image/png",
+                "name": "thumbnail_Siorai (1).png",
+                "path": null,
+                "size": 43.11,
+                "width": 245,
+                "height": 87,
+                "sizeInBytes": 43114,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/f5zho6z1wufzhafrowkb",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "Siorai_1_412cc4631b",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 473.46,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367036/lead_magnet/dqoqezsyly2ilfvtm2rx.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/dqoqezsyly2ilfvtm2rx",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T10:39:25.738Z",
+            "updatedAt": "2026-09-07T10:39:25.738Z",
+            "publishedAt": "2026-09-07T10:39:25.739Z"
+          },
+          "mobileImages": {
+            "id": 527,
+            "documentId": "de1lt2tgnyqshvg2rcm57api",
+            "name": "siorai_sm.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 938,
+            "height": 1610,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367075/lead_magnet/q9mpzvt0zo4xqvo1pkd8.png",
+                "hash": "large_siorai_sm_848b35c943",
+                "mime": "image/png",
+                "name": "large_siorai_sm.png",
+                "path": null,
+                "size": 557.51,
+                "width": 583,
+                "height": 1000,
+                "sizeInBytes": 557508,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/q9mpzvt0zo4xqvo1pkd8",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367075/lead_magnet/fdeuy4b5y6rfyc1vih3x.png",
+                "hash": "small_siorai_sm_848b35c943",
+                "mime": "image/png",
+                "name": "small_siorai_sm.png",
+                "path": null,
+                "size": 159.92,
+                "width": 291,
+                "height": 500,
+                "sizeInBytes": 159924,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/fdeuy4b5y6rfyc1vih3x",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367076/lead_magnet/faylcgv04ev9yzkwffg1.png",
+                "hash": "medium_siorai_sm_848b35c943",
+                "mime": "image/png",
+                "name": "medium_siorai_sm.png",
+                "path": null,
+                "size": 329.06,
+                "width": 437,
+                "height": 750,
+                "sizeInBytes": 329064,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/faylcgv04ev9yzkwffg1",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367077/lead_magnet/u4xtfnyndj8lnglr0znl.png",
+                "hash": "thumbnail_siorai_sm_848b35c943",
+                "mime": "image/png",
+                "name": "thumbnail_siorai_sm.png",
+                "path": null,
+                "size": 21.98,
+                "width": 91,
+                "height": 156,
+                "sizeInBytes": 21977,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/u4xtfnyndj8lnglr0znl",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "siorai_sm_848b35c943",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 304.39,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367074/lead_magnet/wpw3qks6xrwvbceqdqi2.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/wpw3qks6xrwvbceqdqi2",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T16:35:15.948Z",
+            "updatedAt": "2026-09-07T16:35:15.948Z",
+            "publishedAt": "2026-09-07T16:35:15.950Z"
+          }
+        },
+        {
+          "id": 346,
+          "images": {
+            "id": 518,
+            "documentId": "d7eeu1ozqypf0hhgmujz7r0k",
+            "name": "Stackables.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 3840,
+            "height": 1360,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367041/lead_magnet/pf6lv00cn17a5kyyjmvg.png",
+                "hash": "large_Stackables_8605cda7a1",
+                "mime": "image/png",
+                "name": "large_Stackables.png",
+                "path": null,
+                "size": 285.95,
+                "width": 1000,
+                "height": 354,
+                "sizeInBytes": 285950,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/pf6lv00cn17a5kyyjmvg",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367042/lead_magnet/dsmonbooyzhequwi1b96.png",
+                "hash": "small_Stackables_8605cda7a1",
+                "mime": "image/png",
+                "name": "small_Stackables.png",
+                "path": null,
+                "size": 82.58,
+                "width": 500,
+                "height": 177,
+                "sizeInBytes": 82577,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/dsmonbooyzhequwi1b96",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367043/lead_magnet/vrkvysyp4zkgxcdajkow.png",
+                "hash": "medium_Stackables_8605cda7a1",
+                "mime": "image/png",
+                "name": "medium_Stackables.png",
+                "path": null,
+                "size": 171.7,
+                "width": 750,
+                "height": 266,
+                "sizeInBytes": 171697,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/vrkvysyp4zkgxcdajkow",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367044/lead_magnet/ovy0nvifx8kvtwk16r5o.png",
+                "hash": "thumbnail_Stackables_8605cda7a1",
+                "mime": "image/png",
+                "name": "thumbnail_Stackables.png",
+                "path": null,
+                "size": 23.9,
+                "width": 245,
+                "height": 87,
+                "sizeInBytes": 23904,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/ovy0nvifx8kvtwk16r5o",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "Stackables_8605cda7a1",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 843.01,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367040/lead_magnet/qmivcwhwbipkziudrywm.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/qmivcwhwbipkziudrywm",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T10:40:04.212Z",
+            "updatedAt": "2026-09-07T10:40:04.212Z",
+            "publishedAt": "2026-09-07T10:40:04.212Z"
+          },
+          "mobileImages": {
+            "id": 528,
+            "documentId": "gfrv7plsjxyfspv0ufoip7i5",
+            "name": "stackables_sm.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 938,
+            "height": 1610,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367079/lead_magnet/jcqqh4wduhtoipc2n8md.png",
+                "hash": "large_stackables_sm_6d78d3f1c7",
+                "mime": "image/png",
+                "name": "large_stackables_sm.png",
+                "path": null,
+                "size": 445.34,
+                "width": 583,
+                "height": 1000,
+                "sizeInBytes": 445340,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/jcqqh4wduhtoipc2n8md",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367079/lead_magnet/a9lk70beeeaem9xflxnr.png",
+                "hash": "small_stackables_sm_6d78d3f1c7",
+                "mime": "image/png",
+                "name": "small_stackables_sm.png",
+                "path": null,
+                "size": 119.22,
+                "width": 291,
+                "height": 500,
+                "sizeInBytes": 119220,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/a9lk70beeeaem9xflxnr",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367080/lead_magnet/d30du1obv8dxvqebb88m.png",
+                "hash": "medium_stackables_sm_6d78d3f1c7",
+                "mime": "image/png",
+                "name": "medium_stackables_sm.png",
+                "path": null,
+                "size": 255.94,
+                "width": 437,
+                "height": 750,
+                "sizeInBytes": 255935,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/d30du1obv8dxvqebb88m",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367081/lead_magnet/ba81e3cskul4uckb7yfz.png",
+                "hash": "thumbnail_stackables_sm_6d78d3f1c7",
+                "mime": "image/png",
+                "name": "thumbnail_stackables_sm.png",
+                "path": null,
+                "size": 16.72,
+                "width": 91,
+                "height": 156,
+                "sizeInBytes": 16719,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/ba81e3cskul4uckb7yfz",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "stackables_sm_6d78d3f1c7",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 320.26,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367078/lead_magnet/oguly9irkfqrrdgllyvs.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/oguly9irkfqrrdgllyvs",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T16:36:01.920Z",
+            "updatedAt": "2026-09-07T16:36:01.920Z",
+            "publishedAt": "2026-09-07T16:36:01.921Z"
+          }
+        },
+        {
+          "id": 347,
+          "images": {
+            "id": 519,
+            "documentId": "n93zzvdaornqx9u1l7aen8mo",
+            "name": "Paloma (1).png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 1920,
+            "height": 680,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367045/lead_magnet/yasgsfktau6jjg7qd6zj.png",
+                "hash": "large_Paloma_1_088ca8f2b0",
+                "mime": "image/png",
+                "name": "large_Paloma (1).png",
+                "path": null,
+                "size": 388.29,
+                "width": 1000,
+                "height": 354,
+                "sizeInBytes": 388286,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/yasgsfktau6jjg7qd6zj",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367046/lead_magnet/duxkcqg3gg9hlpdf9oz0.png",
+                "hash": "small_Paloma_1_088ca8f2b0",
+                "mime": "image/png",
+                "name": "small_Paloma (1).png",
+                "path": null,
+                "size": 115.7,
+                "width": 500,
+                "height": 177,
+                "sizeInBytes": 115699,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/duxkcqg3gg9hlpdf9oz0",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367048/lead_magnet/phidydqvkkc4opjlgna6.png",
+                "hash": "medium_Paloma_1_088ca8f2b0",
+                "mime": "image/png",
+                "name": "medium_Paloma (1).png",
+                "path": null,
+                "size": 233.8,
+                "width": 750,
+                "height": 266,
+                "sizeInBytes": 233800,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/phidydqvkkc4opjlgna6",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367048/lead_magnet/r1hknlbb2lvhuqnfwdi2.png",
+                "hash": "thumbnail_Paloma_1_088ca8f2b0",
+                "mime": "image/png",
+                "name": "thumbnail_Paloma (1).png",
+                "path": null,
+                "size": 36.31,
+                "width": 245,
+                "height": 87,
+                "sizeInBytes": 36312,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/r1hknlbb2lvhuqnfwdi2",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "Paloma_1_088ca8f2b0",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 314.95,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367045/lead_magnet/jmxlgoelp92ysoxvr9ay.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/jmxlgoelp92ysoxvr9ay",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T10:40:26.169Z",
+            "updatedAt": "2026-09-07T10:40:26.169Z",
+            "publishedAt": "2026-09-07T10:40:26.169Z"
+          },
+          "mobileImages": {
+            "id": 529,
+            "documentId": "ddhh8t75aaw8sq68lkqi053h",
+            "name": "paloma_sm.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 938,
+            "height": 1610,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367083/lead_magnet/jmnju0xm7uxwzetmdbsd.png",
+                "hash": "large_paloma_sm_24d57ae16b",
+                "mime": "image/png",
+                "name": "large_paloma_sm.png",
+                "path": null,
+                "size": 661.25,
+                "width": 583,
+                "height": 1000,
+                "sizeInBytes": 661246,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/jmnju0xm7uxwzetmdbsd",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367084/lead_magnet/dqo2xywpxsxlehrwhd2h.png",
+                "hash": "small_paloma_sm_24d57ae16b",
+                "mime": "image/png",
+                "name": "small_paloma_sm.png",
+                "path": null,
+                "size": 189.71,
+                "width": 291,
+                "height": 500,
+                "sizeInBytes": 189714,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/dqo2xywpxsxlehrwhd2h",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367085/lead_magnet/awxohywc7rgtgruwn7wv.png",
+                "hash": "medium_paloma_sm_24d57ae16b",
+                "mime": "image/png",
+                "name": "medium_paloma_sm.png",
+                "path": null,
+                "size": 388.35,
+                "width": 437,
+                "height": 750,
+                "sizeInBytes": 388354,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/awxohywc7rgtgruwn7wv",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367086/lead_magnet/ldzkc96s3j7ilgsgdzoi.png",
+                "hash": "thumbnail_paloma_sm_24d57ae16b",
+                "mime": "image/png",
+                "name": "thumbnail_paloma_sm.png",
+                "path": null,
+                "size": 27.99,
+                "width": 91,
+                "height": 156,
+                "sizeInBytes": 27989,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/ldzkc96s3j7ilgsgdzoi",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "paloma_sm_24d57ae16b",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 407.34,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367082/lead_magnet/arsqld1rz2ns2cfbxd8r.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/arsqld1rz2ns2cfbxd8r",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T16:36:15.619Z",
+            "updatedAt": "2026-09-07T16:36:15.619Z",
+            "publishedAt": "2026-09-07T16:36:15.620Z"
+          }
+        },
+        {
+          "id": 348,
+          "images": {
+            "id": 520,
+            "documentId": "wrdgo8e3z70iwr9yezvy33of",
+            "name": "Sica.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 1920,
+            "height": 680,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367050/lead_magnet/tel75dcooi4sqtdfms46.png",
+                "hash": "large_Sica_c50bf81239",
+                "mime": "image/png",
+                "name": "large_Sica.png",
+                "path": null,
+                "size": 385.56,
+                "width": 1000,
+                "height": 354,
+                "sizeInBytes": 385561,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/tel75dcooi4sqtdfms46",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367051/lead_magnet/szjcdoj6evy3angwh7go.png",
+                "hash": "small_Sica_c50bf81239",
+                "mime": "image/png",
+                "name": "small_Sica.png",
+                "path": null,
+                "size": 113.89,
+                "width": 500,
+                "height": 177,
+                "sizeInBytes": 113885,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/szjcdoj6evy3angwh7go",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367052/lead_magnet/cjkwrbcwnhmppj76zdzl.png",
+                "hash": "medium_Sica_c50bf81239",
+                "mime": "image/png",
+                "name": "medium_Sica.png",
+                "path": null,
+                "size": 230.98,
+                "width": 750,
+                "height": 266,
+                "sizeInBytes": 230981,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/cjkwrbcwnhmppj76zdzl",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367053/lead_magnet/srsibboecx47rjt9dpfx.png",
+                "hash": "thumbnail_Sica_c50bf81239",
+                "mime": "image/png",
+                "name": "thumbnail_Sica.png",
+                "path": null,
+                "size": 34.72,
+                "width": 245,
+                "height": 87,
+                "sizeInBytes": 34715,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/srsibboecx47rjt9dpfx",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "Sica_c50bf81239",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 312.51,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367049/lead_magnet/abv04kfkexkwez3zck3z.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/abv04kfkexkwez3zck3z",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T10:40:51.278Z",
+            "updatedAt": "2026-09-07T10:40:51.278Z",
+            "publishedAt": "2026-09-07T10:40:51.278Z"
+          },
+          "mobileImages": {
+            "id": 530,
+            "documentId": "npbnzxaf6k62kspodjba4lld",
+            "name": "sica_sm.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 938,
+            "height": 1610,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367088/lead_magnet/bsshioat8a4tj5obrzwc.png",
+                "hash": "large_sica_sm_da7668eb5d",
+                "mime": "image/png",
+                "name": "large_sica_sm.png",
+                "path": null,
+                "size": 600.46,
+                "width": 583,
+                "height": 1000,
+                "sizeInBytes": 600456,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/bsshioat8a4tj5obrzwc",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367089/lead_magnet/eeeq5u6ygmthkfqssd7b.png",
+                "hash": "small_sica_sm_da7668eb5d",
+                "mime": "image/png",
+                "name": "small_sica_sm.png",
+                "path": null,
+                "size": 175.02,
+                "width": 291,
+                "height": 500,
+                "sizeInBytes": 175018,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/eeeq5u6ygmthkfqssd7b",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367090/lead_magnet/mdfcavnsuxmhrngfsuhw.png",
+                "hash": "medium_sica_sm_da7668eb5d",
+                "mime": "image/png",
+                "name": "medium_sica_sm.png",
+                "path": null,
+                "size": 356.99,
+                "width": 437,
+                "height": 750,
+                "sizeInBytes": 356993,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/mdfcavnsuxmhrngfsuhw",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367090/lead_magnet/iwobjknuti6tph8s7krl.png",
+                "hash": "thumbnail_sica_sm_da7668eb5d",
+                "mime": "image/png",
+                "name": "thumbnail_sica_sm.png",
+                "path": null,
+                "size": 25.02,
+                "width": 91,
+                "height": 156,
+                "sizeInBytes": 25019,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/iwobjknuti6tph8s7krl",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "sica_sm_da7668eb5d",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 351.9,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367087/lead_magnet/dmpth2gm1vhyu0vprmoj.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/dmpth2gm1vhyu0vprmoj",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T16:36:30.028Z",
+            "updatedAt": "2026-09-07T16:36:30.028Z",
+            "publishedAt": "2026-09-07T16:36:30.028Z"
+          }
+        },
+        {
+          "id": 349,
+          "images": {
+            "id": 521,
+            "documentId": "jvu1qylk1l3asexjp18n10uy",
+            "name": "Trainers locker.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 1920,
+            "height": 680,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367054/lead_magnet/gwsy0dnqoeoovcmwdscr.png",
+                "hash": "large_Trainers_locker_bf357dee52",
+                "mime": "image/png",
+                "name": "large_Trainers locker.png",
+                "path": null,
+                "size": 372.83,
+                "width": 1000,
+                "height": 354,
+                "sizeInBytes": 372827,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/gwsy0dnqoeoovcmwdscr",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367055/lead_magnet/myy0wmmmjzzao0xoulyz.png",
+                "hash": "small_Trainers_locker_bf357dee52",
+                "mime": "image/png",
+                "name": "small_Trainers locker.png",
+                "path": null,
+                "size": 110.49,
+                "width": 500,
+                "height": 177,
+                "sizeInBytes": 110488,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/myy0wmmmjzzao0xoulyz",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367056/lead_magnet/cqmjukn9vamp3t8uhskr.png",
+                "hash": "medium_Trainers_locker_bf357dee52",
+                "mime": "image/png",
+                "name": "medium_Trainers locker.png",
+                "path": null,
+                "size": 225.36,
+                "width": 750,
+                "height": 266,
+                "sizeInBytes": 225358,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/cqmjukn9vamp3t8uhskr",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367057/lead_magnet/xympx7ckb3ovz1xrdvhg.png",
+                "hash": "thumbnail_Trainers_locker_bf357dee52",
+                "mime": "image/png",
+                "name": "thumbnail_Trainers locker.png",
+                "path": null,
+                "size": 33.35,
+                "width": 245,
+                "height": 87,
+                "sizeInBytes": 33354,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/xympx7ckb3ovz1xrdvhg",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "Trainers_locker_bf357dee52",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 265.13,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367054/lead_magnet/kgf1pjxibe11o0oyh66i.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/kgf1pjxibe11o0oyh66i",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T10:41:18.984Z",
+            "updatedAt": "2026-09-07T10:41:18.984Z",
+            "publishedAt": "2026-09-07T10:41:18.985Z"
+          },
+          "mobileImages": {
+            "id": 531,
+            "documentId": "pu4w6jswa91gd9eztze6wq4q",
+            "name": "ttl_sm.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 375,
+            "height": 644,
+            "formats": {
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367093/lead_magnet/ychebgknod0wv3kdw67n.png",
+                "hash": "small_ttl_sm_7f6f65a2b7",
+                "mime": "image/png",
+                "name": "small_ttl_sm.png",
+                "path": null,
+                "size": 149.93,
+                "width": 291,
+                "height": 500,
+                "sizeInBytes": 149926,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/ychebgknod0wv3kdw67n",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367093/lead_magnet/taoypy5nhz4a9bqr6prs.png",
+                "hash": "thumbnail_ttl_sm_7f6f65a2b7",
+                "mime": "image/png",
+                "name": "thumbnail_ttl_sm.png",
+                "path": null,
+                "size": 22.24,
+                "width": 91,
+                "height": 156,
+                "sizeInBytes": 22239,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/taoypy5nhz4a9bqr6prs",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "ttl_sm_7f6f65a2b7",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 55.53,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367092/lead_magnet/ft15uiaeeyliyohbamuy.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/ft15uiaeeyliyohbamuy",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T16:37:32.986Z",
+            "updatedAt": "2026-09-07T16:37:32.986Z",
+            "publishedAt": "2026-09-07T16:37:32.986Z"
+          }
+        },
+        {
+          "id": 350,
+          "images": {
+            "id": 522,
+            "documentId": "wc9fijnsfed3n4mmphxwo0ud",
+            "name": "Juicebro.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 3840,
+            "height": 1360,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367059/lead_magnet/qekf4pagkjshsx7o8zbd.png",
+                "hash": "large_Juicebro_e621c353fb",
+                "mime": "image/png",
+                "name": "large_Juicebro.png",
+                "path": null,
+                "size": 353.58,
+                "width": 1000,
+                "height": 354,
+                "sizeInBytes": 353584,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/qekf4pagkjshsx7o8zbd",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367060/lead_magnet/chh2v1dvtzfffpnoimd3.png",
+                "hash": "small_Juicebro_e621c353fb",
+                "mime": "image/png",
+                "name": "small_Juicebro.png",
+                "path": null,
+                "size": 111.09,
+                "width": 500,
+                "height": 177,
+                "sizeInBytes": 111092,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/chh2v1dvtzfffpnoimd3",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367061/lead_magnet/mqofddlznu1toeeggukd.png",
+                "hash": "medium_Juicebro_e621c353fb",
+                "mime": "image/png",
+                "name": "medium_Juicebro.png",
+                "path": null,
+                "size": 220.2,
+                "width": 750,
+                "height": 266,
+                "sizeInBytes": 220200,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/mqofddlznu1toeeggukd",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367061/lead_magnet/br5tksv8wuo3rwoiphli.png",
+                "hash": "thumbnail_Juicebro_e621c353fb",
+                "mime": "image/png",
+                "name": "thumbnail_Juicebro.png",
+                "path": null,
+                "size": 33.38,
+                "width": 245,
+                "height": 87,
+                "sizeInBytes": 33380,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/br5tksv8wuo3rwoiphli",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "Juicebro_e621c353fb",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 790.3,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367058/lead_magnet/qefsn2822lxhd789onxn.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/qefsn2822lxhd789onxn",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T10:41:48.787Z",
+            "updatedAt": "2026-09-07T10:41:48.787Z",
+            "publishedAt": "2026-09-07T10:41:48.787Z"
+          },
+          "mobileImages": {
+            "id": 532,
+            "documentId": "qxg0e7sy4bs2bobtvnavo902",
+            "name": "juicebro_sm.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 938,
+            "height": 1610,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367095/lead_magnet/ripetixpyawfzk6z9wm7.png",
+                "hash": "large_juicebro_sm_621de8daf9",
+                "mime": "image/png",
+                "name": "large_juicebro_sm.png",
+                "path": null,
+                "size": 596.85,
+                "width": 583,
+                "height": 1000,
+                "sizeInBytes": 596852,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/ripetixpyawfzk6z9wm7",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367096/lead_magnet/zjh9rrkafcu2q2hihexc.png",
+                "hash": "small_juicebro_sm_621de8daf9",
+                "mime": "image/png",
+                "name": "small_juicebro_sm.png",
+                "path": null,
+                "size": 183.23,
+                "width": 291,
+                "height": 500,
+                "sizeInBytes": 183234,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/zjh9rrkafcu2q2hihexc",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367097/lead_magnet/jhyxgb9cgf8bqxjbswuv.png",
+                "hash": "medium_juicebro_sm_621de8daf9",
+                "mime": "image/png",
+                "name": "medium_juicebro_sm.png",
+                "path": null,
+                "size": 363.44,
+                "width": 437,
+                "height": 750,
+                "sizeInBytes": 363437,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/jhyxgb9cgf8bqxjbswuv",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367098/lead_magnet/bz7rybdbnxtow7mz9sao.png",
+                "hash": "thumbnail_juicebro_sm_621de8daf9",
+                "mime": "image/png",
+                "name": "thumbnail_juicebro_sm.png",
+                "path": null,
+                "size": 25.82,
+                "width": 91,
+                "height": 156,
+                "sizeInBytes": 25821,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/bz7rybdbnxtow7mz9sao",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "juicebro_sm_621de8daf9",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 302.5,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367094/lead_magnet/h549ww67vpo4dtb3m1gl.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/h549ww67vpo4dtb3m1gl",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T16:37:46.067Z",
+            "updatedAt": "2026-09-07T16:37:46.067Z",
+            "publishedAt": "2026-09-07T16:37:46.067Z"
+          }
+        },
+        {
+          "id": 351,
+          "images": {
+            "id": 523,
+            "documentId": "j2l4zh0e6qt6g6rxhh71pdwa",
+            "name": "Stiff collar.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 3840,
+            "height": 1360,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367063/lead_magnet/sorwzm3yodajxp268ytw.png",
+                "hash": "large_Stiff_collar_ead4f9a6e7",
+                "mime": "image/png",
+                "name": "large_Stiff collar.png",
+                "path": null,
+                "size": 342.71,
+                "width": 1000,
+                "height": 354,
+                "sizeInBytes": 342711,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/sorwzm3yodajxp268ytw",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367064/lead_magnet/m11mcchjg5cdchkpb6zj.png",
+                "hash": "small_Stiff_collar_ead4f9a6e7",
+                "mime": "image/png",
+                "name": "small_Stiff collar.png",
+                "path": null,
+                "size": 114.27,
+                "width": 500,
+                "height": 177,
+                "sizeInBytes": 114266,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/m11mcchjg5cdchkpb6zj",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367065/lead_magnet/g05uqsi1kaxzalpfbjis.png",
+                "hash": "medium_Stiff_collar_ead4f9a6e7",
+                "mime": "image/png",
+                "name": "medium_Stiff collar.png",
+                "path": null,
+                "size": 217.02,
+                "width": 750,
+                "height": 266,
+                "sizeInBytes": 217015,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/g05uqsi1kaxzalpfbjis",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367066/lead_magnet/jd85ffnc7zpfpfdznskk.png",
+                "hash": "thumbnail_Stiff_collar_ead4f9a6e7",
+                "mime": "image/png",
+                "name": "thumbnail_Stiff collar.png",
+                "path": null,
+                "size": 38.31,
+                "width": 245,
+                "height": 87,
+                "sizeInBytes": 38311,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/jd85ffnc7zpfpfdznskk",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "Stiff_collar_ead4f9a6e7",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 755.54,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367062/lead_magnet/vwspz5o5xwchaoeaweba.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/vwspz5o5xwchaoeaweba",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T10:42:07.857Z",
+            "updatedAt": "2026-09-07T10:42:07.857Z",
+            "publishedAt": "2026-09-07T10:42:07.857Z"
+          },
+          "mobileImages": {
+            "id": 533,
+            "documentId": "zuq8xwx54qpqzcfh9wtielr4",
+            "name": "tsc_sm.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 938,
+            "height": 1610,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367100/lead_magnet/wy3zzd9paj3ffcrq7tb1.png",
+                "hash": "large_tsc_sm_e58e99c161",
+                "mime": "image/png",
+                "name": "large_tsc_sm.png",
+                "path": null,
+                "size": 498.14,
+                "width": 583,
+                "height": 1000,
+                "sizeInBytes": 498141,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/wy3zzd9paj3ffcrq7tb1",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367101/lead_magnet/vfyjsxluldvimqe7kkyq.png",
+                "hash": "small_tsc_sm_e58e99c161",
+                "mime": "image/png",
+                "name": "small_tsc_sm.png",
+                "path": null,
+                "size": 158.71,
+                "width": 291,
+                "height": 500,
+                "sizeInBytes": 158711,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/vfyjsxluldvimqe7kkyq",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367101/lead_magnet/rpm9gykqbjms7f6aa5et.png",
+                "hash": "medium_tsc_sm_e58e99c161",
+                "mime": "image/png",
+                "name": "medium_tsc_sm.png",
+                "path": null,
+                "size": 304.41,
+                "width": 437,
+                "height": 750,
+                "sizeInBytes": 304414,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/rpm9gykqbjms7f6aa5et",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367102/lead_magnet/rhdjywchs447997hgfm4.png",
+                "hash": "thumbnail_tsc_sm_e58e99c161",
+                "mime": "image/png",
+                "name": "thumbnail_tsc_sm.png",
+                "path": null,
+                "size": 25.9,
+                "width": 91,
+                "height": 156,
+                "sizeInBytes": 25903,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/rhdjywchs447997hgfm4",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "tsc_sm_e58e99c161",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 221.99,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367099/lead_magnet/ywnqkmlo2whkpvjzszk1.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/ywnqkmlo2whkpvjzszk1",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T16:38:11.901Z",
+            "updatedAt": "2026-09-07T16:38:11.901Z",
+            "publishedAt": "2026-09-07T16:38:11.902Z"
+          }
+        },
+        {
+          "id": 352,
+          "images": {
+            "id": 524,
+            "documentId": "o3b6r9w8oadbbn1qeebsoolg",
+            "name": "J vice (1).png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 1920,
+            "height": 680,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367067/lead_magnet/kmwpxfewjihm0nbibh82.png",
+                "hash": "large_J_vice_1_13223b96f7",
+                "mime": "image/png",
+                "name": "large_J vice (1).png",
+                "path": null,
+                "size": 266.16,
+                "width": 1000,
+                "height": 354,
+                "sizeInBytes": 266159,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/kmwpxfewjihm0nbibh82",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367068/lead_magnet/sh6rgoxgxr79yrs5ecsx.png",
+                "hash": "small_J_vice_1_13223b96f7",
+                "mime": "image/png",
+                "name": "small_J vice (1).png",
+                "path": null,
+                "size": 82.4,
+                "width": 500,
+                "height": 177,
+                "sizeInBytes": 82403,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/sh6rgoxgxr79yrs5ecsx",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367069/lead_magnet/z1nkbzqb5o7audmhap4i.png",
+                "hash": "medium_J_vice_1_13223b96f7",
+                "mime": "image/png",
+                "name": "medium_J vice (1).png",
+                "path": null,
+                "size": 163.76,
+                "width": 750,
+                "height": 266,
+                "sizeInBytes": 163765,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/z1nkbzqb5o7audmhap4i",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367070/lead_magnet/z0ntjv97h2vgxh0t99pr.png",
+                "hash": "thumbnail_J_vice_1_13223b96f7",
+                "mime": "image/png",
+                "name": "thumbnail_J vice (1).png",
+                "path": null,
+                "size": 26.18,
+                "width": 245,
+                "height": 87,
+                "sizeInBytes": 26184,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/z0ntjv97h2vgxh0t99pr",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "J_vice_1_13223b96f7",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 186.28,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367067/lead_magnet/fyaellhgcayu02bvmxzy.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/fyaellhgcayu02bvmxzy",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T10:42:52.059Z",
+            "updatedAt": "2026-09-07T10:42:52.059Z",
+            "publishedAt": "2026-09-07T10:42:52.060Z"
+          },
+          "mobileImages": {
+            "id": 534,
+            "documentId": "k7qds1j44eetpqbzsku8migq",
+            "name": "jvice_sm.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 938,
+            "height": 1610,
+            "formats": {
+              "large": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367104/lead_magnet/wgsqhclaffgll8ixpnnj.png",
+                "hash": "large_jvice_sm_3c957a9e5d",
+                "mime": "image/png",
+                "name": "large_jvice_sm.png",
+                "path": null,
+                "size": 423.2,
+                "width": 583,
+                "height": 1000,
+                "sizeInBytes": 423199,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/wgsqhclaffgll8ixpnnj",
+                  "resource_type": "image"
+                }
+              },
+              "small": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367105/lead_magnet/claxqj4zgwnoc4l0qm5n.png",
+                "hash": "small_jvice_sm_3c957a9e5d",
+                "mime": "image/png",
+                "name": "small_jvice_sm.png",
+                "path": null,
+                "size": 127.7,
+                "width": 291,
+                "height": 500,
+                "sizeInBytes": 127703,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/claxqj4zgwnoc4l0qm5n",
+                  "resource_type": "image"
+                }
+              },
+              "medium": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367106/lead_magnet/clgwedy09uxfwc824hry.png",
+                "hash": "medium_jvice_sm_3c957a9e5d",
+                "mime": "image/png",
+                "name": "medium_jvice_sm.png",
+                "path": null,
+                "size": 253.35,
+                "width": 437,
+                "height": 750,
+                "sizeInBytes": 253345,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/clgwedy09uxfwc824hry",
+                  "resource_type": "image"
+                }
+              },
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367107/lead_magnet/tipmujcq6stc1ycefnru.png",
+                "hash": "thumbnail_jvice_sm_3c957a9e5d",
+                "mime": "image/png",
+                "name": "thumbnail_jvice_sm.png",
+                "path": null,
+                "size": 19.57,
+                "width": 91,
+                "height": 156,
+                "sizeInBytes": 19572,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/tipmujcq6stc1ycefnru",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "jvice_sm_3c957a9e5d",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 211.12,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367103/lead_magnet/tzfaflsa8zuwahaj6dq9.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/tzfaflsa8zuwahaj6dq9",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-07T16:38:23.230Z",
+            "updatedAt": "2026-09-07T16:38:23.230Z",
+            "publishedAt": "2026-09-07T16:38:23.230Z"
+          }
+        }
+      ],
+      "__component": "sections.our-work"
+    },
+    {
+      "id": 44,
+      "badge": "5+ Years of Shopify Excellence",
+      "heading": "Where brands like transformed their Shopify experience.",
+      "description": "We redesign Shopify stores with refined UX, stunning visuals, and performance-focused decisions.",
+      "mobileHeading": "Where brands like transformed their Shopify.",
+      "primaryCta": {
+        "id": 419,
+        "label": "Get My Instant Quote",
+        "href": "#quote",
+        "variant": "primary"
+      },
+      "secondaryCta": {
+        "id": 420,
+        "label": "Book a Free Call",
+        "href": "#quote",
+        "variant": "secondary"
+      },
+      "logos": [
+        {
+          "id": 170,
+          "logo": {
+            "id": 507,
+            "documentId": "q0iys733cie8dp2w9zq0r8hb",
+            "name": "brown_logo.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 437,
+            "height": 425,
+            "formats": {
+              "thumbnail": {
+                "ext": ".png",
+                "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367013/lead_magnet/ird2bbw21cz51n1qvd1u.png",
+                "hash": "thumbnail_brown_logo_01316b83b6",
+                "mime": "image/png",
+                "name": "thumbnail_brown_logo.png",
+                "path": null,
+                "size": 25.17,
+                "width": 160,
+                "height": 156,
+                "sizeInBytes": 25171,
+                "provider_metadata": {
+                  "public_id": "lead_magnet/ird2bbw21cz51n1qvd1u",
+                  "resource_type": "image"
+                }
+              }
+            },
+            "hash": "brown_logo_01316b83b6",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 11.88,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367012/lead_magnet/ci9b0qx21i857b3mbaoo.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/ci9b0qx21i857b3mbaoo",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-04T13:14:57.381Z",
+            "updatedAt": "2026-09-04T13:14:57.381Z",
+            "publishedAt": "2026-09-04T13:14:57.382Z"
+          }
+        },
+        {
+          "id": 171,
+          "logo": {
+            "id": 514,
+            "documentId": "ockz7khhridp67dh6g57k1oi",
+            "name": "sica_icon.png",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 117,
+            "height": 116,
+            "formats": null,
+            "hash": "sica_icon_6be9243d3b",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 1.67,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367033/lead_magnet/dykb5oq4ngmai0vdtlzf.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/dykb5oq4ngmai0vdtlzf",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-05T14:56:42.116Z",
+            "updatedAt": "2026-09-07T04:37:27.381Z",
+            "publishedAt": "2026-09-05T14:56:42.117Z"
+          }
+        },
+        {
+          "id": 172,
+          "logo": {
+            "id": 592,
+            "documentId": "w67d4v2gxkuugkk8wz12fhq7",
+            "name": "bft_icon.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 88,
+            "height": 104,
+            "formats": null,
+            "hash": "bft_icon_52f4a1a065",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 12.57,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789433293/bft_icon_52f4a1a065.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "bft_icon_52f4a1a065",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-15T00:48:14.942Z",
+            "updatedAt": "2026-09-15T00:48:14.942Z",
+            "publishedAt": "2026-09-15T00:48:14.942Z"
+          }
+        },
+        {
+          "id": 173,
+          "logo": {
+            "id": 590,
+            "documentId": "vnu1teih7r3s8g6spd0gl0ij",
+            "name": "siorai logo.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 512,
+            "height": 405,
+            "formats": null,
+            "hash": "siorai_logo_7ed8d46870",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 7.41,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789429077/siorai_logo_7ed8d46870.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "siorai_logo_7ed8d46870",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-15T05:07:58.561Z",
+            "updatedAt": "2026-09-15T05:07:58.561Z",
+            "publishedAt": "2026-09-15T05:07:58.563Z"
+          }
+        },
+        {
+          "id": 174,
+          "logo": {
+            "id": 573,
+            "documentId": "o1rr0z19eha3t5thm1k2qwwn",
+            "name": "figo_hero_logo.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 59,
+            "height": 40,
+            "formats": null,
+            "hash": "figo_hero_logo_b8e6e8472c",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 4.91,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367583/figo_hero_logo_b8e6e8472c.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "figo_hero_logo_b8e6e8472c",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-14T12:03:04.310Z",
+            "updatedAt": "2026-09-14T12:09:55.723Z",
+            "publishedAt": "2026-09-14T12:03:04.310Z"
+          }
+        }
+      ],
+      "__component": "sections.final-cta"
+    },
+    {
+      "id": 41,
+      "eyebrow": "Our Process",
+      "heading": "Every Capability Runs Through The Same System.",
+      "description": "Whether we are building a Shopify store, a custom website, a CMS platform, or a mobile app ecosystem, the process stays connected.",
+      "marqueeItems": [
+        {
+          "id": 646,
+          "text": "mobile apps"
+        },
+        {
+          "id": 647,
+          "text": "human-centered products"
+        },
+        {
+          "id": 648,
+          "text": "end-to-end-ownership"
+        },
+        {
+          "id": 649,
+          "text": "ecommerce"
+        },
+        {
+          "id": 650,
+          "text": "product strategy"
+        },
+        {
+          "id": 651,
+          "text": "rapid prototyping"
+        },
+        {
+          "id": 652,
+          "text": "ux design"
+        },
+        {
+          "id": 653,
+          "text": "real business impact"
+        },
+        {
+          "id": 654,
+          "text": "innovation design"
+        },
+        {
+          "id": 655,
+          "text": "global reach"
+        },
+        {
+          "id": 656,
+          "text": "impactful experiences"
+        },
+        {
+          "id": 657,
+          "text": "digital strategy"
+        },
+        {
+          "id": 658,
+          "text": "end-to-end solution"
+        },
+        {
+          "id": 659,
+          "text": "brand design"
+        },
+        {
+          "id": 660,
+          "text": "deep user focus"
+        }
+      ],
+      "cta": {
+        "id": 418,
+        "label": "Explore Our Services",
+        "href": "#services",
+        "variant": null
+      },
+      "image": {
+        "id": 508,
+        "documentId": "vez8ymsujh447x0lh5n4hptv",
+        "name": "ourProcess_img.png",
+        "alternativeText": null,
+        "caption": null,
+        "focalPoint": null,
+        "width": 1679,
+        "height": 937,
+        "formats": {
+          "large": {
+            "ext": ".png",
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367014/lead_magnet/l6ggrlhi7wiktv0br3fz.png",
+            "hash": "large_our_Process_img_162a5fd06f",
+            "mime": "image/png",
+            "name": "large_ourProcess_img.png",
+            "path": null,
+            "size": 348.34,
+            "width": 1000,
+            "height": 558,
+            "sizeInBytes": 348340,
+            "provider_metadata": {
+              "public_id": "lead_magnet/l6ggrlhi7wiktv0br3fz",
+              "resource_type": "image"
+            }
+          },
+          "small": {
+            "ext": ".png",
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367015/lead_magnet/gff1ubavyy18iyzsmwai.png",
+            "hash": "small_our_Process_img_162a5fd06f",
+            "mime": "image/png",
+            "name": "small_ourProcess_img.png",
+            "path": null,
+            "size": 102.57,
+            "width": 500,
+            "height": 279,
+            "sizeInBytes": 102570,
+            "provider_metadata": {
+              "public_id": "lead_magnet/gff1ubavyy18iyzsmwai",
+              "resource_type": "image"
+            }
+          },
+          "medium": {
+            "ext": ".png",
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367016/lead_magnet/buscrglidlrrvk5xybph.png",
+            "hash": "medium_our_Process_img_162a5fd06f",
+            "mime": "image/png",
+            "name": "medium_ourProcess_img.png",
+            "path": null,
+            "size": 210.21,
+            "width": 750,
+            "height": 419,
+            "sizeInBytes": 210205,
+            "provider_metadata": {
+              "public_id": "lead_magnet/buscrglidlrrvk5xybph",
+              "resource_type": "image"
+            }
+          },
+          "thumbnail": {
+            "ext": ".png",
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367017/lead_magnet/z3lqmigkvtu9r9uld1qv.png",
+            "hash": "thumbnail_our_Process_img_162a5fd06f",
+            "mime": "image/png",
+            "name": "thumbnail_ourProcess_img.png",
+            "path": null,
+            "size": 28.37,
+            "width": 245,
+            "height": 137,
+            "sizeInBytes": 28371,
+            "provider_metadata": {
+              "public_id": "lead_magnet/z3lqmigkvtu9r9uld1qv",
+              "resource_type": "image"
+            }
+          }
+        },
+        "hash": "our_Process_img_162a5fd06f",
+        "ext": ".png",
+        "mime": "image/png",
+        "size": 267.14,
+        "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367014/lead_magnet/wdmjpvyen40p7h0uua2c.png",
+        "previewUrl": null,
+        "provider": "cloudinary",
+        "provider_metadata": {
+          "public_id": "lead_magnet/wdmjpvyen40p7h0uua2c",
+          "resource_type": "image"
+        },
+        "createdAt": "2026-09-04T16:58:56.493Z",
+        "updatedAt": "2026-09-04T17:05:55.203Z",
+        "publishedAt": "2026-09-04T16:58:56.498Z",
+        "related": [
+          {
+            "id": 18,
+            "eyebrow": "Our Process",
+            "heading": "Every Capability Runs Through The Same System.",
+            "description": "Whether we are building a Shopify store, a custom website, a CMS platform, or a mobile app ecosystem, the process stays connected.",
+            "__type": "sections.our-process"
+          },
+          {
+            "id": 41,
+            "eyebrow": "Our Process",
+            "heading": "Every Capability Runs Through The Same System.",
+            "description": "Whether we are building a Shopify store, a custom website, a CMS platform, or a mobile app ecosystem, the process stays connected.",
+            "__type": "sections.our-process"
+          }
+        ]
+      },
+      "video": {
+        "id": 559,
+        "documentId": "vo5hxevtvbzymv9pzze0jrz6",
+        "name": "OurProcess_Vid.mp4",
+        "alternativeText": null,
+        "caption": null,
+        "focalPoint": null,
+        "width": null,
+        "height": null,
+        "formats": null,
+        "hash": "Our_Process_Vid_1d5a14a2df",
+        "ext": ".mp4",
+        "mime": "video/mp4",
+        "size": 34322.36,
+        "url": "https://res.cloudinary.com/cntaktlb/video/upload/v1789367286/lead_magnet/adsybwo8q8bxqahwo4bz.mp4",
+        "previewUrl": "https://res.cloudinary.com/cntaktlb/video/upload/c_scale,dl_200,vs_6,w_250/Our_Process_Vid_1d5a14a2df.gif?_a=BAMAROWQ0",
+        "provider": "cloudinary",
+        "provider_metadata": {
+          "public_id": "lead_magnet/adsybwo8q8bxqahwo4bz",
+          "resource_type": "video"
+        },
+        "createdAt": "2026-09-10T11:21:47.030Z",
+        "updatedAt": "2026-09-10T11:21:47.030Z",
+        "publishedAt": "2026-09-10T11:21:47.031Z",
+        "related": [
+          {
+            "id": 18,
+            "eyebrow": "Our Process",
+            "heading": "Every Capability Runs Through The Same System.",
+            "description": "Whether we are building a Shopify store, a custom website, a CMS platform, or a mobile app ecosystem, the process stays connected.",
+            "__type": "sections.our-process"
+          },
+          {
+            "id": 41,
+            "eyebrow": "Our Process",
+            "heading": "Every Capability Runs Through The Same System.",
+            "description": "Whether we are building a Shopify store, a custom website, a CMS platform, or a mobile app ecosystem, the process stays connected.",
+            "__type": "sections.our-process"
+          }
+        ]
+      },
+      "cards": [
+        {
+          "id": 173,
+          "title": "Strategise",
+          "description": "We define what needs to be built, fixed, prioritised, or planned.",
+          "services": [
+            {
+              "id": 739,
+              "text": "Product strategy and discovery"
+            },
+            {
+              "id": 740,
+              "text": "UX and experience audits"
+            },
+            {
+              "id": 741,
+              "text": "SEO and AI search audits"
+            },
+            {
+              "id": 742,
+              "text": "Information architecture and user journeys"
+            },
+            {
+              "id": 743,
+              "text": "Technical and ecosystem reviews"
+            },
+            {
+              "id": 744,
+              "text": "E-commerce strategy and catalogue planning"
+            }
+          ],
+          "cta": {
+            "id": 421,
+            "label": "Explore",
+            "href": "#strategise",
+            "variant": null
+          },
+          "icon": {
+            "id": 535,
+            "documentId": "huhowiqdptg6dipnhdwpvi8u",
+            "name": "Lightbulb.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 23,
+            "height": 23,
+            "formats": null,
+            "hash": "Lightbulb_540ccc3f2c",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 2.16,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367108/lead_magnet/lr6r7nzfpiphmcc5p35r.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/lr6r7nzfpiphmcc5p35r",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-08T10:53:17.933Z",
+            "updatedAt": "2026-09-08T10:53:17.933Z",
+            "publishedAt": "2026-09-08T10:53:17.934Z",
+            "related": [
+              {
+                "id": 69,
+                "title": "Strategise",
+                "description": "We define what needs to be built, fixed, prioritised, or planned.",
+                "__type": "shared.process-card"
+              },
+              {
+                "id": 173,
+                "title": "Strategise",
+                "description": "We define what needs to be built, fixed, prioritised, or planned.",
+                "__type": "shared.process-card"
+              }
+            ]
+          }
+        },
+        {
+          "id": 174,
+          "title": "Design",
+          "description": "We shape the experience, interface, user journeys, and visual system.",
+          "services": [
+            {
+              "id": 745,
+              "text": "UI and visual identity systems"
+            },
+            {
+              "id": 746,
+              "text": "Responsive website design"
+            },
+            {
+              "id": 747,
+              "text": "Mobile app interface design"
+            },
+            {
+              "id": 748,
+              "text": "Interactive prototyping & animation"
+            },
+            {
+              "id": 749,
+              "text": "Component library creation"
+            }
+          ],
+          "cta": {
+            "id": 422,
+            "label": "Explore",
+            "href": "#design",
+            "variant": null
+          },
+          "icon": {
+            "id": 536,
+            "documentId": "myzp4wautklvs4bcq8fwda4m",
+            "name": "PaintRoller.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 23,
+            "height": 23,
+            "formats": null,
+            "hash": "Paint_Roller_a4b78d0b47",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 1.43,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367110/lead_magnet/jkpvoutbxvpmh2tib2w2.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/jkpvoutbxvpmh2tib2w2",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-08T10:53:36.191Z",
+            "updatedAt": "2026-09-08T10:53:36.191Z",
+            "publishedAt": "2026-09-08T10:53:36.191Z",
+            "related": [
+              {
+                "id": 174,
+                "title": "Design",
+                "description": "We shape the experience, interface, user journeys, and visual system.",
+                "__type": "shared.process-card"
+              },
+              {
+                "id": 70,
+                "title": "Design",
+                "description": "We shape the experience, interface, user journeys, and visual system.",
+                "__type": "shared.process-card"
+              }
+            ]
+          }
+        },
+        {
+          "id": 175,
+          "title": "Build",
+          "description": "We develop the website, store, app, platform, CMS, integrations, or backend system.",
+          "services": [
+            {
+              "id": 750,
+              "text": "Headless & custom Shopify stores"
+            },
+            {
+              "id": 751,
+              "text": "Next.js & modern React web apps"
+            },
+            {
+              "id": 752,
+              "text": "Native iOS & Android apps"
+            },
+            {
+              "id": 753,
+              "text": "Custom API integrations & backends"
+            },
+            {
+              "id": 754,
+              "text": "Headless CMS implementations"
+            }
+          ],
+          "cta": {
+            "id": 423,
+            "label": "Explore",
+            "href": "#build",
+            "variant": null
+          },
+          "icon": {
+            "id": 560,
+            "documentId": "pqupmatplvows6k6kko6g91f",
+            "name": "code-circle.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 32,
+            "height": 32,
+            "formats": null,
+            "hash": "code_circle_7d6a6764a3",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 0.9,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367288/lead_magnet/as31fmqszzpgammlaiba.png",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/as31fmqszzpgammlaiba",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-10T11:24:52.401Z",
+            "updatedAt": "2026-09-10T11:24:52.401Z",
+            "publishedAt": "2026-09-10T11:24:52.401Z",
+            "related": [
+              {
+                "id": 71,
+                "title": "Build",
+                "description": "We develop the website, store, app, platform, CMS, integrations, or backend system.",
+                "__type": "shared.process-card"
+              },
+              {
+                "id": 175,
+                "title": "Build",
+                "description": "We develop the website, store, app, platform, CMS, integrations, or backend system.",
+                "__type": "shared.process-card"
+              }
+            ]
+          }
+        },
+        {
+          "id": 176,
+          "title": "Grow",
+          "description": "We maintain, improve, optimise, and support the product after launch.",
+          "services": [
+            {
+              "id": 755,
+              "text": "Maintenance & post-launch support"
+            },
+            {
+              "id": 756,
+              "text": "Speed, SEO & performance optimization"
+            },
+            {
+              "id": 757,
+              "text": "Continuous feature development"
+            },
+            {
+              "id": 758,
+              "text": "Conversion rate optimization (CRO)"
+            },
+            {
+              "id": 759,
+              "text": "Analytics & event-tracking setups"
+            }
+          ],
+          "cta": {
+            "id": 424,
+            "label": "Explore",
+            "href": "#grow",
+            "variant": null
+          },
+          "icon": {
+            "id": 537,
+            "documentId": "ej2gu9zqqndb6t3cwp09g4z1",
+            "name": "Sparkle.svg",
+            "alternativeText": null,
+            "caption": null,
+            "focalPoint": null,
+            "width": 32,
+            "height": 32,
+            "formats": null,
+            "hash": "Sparkle_b329d10972",
+            "ext": ".svg",
+            "mime": "image/svg+xml",
+            "size": 2.51,
+            "url": "https://res.cloudinary.com/cntaktlb/image/upload/v1789367112/lead_magnet/bpkp4hghtilrqcalaloh.svg",
+            "previewUrl": null,
+            "provider": "cloudinary",
+            "provider_metadata": {
+              "public_id": "lead_magnet/bpkp4hghtilrqcalaloh",
+              "resource_type": "image"
+            },
+            "createdAt": "2026-09-08T10:54:11.922Z",
+            "updatedAt": "2026-09-08T10:54:11.922Z",
+            "publishedAt": "2026-09-08T10:54:11.923Z",
+            "related": [
+              {
+                "id": 72,
+                "title": "Grow",
+                "description": "We maintain, improve, optimise, and support the product after launch.",
+                "__type": "shared.process-card"
+              },
+              {
+                "id": 176,
+                "title": "Grow",
+                "description": "We maintain, improve, optimise, and support the product after launch.",
+                "__type": "shared.process-card"
+              }
+            ]
+          }
+        }
+      ],
+      "__component": "sections.our-process"
+    },
+    {
+      "id": 44,
+      "heading": "FAQ",
+      "items": [
+        {
+          "id": 411,
+          "question": "Does the store remain live throughout the project?",
+          "answer": "Yes. We work around your existing store to keep it live and minimise disruption throughout the project."
+        },
+        {
+          "id": 412,
+          "question": "Can the work be timed around peak trading?",
+          "answer": "Absolutely. We can plan key releases and updates around your busiest trading periods and important campaigns."
+        },
+        {
+          "id": 413,
+          "question": "How is a redesign priced?",
+          "answer": "Pricing depends on the scope, complexity, and level of support required. We define everything clearly before the project begins."
+        },
+        {
+          "id": 414,
+          "question": "Does this require a new theme or a replatform?",
+          "answer": "Not necessarily. We assess your current setup first and recommend the approach that makes the most sense for your business."
+        },
+        {
+          "id": 415,
+          "question": "What happens to our existing apps and integrations?",
+          "answer": "We review your existing ecosystem and make sure essential apps and integrations continue working smoothly after the redesign."
+        },
+        {
+          "id": 416,
+          "question": "What is the impact on SEO?",
+          "answer": "SEO is considered throughout the project. We protect existing rankings while improving the technical and content foundations of your store."
+        },
+        {
+          "id": 417,
+          "question": "Can you work alongside our developer?",
+          "answer": "Yes. We can work directly with your existing developers and collaborate with your team throughout the project."
+        },
+        {
+          "id": 418,
+          "question": "How does an offshore team operate in practice?",
+          "answer": "We work as an extension of your team with clear communication, shared workflows, regular updates, and defined responsibilities."
+        }
+      ],
+      "__component": "sections.faq"
+    }
+  ],
+  "header": {
+    "id": 8,
+    "documentId": "sdca1w4g71tkt8mndantzpda",
+    "createdAt": "2026-09-10T00:34:27.806Z",
+    "updatedAt": "2026-09-13T16:14:21.331Z",
+    "publishedAt": "2026-09-13T16:14:21.342Z",
+    "Header": {
+      "id": 19,
+      "logoText": "Thumbstack."
+    }
+  },
+  "footer": {
+    "id": 10,
+    "documentId": "idhyed06uwmss4wibydwxd9l",
+    "createdAt": "2026-09-10T00:49:07.158Z",
+    "updatedAt": "2026-09-14T08:28:33.107Z",
+    "publishedAt": "2026-09-14T08:28:37.619Z",
+    "footer": {
+      "id": 21,
+      "sayHi": "Say hi!",
+      "heading": "Let's make something amazing together.",
+      "description": "Come chat with us — we've got coffee (or tea) ready and are always up for a good conversation.",
+      "contactHeading": "Contact",
+      "quickLinksHeading": "Quick Links",
+      "marqueeText": "We design what's next"
+    }
+  }
+}
